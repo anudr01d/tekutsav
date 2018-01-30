@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
+    <ProjectGuid>{0BD41124-2D34-479F-9B23-BF8713BA9EC5}</ProjectGuid>
+    <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>TEKUtsav.iOS</RootNamespace>
+    <AssemblyName>TEKUtsav.iOS</AssemblyName>
+    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Debug</OutputPath>
+    <DefineConstants>DEBUG;ENABLE_TEST_CLOUD;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <DeviceSpecificBuild>true</DeviceSpecificBuild>
+    <MtouchDebug>true</MtouchDebug>
+    <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
+    <MtouchFastDev>true</MtouchFastDev>
+    <IOSDebuggerPort>49288</IOSDebuggerPort>
+    <MtouchLink>None</MtouchLink>
+    <MtouchArch>i386, x86_64</MtouchArch>
+    <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhone\Release</OutputPath>
+    <DefineConstants></DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodesignKey>iPhone Distribution: Deepak Kogundi (EWX37WYPJ7)</CodesignKey>
+    <MtouchFloat32>true</MtouchFloat32>
+    <CodesignEntitlements></CodesignEntitlements>
+    <MtouchLink>SdkOnly</MtouchLink>
+    <MtouchArch>ARMv7, ARM64</MtouchArch>
+    <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodesignProvision>TEKUtsav_Dist</CodesignProvision>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Release</OutputPath>
+    <DefineConstants></DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodesignKey>iPhone Distribution</CodesignKey>
+    <DeviceSpecificBuild>true</DeviceSpecificBuild>
+    <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
+    <MtouchLink>None</MtouchLink>
+    <MtouchArch>i386, x86_64</MtouchArch>
+    <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodesignProvision>TEKUtsav_Dist</CodesignProvision>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhone\Debug</OutputPath>
+    <DefineConstants>DEBUG;ENABLE_TEST_CLOUD;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodesignKey>iPhone Distribution: Deepak Kogundi (EWX37WYPJ7)</CodesignKey>
+    <DeviceSpecificBuild>true</DeviceSpecificBuild>
+    <MtouchDebug>true</MtouchDebug>
+    <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
+    <MtouchFastDev>true</MtouchFastDev>
+    <MtouchFloat32>true</MtouchFloat32>
+    <CodesignEntitlements></CodesignEntitlements>
+    <MtouchLink>SdkOnly</MtouchLink>
+    <MtouchArch>ARMv7, ARM64</MtouchArch>
+    <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodesignProvision>TEKUtsav_Dist</CodesignProvision>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Xamarin.iOS" />
+    <Reference Include="Xamarin.Forms.Core">
+      <HintPath>..\packages\Xamarin.Forms.2.3.4.247\lib\Xamarin.iOS10\Xamarin.Forms.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Platform">
+      <HintPath>..\packages\Xamarin.Forms.2.3.4.247\lib\Xamarin.iOS10\Xamarin.Forms.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Platform.iOS">
+      <HintPath>..\packages\Xamarin.Forms.2.3.4.247\lib\Xamarin.iOS10\Xamarin.Forms.Platform.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Xaml">
+      <HintPath>..\packages\Xamarin.Forms.2.3.4.247\lib\Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
+    </Reference>
+    <Reference Include="ZXing.Net.Mobile.Core">
+      <HintPath>..\packages\ZXing.Net.Mobile.2.1.47\lib\Xamarin.iOS10\ZXing.Net.Mobile.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="zxing.portable">
+      <HintPath>..\packages\ZXing.Net.Mobile.2.1.47\lib\Xamarin.iOS10\zxing.portable.dll</HintPath>
+    </Reference>
+    <Reference Include="ZXingNetMobile">
+      <HintPath>..\packages\ZXing.Net.Mobile.2.1.47\lib\Xamarin.iOS10\ZXingNetMobile.dll</HintPath>
+    </Reference>
+    <Reference Include="ZXing.Net.Mobile.Forms">
+      <HintPath>..\packages\ZXing.Net.Mobile.Forms.2.1.47\lib\Xamarin.iOS10\ZXing.Net.Mobile.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="ZXing.Net.Mobile.Forms.iOS">
+      <HintPath>..\packages\ZXing.Net.Mobile.Forms.2.1.47\lib\Xamarin.iOS10\ZXing.Net.Mobile.Forms.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac">
+      <HintPath>..\packages\Autofac.3.5.2\lib\portable-net4+sl5+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Rg.Plugins.Popup">
+      <HintPath>..\packages\Rg.Plugins.Popup.1.0.4\lib\Xamarin.IOS\Rg.Plugins.Popup.dll</HintPath>
+    </Reference>
+    <Reference Include="Rg.Plugins.Popup.IOS">
+      <HintPath>..\packages\Rg.Plugins.Popup.1.0.4\lib\Xamarin.IOS\Rg.Plugins.Popup.IOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Rg.Plugins.Popup.Platform">
+      <HintPath>..\packages\Rg.Plugins.Popup.1.0.4\lib\Xamarin.IOS\Rg.Plugins.Popup.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTK-1.0" />
+    <Reference Include="System.Net.Http.Extensions">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\Xamarin.iOS10\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\Xamarin.iOS10\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Mobile">
+      <HintPath>..\packages\Microsoft.Azure.Mobile.Client.3.1.0\lib\Xamarin.iOS10\Microsoft.WindowsAzure.Mobile.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Mobile.Ext">
+      <HintPath>..\packages\Microsoft.Azure.Mobile.Client.3.1.0\lib\Xamarin.iOS10\Microsoft.WindowsAzure.Mobile.Ext.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="Plugin.Vibrate.Abstractions">
+      <HintPath>..\packages\Xam.Plugins.Vibrate.3.0.1\lib\Xamarin.iOS10\Plugin.Vibrate.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Vibrate">
+      <HintPath>..\packages\Xam.Plugins.Vibrate.3.0.1\lib\Xamarin.iOS10\Plugin.Vibrate.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Contents.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
+    <Folder Include="CustomRenderers\" />
+    <Folder Include="DeviceImpl\" />
+    <Folder Include="Extensions\" />
+    <Folder Include="Controls\" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterfaceDefinition Include="LaunchScreen.storyboard" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Info.plist" />
+    <None Include="Entitlements.plist" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Main.cs" />
+    <Compile Include="AppDelegate.cs" />
+    <Compile Include="CustomRenderers\CustomNavigationPageRenderer.cs" />
+    <Compile Include="CustomRenderers\NavigationPageRenderer.cs" />
+    <Compile Include="DeviceImpl\IOSCookieStore.cs" />
+    <Compile Include="DeviceImpl\SettingProviderIos.cs" />
+    <Compile Include="CustomRenderers\CustomEntryRenderer.cs" />
+    <Compile Include="Extensions\UIColorExtensions.cs" />
+    <Compile Include="CustomRenderers\BorderRenderer.cs" />
+    <Compile Include="CustomRenderers\MenuViewCellRenderer.cs" />
+    <Compile Include="CustomRenderers\GradientContentViewRenderer.cs" />
+    <Compile Include="CustomRenderers\PoListViewCellRenderer.cs" />
+    <Compile Include="CustomRenderers\TrialEntryRenderer.cs" />
+    <Compile Include="CustomRenderers\XfxEntryRendererTouch.cs" />
+    <Compile Include="Controls\FloatLabeledTextField.cs" />
+    <Compile Include="Extensions\KeyboardExtensions.cs" />
+    <Compile Include="Extensions\UIViewExtensions.cs" />
+    <Compile Include="CustomRenderers\FontExtensions.cs" />
+    <Compile Include="CustomRenderers\ButtonDisabledTextColorRenderer.cs" />
+    <Compile Include="CustomRenderers\EmptyEntryRenderer.cs" />
+    <Compile Include="..\TEKUtsav\Extensions\XamarinFormsExtensions.cs">
+      <Link>Extensions\XamarinFormsExtensions.cs</Link>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_arrow_back.png" />
+    <BundleResource Include="Resources\ic_arrow_back_2x.png" />
+    <BundleResource Include="Resources\ic_arrow_back_3x.png" />
+    <BundleResource Include="Resources\moreMenu.png" />
+    <BundleResource Include="Resources\moreMenu%402x.png" />
+    <BundleResource Include="Resources\moreMenu%403x.png" />
+    <BundleResource Include="Resources\DONE.png" />
+    <BundleResource Include="Resources\DONE%402x.png" />
+    <BundleResource Include="Resources\DONE%403x.png" />
+    <BundleResource Include="Resources\HamburgerIcon.png" />
+    <BundleResource Include="Resources\HamburgerIcon%402x.png" />
+    <BundleResource Include="Resources\HamburgerIcon%403x.png" />
+    <BundleResource Include="Resources\ic_check_box_outline_blank.png" />
+    <BundleResource Include="Resources\ic_check_box_outline_blank_2x.png" />
+    <BundleResource Include="Resources\ic_check_box_outline_blank_3x.png" />
+    <BundleResource Include="Resources\close.png" />
+    <BundleResource Include="Resources\close%402x.png" />
+    <BundleResource Include="Resources\close%403x.png" />
+    <BundleResource Include="Resources\logout.png" />
+    <BundleResource Include="Resources\settings.png" />
+    <BundleResource Include="Resources\po_tbd.png" />
+    <BundleResource Include="Resources\dropdown.png" />
+    <BundleResource Include="Resources\ic_arrow_forward.png" />
+    <BundleResource Include="Resources\ic_arrow_forward%402x.png" />
+    <BundleResource Include="Resources\ic_arrow_forward%403x.png" />
+    <BundleResource Include="Resources\ic_check_box.png" />
+    <BundleResource Include="Resources\ic_check_box_2x.png" />
+    <BundleResource Include="Resources\ic_check_box_3x.png" />
+    <BundleResource Include="Resources\check_rejected.png" />
+    <BundleResource Include="Resources\ic_check_white.png" />
+    <BundleResource Include="Resources\ic_refresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TEKUtsav\TEKUtsav.csproj">
+      <Project>{97D64444-B098-4DA6-AD2A-C36FE1DDF668}</Project>
+      <Name>TEKUtsav</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TEKUtsav.Infrastructure\TEKUtsav.Infrastructure.csproj">
+      <Project>{DE03F192-80A3-4754-990E-28671EB20E3A}</Project>
+      <Name>TEKUtsav.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TEKUtsav.Models\TEKUtsav.Models.csproj">
+      <Project>{6961753D-62F6-45D1-A2D1-09ADD19D140E}</Project>
+      <Name>TEKUtsav.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TEKUtsav.Infrastructure\TEKUtsav.UIControls\TEKUtsav.UIControls.csproj">
+      <Project>{176AF8C5-5200-41BB-8307-DE8B9A9707D7}</Project>
+      <Name>TEKUtsav.UIControls</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
+  <Import Project="..\packages\Xamarin.Forms.2.3.4.247\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.3.4.247\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
+</Project>

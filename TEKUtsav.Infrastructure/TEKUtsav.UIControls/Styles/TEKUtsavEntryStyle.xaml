@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="TEKUtsav.UIControls.Styles.TEKUtsavEntryStyle">
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<Style x:Key="TEKUtsavEntryStyle" TargetType="Entry">
+				<Setter Property="FontFamily">
+					<Setter.Value>
+						<OnPlatform x:TypeArguments="x:String">
+							<OnPlatform.iOS>HelveticaNeueLt</OnPlatform.iOS>
+							<OnPlatform.Android>HelveticaNeueLt.ttf#HelveticaNeueLt</OnPlatform.Android>
+						</OnPlatform>
+					</Setter.Value>
+				</Setter>
+			</Style>
+			<Style x:Key="TEKUtsavEntryRegularStyle" TargetType="Entry">
+				<Setter Property="FontFamily">
+					<Setter.Value>
+						<OnPlatform x:TypeArguments="x:String">
+							<OnPlatform.iOS>HelveticaNeueBd</OnPlatform.iOS>
+							<OnPlatform.Android>HelveticaNeueMed.ttf#HelveticaNeueMed</OnPlatform.Android>
+						</OnPlatform>
+					</Setter.Value>
+				</Setter>
+			</Style>
+			<Style x:Key="TEKUtsavEntryMediumStyle" TargetType="Entry">
+				<Setter Property="FontFamily">
+					<Setter.Value>
+						<OnPlatform x:TypeArguments="x:String">
+							<OnPlatform.iOS>HelveticaNeue-Medium</OnPlatform.iOS>
+							<OnPlatform.Android>HelveticaNeueMed.ttf#HelveticaNeueMed</OnPlatform.Android>
+						</OnPlatform>
+					</Setter.Value>
+				</Setter>
+			</Style>
+		</ResourceDictionary>
+	</ContentPage.Resources>
+</ContentPage>

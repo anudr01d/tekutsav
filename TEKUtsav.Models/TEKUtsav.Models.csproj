@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6961753D-62F6-45D1-A2D1-09ADD19D140E}</ProjectGuid>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>TEKUtsav.Models</RootNamespace>
+    <AssemblyName>TEKUtsav.Models</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Profile259</TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Entities\PurchaseOrder.cs" />
+    <Compile Include="Entities\HamburgerMenuItem.cs" />
+    <Compile Include="Entities\AppUnit.cs" />
+    <Compile Include="Entities\ContainerCondition.cs" />
+    <Compile Include="Entities\MultiSelectionItem.cs" />
+    <Compile Include="Entities\ScanResult.cs" />
+    <Compile Include="Entities\TableData.cs" />
+    <Compile Include="Entities\TodoItem.cs" />
+    <Compile Include="Entities\PurchaseOrderMaterial.cs" />
+    <Compile Include="Entities\ScannedMaterial.cs" />
+    <Compile Include="Entities\ContainerConditionComment.cs" />
+    <Compile Include="Entities\ContainerConditionStatus.cs" />
+    <Compile Include="Entities\MaterialMeasurement.cs" />
+    <Compile Include="Entities\MaterialMeasurementComment.cs" />
+    <Compile Include="Entities\PurchaseOrderWorkflow.cs" />
+    <Compile Include="Entities\MaterialImage.cs" />
+    <Compile Include="Entities\RejectionItem.cs" />
+    <Compile Include="Entities\Role.cs" />
+    <Compile Include="Entities\User.cs" />
+    <Compile Include="Entities\UserRole.cs" />
+    <Compile Include="Entities\PurchaseOrderStatus.cs" />
+    <Compile Include="Entities\PurchaseOrderMaterialStatus.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Entities\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\portable-net45+win8+wp8+wpa81\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TEKUtsav.Infrastructure\TEKUtsav.Infrastructure.csproj">
+      <Project>{DE03F192-80A3-4754-990E-28671EB20E3A}</Project>
+      <Name>TEKUtsav.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+</Project>

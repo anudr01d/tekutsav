@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+			xmlns:local="clr-namespace:TEKUtsav.UIControls.MarkupExtensions;assembly=TEKUtsav.UIControls" 
+			xmlns:controls="clr-namespace:TEKUtsav.UIControls.Controls;assembly=TEKUtsav.UIControls"
+			xmlns:styles="clr-namespace:TEKUtsav.UIControls.Styles;assembly=TEKUtsav.UIControls"
+			CloseWhenBackgroundIsClicked="true"
+			BackgroundColor="#00000000"
+            x:Class="TEKUtsav.Views.MultiSelectionPage.MultiSelectionPage">
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<Style x:Key="menuImageStyle" TargetType="Image">
+				<Setter Property="WidthRequest" Value="25">
+				</Setter>
+				<Setter Property="HeightRequest" Value="25">
+				</Setter>
+				<Setter Property="VerticalOptions" Value="CenterAndExpand">
+				</Setter>
+				<Setter Property="HeightRequest" Value="52">
+				</Setter>
+				<Setter Property="WidthRequest" Value="52">
+				</Setter>
+			</Style>
+			<Style x:Key="menuItemLabelStyle" TargetType="Label">
+				<Setter Property="FontSize" Value="16">
+				</Setter>
+				<Setter Property="TextColor" Value="#828282">
+				</Setter>
+				<Setter Property="VerticalOptions" Value="CenterAndExpand">
+				</Setter>
+			</Style>
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	 <StackLayout WidthRequest="200" VerticalOptions="Start" HorizontalOptions="EndAndExpand" Padding="30, 100, 40, 20">
+		<controls:InputFrame Padding="0,0,0,0" BackgroundColor="White">
+			<controls:InputFrame.FrameContent Padding="0,0,0,0">
+				<StackLayout BackgroundColor="White" Padding="0, 0, 0, 0">
+					<ContentView Padding="0,0,20,0">
+
+					<controls:TappableListView 
+							HeightRequest="{Binding Height}" 
+							BackgroundColor="White" 
+							ItemsSource="{Binding MeasurementItems}" 
+							SeparatorVisibility="None" ItemClickCommand="{Binding MenuItemClickCommand}" 
+							VerticalOptions="FillAndExpand" HasUnevenRows="true">
+				      <ListView.ItemTemplate>
+				        <DataTemplate>
+				          <ViewCell>
+				            <StackLayout>
+				              <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand" Padding="15,15,5,10">
+				                <ContentView VerticalOptions="CenterAndExpand" Padding="0,0,0,0" HorizontalOptions="Center">
+				                  <controls:TEKUtsavLabel Text="{Binding Name}" Style="{StaticResource menuItemLabelStyle}">
+				                  </controls:TEKUtsavLabel>
+				                </ContentView>
+				              </StackLayout>
+				              <ContentView Padding="0, 0, 0, 0">
+				                <BoxView Color="#FFFFFF" x:Name="CellSeparator" HeightRequest="1" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width,Factor=1 }" />
+				              </ContentView>
+				            </StackLayout>
+				          </ViewCell>
+				        </DataTemplate>
+				      </ListView.ItemTemplate>
+				    </controls:TappableListView>
+						
+
+						
+					<!--<controls:TappableListView 
+							ItemClickCommand = "{Binding MenuItemClickCommand}"
+							BackgroundColor="#FFFFFF" 
+							HeightRequest="{Binding Height}"
+							ItemsSource="{Binding MeasurementItems}" SeparatorVisibility="None">
+						<ListView.ItemTemplate>
+							<DataTemplate>
+								<StackLayout>
+									<controls:TEKUtsavLabel HorizontalOptions="Start" Text="{Binding Name}" Style="{StaticResource menuItemLabelStyle}">
+									</controls:TEKUtsavLabel>
+								</StackLayout>
+							</DataTemplate>
+						</ListView.ItemTemplate>
+					</controls:TappableListView>-->
+		
+				</ContentView>
+			</StackLayout>
+		</controls:InputFrame.FrameContent>
+	</controls:InputFrame>
+  </StackLayout>
+</pages:PopupPage>

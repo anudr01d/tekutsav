@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+		     xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+			xmlns:local="clr-namespace:TEKUtsav.UIControls.MarkupExtensions;assembly=TEKUtsav.UIControls" 
+			 xmlns:extensions="clr-namespace:TEKUtsav.UIControls.MarkupExtensions;assembly=TEKUtsav.UIControls"
+			 xmlns:controls="clr-namespace:TEKUtsav.UIControls.Controls;assembly=TEKUtsav.UIControls"
+		     x:Class="TEKUtsav.Views.RejectPopupPage.RejectPopupPage">
+	
+  	<controls:InputFrame Margin="40,50,40,0" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" BackgroundColor="White">
+			<controls:InputFrame.FrameContent>
+				<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Spacing="0" >
+
+					<ContentView Padding="10,10,10,10">
+						<controls:TEKUtsavLabel FontSize="16" Text="Are you sure you want to reject this container?" TextColor="#000" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
+					</ContentView>
+					<ContentView Padding="10,10,10,10">
+						<controls:TEKUtsavLabel FontSize="16" Text="{Binding MaterialId}" FontAttributes="Bold" FontType="Bold" TextColor="#000" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
+					</ContentView>
+
+					<ContentView Margin="10,0,10,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+						<ContentView.Padding>
+						    <OnPlatform x:TypeArguments="Thickness" Android="0,5,0,0" WinPhone="0,0,0,0" iOS="5,10,0,10"/>
+						</ContentView.Padding>
+							<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Center" Orientation="Horizontal" BackgroundColor="#033462">
+								<StackLayout Orientation="Horizontal" BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0,0,0,1">
+									<controls:EmptyEntry TextChanged="Handle_TextChanged" Placeholder="Reason for rejection:" PlaceholderColor="#818181" Keyboard="Text" Text="{Binding RejectionComments}" VerticalOptions="Center" HorizontalOptions="FillAndExpand"></controls:EmptyEntry>
+								</StackLayout>
+							</StackLayout>
+					</ContentView>
+
+					<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10,50,10,20">
+						<controls:CustomButton FontAttributes="Bold" BorderRadius="3" BorderWidth="1" HorizontalOptions="FillAndExpand" Command="{Binding CancelCommand}" Text="CANCEL" FontSize="14" BorderColor="#808080" BackgroundColor="#FFF" TextColor="#000"/>
+						<controls:CustomButton IsWhiteBtn="false" IsEnabled="{Binding IsRejectEnabled}" Margin="10,0,0,0" BorderRadius="3" FontAttributes="Bold" HorizontalOptions="FillAndExpand" Command="{Binding RejectCommand}" Text="REJECT" FontSize="14" BackgroundColor="{Binding RejectColor}" TextColor="#fff"/>
+					</StackLayout>
+				</StackLayout>
+			</controls:InputFrame.FrameContent>
+	</controls:InputFrame>
+</pages:PopupPage>
+

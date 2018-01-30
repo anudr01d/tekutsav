@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<controls:TEKUtsavContentPage 
+	xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	xmlns:controls="clr-namespace:TEKUtsav.UIControls.Controls;assembly=TEKUtsav.UIControls" 
+	xmlns:local="clr-namespace:TEKUtsav.UIControls.MarkupExtensions;assembly=TEKUtsav.UIControls" 
+	xmlns:vc="clr-namespace:TEKUtsav.UIControls.ValueConverters;assembly=TEKUtsav.UIControls" 
+	xmlns:imgcontrols="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions" 
+	BackgroundColor="#ffffff" Icon="HamburgerIcon.png" Title="{Binding Title}" 
+	x:Class="TEKUtsav.Views.LogisticsMeasurementPage.LogisticsMeasurementPage">
+	<ContentPage.ToolbarItems>
+		<ToolbarItem Command="{Binding MenuClickCommand}" Icon="moreMenu.png">
+		</ToolbarItem>
+	</ContentPage.ToolbarItems>
+
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<vc:DecimalUnitConverter x:Key="cnvUnit" />
+			<vc:IntUnitConverter x:Key="intUnit" />
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	
+	<ScrollView>
+        <StackLayout BackgroundColor="#f5f5f5">
+        <StackLayout Margin="20,30,20,40" BackgroundColor="#f2f2f2">
+		<StackLayout Margin="5,5,5,5" Orientation="Vertical" Spacing="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+			<controls:InputFrame>
+				<controls:InputFrame.FrameContent>
+					<StackLayout Spacing="0">
+						<StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand" Padding="0,10,0,10" Spacing="0">
+							<controls:TEKUtsavLabel Text="Material" HorizontalOptions="Start" TextColor="#818181" FontSize="12"></controls:TEKUtsavLabel>
+							<controls:TEKUtsavLabel Text="Terol 925 # 13721" FontType="Regular" TextColor="#073865" FontSize="21"></controls:TEKUtsavLabel>
+						</StackLayout>
+
+						<StackLayout Orientation="Horizontal" VerticalOptions="Start" HorizontalOptions="FillAndExpand">
+							<StackLayout.GestureRecognizers>
+								<TapGestureRecognizer Command="{Binding MeasurementsClickedCommand}" CommandParameter="UnitsParam" />
+							</StackLayout.GestureRecognizers>
+							<StackLayout.Padding>
+								<OnPlatform x:TypeArguments="Thickness" Android="5,10,0,0" WinPhone="0,0,0,0" iOS="0,20,0,5"/>
+							</StackLayout.Padding>
+							<controls:TEKUtsavLabel 
+									VerticalOptions="Center" 
+									HorizontalOptions="FillAndExpand" 
+									BackgroundColor="Transparent" 
+									Text="{Binding UnitName}" 
+                                    FontType="Regular"
+									TextColor="#818181"
+									FontSize="16">
+							</controls:TEKUtsavLabel>
+							<ContentView>
+								<ContentView.Padding>
+								    <OnPlatform x:TypeArguments="Thickness" Android="5,0,20,0" WinPhone="0,0,0,0" iOS="0,0,20,0"/>
+								</ContentView.Padding>
+								<Image Source="dropdown.png" VerticalOptions="Start" HorizontalOptions="End" WidthRequest="15" HeightRequest="15" />
+							</ContentView>
+					</StackLayout>
+
+
+					<Grid Padding="0,25,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="*" />
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="*" />
+							<ColumnDefinition Width="*" />
+						</Grid.ColumnDefinitions>
+							<ContentView Padding="0,0,0,0" Grid.Row="0" Grid.Column="0">
+								<controls:TEKUtsavLabel Text="Inside Start" TextColor="#818181" FontSize="14"></controls:TEKUtsavLabel>
+							</ContentView>
+							<StackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Orientation="Horizontal" BackgroundColor="#033462">
+								<StackLayout Orientation="Horizontal" BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0,0,0,1">
+									<controls:EmptyEntry Keyboard="Numeric" Text="{Binding InsideStart, Converter={StaticResource cnvUnit}}" VerticalOptions="Center" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End"></controls:EmptyEntry>
+									<controls:TEKUtsavLabel FontSize="14" TextColor="#033462" Text="{Binding Unit.LengthMinorUnit}" HorizontalOptions="End"></controls:TEKUtsavLabel>
+								</StackLayout>
+							</StackLayout>
+					</Grid>
+
+					<Grid Padding="0,25,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="*" />
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="2*" />
+							<ColumnDefinition Width="*" />
+							<ColumnDefinition Width="*" />
+						</Grid.ColumnDefinitions>
+							<ContentView Padding="0,0,0,0" Grid.Row="0" Grid.Column="0">
+								<controls:TEKUtsavLabel Text="Outside Start" TextColor="#818181" FontSize="14"></controls:TEKUtsavLabel>
+							</ContentView>
+							<StackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Orientation="Horizontal" BackgroundColor="#033462">
+								<StackLayout Orientation="Horizontal" BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0,0,0,1">
+									<controls:EmptyEntry Keyboard="Numeric" Text="{Binding OutsideStartMajor, Converter={StaticResource intUnit}}" VerticalOptions="Center" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End"></controls:EmptyEntry>
+									<controls:TEKUtsavLabel FontSize="14" TextColor="#033462" Text="{Binding Unit.LengthMajorUnit}" HorizontalOptions="End"></controls:TEKUtsavLabel>
+								</StackLayout>
+							</StackLayout>	
+							<StackLayout Grid.Row="0" Grid.Column="2" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Orientation="Horizontal" BackgroundColor="#033462">
+								<StackLayout Orientation="Horizontal" BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0,0,0,1">
+									<controls:EmptyEntry Keyboard="Numeric" Text="{Binding OutsideStartMinor, Converter={StaticResource intUnit}}" VerticalOptions="Center" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End"></controls:EmptyEntry>
+									<controls:TEKUtsavLabel FontSize="14" TextColor="#033462" Text="{Binding Unit.LengthMinorUnit}" HorizontalOptions="End"></controls:TEKUtsavLabel>
+								</StackLayout>
+							</StackLayout>
+							<!--<controls:TrialEntry Keyboard="Numeric" Text="{Binding OutsideStartMajor, Converter={StaticResource intUnit}}" WidthRequest="75" Grid.Row="0" HorizontalOptions="FillAndExpand" Grid.Column="1" VerticalOptions="Center" HorizontalTextAlignment="End"></controls:TrialEntry>
+							<controls:TrialEntry Keyboard="Numeric" Text="{Binding OutsideStartMinor, Converter={StaticResource cnvUnit}}" WidthRequest="75" Grid.Row="0" Grid.Column="2" VerticalOptions="Center" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End"></controls:TrialEntry>-->
+					</Grid>
+
+					<Grid Padding="0,35,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="*" />
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="*" />
+							<ColumnDefinition Width="*" />
+						</Grid.ColumnDefinitions>
+							<ContentView Padding="0,0,0,0" Grid.Row="0" Grid.Column="0">
+								<controls:TEKUtsavLabel Text="Inside Finish" TextColor="#818181" FontSize="14"></controls:TEKUtsavLabel>
+							</ContentView>
+							<StackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Orientation="Horizontal" BackgroundColor="#033462">
+								<StackLayout Orientation="Horizontal" BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0,0,0,1">
+									<controls:EmptyEntry Keyboard="Numeric" Text="{Binding InsideFinish, Converter={StaticResource cnvUnit}}" VerticalOptions="Center" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End"></controls:EmptyEntry>
+									<controls:TEKUtsavLabel FontSize="14" TextColor="#033462" Text="{Binding Unit.LengthMinorUnit}" HorizontalOptions="End"></controls:TEKUtsavLabel>
+								</StackLayout>
+							</StackLayout>
+							<!--<controls:TEKUtsavEntry Keyboard="Numeric" Text="{Binding InsideFinish, Converter={StaticResource cnvUnit}}" Grid.Row="0" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End"></controls:TEKUtsavEntry>-->
+					</Grid>
+
+					<Grid Padding="0,25,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="*" />
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="2*" />
+							<ColumnDefinition Width="*" />
+							<ColumnDefinition Width="*" />
+						</Grid.ColumnDefinitions>
+							<ContentView Padding="0,0,0,0" Grid.Row="0" Grid.Column="0">
+								<controls:TEKUtsavLabel Text="Outside Finish" TextColor="#818181" FontSize="14"></controls:TEKUtsavLabel>
+							</ContentView>
+									
+							<StackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Orientation="Horizontal" BackgroundColor="#033462">
+								<StackLayout Orientation="Horizontal" BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0,0,0,1">
+									<controls:EmptyEntry Keyboard="Numeric" Text="{Binding OutsideFinishMajor, Converter={StaticResource intUnit}}" VerticalOptions="Center" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End"></controls:EmptyEntry>
+									<controls:TEKUtsavLabel FontSize="14" TextColor="#033462" Text="{Binding Unit.LengthMajorUnit}" HorizontalOptions="End"></controls:TEKUtsavLabel>
+								</StackLayout>
+							</StackLayout>	
+							<StackLayout Grid.Row="0" Grid.Column="2" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Orientation="Horizontal" BackgroundColor="#033462">
+								<StackLayout Orientation="Horizontal" BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0,0,0,1">
+									<controls:EmptyEntry Keyboard="Numeric" Text="{Binding OutsideFinishMinor, Converter={StaticResource intUnit}}" VerticalOptions="Center" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End"></controls:EmptyEntry>
+									<controls:TEKUtsavLabel FontSize="14" TextColor="#033462" Text="{Binding Unit.LengthMinorUnit}" HorizontalOptions="End"></controls:TEKUtsavLabel>
+								</StackLayout>
+							</StackLayout>
+							<!--<controls:TrialEntry Keyboard="Numeric" Text="{Binding OutsideFinishMajor, Converter={StaticResource intUnit}}" WidthRequest="75" Grid.Row="0" HorizontalOptions="FillAndExpand" Grid.Column="1" VerticalOptions="Center" HorizontalTextAlignment="End"></controls:TrialEntry>
+							<controls:TrialEntry Keyboard="Numeric" Text="{Binding OutsideFinishMinor, Converter={StaticResource cnvUnit}}" WidthRequest="75" Grid.Row="0" Grid.Column="2" VerticalOptions="Center" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End"></controls:TrialEntry>-->
+					</Grid>
+
+					<Grid Padding="0,35,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="*" />
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="*" />
+							<ColumnDefinition Width="*" />
+						</Grid.ColumnDefinitions>
+							<ContentView Padding="0,0,0,0" Grid.Row="0" Grid.Column="0">
+								<controls:TEKUtsavLabel Text="Truck Temperature" TextColor="#818181" FontSize="14"></controls:TEKUtsavLabel>
+							</ContentView>
+							<StackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Orientation="Horizontal" BackgroundColor="#033462">
+								<StackLayout Orientation="Horizontal" BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0,0,0,1">
+									<controls:EmptyEntry Keyboard="Numeric" Text="{Binding TruckTemperature, Converter={StaticResource cnvUnit}}" VerticalOptions="Center" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End"></controls:EmptyEntry>
+									<controls:TEKUtsavLabel FontSize="14" TextColor="#033462" Text="{Binding Unit.TemperatureUnit}" HorizontalOptions="End"></controls:TEKUtsavLabel>
+								</StackLayout>
+							</StackLayout>
+							<!--<controls:TEKUtsavEntry Keyboard="Numeric" Text="{Binding TruckTemperature, Converter={StaticResource cnvUnit}}" Grid.Row="0" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End"></controls:TEKUtsavEntry>-->
+					</Grid>
+
+
+					<Grid Padding="0,25,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="*" />
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="*" />
+							<ColumnDefinition Width="*" />
+						</Grid.ColumnDefinitions>
+							<ContentView Padding="0,0,0,0" Grid.Row="0" Grid.Column="0">
+								<controls:TEKUtsavLabel Text="Sample Temperature" TextColor="#818181" FontSize="14"></controls:TEKUtsavLabel>
+							</ContentView>
+							<StackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Orientation="Horizontal" BackgroundColor="#033462">
+								<StackLayout Orientation="Horizontal" BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0,0,0,1">
+									<controls:EmptyEntry Keyboard="Numeric" Text="{Binding SampleTemperature, Converter={StaticResource cnvUnit}}" VerticalOptions="Center" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End"></controls:EmptyEntry>
+									<controls:TEKUtsavLabel FontSize="14" TextColor="#033462" Text="{Binding Unit.TemperatureUnit}" HorizontalOptions="End"></controls:TEKUtsavLabel>
+								</StackLayout>
+							</StackLayout>	
+							<!--<controls:TEKUtsavEntry Keyboard="Numeric" Text="{Binding SampleTemperature, Converter={StaticResource cnvUnit}}" Grid.Row="0" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End"></controls:TEKUtsavEntry>-->
+					</Grid>
+
+
+					<Grid Padding="0,35,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="*" />
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="*" />
+							<ColumnDefinition Width="*" />
+						</Grid.ColumnDefinitions>
+							<ContentView Padding="0,0,0,0" Grid.Row="0" Grid.Column="0">
+								<controls:TEKUtsavLabel Text="Truck Scale" TextColor="#818181" FontSize="14"></controls:TEKUtsavLabel>
+							</ContentView>
+							<StackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Orientation="Horizontal" BackgroundColor="#033462">
+								<StackLayout Orientation="Horizontal" BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0,0,0,1">
+									<controls:EmptyEntry Keyboard="Numeric" Text="{Binding TruckScale, Converter={StaticResource cnvUnit}}" VerticalOptions="Center" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End"></controls:EmptyEntry>
+									<controls:TEKUtsavLabel FontSize="14" TextColor="#033462" Text="{Binding Unit.LengthMajorUnit}" HorizontalOptions="End"></controls:TEKUtsavLabel>
+								</StackLayout>
+							</StackLayout>	
+							<!--<controls:TEKUtsavEntry Keyboard="Numeric" Text="{Binding TruckScale, Converter={StaticResource cnvUnit}}" Grid.Row="0" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End"></controls:TEKUtsavEntry>-->
+					</Grid>
+
+
+					<Grid Padding="0,25,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="*" />
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="*" />
+							<ColumnDefinition Width="*" />
+						</Grid.ColumnDefinitions>
+							<ContentView Padding="0,0,0,0" Grid.Row="0" Grid.Column="0">
+								<controls:TEKUtsavLabel Text="Digital Scale" TextColor="#818181" FontSize="14"></controls:TEKUtsavLabel>
+							</ContentView>
+							<StackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Orientation="Horizontal" BackgroundColor="#033462">
+								<StackLayout Orientation="Horizontal" BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0,0,0,1">
+									<controls:EmptyEntry Keyboard="Numeric" Text="{Binding DigitalScale, Converter={StaticResource cnvUnit}}" VerticalOptions="Center" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End"></controls:EmptyEntry>
+									<controls:TEKUtsavLabel FontSize="14" TextColor="#033462" Text="{Binding Unit.LengthMajorUnit}" HorizontalOptions="End"></controls:TEKUtsavLabel>
+								</StackLayout>
+							</StackLayout>	
+							<!--<controls:TEKUtsavEntry Keyboard="Numeric" Text="{Binding DigitalScale, Converter={StaticResource cnvUnit}}" Grid.Row="0" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End"></controls:TEKUtsavEntry>-->
+					</Grid>
+
+
+					<Grid Padding="0,25,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="*" />
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="*" />
+							<ColumnDefinition Width="*" />
+						</Grid.ColumnDefinitions>
+							<ContentView Padding="0,0,0,0" Grid.Row="0" Grid.Column="0">
+								<controls:TEKUtsavLabel Text="SAP Weight Receipt" TextColor="#818181" FontSize="14"></controls:TEKUtsavLabel>
+							</ContentView>
+							<StackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Orientation="Horizontal" BackgroundColor="#033462">
+								<StackLayout Orientation="Horizontal" BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0,0,0,1">
+									<controls:EmptyEntry Keyboard="Numeric" Text="{Binding SapWeightReceipt, Converter={StaticResource cnvUnit}}" VerticalOptions="Center" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End"></controls:EmptyEntry>
+									<controls:TEKUtsavLabel FontSize="14" TextColor="#033462" Text="{Binding Unit.LengthMajorUnit}" HorizontalOptions="End"></controls:TEKUtsavLabel>
+								</StackLayout>
+							</StackLayout>	
+							<!--<controls:TEKUtsavEntry Keyboard="Numeric" Text="{Binding SapWeightReceipt, Converter={StaticResource cnvUnit}}" Grid.Row="0" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End"></controls:TEKUtsavEntry>-->
+					</Grid>
+
+
+
+					<Grid Padding="0,25,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="*" />
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="*" />
+							<ColumnDefinition Width="*" />
+						</Grid.ColumnDefinitions>
+							<ContentView Padding="0,0,0,0" Grid.Row="0" Grid.Column="0">
+								<controls:TEKUtsavLabel Text="Tank Number" TextColor="#818181" FontSize="14"></controls:TEKUtsavLabel>
+							</ContentView>
+							<controls:TEKUtsavEntry Text="{Binding TankNumber}" Keyboard="Text" Grid.Row="0" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End"></controls:TEKUtsavEntry>
+					</Grid>
+
+
+					<Grid Padding="0,25,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="*" />
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="*" />
+							<ColumnDefinition Width="*" />
+						</Grid.ColumnDefinitions>
+							<ContentView Padding="0,0,0,0" Grid.Row="0" Grid.Column="0">
+								<controls:TEKUtsavLabel Text="Seal Number" TextColor="#818181" FontSize="14"></controls:TEKUtsavLabel>
+							</ContentView>
+							<controls:TEKUtsavEntry Keyboard="Numeric" Text="{Binding SealNumber}" Grid.Row="0" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End"></controls:TEKUtsavEntry>
+					</Grid>
+
+					<Grid Padding="0,25,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="*" />
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="*" />
+							<ColumnDefinition Width="*" />
+						</Grid.ColumnDefinitions>
+							<ContentView Padding="0,0,0,0" Grid.Row="0" Grid.Column="0">
+								<controls:TEKUtsavLabel Text="SAP MIGO Number" TextColor="#818181" FontSize="14"></controls:TEKUtsavLabel>
+							</ContentView>
+							<controls:TEKUtsavEntry Grid.Row="0" Grid.Column="1" Text="{Binding SAPMIGONumber}" VerticalOptions="Center" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="End"></controls:TEKUtsavEntry>
+					</Grid>
+
+				</StackLayout>
+			</controls:InputFrame.FrameContent>
+		</controls:InputFrame>
+
+	</StackLayout>
+            </StackLayout>
+        </StackLayout>
+</ScrollView>
+</controls:TEKUtsavContentPage>

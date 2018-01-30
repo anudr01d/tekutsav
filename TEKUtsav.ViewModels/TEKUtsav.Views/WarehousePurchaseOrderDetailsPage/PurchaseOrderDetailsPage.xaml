@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<controls:TEKUtsavContentPage 
+	xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	xmlns:controls="clr-namespace:TEKUtsav.UIControls.Controls;assembly=TEKUtsav.UIControls" 
+	xmlns:local="clr-namespace:TEKUtsav.UIControls.MarkupExtensions;assembly=TEKUtsav.UIControls"
+	xmlns:vc="clr-namespace:TEKUtsav.UIControls.ValueConverters;assembly=TEKUtsav.UIControls" 
+	xmlns:imgcontrols="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions" 
+	BackgroundColor="#ffffff" Icon="HamburgerIcon.png" Title="{Binding Title}" 
+	x:Class="TEKUtsav.Views.PurchaseOrderDetailsPage.PurchaseOrderDetailsPage">
+	<ContentPage.ToolbarItems>
+		<ToolbarItem Command="{Binding MenuClickCommand}" Icon="moreMenu.png">
+		</ToolbarItem>
+	</ContentPage.ToolbarItems>	
+
+		<ContentPage.Resources>
+			<ResourceDictionary>
+				<vc:StringToImageConverter x:Key="StringToImageConverter" />
+				<local:StringToColorConverter x:Key="StringToColorConverter" />
+				<local:Inverter x:Key="Inverter" />
+			</ResourceDictionary>
+		</ContentPage.Resources>
+	
+		<StackLayout BackgroundColor="#F5F5F5" Orientation="Vertical" Spacing="0" VerticalOptions="Fill" HorizontalOptions="FillAndExpand">
+		<Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+			<ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+			<StackLayout IsVisible="{Binding IsLoading, Converter={StaticResource Inverter}" Spacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+				<StackLayout Orientation="Vertical" Padding="20,20,20,10" Spacing="0">
+            <controls:TEKUtsavLabel Text="Date Ordered" FontType="Regular" TextColor="#9BA0A7" FontSize="12"></controls:TEKUtsavLabel>					
+                    <controls:TEKUtsavLabel Text="{Binding PurchaseOrderItem.PoDate}" FontType="Regular" TextColor="#073865" FontSize="18"></controls:TEKUtsavLabel>
+				</StackLayout>
+
+				<StackLayout Orientation="Horizontal" Padding="20,0,20,10">
+					<StackLayout Orientation="Vertical" Padding="0,20,20,10" Spacing="0" HorizontalOptions="StartAndExpand">
+                        <controls:TEKUtsavLabel Text="Supplier" FontType="Regular" TextColor="#9BA0A7" FontSize="12"></controls:TEKUtsavLabel>						
+                        <controls:TEKUtsavLabel Text="{Binding PurchaseOrderItem.Supplier}" FontType="Regular" TextColor="#073865" FontSize="18"></controls:TEKUtsavLabel>					
+                        </StackLayout>	
+					<StackLayout Orientation="Vertical" Padding="20,20,0,10" Spacing="0" HorizontalOptions="EndAndExpand">
+                        <controls:TEKUtsavLabel Text="Batch Number" FontType="Regular" TextColor="#9BA0A7" FontSize="12"></controls:TEKUtsavLabel>
+                        <controls:TEKUtsavLabel Text="{Binding PurchaseOrderItem.BatchNumber}" FontType="Regular" HorizontalOptions="End" TextColor="#073865" FontSize="18"></controls:TEKUtsavLabel>
+					</StackLayout>
+				</StackLayout>
+
+				<StackLayout Orientation="Horizontal" Padding="20,0,20,10">
+					<StackLayout Orientation="Vertical" Padding="0,20,20,10" Spacing="0" HorizontalOptions="StartAndExpand">
+                        <controls:TEKUtsavLabel Text="Container Type" FontType="Regular" TextColor="#9BA0A7" FontSize="12"></controls:TEKUtsavLabel>
+                        <controls:TEKUtsavLabel Text="{Binding ContainerType}" FontType="Regular" TextColor="#073865" FontSize="18"></controls:TEKUtsavLabel>	
+                        </StackLayout>	
+					<StackLayout Orientation="Vertical" Padding="20,20,0,10" Spacing="0" HorizontalOptions="EndAndExpand">
+                        <controls:TEKUtsavLabel Text="Quantity" FontType="Regular" TextColor="#9BA0A7" FontSize="12"></controls:TEKUtsavLabel> 
+                        <controls:TEKUtsavLabel Text="{Binding PurchaseOrderMaterialCount}" FontType="Regular" HorizontalOptions="End" TextColor="#073865" FontSize="18"></controls:TEKUtsavLabel>					</StackLayout>
+				</StackLayout>
+					<controls:Border IsClippedToBorder="true" Margin="20,0,20,0" Padding="0,0,0,0" VerticalOptions="FillAndExpand" BackgroundColor="#95989A">
+						<controls:Border.CornerRadius>
+							<OnPlatform x:TypeArguments="x:Double" Android="5" WinPhone="0" iOS="3"/>
+						</controls:Border.CornerRadius>
+                    
+                      <StackLayout Spacing="0">
+						<controls:TappableListView 
+							Margin="1,1,1,1"
+							ItemClickCommand="{Binding PurchaseOrderMaterialClickedCommand}"
+							ItemsSource="{Binding MaterialList}"
+							SeparatorVisibility="None" BackgroundColor="#FFFFFF" HasUnevenRows="true" 
+							HeightRequest="{Binding MaterialListHeight}">
+						      <ListView.ItemTemplate>
+						        <DataTemplate>
+						          <ViewCell>
+									<StackLayout Orientation="Vertical">
+										<StackLayout VerticalOptions="FillAndExpand" Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10,20,10,20">
+											<Image HeightRequest="30" WidthRequest="30" Source="{Binding MenuImageSource, Converter={StaticResource StringToImageConverter}}" HorizontalOptions="Start" VerticalOptions="FillAndExpand" />
+											<StackLayout Orientation="Vertical" Spacing="0" HorizontalOptions="StartAndExpand" Padding="10,0,5,0">
+                                                <controls:TEKUtsavLabel Text="Material" FontType="Regular" TextColor="#9BA0A7" FontSize="12"></controls:TEKUtsavLabel>
+												<controls:TEKUtsavLabel Text="{Binding Name}" FontType="Regular" HorizontalOptions="End" TextColor="#073865" FontSize="16"></controls:TEKUtsavLabel>
+											</StackLayout>
+											<StackLayout Orientation="Vertical" Spacing="0" HorizontalOptions="EndAndExpand" Padding="5,0,0,0">
+                                                <controls:TEKUtsavLabel Text="Net Weight" FontType="Regular" TextColor="#9BA0A7" FontSize="12"></controls:TEKUtsavLabel>
+                                                <controls:TEKUtsavLabel Text="{Binding NetWeightWithUnit}" FontType="Regular" HorizontalOptions="End" TextColor="#073865" FontSize="16"></controls:TEKUtsavLabel>
+                                                </StackLayout>
+										</StackLayout>
+										<ContentView Padding="10,0,0,0">
+											<BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" BackgroundColor="#808080"></BoxView>
+										</ContentView>
+									</StackLayout>
+						          </ViewCell>
+						        </DataTemplate>
+						      </ListView.ItemTemplate>
+						    </controls:TappableListView>
+					<!--<StackLayout BackgroundColor="#808080" HeightRequest="{Binding MaterialListHeight}" VerticalOptions="FillAndExpand">
+						</StackLayout>-->
+                                        </StackLayout>
+					</controls:Border>
+				<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="0,0,0,0">
+					<ContentView Padding="40,30,0,50" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+						<controls:CustomButton IsWhiteBtn="false" Command="{Binding NavigateToPurchaseOrders}" BorderRadius="3" FontSize="14" Text="CANCEL" BorderWidth="1" BorderColor="#B1B1B1" HorizontalOptions="FillAndExpand" FontAttributes="Bold" BackgroundColor="#FFF" TextColor="#868686">
+						</controls:CustomButton>
+					</ContentView>
+					<ContentView Padding="40,30,30,50" HorizontalOptions="FillAndExpand">
+						<controls:CustomButton IsWhiteBtn = "false" IsBtnEnabled="{Binding IsEnabled}" BorderRadius="3" Command="{Binding SubmitCommand}" FontSize="14" Text="SUBMIT" HorizontalOptions="FillAndExpand" FontAttributes="Bold" BackgroundColor="{Binding SubmitColor}" TextColor="{Binding TextColor, Converter={StaticResource StringToColorConverter}}">
+						</controls:CustomButton>
+					</ContentView>
+				</StackLayout>
+					
+			</StackLayout>
+			</ScrollView>
+			<ActivityIndicator IsVisible="{Binding IsLoading}" IsRunning="{Binding IsLoading}"
+	            VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />
+		</Grid>
+		
+		<StackLayout BackgroundColor="#003263" Orientation="Horizontal" Padding="0,20,0,20">
+			<Label Text="SCAN" FontAttributes="Bold" TextColor="White" FontSize="16" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+				<Label.GestureRecognizers>
+					<TapGestureRecognizer Command="{Binding MoveToScanCompletedCommand}" CommandParameter="Move" />
+				</Label.GestureRecognizers>
+			</Label>
+			<Label Text="PHOTO" FontAttributes="Bold" TextColor="White" FontSize="16" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+		</StackLayout>
+	</StackLayout>
+</controls:TEKUtsavContentPage>

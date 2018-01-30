@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+		     xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+			xmlns:local="clr-namespace:TEKUtsav.UIControls.MarkupExtensions;assembly=TEKUtsav.UIControls" 
+			 xmlns:extensions="clr-namespace:TEKUtsav.UIControls.MarkupExtensions;assembly=TEKUtsav.UIControls"
+			 xmlns:controls="clr-namespace:TEKUtsav.UIControls.Controls;assembly=TEKUtsav.UIControls"
+		     x:Class="TEKUtsav.Views.LogisticsIncompleteWorkflow.LogisticsIncompleteWorkflow">
+	
+  	<controls:InputFrame Margin="40,60,40,0" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" BackgroundColor="White">
+			<controls:InputFrame.FrameContent>
+				<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Spacing="0" >
+
+					<ContentView Padding="10,10,10,10">
+						<controls:TEKUtsavLabel FontSize="16" FontType="Bold" FontAttributes="Bold" Text="This Purchase Order has not been checked in." TextColor="#000" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
+					</ContentView>
+
+					<ContentView Padding="10,10,10,10">
+						<controls:TEKUtsavLabel FontSize="16" FontType="Bold" FontAttributes="Bold" Text="The Material(s) associated with this P.O.# have not been checked in." TextColor="#000" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
+					</ContentView>
+
+					<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="50,30,50,20">
+						<controls:CustomButton BackgroundColor="#033462" 
+						Margin="10,0,0,0" 
+						BorderRadius="3" 
+						FontAttributes="Bold" 
+						HorizontalOptions="FillAndExpand" 
+						Command="{Binding OkCommand}" Text="OK" FontSize="14" TextColor="#fff"/>
+					</StackLayout>
+				</StackLayout>
+			</controls:InputFrame.FrameContent>
+	</controls:InputFrame>
+</pages:PopupPage>
+

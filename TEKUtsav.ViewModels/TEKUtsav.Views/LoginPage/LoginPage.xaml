@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage 
+		xmlns="http://xamarin.com/schemas/2014/forms" 
+		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+		xmlns:d="clr-namespace:TEKUtsav.UIControls.Controls;assembly=TEKUtsav.UIControls"
+		x:Class="TEKUtsav.Views.LoginPage.LoginPage">
+	<StackLayout Spacing="0" Padding="0,20,0,0">
+		<d:MVVMWebView NavigatedCommand="{Binding NavEndCommand}" x:Name="webView" Source="https://TEKUtsavsandbox.okta.com/app/TEKUtsavcorporationsandbox_TEKUtsavshell_1/exk1ch1bbz4WGJjnM0h8/sso/saml" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></d:MVVMWebView>
+	</StackLayout>
+</ContentPage>

@@ -1,0 +1,35 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace TEKUtsav.Infrastructure.Navigation
+{
+    public enum TEKUtsavAppPage
+    {
+        LoginPage,
+		AppListingMasterMenuPage,
+		AppListingPage,
+        MasterMenuPage, 
+		HomePage,
+		PurchaseOrderDetails,
+		MeasurementPage,
+		ScannerPage,
+		ScanCompletedPage,
+		ContainerConditionsPage,
+		MultiSelectionPage,
+		RejectPopupPage,
+		WorkFlowCompletedPopupPage,
+		WarehouseApprovalPopupPage,
+
+		//Logistics user
+		LogisticsHomePage,
+		LogisticsPurchaseOrderDetails,
+		LogisticsScanCompletedPage,
+		LogisticsContainerConditionsPage,
+		LogisticsMeasurementPage,
+		LogisticsIncompleteWorkflow,
+		LogisticsApprovalPopup
+	}
+}

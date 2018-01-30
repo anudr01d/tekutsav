@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+		xmlns:controls="clr-namespace:TEKUtsav.UIControls.Controls;assembly=TEKUtsav.UIControls"
+		x:Class="TEKUtsav.UIControls.Controls.ImageWithTextContent">
+	<ContentView.Resources>
+		<ResourceDictionary>
+		<Style x:Key="menuImageStyle" TargetType="Image">
+				<Setter Property="WidthRequest" Value="25">
+				</Setter>
+				<Setter Property="HeightRequest" Value="25">
+				</Setter>
+				<Setter Property="VerticalOptions" Value="CenterAndExpand">
+				</Setter>
+				<Setter Property="HeightRequest" Value="70">
+				</Setter>
+				<Setter Property="WidthRequest" Value="70">
+				</Setter>
+			</Style>
+			<Style x:Key="menuItemLabelStyle" TargetType="Label">
+				<Setter Property="FontSize" Value="19">
+				</Setter>
+				<Setter Property="TextColor" Value="#043563">
+				</Setter>
+				<Setter Property="VerticalOptions" Value="CenterAndExpand">
+				</Setter>
+			</Style>
+		</ResourceDictionary>
+	</ContentView.Resources>
+	<StackLayout>
+		<StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand" Padding="10,5,10,5">
+			<ContentView Padding="10,5,0,0">
+				<Image x:Name="imageElement" HorizontalOptions="Start" 
+						VerticalOptions="FillAndExpand" 
+						Aspect="AspectFit" 
+						Style="{StaticResource menuImageStyle}">
+				</Image>
+			</ContentView>
+			<ContentView VerticalOptions="CenterAndExpand" Padding="13,0,0,0" HorizontalOptions="Center">
+				<controls:TEKUtsavLabel x:Name="labelElement" Style="{StaticResource menuItemLabelStyle}">
+				</controls:TEKUtsavLabel>
+			</ContentView>
+		</StackLayout>
+		<ContentView Padding="0, 0, 0, 0">
+			<BoxView Color="#DEDEDE" x:Name="CellSeparator" HeightRequest="1" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width,Factor=1 }" />
+		</ContentView>
+	</StackLayout>
+</ContentView>

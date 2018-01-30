@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+		xmlns="http://xamarin.com/schemas/2014/forms" 
+		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+		x:Class="TEKUtsav.UIControls.Styles.TEKUtsavAppStyles"
+		xmlns:vc="clr-namespace:TEKUtsav.UIControls.ValueConverters;assembly=TEKUtsav.UIControls"
+		xmlns:extensions="clr-namespace:TEKUtsav.UIControls.MarkupExtensions;assembly=TEKUtsav.UIControls">
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<extensions:StringToColorConverter x:Key="StringToColorConverter" />
+			<vc:CurrencyConverter x:Key="cnvInvert" />
+			<Color x:Key="TEKUtsavRed">#990000</Color>
+			<Color x:Key="TEKUtsavBlue">#003263</Color>
+			<Color x:Key="TEKUtsavGray">#808080</Color>
+			<Color x:Key="TEKUtsavDarkGray">#95989A</Color>
+			<Color x:Key="TEKUtsavSelectedTab">#990000</Color>
+			<Color x:Key="TEKUtsavUnselectedTab">#808080</Color>
+			<extensions:Inverter x:Key="Inverter"></extensions:Inverter>
+			<Style x:Key="menuImageStyle" TargetType="Image">
+				<Setter Property="WidthRequest" Value="25">
+				</Setter>
+				<Setter Property="HeightRequest" Value="25">
+				</Setter>
+				<Setter Property="VerticalOptions" Value="CenterAndExpand">
+				</Setter>
+				<Setter Property="HeightRequest" Value="70">
+				</Setter>
+				<Setter Property="WidthRequest" Value="70">
+				</Setter>
+			</Style>
+			<Style x:Key="menuItemLabelStyle" TargetType="Label">
+				<Setter Property="FontSize" Value="19">
+				</Setter>
+				<Setter Property="TextColor" Value="#043563">
+				</Setter>
+				<Setter Property="VerticalOptions" Value="CenterAndExpand">
+				</Setter>
+			</Style>
+			<Style x:Key="masterMenuImageStyle" TargetType="Image" BasedOn="{StaticResource menuImageStyle}">
+		        <Setter Property="HeightRequest" Value="52">
+		        </Setter>
+		        <Setter Property="WidthRequest" Value="52">
+		        </Setter>
+		      </Style>
+		      <Style x:Key="masterMenuItemLabelStyle" TargetType="Label">
+		        <Setter Property="FontSize" Value="18">
+		        </Setter>
+		        <Setter Property="TextColor" Value="#FFFFFF">
+		        </Setter>
+		        <Setter Property="FontFamily" Value="Arial">
+		        </Setter>
+		        <Setter Property="VerticalOptions" Value="CenterAndExpand">
+		        </Setter>
+		      </Style>
+		      <Style x:Key="pulismenuItemLabelStyle" TargetType="Label" BasedOn="{StaticResource menuItemLabelStyle}">
+		        <Setter Property="FontSize" Value="20">
+		        </Setter>
+		      </Style>
+				<Style x:Key="menuItemLabelStyleBlue" TargetType="Label" BasedOn="{StaticResource menuItemLabelStyle}">
+			        <Setter Property="FontSize" Value="14">
+			        </Setter>
+		      	</Style>
+			<Style x:Key="menuItemLabelStyleGrey" TargetType="Label" BasedOn="{StaticResource menuItemLabelStyle}">
+		        <Setter Property="FontSize" Value="14">
+		        </Setter>
+		        <Setter Property="TextColor" Value="#808080">
+		        </Setter>
+	      	</Style>
+			<Style x:Key="TabImageStyle" TargetType="Image">
+                <Setter Property="HorizontalOptions"
+                        Value="Center" />
+                <Setter Property="VerticalOptions"
+                        Value="CenterAndExpand" />
+            </Style>
+			<Style x:Key="TabItemStack" TargetType="StackLayout">
+				<Setter Property="HorizontalOptions" Value="FillAndExpand" />
+				<Setter Property="VerticalOptions" Value="FillAndExpand" />
+				<Setter Property="Spacing" Value="1" />
+			</Style>
+			<Style x:Key="TabSelectionBarContainer" TargetType="ContentView">
+				<Setter Property="HorizontalOptions" Value="FillAndExpand" />
+				<Setter Property="VerticalOptions" Value="End" />
+				<Setter Property="Padding" Value="5,5,5,0" />
+			</Style>
+			<Style x:Key="TabBarSelected" TargetType="BoxView">
+				<Setter Property="HorizontalOptions" Value="FillAndExpand" />
+				<Setter Property="HeightRequest" Value="4" />
+				<Setter Property="BackgroundColor" Value="{StaticResource TEKUtsavSelectedTab}" />
+			</Style>
+			<Style x:Key="TabBarUnselected" TargetType="BoxView" BasedOn="{StaticResource TabBarSelected}">
+				<Setter Property="BackgroundColor" Value="#fff" />
+			</Style>
+			<Style x:Key="TabBarYearUnselected" TargetType="BoxView" BasedOn="{StaticResource TabBarSelected}">
+				<Setter Property="BackgroundColor" Value="#F5F5F5" />
+			</Style>
+			<Style x:Key="TabLabelSelected" TargetType="Label">
+				<Setter Property="FontSize" Value="9" />
+				<Setter Property="TextColor" Value="{StaticResource TEKUtsavSelectedTab}" />
+				<Setter Property="VerticalOptions" Value="Center" />
+				<Setter Property="HorizontalOptions" Value="Center" />
+			</Style>
+			<Style x:Key="TabLabelUnselected" TargetType="Label" BasedOn="{StaticResource TabLabelSelected}">
+				<Setter Property="TextColor" Value="{StaticResource TEKUtsavUnselectedTab}" />
+			</Style>
+			<Style x:Key="HeadingLabel" TargetType="Label">
+				<Setter Property="FontSize" Value="18" />
+				<Setter Property="TextColor" Value="Black" />
+			</Style>
+		</ResourceDictionary>
+	</ContentPage.Resources>
+</ContentPage>
