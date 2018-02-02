@@ -193,6 +193,7 @@
     <Compile Include="..\TEKUtsav\Extensions\XamarinFormsExtensions.cs">
       <Link>Extensions\XamarinFormsExtensions.cs</Link>
     </Compile>
+    <Compile Include="CustomRenderers\GradientColorStackRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_arrow_back.png" />
@@ -226,6 +227,24 @@
     <BundleResource Include="Resources\check_rejected.png" />
     <BundleResource Include="Resources\ic_check_white.png" />
     <BundleResource Include="Resources\ic_refresh.png" />
+    <BundleResource Include="Resources\logo.png" />
+    <BundleResource Include="Resources\logo%402x.png" />
+    <BundleResource Include="Resources\logo%403x.png" />
+    <BundleResource Include="Resources\contact.png" />
+    <BundleResource Include="Resources\contact%402x.png" />
+    <BundleResource Include="Resources\contact%403x.png" />
+    <BundleResource Include="Resources\eventloc.png" />
+    <BundleResource Include="Resources\eventloc%402x.png" />
+    <BundleResource Include="Resources\eventloc%403x.png" />
+    <BundleResource Include="Resources\eventsch.png" />
+    <BundleResource Include="Resources\eventsch%402x.png" />
+    <BundleResource Include="Resources\eventsch%403x.png" />
+    <BundleResource Include="Resources\notifications.png" />
+    <BundleResource Include="Resources\notifications%402x.png" />
+    <BundleResource Include="Resources\notifications%403x.png" />
+    <BundleResource Include="Resources\push.png" />
+    <BundleResource Include="Resources\push%402x.png" />
+    <BundleResource Include="Resources\push%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TEKUtsav\TEKUtsav.csproj">

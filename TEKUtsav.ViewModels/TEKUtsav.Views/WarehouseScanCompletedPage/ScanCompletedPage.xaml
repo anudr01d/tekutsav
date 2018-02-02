@@ -68,9 +68,7 @@
             
 		</StackLayout>
 	</StackLayout>
-
-
-        
+ 
 		<ActivityIndicator IsVisible="{Binding IsLoading}" IsRunning="{Binding IsLoading}"
             VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />
 			

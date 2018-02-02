@@ -9,6 +9,7 @@ namespace TEKUtsav.Infrastructure.Navigation
     public enum TEKUtsavAppPage
     {
         LoginPage,
+        RegistrationPage,
 		AppListingMasterMenuPage,
 		AppListingPage,
         MasterMenuPage, 
@@ -21,15 +22,6 @@ namespace TEKUtsav.Infrastructure.Navigation
 		MultiSelectionPage,
 		RejectPopupPage,
 		WorkFlowCompletedPopupPage,
-		WarehouseApprovalPopupPage,
-
-		//Logistics user
-		LogisticsHomePage,
-		LogisticsPurchaseOrderDetails,
-		LogisticsScanCompletedPage,
-		LogisticsContainerConditionsPage,
-		LogisticsMeasurementPage,
-		LogisticsIncompleteWorkflow,
-		LogisticsApprovalPopup
+		WarehouseApprovalPopupPage
 	}
 }

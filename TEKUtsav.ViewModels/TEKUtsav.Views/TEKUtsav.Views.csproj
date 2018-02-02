@@ -63,26 +63,11 @@
     <Compile Include="WarehouseWorkFlowCompletedPopupPage\WorkFlowCompletedPopup.xaml.cs">
       <DependentUpon>WorkFlowCompletedPopup.xaml</DependentUpon>
     </Compile>
-    <Compile Include="LogisticsHomePage\LogisticsHomePage.cs">
-      <DependentUpon>LogisticsHomePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="LogisticsMeasurementPage\LogisticsMeasurementPage.xaml.cs">
-      <DependentUpon>LogisticsMeasurementPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="LogisticsPurchaseOrderDetailsPage\LogisticsPurchaseOrderDetailsPage.xaml.cs">
-      <DependentUpon>LogisticsPurchaseOrderDetailsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="LogisticsScanCompletedPage\LogisticsScanCompletedPage.xaml.cs">
-      <DependentUpon>LogisticsScanCompletedPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="LogisticsIncompleteWorkflow\LogisticsIncompleteWorkflow.cs">
-      <DependentUpon>LogisticsIncompleteWorkflow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="LogisticsApprovalPopupPage\LogisticsApprovalPopup.xaml.cs">
-      <DependentUpon>LogisticsApprovalPopup.xaml</DependentUpon>
-    </Compile>
     <Compile Include="WarehouseApprovalPopupPage\WarehouseApprovalPopupPage.xaml.cs">
       <DependentUpon>WarehouseApprovalPopupPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrationPage\RegistrationPage.xaml.cs">
+      <DependentUpon>RegistrationPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -128,30 +113,12 @@
     <EmbeddedResource Include="WarehouseWorkFlowCompletedPopupPage\WorkFlowCompletedPopup.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="LogisticsHomePage\LogisticsHomePage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="LogisticsMeasurementPage\LogisticsMeasurementPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="LogisticsPurchaseOrderDetailsPage\LogisticsPurchaseOrderDetailsPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="LogisticsScanCompletedPage\LogisticsScanCompletedPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="LogisticsIncompleteWorkflow\LogisticsIncompleteWorkflow.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="LogisticsApprovalPopupPage\LogisticsApprovalPopup.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Include="WarehouseApprovalPopupPage\WarehouseApprovalPopupPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegistrationPage\RegistrationPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -167,13 +134,8 @@
     <Folder Include="ScannerPage\" />
     <Folder Include="WarehouseRejectPopupPage\" />
     <Folder Include="WarehouseWorkFlowCompletedPopupPage\" />
-    <Folder Include="LogisticsHomePage\" />
-    <Folder Include="LogisticsMeasurementPage\" />
-    <Folder Include="LogisticsPurchaseOrderDetailsPage\" />
-    <Folder Include="LogisticsScanCompletedPage\" />
-    <Folder Include="LogisticsIncompleteWorkflow\" />
-    <Folder Include="LogisticsApprovalPopupPage\" />
     <Folder Include="WarehouseApprovalPopupPage\" />
+    <Folder Include="RegistrationPage\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">
@@ -225,13 +187,13 @@
       <Project>{6961753D-62F6-45D1-A2D1-09ADD19D140E}</Project>
       <Name>TEKUtsav.Models</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\TEKUtsav.Infrastructure\TEKUtsav.UIControls\TEKUtsav.UIControls.csproj">
-      <Project>{176AF8C5-5200-41BB-8307-DE8B9A9707D7}</Project>
-      <Name>TEKUtsav.UIControls</Name>
-    </ProjectReference>
     <ProjectReference Include="..\TEKUtsav.ViewModels.csproj">
       <Project>{B4BA40A2-EF5F-4E3C-A655-8167A3402B12}</Project>
       <Name>TEKUtsav.ViewModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\TEKUtsav.Infrastructure\TEKUtsav.UIControls\TEKUtsav.UIControls.csproj">
+      <Project>{176AF8C5-5200-41BB-8307-DE8B9A9707D7}</Project>
+      <Name>TEKUtsav.UIControls</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />

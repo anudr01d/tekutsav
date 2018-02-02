@@ -178,14 +178,14 @@ namespace TEKUtsav.iOS
 
         private void SetHintText()
         {
-            Control.Placeholder = Element.Placeholder;
+            Control.Placeholder = "";//Element.Placeholder;
         }
 
         private void SetPlaceholderColor()
         {
 			Control.FloatingLabelTextColor = Xamarin.Forms.Color.FromHex("#818181").ToUIColor();
-			var placeholderString = new NSAttributedString(Control.Placeholder, new UIStringAttributes() { ForegroundColor = Xamarin.Forms.Color.FromHex("#717171").ToUIColor() });
-			Control.AttributedPlaceholder = placeholderString;
+			//var placeholderString = new NSAttributedString(Control.Placeholder, new UIStringAttributes() { ForegroundColor = Xamarin.Forms.Color.FromHex("#717171").ToUIColor() });
+			//Control.AttributedPlaceholder = placeholderString;
                 //? _defaultPlaceholderColor
                 //: Element.PlaceholderColor.ToUIColor();
         }

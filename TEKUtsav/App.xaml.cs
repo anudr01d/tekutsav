@@ -27,9 +27,9 @@ namespace TEKUtsav
 			AppBootstrap.Initialize(builder);
 			Container = builder.Build();
 			_applicationLifetimeScope = Container.BeginLifetimeScope();
-			AppLogger = _applicationLifetimeScope.Resolve<ILogger>();
+			//AppLogger = _applicationLifetimeScope.Resolve<ILogger>();
 			var settings = _applicationLifetimeScope.Resolve<ISettings>();
-			_applicationLifetimeScope.Resolve<INavigationService>().NavigateTo(TEKUtsavAppPage.LoginPage);
+            _applicationLifetimeScope.Resolve<INavigationService>().NavigateTo(TEKUtsavAppPage.LoginPage);
 			dateTimeOnSleep = DateTime.Now;
 		}
 

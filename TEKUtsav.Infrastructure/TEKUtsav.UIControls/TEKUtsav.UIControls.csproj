@@ -5,10 +5,9 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{176AF8C5-5200-41BB-8307-DE8B9A9707D7}</ProjectGuid>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <UseMSBuildEngine>true</UseMSBuildEngine>
     <OutputType>Library</OutputType>
     <RootNamespace>TEKUtsav.TorontoPU.UIControls</RootNamespace>
-    <AssemblyName>TEKUtsav.TorontoPU.UIControls</AssemblyName>
+    <AssemblyName>TEKUtsav.UIControls</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Profile111</TargetFrameworkProfile>
   </PropertyGroup>
@@ -74,6 +73,7 @@
     <Compile Include="Styles\TEKUtsavListViewStyle.xaml.cs">
       <DependentUpon>TEKUtsavListViewStyle.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\GradientColorStack.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controls\" />

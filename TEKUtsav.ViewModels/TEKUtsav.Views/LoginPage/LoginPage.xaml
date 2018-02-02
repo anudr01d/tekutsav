@@ -4,7 +4,17 @@
 		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
 		xmlns:d="clr-namespace:TEKUtsav.UIControls.Controls;assembly=TEKUtsav.UIControls"
 		x:Class="TEKUtsav.Views.LoginPage.LoginPage">
-	<StackLayout Spacing="0" Padding="0,20,0,0">
-		<d:MVVMWebView NavigatedCommand="{Binding NavEndCommand}" x:Name="webView" Source="https://TEKUtsavsandbox.okta.com/app/TEKUtsavcorporationsandbox_TEKUtsavshell_1/exk1ch1bbz4WGJjnM0h8/sso/saml" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></d:MVVMWebView>
-	</StackLayout>
+    <d:GradientColorStack StartColor="#f23e56" EndColor="#971024">
+       <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
+            <Image WidthRequest="200" HeightRequest="200" Source="logo.png" Aspect="AspectFit">
+            </Image>
+       </StackLayout>
+
+        <StackLayout VerticalOptions="End" Orientation="Horizontal">
+            <ContentView Padding="20,30,20,30" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+                <d:CustomButton Command="{Binding StartCommand}" IsWhiteBtn="true" BorderRadius="20" FontSize="14" Text="START EXPLORING NOW" BorderWidth="1" BorderColor="#FFFFFF" HorizontalOptions="FillAndExpand" FontAttributes="Bold" BackgroundColor="#FFFFFF" TextColor="#565758">
+                </d:CustomButton>
+            </ContentView>
+        </StackLayout>
+     </d:GradientColorStack>
 </ContentPage>

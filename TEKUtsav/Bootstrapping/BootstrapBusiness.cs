@@ -1,6 +1,4 @@
 ﻿using Autofac;
-//using TEKUtsav.Business.ContainerConditions;
-//using TEKUtsav.Business.ContainerConditions.Impl;
 using TEKUtsav.Business.Impl;
 using TEKUtsav.Business.Measurements;
 //using TEKUtsav.Business.Measurements.Impl;

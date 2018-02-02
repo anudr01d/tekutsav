@@ -75,14 +75,14 @@ namespace TEKUtsav.iOS
 					var leftbtn = item.LeftBarButtonItems[0];
 					leftbtn.Image = _hamImage;
 				}
-				if (item.RightBarButtonItems != null)
-				{
-					item.RightBarButtonItems[0].Image = _menuImage;
-					if (item.RightBarButtonItems.Count() > 1)
-					{
-						item.RightBarButtonItems[1].Image = _refreshImage;
-					}
-				}
+				//if (item.RightBarButtonItems != null)
+				//{
+				//	item.RightBarButtonItems[0].Image = _menuImage;
+				//	if (item.RightBarButtonItems.Count() > 1)
+				//	{
+				//		item.RightBarButtonItems[1].Image = _refreshImage;
+				//	}
+				//}
 			}
 		}
 

@@ -37,18 +37,12 @@
     <Compile Include="ApplistingPage\AppListingPageViewModel.cs" />
     <Compile Include="WarehouseMeasurementPage\MeasurementPageViewModel.cs" />
     <Compile Include="AppListingMasterMenuPage\AppListingMasterMenuPageViewModel.cs" />
-    <Compile Include="WarehouseScanCompletedPage\ScanCompletedPageViewModel.cs" />
     <Compile Include="WarehouseMultiSelectionPage\MultiSelectionPageViewModel.cs" />
     <Compile Include="ScannerPage\ScannerPageViewModel.cs" />
     <Compile Include="WarehouseRejectPopupPage\RejectPopupPageViewModel.cs" />
     <Compile Include="WarehouseWorkflowCompletedPopupPage\WorkFlowCompletedPopupPageViewModel.cs" />
-    <Compile Include="LogisticsHomePage\LogisticsHomePageViewModel.cs" />
-    <Compile Include="LogisticsPurchaseOrderDetailsPage\LogisticsPurchaseOrderDetailsPageViewModel.cs" />
-    <Compile Include="LogisticsScanCompletedPage\LogisticsScanCompletedPageViewModel.cs" />
-    <Compile Include="LogisticsMeasurementPage\LogisticsMeasurementPageViewModel.cs" />
-    <Compile Include="LogisticsIncompleteWorkflow\LogisticsIncompleteWorkflowViewModel.cs" />
-    <Compile Include="LogisticsApprovalPopup\LogisticsApprovalPopupViewModel.cs" />
     <Compile Include="WarehouseApprovalPopup\WarehouseApprovalPopupViewModel.cs" />
+    <Compile Include="RegistrationPage\RegistrationPageViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BaseViewModel\" />
@@ -58,14 +52,10 @@
     <Folder Include="WarehousePurchaseOrderDetailsPage\" />
     <Folder Include="ApplistingPage\" />
     <Folder Include="WarehouseMeasurementPage\" />
-    <Folder Include="WarehouseScanCompletedPage\" />
     <Folder Include="WarehouseMultiSelectionPage\" />
     <Folder Include="ScannerPage\" />
     <Folder Include="WarehouseRejectPopupPage\" />
-    <Folder Include="LogisticsHomePage\" />
-    <Folder Include="LogisticsPurchaseOrderDetailsPage\" />
-    <Folder Include="LogisticsIncompleteWorkflow\" />
-    <Folder Include="LogisticsApprovalPopup\" />
+    <Folder Include="RegistrationPage\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">

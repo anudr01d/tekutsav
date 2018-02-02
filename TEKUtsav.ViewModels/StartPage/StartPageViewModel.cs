@@ -8,27 +8,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Xamarin.Forms;
-using System.Diagnostics;
-using TEKUtsav.Infrastructure;
-using TEKUtsav.Infrastructure.Constants;
 using TEKUtsav.Infrastructure.CookieStorage;
 
-namespace TEKUtsav.ViewModels.LoginPage
+namespace TEKUtsav.ViewModels.StartPage
 {
-    public class LoginPageViewModel : ViewModelBase
+    public class StartPageViewModel : ViewModelBase
     {
         private readonly INavigationService _navigationService;
         private readonly ISettings _settings;
-        private string _userName;
         private ICommand _startCommand;
-		private ICommand _navEndCommand;
-        private string _password;
-        private bool _invalid;
-		private bool _isOn;
-		private IPlatformCookieStore _cookieStore;
-		private System.Net.Cookie _aspnetCookie;
-
 
         public ICommand StartCommand
         {
@@ -40,24 +28,17 @@ namespace TEKUtsav.ViewModels.LoginPage
             }
         }
 
-
-        public LoginPageViewModel(INavigationService navigationService, ISettings settings, IPlatformCookieStore platformCookieStore) : base(navigationService, settings)
+        public StartPageViewModel(INavigationService navigationService, ISettings settings) : base(navigationService, settings)
         {
             if (navigationService == null) throw new ArgumentNullException("navigationService");
             if (settings == null) throw new ArgumentNullException("settings");
-			if (platformCookieStore == null) throw new ArgumentNullException("platformCookieStore");
 
             _navigationService = navigationService;
             _settings = settings;
-			_cookieStore = platformCookieStore;
         }
 
         public override Task OnViewAppearing(object navigationParams = null)
         {
-            this.StartCommand = new Command(() => {
-                _navigationService.NavigateTo(TEKUtsavAppPage.RegistrationPage);
-            });
-
             return Task.Run(() =>
             {
 

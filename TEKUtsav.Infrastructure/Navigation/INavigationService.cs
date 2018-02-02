@@ -15,8 +15,6 @@ namespace TEKUtsav.Infrastructure.Navigation
 		void ShowPopup(TEKUtsavAppPage page, object navigationParams = null);
 		void ClosePopup();
 		void CloseMenu();
-		Task NavigateToZxingScanner();
         TEKUtsavAppPage CurrentPage();
-		void RemoveScannerPage();
     }
 }

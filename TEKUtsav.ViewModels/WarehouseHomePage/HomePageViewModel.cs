@@ -20,7 +20,6 @@ namespace TEKUtsav.ViewModels.HomePage
 		private ICommand _menuClickCommand;
 		private PurchaseOrder[] _requisitions;
 		public List<PurchaseOrder> _purchaseOrders;
-		private readonly IPurchaseOrdersBusinessService _purchaseOrdersBusinessService;
 
 		int _tapCount = 0;
 
@@ -101,14 +100,14 @@ namespace TEKUtsav.ViewModels.HomePage
 			}
 		}
 
-		public HomePageViewModel(INavigationService navigationService, ISettings settings, IPurchaseOrdersBusinessService purchaseOrdersBusinessService) : base(navigationService, settings)
+		public HomePageViewModel(INavigationService navigationService, ISettings settings) : base(navigationService, settings)
 		{
 			if (navigationService == null) throw new ArgumentNullException("navigationService");
 			if (settings == null) throw new ArgumentNullException("settings");
-			if (purchaseOrdersBusinessService == null) throw new ArgumentNullException("purchaseOrdersBusinessService");
+			//if (purchaseOrdersBusinessService == null) throw new ArgumentNullException("purchaseOrdersBusinessService");
 			_navigationService = navigationService;
 			_settings = settings;
-			_purchaseOrdersBusinessService = purchaseOrdersBusinessService;
+			//_purchaseOrdersBusinessService = purchaseOrdersBusinessService;
 		}
 		public override async Task OnViewAppearing(object navigationParams = null)
 		{
@@ -118,14 +117,14 @@ namespace TEKUtsav.ViewModels.HomePage
 
             this.RefreshCommand = new Command(async () =>
 			{
-				this.IsLoading = true;
-				var syncStatus = await _purchaseOrdersBusinessService.SyncSapData();
-				this.IsLoading = false;
+				//this.IsLoading = true;
+				////var syncStatus = await _purchaseOrdersBusinessService.SyncSapData();
+				//this.IsLoading = false;
 
-				if (syncStatus)
-				{
-					await GetPurchaseOrders();
-				}
+				//if (syncStatus)
+				//{
+				//	await GetPurchaseOrders();
+				//}
 			});
 
 			await Task.Run(() => { });
@@ -133,9 +132,9 @@ namespace TEKUtsav.ViewModels.HomePage
 
 		private async Task GetPurchaseOrders()
 		{
-            this.IsLoading = true;
-			this.PurchaseOrders = await _purchaseOrdersBusinessService.GetPurchaseOrders();
-			this.IsLoading = false;
+   //         this.IsLoading = true;
+			//this.PurchaseOrders = await _purchaseOrdersBusinessService.GetPurchaseOrders();
+			//this.IsLoading = false;
 		}
 
 		public override Task OnViewDisappearing()

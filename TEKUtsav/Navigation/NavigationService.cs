@@ -3,17 +3,12 @@ using TEKUtsav.Infrastructure.Presentation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Rg.Plugins.Popup.Extensions;
 using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
-using System.Diagnostics;
 using ZXing.Net.Mobile.Forms;
-using System.IO;
-using TEKUtsav.Infrastructure.Constants;
-using TEKUtsav.Infrastructure.Presentation;
 using TEKUtsav.Views.MasterMenuPage;
 using TEKUtsav.ViewModels.MasterMenuPage;
 using TEKUtsav.ViewModels.BaseViewModel;
@@ -26,7 +21,6 @@ namespace TEKUtsav.Navigation
 	{
 		private readonly IPageRegistry<TEKUtsavAppPage> _pageRegistry;
 		private TEKUtsavAppPage _currentPage;
-		private ZXingScannerPage scanPage;
 		private Color origPageBgColor;
 		private Color origContentBgColor;
 		private bool LogisticsUser = false;
@@ -42,72 +36,41 @@ namespace TEKUtsav.Navigation
 			return _pageRegistry.GetPage(TEKUtsavAppPage.LoginPage);
 		}
 
+        private Page SetRegistrationPage()
+        {
+            return _pageRegistry.GetPage(TEKUtsavAppPage.RegistrationPage);
+        }
+
 		private MasterDetailPage SetMasterDetailPage(object navigationParams)
 		{
 			var rootPage = new MasterDetailPage();
 			Page detailPage;
-			if ((bool)navigationParams)
-			{
-				detailPage = _pageRegistry.GetPage(TEKUtsavAppPage.HomePage) as Views.HomePage.HomePage;
-			}
-			else
-			{
-				detailPage = _pageRegistry.GetPage(TEKUtsavAppPage.LogisticsHomePage) as Views.LogisticsHomePage.LogisticsHomePage;
-			}
-
+			detailPage = _pageRegistry.GetPage(TEKUtsavAppPage.HomePage) as Views.HomePage.HomePage;
 			var masterPage = _pageRegistry.GetPage(TEKUtsavAppPage.MasterMenuPage) as MasterMenuPage;
 			if (masterPage == null) throw new NullReferenceException("MasterMenuPage not found in PageRegistry");
 
 			rootPage.IsPresentedChanged += (object sender, EventArgs e) =>
 			{
-				if ((bool)navigationParams)
+				if (Device.RuntimePlatform == Device.iOS)
 				{
-					if (Device.RuntimePlatform == Device.iOS)
+					if (rootPage.IsPresented)
 					{
-						if (rootPage.IsPresented)
+						var currentPage = (Views.HomePage.HomePage)((NavigationPage)rootPage.Detail).CurrentPage;
+						origPageBgColor = currentPage.BackgroundColor;
+						origContentBgColor = currentPage.Content.BackgroundColor;
+						currentPage.BackgroundColor = Color.Black;
+						currentPage.Content.FadeTo(0.5);
+						if (currentPage.Content.BackgroundColor == Color.Default)
 						{
-							var currentPage = (Views.HomePage.HomePage)((NavigationPage)rootPage.Detail).CurrentPage;
-							origPageBgColor = currentPage.BackgroundColor;
-							origContentBgColor = currentPage.Content.BackgroundColor;
-							currentPage.BackgroundColor = Color.Black;
-							currentPage.Content.FadeTo(0.5);
-							if (currentPage.Content.BackgroundColor == Color.Default)
-							{
-								currentPage.Content.BackgroundColor = Color.White;
-							}
-						}
-						else
-						{
-							var currentPage = (Views.HomePage.HomePage)((NavigationPage)rootPage.Detail).CurrentPage;
-							currentPage.BackgroundColor = origPageBgColor;
-							currentPage.Content.BackgroundColor = origContentBgColor;
-							currentPage.Content.FadeTo(1.0);
+							currentPage.Content.BackgroundColor = Color.White;
 						}
 					}
-				}
-				else
-				{
-					if (Device.RuntimePlatform == Device.iOS)
+					else
 					{
-						if (rootPage.IsPresented)
-						{
-							var currentPage = (Views.LogisticsHomePage.LogisticsHomePage)((NavigationPage)rootPage.Detail).CurrentPage;
-							origPageBgColor = currentPage.BackgroundColor;
-							origContentBgColor = currentPage.Content.BackgroundColor;
-							currentPage.BackgroundColor = Color.Black;
-							currentPage.Content.FadeTo(0.5);
-							if (currentPage.Content.BackgroundColor == Color.Default)
-							{
-								currentPage.Content.BackgroundColor = Color.White;
-							}
-						}
-						else
-						{
-							var currentPage = (Views.LogisticsHomePage.LogisticsHomePage)((NavigationPage)rootPage.Detail).CurrentPage;
-							currentPage.BackgroundColor = origPageBgColor;
-							currentPage.Content.BackgroundColor = origContentBgColor;
-							currentPage.Content.FadeTo(1.0);
-						}
+						var currentPage = (Views.HomePage.HomePage)((NavigationPage)rootPage.Detail).CurrentPage;
+						currentPage.BackgroundColor = origPageBgColor;
+						currentPage.Content.BackgroundColor = origContentBgColor;
+						currentPage.Content.FadeTo(1.0);
 					}
 				}
 			};
@@ -238,6 +201,13 @@ namespace TEKUtsav.Navigation
 				return;
 			}
 
+            if (page == TEKUtsavAppPage.RegistrationPage)
+            {
+                _currentPage = page;
+                Application.Current.MainPage = SetRegistrationPage();
+                return;
+            }
+
 			if (page == TEKUtsavAppPage.AppListingMasterMenuPage)
 			{
 				_currentPage = page;
@@ -252,7 +222,7 @@ namespace TEKUtsav.Navigation
 				return;
 			}
 
-			if (page != TEKUtsavAppPage.LoginPage && page != TEKUtsavAppPage.MasterMenuPage && page != TEKUtsavAppPage.AppListingMasterMenuPage)
+            if (page != TEKUtsavAppPage.LoginPage && page != TEKUtsavAppPage.RegistrationPage && page != TEKUtsavAppPage.MasterMenuPage && page != TEKUtsavAppPage.AppListingMasterMenuPage)
 			{
 				if (!(Application.Current.MainPage is MasterDetailPage))
 				{
@@ -278,6 +248,7 @@ namespace TEKUtsav.Navigation
 				masterDetail.Detail.Navigation.PushAsync(requestedPage, true);
 			}
 		}
+
 		public void AfterLoginNavigation(bool hasLabAccess, bool isLabSelected, bool isLastSavedLabActive)
 		{
 			NavigateTo(TEKUtsavAppPage.MasterMenuPage);
@@ -327,22 +298,11 @@ namespace TEKUtsav.Navigation
 				}
 			}
 		}
-		public void NavigateToRoot()
-		{
-			var masterDetail = (MasterDetailPage)Application.Current.MainPage;
-			if (masterDetail != null) masterDetail.Detail.Navigation.PopToRootAsync();
-		}
-
-		public void RemoveScannerPage()
-		{
-			var masterDetail = (MasterDetailPage)Application.Current.MainPage;
-			var page = masterDetail.Detail.Navigation.NavigationStack[masterDetail.Detail.Navigation.NavigationStack.Count - 2];
-			var requestedPage = _pageRegistry.GetPage(TEKUtsavAppPage.ScannerPage, null);
-			if (page.GetType().ToString() == requestedPage.GetType().ToString())
-			{
-				if (masterDetail != null) masterDetail.Detail.Navigation.RemovePage(page);
-			}
-		}
+        public void NavigateToRoot()
+        {
+            var masterDetail = (MasterDetailPage)Application.Current.MainPage;
+            if (masterDetail != null) masterDetail.Detail.Navigation.PopToRootAsync();
+        }
 
 		public void ShowPopup(TEKUtsavAppPage page, object navigationParams = null)
 		{
@@ -355,43 +315,6 @@ namespace TEKUtsav.Navigation
 					masterDetail.Detail.Navigation.PushPopupAsync(requestedPage);
 				}
 			}
-		}
-
-		public async Task NavigateToZxingScanner()
-		{
-			var masterDetail = (MasterDetailPage)Application.Current.MainPage;
-			var options = new ZXing.Mobile.MobileBarcodeScanningOptions();
-			options.AutoRotate = true;
-			options.TryInverted = false;
-			options.TryHarder = false;
-			options.PossibleFormats = new List<ZXing.BarcodeFormat>() {
-				ZXing.BarcodeFormat.All_1D,  ZXing.BarcodeFormat.AZTEC ,
-				ZXing.BarcodeFormat.CODABAR, ZXing.BarcodeFormat.CODE_39 ,
-				ZXing.BarcodeFormat.CODE_93 ,ZXing.BarcodeFormat.CODE_128 ,
-				ZXing.BarcodeFormat.DATA_MATRIX ,ZXing.BarcodeFormat.EAN_8 ,
-				ZXing.BarcodeFormat.EAN_13 ,ZXing.BarcodeFormat.ITF ,
-				ZXing.BarcodeFormat.MAXICODE ,ZXing.BarcodeFormat.PDF_417 ,
-				ZXing.BarcodeFormat.QR_CODE ,ZXing.BarcodeFormat.RSS_14 ,
-				ZXing.BarcodeFormat.RSS_EXPANDED ,ZXing.BarcodeFormat.UPC_A ,
-				ZXing.BarcodeFormat.UPC_E ,ZXing.BarcodeFormat.UPC_EAN_EXTENSION ,
-				ZXing.BarcodeFormat.MSI ,ZXing.BarcodeFormat.PLESSEY , ZXing.BarcodeFormat.IMB
-			};
-			scanPage = new ZXingScannerPage(options);
-			scanPage.Title = "ZXing";
-			scanPage.OnScanResult += HandleResult;
-			await masterDetail.Detail.Navigation.PushAsync(scanPage);
-		}
-
-		private void HandleResult(ZXing.Result result)
-		{
-			var masterDetail = (MasterDetailPage)Application.Current.MainPage;
-			scanPage.IsScanning = false;
-			Device.BeginInvokeOnMainThread(() =>
-			{
-				scanPage.OnScanResult -= HandleResult;
-				masterDetail.Detail.Navigation.PopAsync();
-				//NavigateTo(TEKUtsavAppPage.BarcodeResponsePage, result.Text);
-			});
 		}
 
 		public void ClosePopup()
@@ -408,6 +331,5 @@ namespace TEKUtsav.Navigation
         {
             return _currentPage;
         }
-
 	}
 }
