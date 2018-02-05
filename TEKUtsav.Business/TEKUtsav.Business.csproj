@@ -32,12 +32,24 @@
     <Compile Include="Login\ILoginBusinessService.cs" />
     <Compile Include="PurchaseOrders\IPurchaseOrdersBusinessService.cs" />
     <Compile Include="Measurements\IMeasurementsBusinessService.cs" />
+    <Compile Include="User\IUserService.cs" />
+    <Compile Include="EventType\IEventType.cs" />
+    <Compile Include="Notification\INotificationService.cs" />
+    <Compile Include="Event\IEventService.cs" />
+    <Compile Include="EventVote\IEventVoteService.cs" />
+    <Compile Include="EventVoteSchedule\IEventVoteScheduleServie.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Login\" />
     <Folder Include="Login\" />
     <Folder Include="PurchaseOrders\" />
     <Folder Include="Measurements\" />
+    <Folder Include="User\" />
+    <Folder Include="Event\" />
+    <Folder Include="Notification\" />
+    <Folder Include="EventType\" />
+    <Folder Include="EventVote\" />
+    <Folder Include="EventVoteSchedule\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
