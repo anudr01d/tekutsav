@@ -39,6 +39,7 @@
     <Compile Include="CloudUtils\HttpHandler.cs" />
     <Compile Include="CloudUtils\AzureClient.cs" />
     <Compile Include="User\UserRestApi.cs" />
+    <Compile Include="EventVote\EventVoteRestApi.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -63,6 +64,7 @@
     <Folder Include="CloudUtils\" />
     <Folder Include="ContainerConditionsRestApi\" />
     <Folder Include="User\" />
+    <Folder Include="EventVote\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\TEKUtsav.Infrastructure\TEKUtsav.Infrastructure.csproj">

@@ -36,6 +36,7 @@
     <Compile Include="MeasurementsApi\IMeasurementsRestApi.cs" />
     <Compile Include="CloudUtils\IAzureClient.cs" />
     <Compile Include="User\IUserRestApi.cs" />
+    <Compile Include="EventVote\IEventVoteRestApi.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -60,6 +61,7 @@
     <Folder Include="CloudUtils\" />
     <Folder Include="MeasurementsApi\" />
     <Folder Include="User\" />
+    <Folder Include="EventVote\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\TEKUtsav.Models\TEKUtsav.Models.csproj">
