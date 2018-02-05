@@ -46,7 +46,6 @@
     <Compile Include="Entities\MaterialImage.cs" />
     <Compile Include="Entities\RejectionItem.cs" />
     <Compile Include="Entities\Role.cs" />
-    <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\UserRole.cs" />
     <Compile Include="Entities\PurchaseOrderStatus.cs" />
     <Compile Include="Entities\PurchaseOrderMaterialStatus.cs" />

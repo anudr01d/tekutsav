@@ -15,7 +15,8 @@ using TEKUtsav.Infrastructure.Constants;
 using System.Net;
 using System.IO;
 using Newtonsoft.Json;
-using TEKUtsav.Models.Entities;
+//using TEKUtsav.Models.Entities;
+using TEKUtsav.Mobile.Service.Domain.DataObjects;
 
 namespace TEKUtsav.ViewModels.AppListingMasterMenuPage
 {
@@ -123,9 +124,9 @@ namespace TEKUtsav.ViewModels.AppListingMasterMenuPage
 				User user = JsonConvert.DeserializeObject<User>(userobj);
 				if (user != null)
 				{
-					this.UserName = user.HAccount;
-					Application.Current.Properties["username"] = user.HAccount;
-					Application.Current.Properties["role"] = user.UserRoles.FirstOrDefault().Role.Name;
+                    this.UserName = user.Devices.FirstOrDefault().UDID;
+                    Application.Current.Properties["username"] = user.Devices.FirstOrDefault().UDID;
+                    Application.Current.Properties["role"] = user.IsAdmin;
 				}
 			}
 			catch (Exception e)

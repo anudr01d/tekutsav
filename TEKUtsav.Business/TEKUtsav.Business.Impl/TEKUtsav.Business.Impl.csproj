@@ -34,12 +34,14 @@
     <Compile Include="Login\LoginBusinessService.cs" />
     <Compile Include="PurchaseOrders\PurchaseOrdersBusinessService.cs" />
     <Compile Include="Measurements\MeasurementsBusinessService.cs" />
+    <Compile Include="User\UserService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Logging\" />
     <Folder Include="Login\" />
     <Folder Include="PurchaseOrders\" />
     <Folder Include="Measurements\" />
+    <Folder Include="User\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">
@@ -67,6 +69,10 @@
     <ProjectReference Include="..\..\TEKUtsav.Models\TEKUtsav.Models.csproj">
       <Project>{6961753D-62F6-45D1-A2D1-09ADD19D140E}</Project>
       <Name>TEKUtsav.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TEKUtsav.Ral\TEKUtsav.Ral.csproj">
+      <Project>{6E908F28-606C-4BC9-9619-24D67B13B07B}</Project>
+      <Name>TEKUtsav.Ral</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />

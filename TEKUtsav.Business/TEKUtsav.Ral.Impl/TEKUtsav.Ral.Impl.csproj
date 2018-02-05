@@ -38,6 +38,7 @@
     <Compile Include="CloudUtils\LoggingHandler.cs" />
     <Compile Include="CloudUtils\HttpHandler.cs" />
     <Compile Include="CloudUtils\AzureClient.cs" />
+    <Compile Include="User\UserRestApi.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -61,6 +62,7 @@
     <Folder Include="PurchaseOrdersRestApi\" />
     <Folder Include="CloudUtils\" />
     <Folder Include="ContainerConditionsRestApi\" />
+    <Folder Include="User\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\TEKUtsav.Infrastructure\TEKUtsav.Infrastructure.csproj">

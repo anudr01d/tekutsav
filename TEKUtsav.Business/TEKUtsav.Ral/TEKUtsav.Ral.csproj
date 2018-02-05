@@ -35,6 +35,7 @@
     <Compile Include="ContainerConditionsApi\IContainerConditionsRestApi.cs" />
     <Compile Include="MeasurementsApi\IMeasurementsRestApi.cs" />
     <Compile Include="CloudUtils\IAzureClient.cs" />
+    <Compile Include="User\IUserRestApi.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -58,6 +59,7 @@
     <Folder Include="PurchaseOrdersApi\" />
     <Folder Include="CloudUtils\" />
     <Folder Include="MeasurementsApi\" />
+    <Folder Include="User\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\TEKUtsav.Models\TEKUtsav.Models.csproj">
