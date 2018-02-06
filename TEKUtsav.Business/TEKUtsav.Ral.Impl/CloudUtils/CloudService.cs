@@ -49,5 +49,20 @@ namespace TEKUtsav.Ral.CloudUtils.Impl
 			}
 			return val;
 		}
+
+        public async Task<I> InvokeApiAsyncPostData<T, I>(MobileServiceClient client, string url, T item)
+        {
+            I val = default(I);
+            try
+            {
+                val = await client.InvokeApiAsync<T, I>(url, item, System.Net.Http.HttpMethod.Post, null);
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.StackTrace);
+            }
+            return val;
+        }
+       
 	}
 }

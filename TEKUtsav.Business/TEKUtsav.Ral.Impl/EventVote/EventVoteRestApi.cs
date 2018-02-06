@@ -26,22 +26,22 @@ namespace TEKUtsav.Ral.Impl.EventVote
             _cloudService = cloudService;
             _azureClient = azureClient;
         }
-        public  Task<int> CaptureUserVote(DS.EventVote eventvotes)
+        public async Task<int> CaptureUserVote(DS.EventVote eventvotes)
         {
             var client = _azureClient.GetClient(string.Empty, string.Empty, string.Empty);
-            //var poFlow = await _cloudService.InvokeApiAsyncPost<DS.EventVote, DS.EventVote>(client, Globals.MEASUREMENTS_API, eventvotes);
+            var poFlow = await _cloudService.InvokeApiAsyncPostData<DS.EventVote,int>(client, Globals.MEASUREMENTS_API, eventvotes);
+            return poFlow;
+        }
+        public Task<int> CheckIfUserHasVoted(string eventTypeId, string UDID)
+        {
+            var client = _azureClient.GetClient(string.Empty, string.Empty, string.Empty);
+            //var userVote = await _cloudService.InvokeApiAsyncGetData<int>(client, Globals.EVENT_VOTE_API,eventTypeId,UDID);
             return null;
         }
-        public  Task<int> CheckIfUserHasVoted(string eventTypeId, string UDID)
+        public Task<List<DS.EventWinner>> ComputeEventWinner(string eventTypeId)
         {
             var client = _azureClient.GetClient(string.Empty, string.Empty, string.Empty);
-            //var userFlow = await _cloudService.InvokeApiAsyncPost<DS.Event, DS.Event>(client, Globals.EVENT_VOTE_API, eventTypeId,UDID);
-            return null;
-        }
-        public  Task<List<DS.EventWinner>> ComputeEventWinner(string eventTypeId)
-        {
-            var client = _azureClient.GetClient(string.Empty, string.Empty, string.Empty);
-            //var userFlow = await _cloudService.InvokeApiAsyncPost<DS.EventVote, DS.EventVote>(client, Globals.COMPUTE_WINNER_API, eventTypeId);
+            //var winner = await _cloudService.InvokeApiAsyncGet<DS.EventWinner>(client, Globals.COMPUTE_WINNER_API, eventTypeId);
             return null;
         }
 
