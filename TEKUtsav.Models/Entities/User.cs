@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿sing System.Collections.Generic;
 
 namespace TEKUtsav.Models.Entities
 {
