@@ -14,26 +14,27 @@ using TEKUtsav.Infrastructure.Constants;
 using TEKUtsav.Infrastructure;
 using TEKUtsav.Business.Measurements;
 
-namespace TEKUtsav.ViewModels.RegistrationPage
+namespace TEKUtsav.ViewModels.AdminSettingsPage
 {
-	public class RegistrationPageViewModel : ViewModelBase
+	public class AdminSettingsPageViewModel : ViewModelBase
 	{
 		private readonly INavigationService _navigationService;
 		private readonly ISettings _settings;
 		private bool clicked = false;
-		private ICommand _menuClickCommand, _registerClickedCommand;
+        private List<Notification> _notifications;
+        private ICommand _enableVotingCommand;
 
-		public ICommand RegisterClickedCommand
+		public ICommand EnableVotingCommand
 		{
-            get { return _registerClickedCommand; }
+            get { return _enableVotingCommand; }
 			protected set
 			{
-                _registerClickedCommand = value;
-                OnPropertyChanged("RegisterClickedCommand");
+                _enableVotingCommand = value;
+                OnPropertyChanged("EnableVotingCommand");
 			}
 		}
 
-        public RegistrationPageViewModel(INavigationService navigationService, ISettings settings) : base(navigationService, settings)
+        public AdminSettingsPageViewModel(INavigationService navigationService, ISettings settings) : base(navigationService, settings)
 		{
 			if (navigationService == null) throw new ArgumentNullException("navigationService");
 			if (settings == null) throw new ArgumentNullException("settings");
@@ -43,13 +44,9 @@ namespace TEKUtsav.ViewModels.RegistrationPage
 
 		public override async Task OnViewAppearing(object navigationParams = null)
 		{
-			this.SetCurrentPage(TEKUtsavAppPage.RegistrationPage);
-           
-            this.RegisterClickedCommand = new Command(() => {
-                _navigationService.NavigateTo(TEKUtsavAppPage.MasterMenuPage);
-			});
+			this.SetCurrentPage(TEKUtsavAppPage.AdminSettingsPage);
 
-			
+
 			Task.Run(() => { });
 		}
 

@@ -49,6 +49,8 @@
     <Compile Include="Entities\UserRole.cs" />
     <Compile Include="Entities\PurchaseOrderStatus.cs" />
     <Compile Include="Entities\PurchaseOrderMaterialStatus.cs" />
+    <Compile Include="Entities\Notification.cs" />
+    <Compile Include="Entities\Event.cs" />
     <Compile Include="Models\DeviceRegister.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\EventType.cs" />

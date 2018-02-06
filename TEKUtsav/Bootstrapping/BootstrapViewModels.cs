@@ -6,13 +6,15 @@ using TEKUtsav.ViewModels.AppListingPage;
 using TEKUtsav.ViewModels.MeasurementPage;
 using TEKUtsav.ViewModels.AppListingMasterMenuPage;
 using TEKUtsav.ViewModels.MultiSelectionPage;
-using TEKUtsav.ViewModels.ScannerPage;
 using TEKUtsav.ViewModels.RejectPopup;
 using TEKUtsav.ViewModels.WorkFlowCompletedPopupPage;
 using TEKUtsav.ViewModels.WarehouseApprovalPopup;
 
 using TEKUtsav.ViewModels.LoginPage;
 using TEKUtsav.ViewModels.RegistrationPage;
+using TEKUtsav.ViewModels.NotificationsPage;
+using TEKUtsav.ViewModels.VotingPage;
+using TEKUtsav.ViewModels.AdminSettingsPage;
 
 namespace TEKUtsav.Bootstrapping
 {
@@ -22,6 +24,9 @@ namespace TEKUtsav.Bootstrapping
         {
            	builder.RegisterType<LoginPageViewModel>();
             builder.RegisterType<RegistrationPageViewModel>();
+            builder.RegisterType<NotificationsPageViewModel>();
+            builder.RegisterType<VotingPageViewModel>();
+            builder.RegisterType<AdminSettingsPageViewModel>();
 
 			builder.RegisterType<AppListingMasterMenuPageViewModel>();
 			builder.RegisterType<MasterMenuPageViewModel>();

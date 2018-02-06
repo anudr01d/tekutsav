@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<controls:TEKUtsavContentPage 
+	xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	xmlns:controls="clr-namespace:TEKUtsav.UIControls.Controls;assembly=TEKUtsav.UIControls" 
+	xmlns:local="clr-namespace:TEKUtsav.UIControls.MarkupExtensions;assembly=TEKUtsav.UIControls"
+	xmlns:vc="clr-namespace:TEKUtsav.UIControls.ValueConverters;assembly=TEKUtsav.UIControls" 
+	xmlns:imgcontrols="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions" 
+	BackgroundColor="#ffffff" Title="Notifications" 
+	x:Class="TEKUtsav.Views.NotificationsPage.NotificationsPage">
+ 	<ContentPage.Resources>
+			<ResourceDictionary>
+				<vc:StringToImageConverter x:Key="StringToImageConverter" />
+				<local:StringToColorConverter x:Key="StringToColorConverter" />
+				<local:Inverter x:Key="Inverter" />
+			</ResourceDictionary>
+	</ContentPage.Resources>
+
+    <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <controls:TappableListView BackgroundColor="#FFF" ItemsSource="{Binding Notifications}" HeightRequest="100" SeparatorVisibility="Default" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" HasUnevenRows="true">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <controls:PoListViewCell>
+                            <StackLayout Spacing="0" Padding="20,20,20,20" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical">
+                                <StackLayout Orientation="Vertical" BackgroundColor="#FFFFFF" Padding="0,0,0,0" Spacing="0" VerticalOptions="CenterAndExpand">
+                                    <!--<Image Source="{Binding MenuImageSource, Converter={StaticResource StringToImageConverter}}" WidthRequest="40" HeightRequest="40" HorizontalOptions="Start"/>-->
+                                    <Label Text="{Binding Title}" TextColor="#F6304E" FontSize="18" FontFamily="Helvetica" HorizontalOptions="StartAndExpand">
+                                    </Label>
+                                    <Label Text="{Binding FormattedDateTime}" TextColor="#CDCDCD" FontSize="13" FontFamily="Helvetica" HorizontalOptions="StartAndExpand">
+                                    </Label>
+                                    <Label Text="{Binding Description}" TextColor="#818181" FontSize="14" FontFamily="Helvetica" HorizontalOptions="StartAndExpand">
+                                    </Label>
+                                </StackLayout>
+                            </StackLayout>
+                        </controls:PoListViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </controls:TappableListView>
+        </Grid>
+</controls:TEKUtsavContentPage>

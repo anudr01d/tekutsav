@@ -10,6 +10,10 @@ namespace TEKUtsav.Infrastructure.Navigation
     {
         LoginPage,
         RegistrationPage,
+        NotificationsPage,
+        AdminSettingsPage,
+        VotingPage,
+
 		AppListingMasterMenuPage,
 		AppListingPage,
         MasterMenuPage, 
