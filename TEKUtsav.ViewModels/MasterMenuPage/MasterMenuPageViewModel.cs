@@ -37,46 +37,6 @@ namespace TEKUtsav.ViewModels.MasterMenuPage
 			}
 		}
 
-		private int _settingsHeight;
-		public int SettingsHeight
-		{
-			get
-			{
-				return _settingsHeight;
-			}
-			set
-			{
-				_settingsHeight = value;
-				OnPropertyChanged("SettingsHeight");
-			}
-		}
-
-
-
-		public List<HamburgerMenuItem> BusinessUnits
-		{
-			get
-			{
-				if (_businessUnits == null)
-				{
-					var list = new List<HamburgerMenuItem>();
-					list.Add(new HamburgerMenuItem() { Name = "Inbound", IsSelected = false });
-					list.Add(new HamburgerMenuItem() { Name = "Outbound", IsSelected = false });
-					list.Add(new HamburgerMenuItem() { Name = "Inventory", IsSelected = false });
-					return list;
-				}
-				else
-				{
-					return _businessUnits;
-				}
-			}
-			set
-			{
-				_businessUnits = value;
-				OnPropertyChanged("BusinessUnits");
-			}
-		}
-
 		public ICommand TapCommand
 		{
 			get { return _tapCommand; }
@@ -107,6 +67,17 @@ namespace TEKUtsav.ViewModels.MasterMenuPage
 				OnPropertyChanged("LogoutCommand");
 			}
 		}
+
+        private ICommand _settingsCommand;
+        public ICommand SettingsCommand
+        {
+            get { return _settingsCommand; }
+            protected set
+            {
+                _settingsCommand = value;
+                OnPropertyChanged("SettingsCommand");
+            }
+        }
 
 		private string _userName;
 		public string UserName
@@ -142,40 +113,13 @@ namespace TEKUtsav.ViewModels.MasterMenuPage
 			}
 			, () => true);
 
-			this.ApplicationsListingCommand = new Command(() =>
-			{
-				_navigationService.CloseMenu();
-				_navigationService.NavigateToRoot();
-				_navigationService.NavigateTo(TEKUtsavAppPage.AppListingMasterMenuPage);
-			}
-			, () => true);
 
-
-			this.LogoutCommand = new Command(() =>
-			{
-                DeleteCookies();
-				_navigationService.NavigateTo(TEKUtsavAppPage.LoginPage);
-			}
-			, () => true);
-
-			this.SettingsHeight = (this.BusinessUnits.Count() * 100) / 2 - 15;
-
-			try
-			{
-				string cookie = Application.Current.Properties[".AspNet.ExternalCookie"] as string;
-				string username = Application.Current.Properties["username"] as string;
-				if (username.Length < 10)
-				{
-					this.UserName = username;
-				}
-			}
-			catch (Exception e)
-			{
-				Debug.WriteLine(e.StackTrace);
-			}
-
-			HamburgerMenuNavigationCommand.Execute(new HamburgerMenuItem() { IsSelected = false, Name = "Inbound"});
-
+            this.SettingsCommand = new Command(() =>
+            {
+                _navigationService.NavigateTo(TEKUtsavAppPage.AdminSettingsPage);
+            }
+            , () => true);
+            
 			return Task.Run(() => { });
 		}
 
@@ -189,48 +133,5 @@ namespace TEKUtsav.ViewModels.MasterMenuPage
 			throw new NotImplementedException();
 		}
 
-		public Command<HamburgerMenuItem> HamburgerMenuNavigationCommand
-		{
-			get
-			{
-				return new Command<HamburgerMenuItem>((HamburgerMenuItemClicked) =>
-				{
-                    SetSelected(HamburgerMenuItemClicked);
-				});
-
-			}
-		}
-
-		private void SetSelected(HamburgerMenuItem menuItem)
-		{
-			var localBusinessUnits = new List<HamburgerMenuItem>();
-			foreach (var item in BusinessUnits)
-			{
-				if (item.Name == menuItem.Name)
-				{
-					if (!item.IsSelected)
-					{
-						item.IsSelected = true;
-						if (item.Name == "Inbound")
-						{
-							_navigationService.CloseMenu();
-						}
-					}
-				}
-				else
-				{
-					item.IsSelected = false;
-				}
-				localBusinessUnits.Add(item);
-			}
-			this.BusinessUnits = localBusinessUnits;
-		}
-
-		public void DeleteCookies()
-		{
-			_cookieStore.DeleteAllCookiesForSite(Globals.OKTA_SP_URL);
-			_cookieStore.DeleteAllCookiesForSite(Globals.OKTA_IDP_URL);
-			_cookieStore.DeleteAllCookiesForSite(Globals.OKTAUSERDOMAIN);
-		}
 	}
 }

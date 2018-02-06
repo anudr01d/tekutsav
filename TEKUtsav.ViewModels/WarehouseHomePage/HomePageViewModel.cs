@@ -17,7 +17,7 @@ namespace TEKUtsav.ViewModels.HomePage
 	{
 		private readonly INavigationService _navigationService;
 		private readonly ISettings _settings;
-		private ICommand _menuClickCommand;
+		private ICommand _notificationsCommand;
 		private PurchaseOrder[] _requisitions;
 		public List<PurchaseOrder> _purchaseOrders;
 
@@ -36,26 +36,26 @@ namespace TEKUtsav.ViewModels.HomePage
 			}
 		}
 
-		public ICommand MenuClickCommand
+        public ICommand NotificationsCommand
 		{
-			get { return _menuClickCommand; }
+			get { return _notificationsCommand; }
 			protected set
 			{
-				_menuClickCommand = value;
+				_notificationsCommand = value;
 				OnPropertyChanged();
 			}
 		}
 
-		private ICommand _refreshCommand;
-		public ICommand RefreshCommand
-		{
-			get { return _refreshCommand; }
-			set
-			{
-				_refreshCommand = value;
-				OnPropertyChanged("RefreshCommand");
-			}
-		}
+        private ICommand _votingCommand;
+        public ICommand VotingCommand
+        {
+            get { return _votingCommand; }
+            protected set
+            {
+                _votingCommand = value;
+                OnPropertyChanged();
+            }
+        }
 
 		private bool _canExecute = true;
 		public bool CanExecute
@@ -67,7 +67,7 @@ namespace TEKUtsav.ViewModels.HomePage
 			protected set
 			{
 				_canExecute = value;
-				((Command)_menuClickCommand).ChangeCanExecute();
+				((Command)_notificationsCommand).ChangeCanExecute();
 				OnPropertyChanged();
 			}
 		}
@@ -115,8 +115,9 @@ namespace TEKUtsav.ViewModels.HomePage
 
 			await GetPurchaseOrders();
 
-            this.RefreshCommand = new Command(async () =>
+            this.NotificationsCommand = new Command(async () =>
 			{
+                _navigationService.NavigateTo(TEKUtsavAppPage.NotificationsPage);
 				//this.IsLoading = true;
 				////var syncStatus = await _purchaseOrdersBusinessService.SyncSapData();
 				//this.IsLoading = false;
@@ -126,6 +127,11 @@ namespace TEKUtsav.ViewModels.HomePage
 				//	await GetPurchaseOrders();
 				//}
 			});
+
+            this.VotingCommand = new Command(() =>
+            {
+                _navigationService.NavigateTo(TEKUtsavAppPage.VotingPage);
+            });
 
 			await Task.Run(() => { });
 		}

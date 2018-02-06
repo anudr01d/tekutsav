@@ -19,24 +19,22 @@
 	</ContentPage.Resources>
     
 	<StackLayout BackgroundColor="#FFF" Orientation="Vertical" Spacing="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-        <ContentView HorizontalOptions="End" VerticalOptions="Start" Padding="0,5,20,0">
-            <Button Text="Admin" TextColor="#F6304E"></Button>
-        </ContentView>
 		<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
             <ContentView Padding="10,0,0,10">
                 <Image Source="logo.png" HeightRequest="100" WidthRequest="100" Aspect="AspectFit"></Image>
             </ContentView>
             <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical" Padding="10,10,10,10">
-                <controls:TEKUtsavLabel FontSize="18" Text="TEK Utsav" TextColor="#F6304E"></controls:TEKUtsavLabel>
+                <controls:TEKUtsavLabel FontSize="18" Text="TEKUtsav" TextColor="#F6304E"></controls:TEKUtsavLabel>
                 <controls:TEKUtsavLabel FontSize="12" Text="This is a sample text" TextColor="#818181"></controls:TEKUtsavLabel>
             </StackLayout>
         </StackLayout>
         <ContentView Padding="0,0,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
-            <controls:CustomButton IsWhiteBtn="false" BorderRadius="0" FontSize="14" Text="VOTING LINES OPEN" BorderWidth="1" BorderColor="#F6304E" HorizontalOptions="FillAndExpand" FontAttributes="Bold" BackgroundColor="#F6304E" TextColor="#FFF">
+            <controls:CustomButton Command="{Binding VotingCommand}" IsWhiteBtn="false" BorderRadius="0" FontSize="14" Text="VOTING LINES OPEN" BorderWidth="1" BorderColor="#F6304E" HorizontalOptions="FillAndExpand" FontAttributes="Bold" BackgroundColor="#F6304E" TextColor="#FFF">
             </controls:CustomButton>
          </ContentView>
+
+        <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
         <StackLayout Orientation="Vertical" BackgroundColor="#000" Spacing="0">
-            
             <StackLayout Margin="2,3,2,2" Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                  <StackLayout Spacing="0" BackgroundColor="#6B7667" Orientation="Vertical" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" >
                     <ContentView Padding="0,40,0,30" VerticalOptions="Center" HorizontalOptions="Center">
@@ -73,11 +71,11 @@
                         </Image>
                     </ContentView>
                     <ContentView VerticalOptions="EndAndExpand" Padding="0,0,0,10" HorizontalOptions="CenterAndExpand" >
-                        <controls:TEKUtsavLabel  Text="NOTIFICATIONS" FontSize="14" FontType="Regular" TextColor="White" >
+                        <controls:TEKUtsavLabel Text="NOTIFICATIONS" FontSize="14" FontType="Regular" TextColor="White" >
                         </controls:TEKUtsavLabel>
                     </ContentView>
                     <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding MoveToNextScreenCommand}" CommandParameter="MoveScan" />
+                        <TapGestureRecognizer Command="{Binding NotificationsCommand}" CommandParameter="Notifications" />
                     </StackLayout.GestureRecognizers>
                 </StackLayout>
                 <StackLayout Spacing="0" BackgroundColor="#485E65" Orientation="Vertical" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
@@ -95,5 +93,6 @@
                 </StackLayout>
             </StackLayout>
        </StackLayout>
+            </Grid>
 	</StackLayout>
 </controls:TEKUtsavContentPage>

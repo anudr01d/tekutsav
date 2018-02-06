@@ -50,6 +50,8 @@
     <Compile Include="Entities\UserRole.cs" />
     <Compile Include="Entities\PurchaseOrderStatus.cs" />
     <Compile Include="Entities\PurchaseOrderMaterialStatus.cs" />
+    <Compile Include="Entities\Notification.cs" />
+    <Compile Include="Entities\Event.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Entities\" />

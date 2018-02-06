@@ -69,6 +69,24 @@
     <Compile Include="RegistrationPage\RegistrationPage.xaml.cs">
       <DependentUpon>RegistrationPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="NotificationsPage\NotificationsPage.xaml.cs">
+      <DependentUpon>NotificationsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdminSettingsPage\AdminSettingsPage.xaml.cs">
+      <DependentUpon>AdminSettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VotingPage\DancePage.xaml.cs">
+      <DependentUpon>DancePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VotingPage\VotingPage.xaml.cs">
+      <DependentUpon>VotingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VotingPage\FsPage.xaml.cs">
+      <DependentUpon>FsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VotingPage\SePage.xaml.cs">
+      <DependentUpon>SePage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="LoginPage\LoginPage.xaml">
@@ -120,6 +138,28 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="NotificationsPage\NotificationsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminSettingsPage\AdminSettingsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VotingPage\DancePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VotingPage\VotingPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VotingPage\FsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VotingPage\SePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="LoginPage\" />
@@ -136,6 +176,9 @@
     <Folder Include="WarehouseWorkFlowCompletedPopupPage\" />
     <Folder Include="WarehouseApprovalPopupPage\" />
     <Folder Include="RegistrationPage\" />
+    <Folder Include="NotificationsPage\" />
+    <Folder Include="AdminSettingsPage\" />
+    <Folder Include="VotingPage\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">

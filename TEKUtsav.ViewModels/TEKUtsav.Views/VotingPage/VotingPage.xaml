@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<controls:TEKUtsavContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+		xmlns:controls="clr-namespace:TEKUtsav.UIControls.Controls;assembly=TEKUtsav.UIControls" 
+		xmlns:local="clr-namespace:TEKUtsav.UIControls.MarkupExtensions;assembly=TEKUtsav.UIControls" 
+		xmlns:extensions="clr-namespace:TEKUtsav.UIControls.MarkupExtensions;assembly=TEKUtsav.UIControls"
+		xmlns:pages="clr-namespace:TEKUtsav.Views.DancePage;assembly=TEKUtsav.Views" 
+		xmlns:fspages="clr-namespace:TEKUtsav.Views.FsPage;assembly=TEKUtsav.Views" 
+        xmlns:sepages="clr-namespace:TEKUtsav.Views.SePage;assembly=TEKUtsav.Views" 
+		xmlns:imgcontrols="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions" 
+		BackgroundColor="#F5F5F5" Title="Voting" NavigationPage.BackButtonTitle="" x:Class="TEKUtsav.Views.VotingPage.VotingPage">
+	
+	<ContentPage.Content>
+		<StackLayout  Padding="0,0,0,0" Spacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical">
+			<StackLayout BackgroundColor="#fff"  Margin="0,0,0,0" Padding="10,10,10,0" Orientation="Horizontal" Spacing="10" HorizontalOptions="FillAndExpand">
+            
+				<!-- Dance Selected -->
+			<StackLayout IsVisible="{Binding IsDanceSelected}" Spacing="3" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+				<controls:TEKUtsavLabel FontType="Regular" FontSize="14" Text="{Binding TagName[0]}" TextColor="#F6304E" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" />
+				<ContentView VerticalOptions="End" HorizontalOptions="FillAndExpand" Padding="17,3,17,0">
+					<BoxView HorizontalOptions="FillAndExpand" HeightRequest="4" BackgroundColor="#F6304E" />
+				</ContentView>
+			</StackLayout>
+
+			<!-- Create New Not Selected -->
+			<StackLayout IsVisible="{Binding IsDanceSelected, Converter={StaticResource Inverter}}" Spacing="3" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+				<controls:TEKUtsavLabel FontSize="14" Text="{Binding TagName[0]}" TextColor="#6d6d6d" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" />
+				<ContentView VerticalOptions="End" HorizontalOptions="FillAndExpand" Padding="17,3,17,0">
+					<BoxView HorizontalOptions="FillAndExpand" HeightRequest="4" BackgroundColor="#fff" />
+				</ContentView>
+				 <StackLayout.GestureRecognizers>
+        			<TapGestureRecognizer
+            			Command="{Binding ChangeTabCommand}"
+            			CommandParameter="Dance" />
+    			</StackLayout.GestureRecognizers>
+			</StackLayout>
+
+			<!-- Fashin Show Selected -->
+			<StackLayout IsVisible="{Binding IsFsSelected}" Spacing="3" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+				<controls:TEKUtsavLabel FontType="Regular" FontSize="14" Text="{Binding TagName[1]}" TextColor="#F6304E" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" />
+				<ContentView VerticalOptions="End" HorizontalOptions="FillAndExpand" Padding="17,3,17,0">
+					<BoxView HorizontalOptions="FillAndExpand" HeightRequest="4" BackgroundColor="#F6304E" />
+				</ContentView>
+			</StackLayout>
+
+			<!-- Fashion Show Not Selected -->
+			<StackLayout IsVisible="{Binding IsFsSelected, Converter={StaticResource Inverter}}" Spacing="3" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+				<controls:TEKUtsavLabel  FontSize="14" Text="{Binding TagName[1]}" TextColor="#6d6d6d" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" />
+				<ContentView VerticalOptions="End" HorizontalOptions="FillAndExpand" Padding="17,3,17,0">
+					<BoxView HorizontalOptions="FillAndExpand" HeightRequest="4" BackgroundColor="#fff" />
+				</ContentView>
+				 <StackLayout.GestureRecognizers>
+        			<TapGestureRecognizer
+            			Command="{Binding ChangeTabCommand}"
+            			CommandParameter="FashionShow" />
+    			</StackLayout.GestureRecognizers>
+			</StackLayout>
+
+			<!-- Special Events Selected -->
+			<StackLayout IsVisible="{Binding IsSeSelected}" Spacing="3" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+				<controls:TEKUtsavLabel FontType="Regular"  FontSize="14" Text="{Binding TagName[2]}" TextColor="#F6304E" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" />
+				<ContentView VerticalOptions="End" HorizontalOptions="FillAndExpand" Padding="17,3,17,0">
+					<BoxView HorizontalOptions="FillAndExpand" HeightRequest="4" BackgroundColor="#F6304E" />
+				</ContentView>
+			</StackLayout>
+
+			<!-- Special Events Not Selected -->
+			<StackLayout IsVisible="{Binding IsSeSelected, Converter={StaticResource Inverter}}" Spacing="3" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+				<controls:TEKUtsavLabel FontSize="14" Text="{Binding TagName[2]}" TextColor="#6d6d6d" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" />
+				<ContentView VerticalOptions="End" HorizontalOptions="FillAndExpand" Padding="17,3,17,0">
+					<BoxView HorizontalOptions="FillAndExpand" HeightRequest="4" BackgroundColor="#fff" />
+				</ContentView>
+				 <StackLayout.GestureRecognizers>
+        			<TapGestureRecognizer
+            			Command="{Binding ChangeTabCommand}"
+            			CommandParameter="SpecialEvents" />
+    			</StackLayout.GestureRecognizers>
+			</StackLayout>
+				
+			</StackLayout>
+			<pages:DancePage IsVisible="{Binding IsDanceSelected}" />
+			<fspages:FsPage HorizontalOptions="FillAndExpand" IsVisible="{Binding IsFsSelected}" />
+			<sepages:SePage HorizontalOptions="FillAndExpand" IsVisible="{Binding IsSeSelected}" />
+   
+		</StackLayout>
+	</ContentPage.Content>
+</controls:TEKUtsavContentPage>

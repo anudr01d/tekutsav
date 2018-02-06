@@ -43,6 +43,9 @@
     <Compile Include="WarehouseWorkflowCompletedPopupPage\WorkFlowCompletedPopupPageViewModel.cs" />
     <Compile Include="WarehouseApprovalPopup\WarehouseApprovalPopupViewModel.cs" />
     <Compile Include="RegistrationPage\RegistrationPageViewModel.cs" />
+    <Compile Include="NotificationsPage\NotificationsPageViewModel.cs" />
+    <Compile Include="AdminSettingsPage\AdminSettingsPageViewModel.cs" />
+    <Compile Include="VotingPage\VotingPageViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BaseViewModel\" />
@@ -56,6 +59,9 @@
     <Folder Include="ScannerPage\" />
     <Folder Include="WarehouseRejectPopupPage\" />
     <Folder Include="RegistrationPage\" />
+    <Folder Include="NotificationsPage\" />
+    <Folder Include="AdminSettingsPage\" />
+    <Folder Include="VotingPage\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">
