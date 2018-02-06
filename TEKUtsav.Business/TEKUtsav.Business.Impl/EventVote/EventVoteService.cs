@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using DSUser = TEKUtsav.Mobile.Service.Domain.DataObjects;
-using TEKUtsav.Ral.EventVote;
+using TEKUtsav.Ral.EventVoteApi;
 using System.Collections.Generic;
 
 namespace TEKUtsav.Business.EventVote

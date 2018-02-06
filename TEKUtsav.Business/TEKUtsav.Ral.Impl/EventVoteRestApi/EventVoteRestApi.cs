@@ -10,7 +10,7 @@ using TEKUtsav.Ral.CloudUtils;
 using TEKUtsav.Ral.CloutUtils.Impl;
 using Microsoft.WindowsAzure.MobileServices;
 using DS = TEKUtsav.Mobile.Service.Domain.DataObjects;
-using TEKUtsav.Ral.EventVote;
+using TEKUtsav.Ral.EventVoteApi;
 
 namespace TEKUtsav.Ral.Impl.EventVote
 {

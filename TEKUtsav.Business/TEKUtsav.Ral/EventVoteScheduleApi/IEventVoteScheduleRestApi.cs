@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
 
-namespace TEKUtsav.Business.EventVoteSchedule
+namespace TEKUtsav.Ral.EventVoteScheduleApi
 {
-    public interface IEventVoteScheduleServie
+    public interface IEventVoteScheduleRestApi
     {
         Task<int> CheckIfVotingIsOpen(string eventTypeId);
     }

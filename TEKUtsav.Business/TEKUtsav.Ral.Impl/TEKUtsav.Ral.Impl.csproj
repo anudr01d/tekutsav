@@ -38,8 +38,11 @@
     <Compile Include="CloudUtils\LoggingHandler.cs" />
     <Compile Include="CloudUtils\HttpHandler.cs" />
     <Compile Include="CloudUtils\AzureClient.cs" />
-    <Compile Include="User\UserRestApi.cs" />
-    <Compile Include="EventVote\EventVoteRestApi.cs" />
+    <Compile Include="UserRestApi\UserRestApi.cs" />
+    <Compile Include="EventVoteRestApi\EventVoteRestApi.cs" />
+    <Compile Include="EventVoteScheduleRestApi\EventVoteScheduleRestApi.cs" />
+    <Compile Include="NotificationRestApi\NotificationRestApi.cs" />
+    <Compile Include="EventRestApi\EventRestApi.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -51,10 +54,10 @@
     <Reference Include="System.Net.Http.Primitives">
       <HintPath>..\..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net45+win8+wpa81\System.Net.Http.Primitives.dll</HintPath>
     </Reference>
+    <Reference Include="System.Net.Http" />
     <Reference Include="Microsoft.WindowsAzure.Mobile">
       <HintPath>..\..\packages\Microsoft.Azure.Mobile.Client.3.1.0\lib\portable-win+net45+wp8+wpa81+monotouch+monoandroid\Microsoft.WindowsAzure.Mobile.dll</HintPath>
     </Reference>
-    <Reference Include="System.Net.Http" />
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\packages\Newtonsoft.Json.10.0.3\lib\portable-net45+win8+wp8+wpa81\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -63,8 +66,11 @@
     <Folder Include="PurchaseOrdersRestApi\" />
     <Folder Include="CloudUtils\" />
     <Folder Include="ContainerConditionsRestApi\" />
-    <Folder Include="User\" />
-    <Folder Include="EventVote\" />
+    <Folder Include="UserRestApi\" />
+    <Folder Include="EventVoteRestApi\" />
+    <Folder Include="EventVoteScheduleRestApi\" />
+    <Folder Include="NotificationRestApi\" />
+    <Folder Include="EventRestApi\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\TEKUtsav.Infrastructure\TEKUtsav.Infrastructure.csproj">

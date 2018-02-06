@@ -35,8 +35,12 @@
     <Compile Include="ContainerConditionsApi\IContainerConditionsRestApi.cs" />
     <Compile Include="MeasurementsApi\IMeasurementsRestApi.cs" />
     <Compile Include="CloudUtils\IAzureClient.cs" />
-    <Compile Include="User\IUserRestApi.cs" />
-    <Compile Include="EventVote\IEventVoteRestApi.cs" />
+    <Compile Include="UserApi\IUserRestApi.cs" />
+    <Compile Include="EventApi\IEventRestApi.cs" />
+    <Compile Include="EventTypeApi\IEventTypeRestApi.cs" />
+    <Compile Include="EventVoteApi\IEventVoteRestApi.cs" />
+    <Compile Include="EventVoteScheduleApi\IEventVoteScheduleRestApi.cs" />
+    <Compile Include="NotificationApi\INotificationRestApi.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -45,9 +49,6 @@
     <Reference Include="System.Net.Http.Extensions">
       <HintPath>..\..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net45+win8+wpa81\System.Net.Http.Extensions.dll</HintPath>
     </Reference>
-    <Reference Include="System.Net.Http.Primitives">
-      <HintPath>..\..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net45+win8+wpa81\System.Net.Http.Primitives.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\packages\Newtonsoft.Json.6.0.4\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -55,13 +56,20 @@
       <HintPath>..\..\packages\Microsoft.Azure.Mobile.Client.3.1.0\lib\portable-win+net45+wp8+wpa81+monotouch+monoandroid\Microsoft.WindowsAzure.Mobile.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Primitives">
+      <HintPath>..\..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net45+win8+wpa81\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="PurchaseOrdersApi\" />
     <Folder Include="CloudUtils\" />
     <Folder Include="MeasurementsApi\" />
-    <Folder Include="User\" />
-    <Folder Include="EventVote\" />
+    <Folder Include="UserApi\" />
+    <Folder Include="EventApi\" />
+    <Folder Include="EventTypeApi\" />
+    <Folder Include="EventVoteApi\" />
+    <Folder Include="EventVoteScheduleApi\" />
+    <Folder Include="NotificationApi\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\TEKUtsav.Models\TEKUtsav.Models.csproj">
