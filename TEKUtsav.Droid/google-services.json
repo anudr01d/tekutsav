@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "389646847842",
+    "firebase_url": "https://tekutsav-7b565.firebaseio.com",
+    "project_id": "tekutsav-7b565",
+    "storage_bucket": "tekutsav-7b565.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:389646847842:android:24dd2f41baddc8cb",
+        "android_client_info": {
+          "package_name": "com.teksystems.tekutsav"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "389646847842-0b252uapmubtilpcfj70d4ki4mf40hc1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-3uePhl0BTgtEskag5K1UEV-YmpmajQI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -44,6 +44,7 @@
     <Compile Include="AdminSettingsPage\AdminSettingsPageViewModel.cs" />
     <Compile Include="VotingPage\VotingPageViewModel.cs" />
     <Compile Include="SingleSelectionPage\SingleSelectionPageViewModel.cs" />
+    <Compile Include="Firebase\FireBasePush.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BaseViewModel\" />
@@ -59,6 +60,7 @@
     <Folder Include="AdminSettingsPage\" />
     <Folder Include="VotingPage\" />
     <Folder Include="SingleSelectionPage\" />
+    <Folder Include="Firebase\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">
@@ -101,6 +103,10 @@
     <ProjectReference Include="..\TEKUtsav.Models\TEKUtsav.Models.csproj">
       <Project>{6961753D-62F6-45D1-A2D1-09ADD19D140E}</Project>
       <Name>TEKUtsav.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TEKUtsav.Business\TEKUtsav.Ral.Impl\TEKUtsav.Ral.Impl.csproj">
+      <Project>{7CBA34E6-E680-4C0F-B1F9-677F4A359AC2}</Project>
+      <Name>TEKUtsav.Ral.Impl</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
