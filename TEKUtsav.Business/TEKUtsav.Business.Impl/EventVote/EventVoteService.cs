@@ -15,10 +15,10 @@ namespace TEKUtsav.Business.EventVote
             _eventvoteRestApi = eventvoteRestApi;
         }
 
-        public async Task<int> CaptureUserVote(DSUser.EventVote eventvote)
-        {
-            return await _eventvoteRestApi.CaptureUserVote(eventvote);
-        }
+        //public async Task<int> CaptureUserVote(DSUser.EventVote eventvote)
+        //{
+        //    return await _eventvoteRestApi.CaptureUserVote(eventvote);
+        //}
 
         public async Task<int> CheckIfUserHasVoted(string eventTypeId, string UDID)
         {

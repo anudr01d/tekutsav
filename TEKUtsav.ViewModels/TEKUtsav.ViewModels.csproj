@@ -34,9 +34,7 @@
     <Compile Include="LoginPage\LoginPageViewModel.cs" />
     <Compile Include="MasterMenuPage\MasterMenuPageViewModel.cs" />
     <Compile Include="WarehousePurchaseOrderDetailsPage\PurchaseOrderDetailsPageViewModel.cs" />
-    <Compile Include="ApplistingPage\AppListingPageViewModel.cs" />
     <Compile Include="WarehouseMeasurementPage\MeasurementPageViewModel.cs" />
-    <Compile Include="AppListingMasterMenuPage\AppListingMasterMenuPageViewModel.cs" />
     <Compile Include="WarehouseMultiSelectionPage\MultiSelectionPageViewModel.cs" />
     <Compile Include="ScannerPage\ScannerPageViewModel.cs" />
     <Compile Include="WarehouseRejectPopupPage\RejectPopupPageViewModel.cs" />
@@ -54,7 +52,6 @@
     <Folder Include="LoginPage\" />
     <Folder Include="MasterMenuPage\" />
     <Folder Include="WarehousePurchaseOrderDetailsPage\" />
-    <Folder Include="ApplistingPage\" />
     <Folder Include="WarehouseMeasurementPage\" />
     <Folder Include="WarehouseMultiSelectionPage\" />
     <Folder Include="ScannerPage\" />

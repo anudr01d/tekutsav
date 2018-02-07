@@ -1,6 +1,4 @@
-﻿
-
-namespace TEKUtsav.Mobile.Service.Domain.DataObjects
+﻿namespace TEKUtsav.Mobile.Service.Domain.DataObjects
 {
     public class Event : BaseModel
     {
