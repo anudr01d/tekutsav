@@ -117,6 +117,7 @@ namespace TEKUtsav.ViewModels.MasterMenuPage
             this.SettingsCommand = new Command(() =>
             {
                 _navigationService.NavigateTo(TEKUtsavAppPage.AdminSettingsPage);
+                _navigationService.CloseMenu();
             }
             , () => true);
             

@@ -41,14 +41,8 @@
     <Compile Include="WarehousePurchaseOrderDetailsPage\PurchaseOrderDetailsPage.xaml.cs">
       <DependentUpon>PurchaseOrderDetailsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AppListingPage\AppListingPage.xaml.cs">
-      <DependentUpon>AppListingPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="WarehouseMeasurementPage\MeasurementPage.xaml.cs">
       <DependentUpon>MeasurementPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="AppListingMasterMenuPage\AppListingMasterMenuPage.xaml.cs">
-      <DependentUpon>AppListingMasterMenuPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="WarehouseScanCompletedPage\ScanCompletedPage.xaml.cs">
       <DependentUpon>ScanCompletedPage.xaml</DependentUpon>
@@ -105,15 +99,7 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="AppListingPage\AppListingPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="WarehouseMeasurementPage\MeasurementPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AppListingMasterMenuPage\AppListingMasterMenuPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -166,9 +152,7 @@
     <Folder Include="MasterMenuPage\" />
     <Folder Include="WarehouseHomePage\" />
     <Folder Include="WarehousePurchaseOrderDetailsPage\" />
-    <Folder Include="AppListingPage\" />
     <Folder Include="WarehouseMeasurementPage\" />
-    <Folder Include="AppListingMasterMenuPage\" />
     <Folder Include="WarehouseScanCompletedPage\" />
     <Folder Include="WarehouseMultiSelectionPage\" />
     <Folder Include="ScannerPage\" />
