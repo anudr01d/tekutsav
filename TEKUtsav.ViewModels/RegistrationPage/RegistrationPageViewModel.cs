@@ -13,6 +13,7 @@ using TEKUtsav.Models.Entities;
 using TEKUtsav.Infrastructure.Constants;
 using TEKUtsav.Infrastructure;
 using TEKUtsav.Business.Measurements;
+using Plugin.DeviceInfo;
 
 namespace TEKUtsav.ViewModels.RegistrationPage
 {
@@ -28,6 +29,8 @@ namespace TEKUtsav.ViewModels.RegistrationPage
             get { return _registerClickedCommand; }
 			protected set
 			{
+                var deviceId = CrossDeviceInfo.Current.Id; // Fetches the unique device Id
+
                 _registerClickedCommand = value;
                 OnPropertyChanged("RegisterClickedCommand");
 			}
@@ -49,7 +52,8 @@ namespace TEKUtsav.ViewModels.RegistrationPage
                 _navigationService.NavigateTo(TEKUtsavAppPage.MasterMenuPage);
 			});
 
-			
+            var v = CrossDeviceInfo.Current.Id;
+
 			Task.Run(() => { });
 		}
 
