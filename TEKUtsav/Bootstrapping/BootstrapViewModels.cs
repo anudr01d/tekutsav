@@ -2,9 +2,7 @@
 using TEKUtsav.ViewModels.MasterMenuPage;
 using TEKUtsav.ViewModels.HomePage;
 using TEKUtsav.ViewModels.PurchaseOrderDetailsPage;
-using TEKUtsav.ViewModels.AppListingPage;
 using TEKUtsav.ViewModels.MeasurementPage;
-using TEKUtsav.ViewModels.AppListingMasterMenuPage;
 using TEKUtsav.ViewModels.MultiSelectionPage;
 using TEKUtsav.ViewModels.RejectPopup;
 using TEKUtsav.ViewModels.WorkFlowCompletedPopupPage;
@@ -28,11 +26,9 @@ namespace TEKUtsav.Bootstrapping
             builder.RegisterType<VotingPageViewModel>();
             builder.RegisterType<AdminSettingsPageViewModel>();
 
-			builder.RegisterType<AppListingMasterMenuPageViewModel>();
 			builder.RegisterType<MasterMenuPageViewModel>();
             builder.RegisterType<HomePageViewModel>();
 			builder.RegisterType<PurchaseOrderDetailsPageViewModel>();
-			builder.RegisterType<AppListingPageViewModel>();
 			builder.RegisterType<MeasurementPageViewModel>();
 			builder.RegisterType<RejectPopupPageViewModel>();
 			builder.RegisterType<WorkFlowCompletedPopupPageViewModel>();

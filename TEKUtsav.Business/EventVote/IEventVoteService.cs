@@ -6,7 +6,7 @@ namespace TEKUtsav.Business.EventVote
 {
     public interface IEventVoteService
     {
-        Task<int> CaptureUserVote(DS.EventVote eventvote);
+        //Task<int> CaptureUserVote(DS.EventVote eventvote);
         Task<int> CheckIfUserHasVoted(string eventTypeId, string UDID);
         Task<List<DS.EventWinner>> ComputeEventWinner(string eventTypeId);
     }

@@ -6,6 +6,6 @@ namespace TEKUtsav.Ral.EventVoteApi
 {
     public interface IEventVoteRestApi
     {
-        Task<int> CaptureUserVote(DS.EventVote eventvote);         Task<int> CheckIfUserHasVoted(string eventTypeId, string UDID);         Task<List<DS.EventWinner>> ComputeEventWinner(string eventTypeId);
+        //Task<int> CaptureUserVote(DS.EventVote eventvote);         Task<int> CheckIfUserHasVoted(string eventTypeId, string UDID);         Task<List<DS.EventWinner>> ComputeEventWinner(string eventTypeId);
     }
 }

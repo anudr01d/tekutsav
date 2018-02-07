@@ -26,12 +26,12 @@ namespace TEKUtsav.Ral.Impl.EventVote
             _cloudService = cloudService;
             _azureClient = azureClient;
         }
-        public async Task<int> CaptureUserVote(DS.EventVote eventvotes)
-        {
-            var client = _azureClient.GetClient(string.Empty, string.Empty, string.Empty);
-            var poFlow = await _cloudService.InvokeApiAsyncPostData<DS.EventVote,int>(client, Globals.MEASUREMENTS_API, eventvotes);
-            return poFlow;
-        }
+        //public async Task<int> CaptureUserVote(DS.EventVote eventvotes)
+        //{
+        //    var client = _azureClient.GetClient(string.Empty, string.Empty, string.Empty);
+        //    var poFlow = await _cloudService.InvokeApiAsyncPostData<DS.EventVote,int>(client, Globals.MEASUREMENTS_API, eventvotes);
+        //    return poFlow;
+        //}
         public Task<int> CheckIfUserHasVoted(string eventTypeId, string UDID)
         {
             var client = _azureClient.GetClient(string.Empty, string.Empty, string.Empty);

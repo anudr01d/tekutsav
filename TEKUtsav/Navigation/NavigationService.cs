@@ -12,8 +12,6 @@ using ZXing.Net.Mobile.Forms;
 using TEKUtsav.Views.MasterMenuPage;
 using TEKUtsav.ViewModels.MasterMenuPage;
 using TEKUtsav.ViewModels.BaseViewModel;
-using TEKUtsav.ViewModels.AppListingMasterMenuPage;
-using TEKUtsav.Views.AppListingMasterMenuPage;
 
 namespace TEKUtsav.Navigation
 {
@@ -111,80 +109,6 @@ namespace TEKUtsav.Navigation
 			return rootPage;
 		}
 
-		private MasterDetailPage SetAppListingMasterDetailPage()
-		{
-			var rootPage = new MasterDetailPage();
-
-			var detailPage = _pageRegistry.GetPage(TEKUtsavAppPage.AppListingPage) as Views.AppListingPage.AppListingPage;
-
-			var masterPage = _pageRegistry.GetPage(TEKUtsavAppPage.AppListingMasterMenuPage) as AppListingMasterMenuPage;
-			if (masterPage == null) throw new NullReferenceException("MasterMenuPage not found in PageRegistry");
-
-
-			rootPage.IsPresentedChanged += (object sender, EventArgs e) =>
-			{
-				if (Device.RuntimePlatform == Device.iOS)
-				{
-					if (rootPage.IsPresented)
-					{
-						var currentPage = (Views.AppListingPage.AppListingPage)((NavigationPage)rootPage.Detail).CurrentPage;
-						origPageBgColor = currentPage.BackgroundColor;
-						origContentBgColor = currentPage.Content.BackgroundColor;
-						currentPage.BackgroundColor = Color.Black;
-						currentPage.Content.FadeTo(0.5);
-						if (currentPage.Content.BackgroundColor == Color.Default)
-						{
-							currentPage.Content.BackgroundColor = Color.White;
-						}
-					}
-					else
-					{
-						var currentPage = (Views.AppListingPage.AppListingPage)((NavigationPage)rootPage.Detail).CurrentPage;
-						currentPage.BackgroundColor = origPageBgColor;
-						currentPage.Content.BackgroundColor = origContentBgColor;
-						currentPage.Content.FadeTo(1.0);
-					}
-				}
-			};
-
-			masterPage.Title = "Menu";
-			var masterPageViewModel = masterPage.BindingContext as AppListingMasterMenuPageViewModel;
-			if (masterPageViewModel == null) throw new NullReferenceException("MasterMenuPageViewModel not set for MasterMenuPage");
-			masterPageViewModel.MenuItemSelectionChanged = (requestedPage) =>
-			{
-				//Do not navigate to the same page
-				if(_currentPage != requestedPage)
-					{
-						NavigateTo(requestedPage);
-					}
-					rootPage.IsPresented = false;
-				};
-
-				rootPage.Master = masterPage;
-
-				Device.OnPlatform(
-				Android: () =>
-				{
-					rootPage.IsGestureEnabled = true;
-				},
-					iOS: () =>
-				{
-					rootPage.IsGestureEnabled = false;
-				}
-				);
-
-				var navigationPage = new NavigationPage(detailPage)
-				{
-					BarBackgroundColor = Xamarin.Forms.Color.FromHex("#fff"),
-					BarTextColor = Xamarin.Forms.Color.FromHex("#990000")
-				};
-			rootPage.Detail = navigationPage;
-
-			return rootPage;
-		}
-
-
-
 		public void CloseMenu()
 		{
 			var masterDetail = (MasterDetailPage)Application.Current.MainPage;
@@ -207,13 +131,6 @@ namespace TEKUtsav.Navigation
                 Application.Current.MainPage = SetRegistrationPage();
                 return;
             }
-
-			if (page == TEKUtsavAppPage.AppListingMasterMenuPage)
-			{
-				_currentPage = page;
-				Application.Current.MainPage = SetAppListingMasterDetailPage();
-				return;
-			}
 
 			if (page == TEKUtsavAppPage.MasterMenuPage)
 			{

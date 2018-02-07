@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Autofac;
 using TEKUtsav.Infrastructure.Navigation;
 using TEKUtsav.Infrastructure.Presentation;
-using TEKUtsav.ViewModels.AppListingPage;
 using TEKUtsav.ViewModels.HomePage;
 using TEKUtsav.ViewModels.MeasurementPage;
 
@@ -15,8 +14,6 @@ using TEKUtsav.ViewModels.PurchaseOrderDetailsPage;
 using TEKUtsav.ViewModels.RejectPopup;
 using TEKUtsav.ViewModels.WarehouseApprovalPopup;
 using TEKUtsav.ViewModels.WorkFlowCompletedPopupPage;
-using TEKUtsav.Views.AppListingMasterMenuPage;
-using TEKUtsav.Views.AppListingPage;
 using TEKUtsav.Views.HomePage;
 
 using TEKUtsav.Views.MasterMenuPage;
@@ -26,7 +23,6 @@ using TEKUtsav.Views.PurchaseOrderDetailsPage;
 using TEKUtsav.Views.RejectPopupPage;
 using TEKUtsav.Views.WarehouseApprovalPopup;
 using TEKUtsav.Views.WorkFlowCompletedPopupPage;
-using TEKUtsav.ViewModels.AppListingMasterMenuPage;
 using TEKUtsav.ViewModels.MasterMenuPage;
 
 using TEKUtsav.ViewModels.LoginPage;
@@ -56,9 +52,7 @@ namespace TEKUtsav.Bootstrapping
             registry.RegisterPage(TEKUtsavAppPage.AdminSettingsPage, typeof(AdminSettingsPage), typeof(AdminSettingsPageViewModel));
 
 
-            registry.RegisterPage(TEKUtsavAppPage.AppListingMasterMenuPage, typeof(AppListingMasterMenuPage), typeof(AppListingMasterMenuPageViewModel));
             registry.RegisterPage(TEKUtsavAppPage.MasterMenuPage, typeof(MasterMenuPage), typeof(MasterMenuPageViewModel));
-			registry.RegisterPage(TEKUtsavAppPage.AppListingPage, typeof(AppListingPage), typeof(AppListingPageViewModel));
             registry.RegisterPage(TEKUtsavAppPage.HomePage, typeof(HomePage), typeof(HomePageViewModel));
 			registry.RegisterPage(TEKUtsavAppPage.PurchaseOrderDetails, typeof(PurchaseOrderDetailsPage), typeof(PurchaseOrderDetailsPageViewModel));
 			registry.RegisterPage(TEKUtsavAppPage.MeasurementPage, typeof(MeasurementPage), typeof(MeasurementPageViewModel));
