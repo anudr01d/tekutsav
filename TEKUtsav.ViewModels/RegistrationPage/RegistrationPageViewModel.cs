@@ -13,60 +13,77 @@ using TEKUtsav.Models.Entities;
 using TEKUtsav.Infrastructure.Constants;
 using TEKUtsav.Infrastructure;
 using TEKUtsav.Business.Measurements;
+using TEKUtsav.Models.FireBase;
+
 using Plugin.DeviceInfo;
 
 namespace TEKUtsav.ViewModels.RegistrationPage
 {
-	public class RegistrationPageViewModel : ViewModelBase
-	{
-		private readonly INavigationService _navigationService;
-		private readonly ISettings _settings;
-		private bool clicked = false;
-		private ICommand _menuClickCommand, _registerClickedCommand;
+    public class RegistrationPageViewModel : ViewModelBase
+    {
+        private readonly INavigationService _navigationService;
+        private readonly ISettings _settings;
+        private bool clicked = false;
+        private ICommand _menuClickCommand, _registerClickedCommand;
 
-		public ICommand RegisterClickedCommand
-		{
+        public ICommand RegisterClickedCommand
+        {
             get { return _registerClickedCommand; }
-			protected set
-			{
-                var deviceId = CrossDeviceInfo.Current.Id; // Fetches the unique device Id
+            protected set
+            {
+                var deviceId = CrossDeviceInfo.Current.Id; // Fetches the unique device Id...
+                FireBasePush push = new FireBasePush(Globals.FIREBASE_SERVER_KEY);
+                push.SendPush(new PushMessage
+                {
+                    to =  "/topics/news",
+                    notification = new PushMessageData
+                    {
+                        title = "Dance",
+                        text = "Event Started",
+                        click_action = "click_action"
+                    },
+                    data = new
+                    {
+                        example = "this is a example"
+                    }
+                });
 
                 _registerClickedCommand = value;
                 OnPropertyChanged("RegisterClickedCommand");
-			}
-		}
+            }
+        }
 
         public RegistrationPageViewModel(INavigationService navigationService, ISettings settings) : base(navigationService, settings)
-		{
-			if (navigationService == null) throw new ArgumentNullException("navigationService");
-			if (settings == null) throw new ArgumentNullException("settings");
-			_navigationService = navigationService;
-			_settings = settings;
-		}
+        {
+            if (navigationService == null) throw new ArgumentNullException("navigationService");
+            if (settings == null) throw new ArgumentNullException("settings");
+            _navigationService = navigationService;
+            _settings = settings;
+        }
 
-		public override async Task OnViewAppearing(object navigationParams = null)
-		{
-			this.SetCurrentPage(TEKUtsavAppPage.RegistrationPage);
+        public override async Task OnViewAppearing(object navigationParams = null)
+        {
+            this.SetCurrentPage(TEKUtsavAppPage.RegistrationPage);
            
             this.RegisterClickedCommand = new Command(() => {
                 _navigationService.NavigateTo(TEKUtsavAppPage.MasterMenuPage);
-			});
+            });
 
             var v = CrossDeviceInfo.Current.Id;
 
-			Task.Run(() => { });
-		}
+            Task.Run(() => { });
+        }
 
-	
+    
 
-		public override Task OnViewDisappearing()
-		{
-			return Task.Run(() => { });
-		}
+        public override Task OnViewDisappearing()
+        {
+            return Task.Run(() => { });
+        }
 
-		public override void Dispose()
-		{
-			
-		}
-	}
+        public override void Dispose()
+        {
+            
+        }
+    }
 }
