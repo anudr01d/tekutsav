@@ -20,10 +20,27 @@
             </Image>
         </ContentView>
         <StackLayout BackgroundColor="#f5f5f5" Padding="0,0,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical">
-            <ContentView Padding="0,0,0,0" HorizontalOptions="CenterAndExpand">
-                <controls:TEKUtsavLabel Text="Choose your LOCATION" FontType="Bold" TextColor="#818181" FontSize="14">
-                </controls:TEKUtsavLabel>
-            </ContentView>
+            <StackLayout Orientation="Horizontal">
+                <ContentView Padding="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                    <controls:TEKUtsavLabel Text="Choose your" FontType="Bold" TextColor="#818181" FontSize="16">
+                    </controls:TEKUtsavLabel>
+                </ContentView>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding LocationClickedCommand}" CommandParameter="LocationParam" />
+                </StackLayout.GestureRecognizers>
+                <ContentView Padding="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                    <controls:TEKUtsavLabel 
+                            VerticalOptions="Center" 
+                            HorizontalOptions="Center" 
+                            BackgroundColor="Transparent" 
+                            FontType="Regular" 
+                            Text="{Binding Location}"
+                            TextColor="#0000FF"
+                            FontSize="16">
+                    </controls:TEKUtsavLabel>
+                </ContentView>
+            </StackLayout>
+            
             <ContentView Padding="20,0,20,0">
                 <controls:TEKUtsavLabel Text="Your Name" TextColor="#818181" FontSize="14">
                 </controls:TEKUtsavLabel>

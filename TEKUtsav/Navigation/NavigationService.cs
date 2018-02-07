@@ -49,28 +49,28 @@ namespace TEKUtsav.Navigation
 
 			rootPage.IsPresentedChanged += (object sender, EventArgs e) =>
 			{
-				if (Device.RuntimePlatform == Device.iOS)
-				{
-					if (rootPage.IsPresented)
-					{
-						var currentPage = (Views.HomePage.HomePage)((NavigationPage)rootPage.Detail).CurrentPage;
-						origPageBgColor = currentPage.BackgroundColor;
-						origContentBgColor = currentPage.Content.BackgroundColor;
-						currentPage.BackgroundColor = Color.Black;
-						currentPage.Content.FadeTo(0.5);
-						if (currentPage.Content.BackgroundColor == Color.Default)
-						{
-							currentPage.Content.BackgroundColor = Color.White;
-						}
-					}
-					else
-					{
-						var currentPage = (Views.HomePage.HomePage)((NavigationPage)rootPage.Detail).CurrentPage;
-						currentPage.BackgroundColor = origPageBgColor;
-						currentPage.Content.BackgroundColor = origContentBgColor;
-						currentPage.Content.FadeTo(1.0);
-					}
-				}
+				//if (Device.RuntimePlatform == Device.iOS)
+				//{
+				//	if (rootPage.IsPresented)
+				//	{
+				//		var currentPage = (Views.HomePage.HomePage)((NavigationPage)rootPage.Detail).CurrentPage;
+				//		origPageBgColor = currentPage.BackgroundColor;
+				//		origContentBgColor = currentPage.Content.BackgroundColor;
+				//		currentPage.BackgroundColor = Color.Black;
+				//		currentPage.Content.FadeTo(0.5);
+				//		if (currentPage.Content.BackgroundColor == Color.Default)
+				//		{
+				//			currentPage.Content.BackgroundColor = Color.White;
+				//		}
+				//	}
+				//	else
+				//	{
+				//		var currentPage = (Views.HomePage.HomePage)((NavigationPage)rootPage.Detail).CurrentPage;
+				//		currentPage.BackgroundColor = origPageBgColor;
+				//		currentPage.Content.BackgroundColor = origContentBgColor;
+				//		currentPage.Content.FadeTo(1.0);
+				//	}
+				//}
 			};
 
 
@@ -224,12 +224,12 @@ namespace TEKUtsav.Navigation
 		public void ShowPopup(TEKUtsavAppPage page, object navigationParams = null)
 		{
 			var requestedPage = (PopupPage)_pageRegistry.GetPage(page, navigationParams);
-			var masterDetail = (MasterDetailPage)Application.Current.MainPage;
+            var masterDetail = (TEKUtsav.Views.RegistrationPage.RegistrationPage)Application.Current.MainPage;  
 			if (masterDetail != null)
 			{
 				if (!PopupNavigation.PopupStack.Any())
 				{
-					masterDetail.Detail.Navigation.PushPopupAsync(requestedPage);
+					masterDetail.Navigation.PushPopupAsync(requestedPage);
 				}
 			}
 		}

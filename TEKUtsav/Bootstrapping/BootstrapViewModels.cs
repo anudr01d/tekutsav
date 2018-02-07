@@ -13,6 +13,7 @@ using TEKUtsav.ViewModels.RegistrationPage;
 using TEKUtsav.ViewModels.NotificationsPage;
 using TEKUtsav.ViewModels.VotingPage;
 using TEKUtsav.ViewModels.AdminSettingsPage;
+using TEKUtsav.ViewModels.SingleSelectionPage;
 
 namespace TEKUtsav.Bootstrapping
 {
@@ -25,6 +26,7 @@ namespace TEKUtsav.Bootstrapping
             builder.RegisterType<NotificationsPageViewModel>();
             builder.RegisterType<VotingPageViewModel>();
             builder.RegisterType<AdminSettingsPageViewModel>();
+            builder.RegisterType<SingleSelectionPageViewModel>();
 
 			builder.RegisterType<MasterMenuPageViewModel>();
             builder.RegisterType<HomePageViewModel>();

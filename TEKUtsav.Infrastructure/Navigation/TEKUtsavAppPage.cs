@@ -13,6 +13,7 @@ namespace TEKUtsav.Infrastructure.Navigation
         NotificationsPage,
         AdminSettingsPage,
         VotingPage,
+        SingleSelectionPage,
 
 		AppListingMasterMenuPage,
 		AppListingPage,

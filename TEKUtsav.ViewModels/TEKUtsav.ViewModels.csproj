@@ -36,7 +36,6 @@
     <Compile Include="WarehousePurchaseOrderDetailsPage\PurchaseOrderDetailsPageViewModel.cs" />
     <Compile Include="WarehouseMeasurementPage\MeasurementPageViewModel.cs" />
     <Compile Include="WarehouseMultiSelectionPage\MultiSelectionPageViewModel.cs" />
-    <Compile Include="ScannerPage\ScannerPageViewModel.cs" />
     <Compile Include="WarehouseRejectPopupPage\RejectPopupPageViewModel.cs" />
     <Compile Include="WarehouseWorkflowCompletedPopupPage\WorkFlowCompletedPopupPageViewModel.cs" />
     <Compile Include="WarehouseApprovalPopup\WarehouseApprovalPopupViewModel.cs" />
@@ -44,6 +43,7 @@
     <Compile Include="NotificationsPage\NotificationsPageViewModel.cs" />
     <Compile Include="AdminSettingsPage\AdminSettingsPageViewModel.cs" />
     <Compile Include="VotingPage\VotingPageViewModel.cs" />
+    <Compile Include="SingleSelectionPage\SingleSelectionPageViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BaseViewModel\" />
@@ -53,12 +53,12 @@
     <Folder Include="WarehousePurchaseOrderDetailsPage\" />
     <Folder Include="WarehouseMeasurementPage\" />
     <Folder Include="WarehouseMultiSelectionPage\" />
-    <Folder Include="ScannerPage\" />
     <Folder Include="WarehouseRejectPopupPage\" />
     <Folder Include="RegistrationPage\" />
     <Folder Include="NotificationsPage\" />
     <Folder Include="AdminSettingsPage\" />
     <Folder Include="VotingPage\" />
+    <Folder Include="SingleSelectionPage\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">

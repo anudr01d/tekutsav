@@ -22,19 +22,38 @@ namespace TEKUtsav.ViewModels.RegistrationPage
 		private readonly INavigationService _navigationService;
 		private readonly ISettings _settings;
 		private bool clicked = false;
-		private ICommand _menuClickCommand, _registerClickedCommand;
+		private ICommand _locationClickedCommand, _registerClickedCommand;
+        private string _location;
 
 		public ICommand RegisterClickedCommand
 		{
             get { return _registerClickedCommand; }
 			protected set
 			{
-                var deviceId = CrossDeviceInfo.Current.Id; // Fetches the unique device Id
-
                 _registerClickedCommand = value;
                 OnPropertyChanged("RegisterClickedCommand");
 			}
 		}
+
+        public ICommand LocationClickedCommand
+        {
+            get { return _locationClickedCommand; }
+            protected set
+            {
+                _locationClickedCommand = value;
+                OnPropertyChanged("LocationClickedCommand");
+            }
+        }
+
+        public string Location
+        {
+            get { return _location; }
+            protected set
+            {
+                _location = value;
+                OnPropertyChanged("Location");
+            }
+        }
 
         public RegistrationPageViewModel(INavigationService navigationService, ISettings settings) : base(navigationService, settings)
 		{
@@ -52,12 +71,28 @@ namespace TEKUtsav.ViewModels.RegistrationPage
                 _navigationService.NavigateTo(TEKUtsavAppPage.MasterMenuPage);
 			});
 
+            this.LocationClickedCommand = new Command(() => {
+                _navigationService.ShowPopup(TEKUtsavAppPage.SingleSelectionPage, Globals.LOCATION);
+            });
+
             var v = CrossDeviceInfo.Current.Id;
+
+
+            this.Location = "Location";
+            MessagingCenter.Subscribe<SingleSelectionItem>(this, Globals.SINGLE_SELECTION, (args) =>
+            {
+                if(args.Name!=null) 
+                {
+                    this.Location = args.Name;   
+                }
+            });
 
 			Task.Run(() => { });
 		}
 
 	
+
+
 
 		public override Task OnViewDisappearing()
 		{
@@ -66,7 +101,7 @@ namespace TEKUtsav.ViewModels.RegistrationPage
 
 		public override void Dispose()
 		{
-			
+            MessagingCenter.Unsubscribe<SingleSelectionItem>(this, Globals.SINGLE_SELECTION);	
 		}
 	}
 }

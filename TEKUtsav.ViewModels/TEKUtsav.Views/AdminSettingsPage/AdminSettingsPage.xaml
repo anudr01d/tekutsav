@@ -6,7 +6,7 @@
 	xmlns:local="clr-namespace:TEKUtsav.UIControls.MarkupExtensions;assembly=TEKUtsav.UIControls"
 	xmlns:vc="clr-namespace:TEKUtsav.UIControls.ValueConverters;assembly=TEKUtsav.UIControls" 
 	xmlns:imgcontrols="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions" 
-	BackgroundColor="#ffffff" Title="Admin Notifications" 
+	BackgroundColor="#ffffff" Title="Admin Settings" 
 	x:Class="TEKUtsav.Views.AdminSettingsPage.AdminSettingsPage">
  	<ContentPage.Resources>
 			<ResourceDictionary>
@@ -15,14 +15,48 @@
 				<local:Inverter x:Key="Inverter" />
 			</ResourceDictionary>
 	</ContentPage.Resources>
-
-    <StackLayout Orientation="Vertical" BackgroundColor="#FFFFFF" Padding="10,10,10,10" Spacing="0" VerticalOptions="CenterAndExpand">
-        <Label Text="Enable Voting Lines" TextColor="#F6304E" FontSize="18" FontFamily="Helvetica" HorizontalOptions="StartAndExpand">
-        </Label>
-        <Label Text="Some description" TextColor="#CDCDCD" FontSize="13" FontFamily="Helvetica" HorizontalOptions="StartAndExpand">
-        </Label>
-        <ContentView HorizontalOptions="EndAndExpand" Padding="0,10,10,10">
-            <Switch IsToggled="{Binding RememberLastUser}"></Switch>
+    <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand">
+        <StackLayout Orientation="Horizontal" BackgroundColor="#FFFFFF" Padding="20,10,10,10" Spacing="0" VerticalOptions="StartAndExpand">
+            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                <Label Text="Enable Dance Voting Lines" TextColor="#F6304E" FontSize="18" FontFamily="Helvetica" HorizontalOptions="StartAndExpand">
+                </Label>
+                <Label Text="Some description" TextColor="#CDCDCD" FontSize="13" FontFamily="Helvetica" HorizontalOptions="StartAndExpand">
+                </Label>
+            </StackLayout>
+            <ContentView HorizontalOptions="EndAndExpand" Padding="0,10,10,10">
+                <Switch IsToggled="{Binding RememberLastUser}"></Switch>
+            </ContentView>
+        </StackLayout>
+        <ContentView>
+            <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" BackgroundColor="#818181"></BoxView>
+        </ContentView>
+        <StackLayout Orientation="Horizontal" BackgroundColor="#FFFFFF" Padding="10,10,10,10" Spacing="0" VerticalOptions="StartAndExpand">
+            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                <Label Text="Enable Fashion Show Voting Lines" TextColor="#F6304E" FontSize="18" FontFamily="Helvetica" HorizontalOptions="StartAndExpand">
+                </Label>
+                <Label Text="Some description" TextColor="#CDCDCD" FontSize="13" FontFamily="Helvetica" HorizontalOptions="StartAndExpand">
+                </Label>
+            </StackLayout>
+            <ContentView HorizontalOptions="EndAndExpand" Padding="0,10,10,10">
+                <Switch IsToggled="{Binding RememberLastUser}"></Switch>
+            </ContentView>
+        </StackLayout>
+        <ContentView>
+            <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" BackgroundColor="#818181"></BoxView>
+        </ContentView>
+        <StackLayout Orientation="Horizontal" BackgroundColor="#FFFFFF" Padding="10,10,10,10" Spacing="0" VerticalOptions="StartAndExpand">
+            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                <Label Text="Enable Special Events Voting Lines" TextColor="#F6304E" FontSize="18" FontFamily="Helvetica" HorizontalOptions="StartAndExpand">
+                </Label>
+                <Label Text="Some description" TextColor="#CDCDCD" FontSize="13" FontFamily="Helvetica" HorizontalOptions="StartAndExpand">
+                </Label>
+            </StackLayout>
+            <ContentView HorizontalOptions="EndAndExpand" Padding="0,10,10,10">
+                <Switch IsToggled="{Binding RememberLastUser}"></Switch>
+            </ContentView>
+        </StackLayout>
+        <ContentView>
+            <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" BackgroundColor="#818181"></BoxView>
         </ContentView>
     </StackLayout>
 </controls:TEKUtsavContentPage>

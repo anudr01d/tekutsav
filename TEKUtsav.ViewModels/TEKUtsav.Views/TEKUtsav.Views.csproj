@@ -50,7 +50,6 @@
     <Compile Include="WarehouseMultiSelectionPage\MultiSelectionPage.xaml.cs">
       <DependentUpon>MultiSelectionPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ScannerPage\ScannerPage.cs" />
     <Compile Include="WarehouseRejectPopupPage\RejectPopup.xaml.cs">
       <DependentUpon>RejectPopup.xaml</DependentUpon>
     </Compile>
@@ -80,6 +79,9 @@
     </Compile>
     <Compile Include="VotingPage\SePage.xaml.cs">
       <DependentUpon>SePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SingleSelectionPage\SingleSelectionPage.xaml.cs">
+      <DependentUpon>..\..\..\..\..\Huntsman\SourceCode\Huntsman.Mobile.Views\SingleSelectionPage\SingleSelectionPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -146,6 +148,10 @@
     <EmbeddedResource Include="VotingPage\SePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="SingleSelectionPage\SingleSelectionPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="LoginPage\" />
@@ -155,7 +161,6 @@
     <Folder Include="WarehouseMeasurementPage\" />
     <Folder Include="WarehouseScanCompletedPage\" />
     <Folder Include="WarehouseMultiSelectionPage\" />
-    <Folder Include="ScannerPage\" />
     <Folder Include="WarehouseRejectPopupPage\" />
     <Folder Include="WarehouseWorkFlowCompletedPopupPage\" />
     <Folder Include="WarehouseApprovalPopupPage\" />
@@ -163,6 +168,7 @@
     <Folder Include="NotificationsPage\" />
     <Folder Include="AdminSettingsPage\" />
     <Folder Include="VotingPage\" />
+    <Folder Include="SingleSelectionPage\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">

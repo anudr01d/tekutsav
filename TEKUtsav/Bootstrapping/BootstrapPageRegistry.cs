@@ -36,6 +36,8 @@ using TEKUtsav.Views.VotingPage;
 using TEKUtsav.ViewModels.VotingPage;
 using TEKUtsav.Views.AdminSettingsPage;
 using TEKUtsav.ViewModels.AdminSettingsPage;
+using TEKUtsav.Views.SingleSelectionPage;
+using TEKUtsav.ViewModels.SingleSelectionPage;
 
 namespace TEKUtsav.Bootstrapping
 {
@@ -50,6 +52,8 @@ namespace TEKUtsav.Bootstrapping
             registry.RegisterPage(TEKUtsavAppPage.NotificationsPage, typeof(NotificationsPage), typeof(NotificationsPageViewModel));
             registry.RegisterPage(TEKUtsavAppPage.VotingPage, typeof(VotingPage), typeof(VotingPageViewModel));
             registry.RegisterPage(TEKUtsavAppPage.AdminSettingsPage, typeof(AdminSettingsPage), typeof(AdminSettingsPageViewModel));
+            registry.RegisterPage(TEKUtsavAppPage.SingleSelectionPage, typeof(SingleSelectionPage), typeof(SingleSelectionPageViewModel));
+
 
 
             registry.RegisterPage(TEKUtsavAppPage.MasterMenuPage, typeof(MasterMenuPage), typeof(MasterMenuPageViewModel));
