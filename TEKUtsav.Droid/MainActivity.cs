@@ -18,7 +18,7 @@ using Android.Util;
 
 namespace TEKUtsav.Droid
 {
-[Activity(Label = "TEKUtsav.Droid", Icon = "@drawable/icon", Theme = "@style/MainTheme", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.KeyboardHidden)]
+    [Activity(Label = "TEKUtsav.Droid", MainLauncher = true, Icon = "@drawable/icon", Theme = "@style/MainTheme", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.KeyboardHidden)]
 	public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
 	{
         const string TAG = "MainActivity";

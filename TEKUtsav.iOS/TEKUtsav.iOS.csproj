@@ -265,6 +265,9 @@
     <BundleResource Include="Resources\push%402x.png" />
     <BundleResource Include="Resources\push%403x.png" />
     <BundleResource Include="GoogleService-Info.plist" />
+    <BundleResource Include="Resources\regbg.png" />
+    <BundleResource Include="Resources\regbg%402x.png" />
+    <BundleResource Include="Resources\regbg%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TEKUtsav\TEKUtsav.csproj">

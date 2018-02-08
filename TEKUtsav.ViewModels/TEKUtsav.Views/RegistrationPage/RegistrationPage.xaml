@@ -5,6 +5,7 @@
     xmlns:controls="clr-namespace:TEKUtsav.UIControls.Controls;assembly=TEKUtsav.UIControls" 
     xmlns:local="clr-namespace:TEKUtsav.UIControls.MarkupExtensions;assembly=TEKUtsav.UIControls" 
     xmlns:vc="clr-namespace:TEKUtsav.UIControls.ValueConverters;assembly=TEKUtsav.UIControls" 
+    BackgroundImage="regbg.png"
     xmlns:imgcontrols="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions" 
     BackgroundColor="#F5F5F5" Title="Registration" x:Class="TEKUtsav.Views.RegistrationPage.RegistrationPage">
     <ContentPage.Resources>
