@@ -38,6 +38,10 @@ using TEKUtsav.Views.AdminSettingsPage;
 using TEKUtsav.ViewModels.AdminSettingsPage;
 using TEKUtsav.Views.SingleSelectionPage;
 using TEKUtsav.ViewModels.SingleSelectionPage;
+using TEKUtsav.Views.ContactDetailsPage;
+using TEKUtsav.ViewModels.ContactDetailsPage;
+using TEKUtsav.Views.EventSchedulePage;
+using TEKUtsav.ViewModels.EventSchedulePage;
 
 namespace TEKUtsav.Bootstrapping
 {
@@ -53,8 +57,8 @@ namespace TEKUtsav.Bootstrapping
             registry.RegisterPage(TEKUtsavAppPage.VotingPage, typeof(VotingPage), typeof(VotingPageViewModel));
             registry.RegisterPage(TEKUtsavAppPage.AdminSettingsPage, typeof(AdminSettingsPage), typeof(AdminSettingsPageViewModel));
             registry.RegisterPage(TEKUtsavAppPage.SingleSelectionPage, typeof(SingleSelectionPage), typeof(SingleSelectionPageViewModel));
-
-
+            registry.RegisterPage(TEKUtsavAppPage.ContactDetailsPage, typeof(ContactDetailsPage), typeof(ContactDetailsPageViewModel));
+            registry.RegisterPage(TEKUtsavAppPage.EventSchedulePage, typeof(EventSchedulePage), typeof(EventSchedulePageViewModel));
 
             registry.RegisterPage(TEKUtsavAppPage.MasterMenuPage, typeof(MasterMenuPage), typeof(MasterMenuPageViewModel));
             registry.RegisterPage(TEKUtsavAppPage.HomePage, typeof(HomePage), typeof(HomePageViewModel));

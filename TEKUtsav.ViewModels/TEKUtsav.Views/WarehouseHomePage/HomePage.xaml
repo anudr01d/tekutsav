@@ -46,7 +46,7 @@
                         </controls:TEKUtsavLabel>
                     </ContentView>
                     <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding MoveToNextScreenCommand}" CommandParameter="MoveScan" />
+                        <TapGestureRecognizer Command="{Binding EventLocationCommand}" CommandParameter="MoveScan" />
                     </StackLayout.GestureRecognizers>
                 </StackLayout>
                 <StackLayout Spacing="0" BackgroundColor="#C0696A" Orientation="Vertical" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
@@ -59,7 +59,7 @@
                         </controls:TEKUtsavLabel>
                     </ContentView>
                     <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding MoveToNextScreenCommand}" CommandParameter="MoveScan" />
+                        <TapGestureRecognizer Command="{Binding EventScheduleCommand}" CommandParameter="MoveScan" />
                     </StackLayout.GestureRecognizers>
                 </StackLayout>
             </StackLayout>
@@ -88,7 +88,7 @@
                         </controls:TEKUtsavLabel>
                     </ContentView>
                     <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding MoveToNextScreenCommand}" CommandParameter="MoveScan" />
+                        <TapGestureRecognizer Command="{Binding ContactDetailsCommand}" CommandParameter="MoveScan" />
                     </StackLayout.GestureRecognizers>
                 </StackLayout>
             </StackLayout>

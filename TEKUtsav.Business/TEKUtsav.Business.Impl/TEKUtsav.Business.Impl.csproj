@@ -34,7 +34,7 @@
     <Compile Include="Login\LoginBusinessService.cs" />
     <Compile Include="PurchaseOrders\PurchaseOrdersBusinessService.cs" />
     <Compile Include="Measurements\MeasurementsBusinessService.cs" />
-    <Compile Include="User\UserService.cs" />
+    <Compile Include="User\UserBusinessService.cs" />
     <Compile Include="EventVote\EventVoteService.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -60,10 +60,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TEKUtsav.Business.csproj">
-      <Project>{837DADB9-246D-4D49-92C9-6756D17564E6}</Project>
-      <Name>TEKUtsav.Business</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\TEKUtsav.Infrastructure\TEKUtsav.Infrastructure.csproj">
       <Project>{DE03F192-80A3-4754-990E-28671EB20E3A}</Project>
       <Name>TEKUtsav.Infrastructure</Name>
@@ -75,6 +71,10 @@
     <ProjectReference Include="..\TEKUtsav.Ral\TEKUtsav.Ral.csproj">
       <Project>{6E908F28-606C-4BC9-9619-24D67B13B07B}</Project>
       <Name>TEKUtsav.Ral</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TEKUtsav.Business.csproj">
+      <Project>{837DADB9-246D-4D49-92C9-6756D17564E6}</Project>
+      <Name>TEKUtsav.Business</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />

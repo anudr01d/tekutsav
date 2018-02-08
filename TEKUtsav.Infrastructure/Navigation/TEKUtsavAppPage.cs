@@ -14,6 +14,8 @@ namespace TEKUtsav.Infrastructure.Navigation
         AdminSettingsPage,
         VotingPage,
         SingleSelectionPage,
+        ContactDetailsPage,
+        EventSchedulePage,
 
 		AppListingMasterMenuPage,
 		AppListingPage,

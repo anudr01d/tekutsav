@@ -16,7 +16,7 @@ namespace TEKUtsav
         public static void Initialize(ContainerBuilder builder)
         {
             BootstrapInfrastructure.Register(builder);
-            //BootstrapBusiness.Register(builder);
+            BootstrapBusiness.Register(builder);
 			BootstrapRal.Register(builder);
 			BootstrapPageRegistry.InitializePageRegistry(builder);
             RegisterNavigationService(builder);

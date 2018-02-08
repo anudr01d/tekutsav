@@ -45,6 +45,8 @@
     <Compile Include="VotingPage\VotingPageViewModel.cs" />
     <Compile Include="SingleSelectionPage\SingleSelectionPageViewModel.cs" />
     <Compile Include="Firebase\FireBasePush.cs" />
+    <Compile Include="ContactDetailsPage\ContactDetailsPageViewModel.cs" />
+    <Compile Include="EventSchedulePage\EventSchedulePageViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BaseViewModel\" />
@@ -61,6 +63,8 @@
     <Folder Include="VotingPage\" />
     <Folder Include="SingleSelectionPage\" />
     <Folder Include="Firebase\" />
+    <Folder Include="ContactDetailsPage\" />
+    <Folder Include="EventSchedulePage\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">

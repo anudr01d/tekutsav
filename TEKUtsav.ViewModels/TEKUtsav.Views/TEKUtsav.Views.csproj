@@ -83,6 +83,12 @@
     <Compile Include="SingleSelectionPage\SingleSelectionPage.xaml.cs">
       <DependentUpon>..\..\..\..\..\Huntsman\SourceCode\Huntsman.Mobile.Views\SingleSelectionPage\SingleSelectionPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ContactDetailsPage\ContactDetailsPage.xaml.cs">
+      <DependentUpon>ContactDetailsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EventSchedulePage\EventSchedulePage.xaml.cs">
+      <DependentUpon>EventSchedulePage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="LoginPage\LoginPage.xaml">
@@ -152,6 +158,14 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="ContactDetailsPage\ContactDetailsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EventSchedulePage\EventSchedulePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="LoginPage\" />
@@ -169,6 +183,8 @@
     <Folder Include="AdminSettingsPage\" />
     <Folder Include="VotingPage\" />
     <Folder Include="SingleSelectionPage\" />
+    <Folder Include="ContactDetailsPage\" />
+    <Folder Include="EventSchedulePage\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">

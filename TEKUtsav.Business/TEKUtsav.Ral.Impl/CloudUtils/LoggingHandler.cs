@@ -16,7 +16,6 @@ namespace TEKUtsav.Infrastructure
 
 		protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, System.Threading.CancellationToken cancellationToken)
 		{
-			request.Headers.Add("Authorization", HAccountUtil.GetHAccount());
 			Debug.WriteLine("Request: {0} {1}", request.Method, request.RequestUri.ToString());
 
 			if (logRequestResponseBody && request.Content != null)

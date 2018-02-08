@@ -46,6 +46,28 @@ namespace TEKUtsav.ViewModels.HomePage
 			}
 		}
 
+        private ICommand _eventScheduleCommand;
+        public ICommand EventScheduleCommand
+        {
+            get { return _eventScheduleCommand; }
+            protected set
+            {
+                _eventScheduleCommand = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private ICommand _contactDetailsCommand;
+        public ICommand ContactDetailsCommand
+        {
+            get { return _contactDetailsCommand; }
+            protected set
+            {
+                _contactDetailsCommand = value;
+                OnPropertyChanged();
+            }
+        }
+
         private ICommand _votingCommand;
         public ICommand VotingCommand
         {
@@ -53,6 +75,17 @@ namespace TEKUtsav.ViewModels.HomePage
             protected set
             {
                 _votingCommand = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private ICommand _eventLocationCommand;
+        public ICommand EventLocationCommand
+        {
+            get { return _eventLocationCommand; }
+            protected set
+            {
+                _eventLocationCommand = value;
                 OnPropertyChanged();
             }
         }
@@ -115,22 +148,24 @@ namespace TEKUtsav.ViewModels.HomePage
 
 			await GetPurchaseOrders();
 
-            this.NotificationsCommand = new Command(async () =>
+            this.NotificationsCommand = new Command(() =>
 			{
                 _navigationService.NavigateTo(TEKUtsavAppPage.NotificationsPage);
-				//this.IsLoading = true;
-				////var syncStatus = await _purchaseOrdersBusinessService.SyncSapData();
-				//this.IsLoading = false;
-
-				//if (syncStatus)
-				//{
-				//	await GetPurchaseOrders();
-				//}
 			});
 
             this.VotingCommand = new Command(() =>
             {
                 _navigationService.NavigateTo(TEKUtsavAppPage.VotingPage);
+            });
+
+            this.EventScheduleCommand = new Command(() =>
+            {
+                _navigationService.NavigateTo(TEKUtsavAppPage.EventSchedulePage);
+            });
+
+            this.ContactDetailsCommand = new Command(() =>
+            {
+                _navigationService.NavigateTo(TEKUtsavAppPage.ContactDetailsPage);
             });
 
 			await Task.Run(() => { });

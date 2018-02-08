@@ -7,6 +7,8 @@ using TEKUtsav.Ral.ContainerConditions;
 using TEKUtsav.Ral.Measurements;
 using TEKUtsav.Ral.Impl;
 using TEKUtsav.Ral;
+using TEKUtsav.Ral.Impl.User;
+using TEKUtsav.Ral.User;
 
 namespace TEKUtsav.Bootstrapping
 {
@@ -16,6 +18,8 @@ namespace TEKUtsav.Bootstrapping
 			builder.RegisterType<CloudService>().As<ICloudService>();
 			builder.RegisterType<AzureClient>().As<IAzureClient>();
 			builder.RegisterType<PurchaseOrdersRestApi>().As<IPurchaseOrdersRestApi>();
+
+            builder.RegisterType<UserRestApi>().As<IUserRestApi>();
         }
     }
 }

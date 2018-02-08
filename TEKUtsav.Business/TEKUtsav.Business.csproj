@@ -32,7 +32,7 @@
     <Compile Include="Login\ILoginBusinessService.cs" />
     <Compile Include="PurchaseOrders\IPurchaseOrdersBusinessService.cs" />
     <Compile Include="Measurements\IMeasurementsBusinessService.cs" />
-    <Compile Include="User\IUserService.cs" />
+    <Compile Include="User\IUserBusinessService.cs" />
     <Compile Include="EventType\IEventType.cs" />
     <Compile Include="Notification\INotificationService.cs" />
     <Compile Include="Event\IEventService.cs" />

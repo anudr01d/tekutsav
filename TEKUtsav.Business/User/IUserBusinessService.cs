@@ -6,10 +6,8 @@ using DS = TEKUtsav.Mobile.Service.Domain.DataObjects;
 
 namespace TEKUtsav.Business.User
 {
-   
-            public interface IUserService
-            {
-                 Task<DS.User> RegisterUser(DS.User user);
-            }
-
+    public interface IUserBusinessService
+    {
+        Task<DS.User> RegisterUser(DS.User user);
+    }
 }

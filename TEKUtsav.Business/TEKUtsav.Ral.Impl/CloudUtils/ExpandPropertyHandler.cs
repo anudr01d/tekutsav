@@ -21,7 +21,6 @@ namespace TEKUtsav.Ral.CloutUtils.Impl
 
 		protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
 		{
-			request.Headers.Add("Authorization", HAccountUtil.GetHAccount());
 			if (request.Method.Method == HttpMethod.Get.Method &&
 				request.RequestUri.PathAndQuery.StartsWith("/tables/" + tableName, StringComparison.OrdinalIgnoreCase))
 			{
