@@ -20,9 +20,9 @@
 	</ContentPage.Resources>
     
 	<StackLayout BackgroundColor="#FFF" Orientation="Vertical" Spacing="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-        <Grid BackgroundColor="#FFF" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+        <Grid BackgroundColor="#EFEFEF" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
             <ticker:CarouselViewControl 
-                ShowArrows="true"
+                HeightRequest="200"
                 ShowIndicators="true"
                 PositionSelected="Handle_PositionSelected"
                 Scrolled="Handle_Scrolled"
@@ -36,33 +36,25 @@
                                 <ContentView Padding="10,0,0,10">
                                     <Image Source="logo.png" HeightRequest="100" WidthRequest="100" Aspect="AspectFit"></Image>
                                 </ContentView>
-                                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical" Padding="10,10,10,10">
-                                    <controls:TEKUtsavLabel FontSize="18" Text="TEKUtsav" TextColor="#F6304E"></controls:TEKUtsavLabel>
-                                    <controls:TEKUtsavLabel FontSize="12" Text="This is screen1" TextColor="#818181"></controls:TEKUtsavLabel>
+                                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical" Padding="10,15,10,10">
+                                    <controls:TEKUtsavLabel FontSize="23" FontType="Bold" Text="TEKUtsav" TextColor="#F6304E"></controls:TEKUtsavLabel>
+                                    <controls:TEKUtsavLabel FontSize="16" Text="This is screen1" TextColor="#818181"></controls:TEKUtsavLabel>
                                 </StackLayout>
                             </StackLayout>
                             <!-- Page1 Display Photo Ends-->
 
                             <!-- Page2 Display Bio -->
                             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
-                                <ContentView Padding="10,0,0,10">
-                                    <Image Source="logo.png" HeightRequest="100" WidthRequest="100" Aspect="AspectFit"></Image>
-                                </ContentView>
                                 <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical" Padding="10,10,10,10">
-                                    <controls:TEKUtsavLabel FontSize="18" Text="TEKUtsav" TextColor="#F6304E"></controls:TEKUtsavLabel>
-                                    <controls:TEKUtsavLabel FontSize="12" Text="This is screen2" TextColor="#818181"></controls:TEKUtsavLabel>
+                                    <controls:TEKUtsavLabel VerticalOptions="Center" HorizontalOptions="Center" FontSize="23" FontType="Bold" Text="SOME VIDEO LINK HERE" TextColor="#F6304E"></controls:TEKUtsavLabel>
                                 </StackLayout>
                             </StackLayout>
                             <!-- Page2 Display Bio ends-->
 
                             <!-- Page2 Display contact information -->
                             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
-                                <ContentView Padding="10,0,0,10">
-                                    <Image Source="logo.png" HeightRequest="100" WidthRequest="100" Aspect="AspectFit"></Image>
-                                </ContentView>
                                 <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical" Padding="10,10,10,10">
-                                    <controls:TEKUtsavLabel FontSize="18" Text="TEKUtsav" TextColor="#F6304E"></controls:TEKUtsavLabel>
-                                    <controls:TEKUtsavLabel FontSize="12" Text="This is screen3" TextColor="#818181"></controls:TEKUtsavLabel>
+                                    <controls:TEKUtsavLabel VerticalOptions="Center" HorizontalOptions="Center" FontSize="23" FontType="Bold" Text="SOME OTHER VIDEO LINK HERE" TextColor="#F6304E"></controls:TEKUtsavLabel>
                                 </StackLayout>
                             </StackLayout>
 

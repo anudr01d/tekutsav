@@ -30,6 +30,7 @@ namespace TEKUtsav.iOS
 			global::Xamarin.Forms.Forms.Init();
             CarouselViewRenderer.Init();
 
+            var x = typeof(Behaviors.EventHandlerBehavior);
 
 			//Azure services
 			Microsoft.WindowsAzure.MobileServices.CurrentPlatform.Init();

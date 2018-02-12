@@ -15,7 +15,7 @@
     <ContentView.Content>
     <StackLayout BackgroundColor="#FFF" Orientation="Vertical" Spacing="0" VerticalOptions="Fill" HorizontalOptions="FillAndExpand">
         <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-            <controls:TappableListView Margin="0,10,0,0" BackgroundColor="#FFF" ItemsSource="{Binding FsEvents}" HeightRequest="{Binding Height}" SeparatorVisibility="Default" ItemClickCommand="{Binding PurchaseOrderNavigationCommand}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" HasUnevenRows="true">
+            <controls:TappableListView Margin="0,10,0,0" BackgroundColor="#FFF" ItemsSource="{Binding FsEvents}" HeightRequest="{Binding Height}" SeparatorVisibility="Default" ItemClickCommand="{Binding FsListClickedCommand}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" HasUnevenRows="true">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <controls:PoListViewCell>
@@ -26,7 +26,7 @@
                                     </ContentView>-->
                                     <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                         <controls:TEKUtsavLabel Text="{Binding Title}" TextColor="#F6304E" FontType="Regular" FontSize="18" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" />
-                                        <controls:TEKUtsavLabel Text="{Binding Description}" TextColor="#808080" FontSize="16" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" />
+                                        <controls:TEKUtsavLabel Text="{Binding Description}" TextColor="#808080" FontSize="16" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" />
                                            <ContentView Padding="20,30,20,30" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
                                                 <controls:CustomButton Command="{Binding VoteClickedCommand}" IsWhiteBtn="false" BorderRadius="5" FontSize="14" Text="VOTE" BorderWidth="1" BorderColor="#F6304E" HorizontalOptions="FillAndExpand" FontAttributes="Bold" BackgroundColor="#F6304E" TextColor="#FFF">
                                                 </controls:CustomButton>

@@ -3,6 +3,7 @@
 	xmlns="http://xamarin.com/schemas/2014/forms" 
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
 	xmlns:controls="clr-namespace:TEKUtsav.UIControls.Controls;assembly=TEKUtsav.UIControls" 
+    xmlns:behaviors="clr-namespace:Behaviors;assembly=Behaviors"
 	xmlns:local="clr-namespace:TEKUtsav.UIControls.MarkupExtensions;assembly=TEKUtsav.UIControls"
 	xmlns:vc="clr-namespace:TEKUtsav.UIControls.ValueConverters;assembly=TEKUtsav.UIControls" 
 	xmlns:imgcontrols="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions" 
@@ -24,7 +25,13 @@
                 </Label>
             </StackLayout>
             <ContentView HorizontalOptions="EndAndExpand" Padding="0,10,10,10">
-                <Switch IsToggled="{Binding RememberLastUser}"></Switch>
+                <Switch IsToggled="{Binding IsDanceVotingEnabled}"  x:Name="DanceSwitch">
+                    <Switch.Behaviors>
+                        <behaviors:EventHandlerBehavior EventName="Toggled">
+                            <behaviors:InvokeCommandAction Command="{Binding EnableDanceVotingCommand}" />
+                        </behaviors:EventHandlerBehavior>
+                    </Switch.Behaviors>
+                </Switch>
             </ContentView>
         </StackLayout>
         <ContentView>
@@ -38,7 +45,13 @@
                 </Label>
             </StackLayout>
             <ContentView HorizontalOptions="EndAndExpand" Padding="0,10,10,10">
-                <Switch IsToggled="{Binding RememberLastUser}"></Switch>
+                <Switch IsToggled="{Binding IsFsVotingEnabled}"  x:Name="FsSwitch">
+                    <Switch.Behaviors>
+                        <behaviors:EventHandlerBehavior EventName="Toggled">
+                            <behaviors:InvokeCommandAction Command="{Binding EnableFsVotingCommand}" />
+                        </behaviors:EventHandlerBehavior>
+                    </Switch.Behaviors>
+                </Switch>
             </ContentView>
         </StackLayout>
         <ContentView>
@@ -52,7 +65,13 @@
                 </Label>
             </StackLayout>
             <ContentView HorizontalOptions="EndAndExpand" Padding="0,10,10,10">
-                <Switch IsToggled="{Binding RememberLastUser}"></Switch>
+                <Switch IsToggled="{Binding IsSeVotingEnabled}"  x:Name="Switch">
+                    <Switch.Behaviors>
+                        <behaviors:EventHandlerBehavior EventName="Toggled">
+                            <behaviors:InvokeCommandAction Command="{Binding EnableSeVotingCommand}" />
+                        </behaviors:EventHandlerBehavior>
+                    </Switch.Behaviors>
+                </Switch>
             </ContentView>
         </StackLayout>
         <ContentView>

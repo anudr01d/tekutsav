@@ -175,6 +175,9 @@
     <Reference Include="CarouselView.FormsPlugin.iOS">
       <HintPath>..\packages\CarouselView.FormsPlugin.5.2.0\lib\Xamarin.iOS10\CarouselView.FormsPlugin.iOS.dll</HintPath>
     </Reference>
+    <Reference Include="Behaviors">
+      <HintPath>..\packages\Behaviors.Forms.1.2.0\lib\portable45-net45+win8+wp8+wpa81\Behaviors.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
@@ -275,6 +278,9 @@
     <BundleResource Include="Resources\regbg.png" />
     <BundleResource Include="Resources\regbg%402x.png" />
     <BundleResource Include="Resources\regbg%403x.png" />
+    <BundleResource Include="Resources\votingbg.png" />
+    <BundleResource Include="Resources\votingbg%402x.png" />
+    <BundleResource Include="Resources\votingbg%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TEKUtsav\TEKUtsav.csproj">

@@ -26,15 +26,15 @@ namespace TEKUtsav.Ral.Impl.EventRestApi
             var azureclient = _azureClient.GetClient(Globals.EVENT, Globals.EVENT_KEY, string.Empty);
             var table = _cloudService.GetTable<Event>(azureclient);
             var list = await table.ReadAllItemsAsync();
-            return list == null ? null : list;
+            return list;
         }
 
-        public async Task<int> CaptureUserVote(EventVote eventvote)
+        public async Task<EventVote> CaptureUserVote(EventVote eventvote)
         {
             var azureclient = _azureClient.GetClient(Globals.EVENT_VOTE, string.Empty, string.Empty);
             var table = _cloudService.GetTable<EventVote>(azureclient);
             var list = await table.CreateItemAsync(eventvote);
-            return list == null ? 0 : list.Votes;
+            return list;
         }
 
         public async Task<int> CheckIfUserHasVoted(string eventTypeId, string UDID)

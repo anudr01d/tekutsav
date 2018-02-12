@@ -38,6 +38,7 @@ namespace TEKUtsav.ViewModels.VotingPage
 		private IEnumerable<Event> _fsEvent;
         private IEnumerable<Event> _spEvent;
 
+
 		private String[] _tagName = new String[] { "DANCE", "FASHION" + System.Environment.NewLine + "  SHOW", "SPECIAL" + System.Environment.NewLine + " EVENTS" };
 
 
@@ -145,6 +146,42 @@ namespace TEKUtsav.ViewModels.VotingPage
 				OnPropertyChanged();
 			}
 		}
+
+        private bool _isDanceVoted;
+        public bool IsDanceVoted
+        {
+            get { return _isDanceVoted; }
+
+            set
+            {
+                _isDanceVoted = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private bool _isFsVoted;
+        public bool IsFsVoted
+        {
+            get { return _isFsVoted; }
+
+            set
+            {
+                _isFsVoted = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private bool _isSeVoted;
+        public bool IsSeVoted
+        {
+            get { return _isSeVoted; }
+
+            set
+            {
+                _isSeVoted = value;
+                OnPropertyChanged();
+            }
+        }
 
 		public ICommand ChangeTabCommand
 		{
@@ -288,26 +325,40 @@ namespace TEKUtsav.ViewModels.VotingPage
                 OnPropertyChanged();
             }
         }
-         
 
-		//public Command<SavedInput> ListViewItemClickedCommand
-		//{
-		//	get
-		//	{
-		//		return new Command<SavedInput>((ListViewItemClicked) =>
-		//		{
-		//			if (IsEditModeOn)
-		//			{
-		//				SetDeleteButtonVisible(ListViewItemClicked);
-		//			}
-		//			else {
-		//				_navigationService.NavigateTo(HuntsmanAppPage.SavedInputParametersPage, ListViewItemClicked);
-		//			}
-		//		});
+        private ICommand _danceListClickedCommand;
+        public ICommand DanceListClickedCommand
+        {
+            get { return _danceListClickedCommand; }
+            protected set
+            {
+                _danceListClickedCommand = value;
+                OnPropertyChanged();
+            }
+        }
 
-		//	}
-		//}
+        private ICommand _fsListClickedCommand;
+        public ICommand FsListClickedCommand
+        {
+            get { return _fsListClickedCommand; }
+            protected set
+            {
+                _fsListClickedCommand = value;
+                OnPropertyChanged();
+            }
+        }
 
+        private ICommand _seListClickedCommand;
+        public ICommand SeListClickedCommand
+        {
+            get { return _seListClickedCommand; }
+            protected set
+            {
+                _seListClickedCommand = value;
+                OnPropertyChanged();
+            }
+        }
+    
         public VotingPageViewModel(INavigationService navigationService, ISettings settings, IEventBusinessService eventBusinessService) : base(navigationService, settings)
         {
             if (navigationService == null) throw new ArgumentNullException("navigationService");
@@ -321,7 +372,14 @@ namespace TEKUtsav.ViewModels.VotingPage
         public override async Task OnViewAppearing(object navigationParams = null)
         {
             var events = await _eventBusinesservice.GetEvents();
-            ProcessEvents(events);
+            if (events != null)
+            {
+                ProcessEvents(events);
+            }
+
+            this.IsDanceVoted = false;
+            this.IsSeVoted = false;
+            this.IsFsVoted = false;
 
 			SetSelectedTab();
 
@@ -329,6 +387,70 @@ namespace TEKUtsav.ViewModels.VotingPage
 			{
 				ChangeTab(tab);
 			});
+
+            this.DanceListClickedCommand = new Command(async(args) =>
+            {
+                var DanceListItemClicked = args as Event;
+                EventVote ev = new EventVote();
+                ev.EventId = DanceListItemClicked.EventType.Id;
+                ev.EventTypeId = DanceListItemClicked.EventTypeId;
+                var udid = Application.Current.Properties["UserUDID"] as string;
+                ev.EventUserDevices = new List<EventUserDevice>() { new EventUserDevice() { EventId = DanceListItemClicked.EventType.Id, UDID = udid, CreatedBy = udid } };
+                var result = await _eventBusinesservice.CaptureUserVote(ev);
+                if (result != null)
+                {
+                    IsDanceVoted = true;
+                }
+                else
+                {
+                    await _navigationService.DisplayAlert("Error in voting", "There was an error in submitting your vote. Please contact the organizers.", "OK");
+                }
+
+
+            }, (args) => true);
+
+            this.FsListClickedCommand = new Command(async(args) =>
+            {
+                var FsListItemClicked = args as Event;
+                EventVote ev = new EventVote();
+                ev.EventId = FsListItemClicked.EventType.Id;
+                ev.EventTypeId = FsListItemClicked.EventTypeId;
+                var udid = Application.Current.Properties["UserUDID"] as string;
+                ev.EventUserDevices = new List<EventUserDevice>() { new EventUserDevice() { EventId = FsListItemClicked.EventType.Id, UDID = udid, CreatedBy = udid } };
+                var result = await _eventBusinesservice.CaptureUserVote(ev);
+                if (result!=null)
+                {
+                    IsFsVoted = true;
+                }
+                else
+                {
+                    await _navigationService.DisplayAlert("Error in voting", "There was an error in submitting your vote. Please contact the organizers.", "OK");
+                }
+
+
+            }, (args) => true);
+
+            this.SeListClickedCommand = new Command(async(args) =>
+            {
+                var SeListItemClicked = args as Event;
+                EventVote ev = new EventVote();
+                ev.EventId = SeListItemClicked.EventType.Id;
+                ev.EventTypeId = SeListItemClicked.EventTypeId;
+                var udid = Application.Current.Properties["UserUDID"] as string;
+                ev.EventUserDevices = new List<EventUserDevice>() { new EventUserDevice() { EventId = SeListItemClicked.EventType.Id, UDID = udid, CreatedBy = udid } };
+                var result = await _eventBusinesservice.CaptureUserVote(ev);
+                if (Int32.Parse(result.ToString()) == 1)
+                {
+                    IsSeVoted = true;
+                }
+                else
+                {
+                    await _navigationService.DisplayAlert("Error in voting", "There was an error in submitting your vote. Please contact the organizers.", "OK");
+                }
+
+
+            }, (args) => true);
+
 
 			this.ChangeTabCommand = new Command((tab) =>
 			{

@@ -14,6 +14,7 @@ namespace TEKUtsav.Views.AdminSettingsPage
         public AdminSettingsPage()
         {
             InitializeComponent();
+
         }
 
 	}

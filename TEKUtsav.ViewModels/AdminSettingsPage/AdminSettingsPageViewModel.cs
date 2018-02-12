@@ -13,33 +13,121 @@ using TEKUtsav.Models.Entities;
 using TEKUtsav.Infrastructure.Constants;
 using TEKUtsav.Infrastructure;
 using TEKUtsav.Business.Measurements;
+using TEKUtsav.Business.EventService;
 
 namespace TEKUtsav.ViewModels.AdminSettingsPage
 {
 	public class AdminSettingsPageViewModel : ViewModelBase
 	{
 		private readonly INavigationService _navigationService;
+        private readonly IEventBusinessService _eventBusinesservice;
 		private readonly ISettings _settings;
-		private bool clicked = false;
-        private List<Notification> _notifications;
-        private ICommand _enableVotingCommand;
+        private ICommand _enableDanceVotingCommand, _enableFsVotingCommand, _enableSeVotingCommand;
 
-		public ICommand EnableVotingCommand
+
+        private bool _isDanceVotingEnabled;
+        public bool IsDanceVotingEnabled
+        {
+            get { return _isDanceVotingEnabled; }
+
+            set
+            {
+                _isDanceVotingEnabled = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private bool _isFsVotingEnabled;
+        public bool IsFsVotingEnabled
+        {
+            get { return _isFsVotingEnabled; }
+
+            set
+            {
+                _isFsVotingEnabled = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private bool _isSeVotingEnabled;
+        public bool IsSeVotingEnabled
+        {
+            get { return _isSeVotingEnabled; }
+
+            set
+            {
+                _isSeVotingEnabled = value;
+                OnPropertyChanged();
+            }
+        }
+
+		public ICommand EnableDanceVotingCommand
 		{
-            get { return _enableVotingCommand; }
+            get { return _enableDanceVotingCommand; }
 			protected set
 			{
-                _enableVotingCommand = value;
-                OnPropertyChanged("EnableVotingCommand");
+                _enableDanceVotingCommand = value;
+                OnPropertyChanged("EnableDanceVotingCommand");
 			}
 		}
 
-        public AdminSettingsPageViewModel(INavigationService navigationService, ISettings settings) : base(navigationService, settings)
+        public ICommand EnableFsVotingCommand
+        {
+            get { return _enableFsVotingCommand; }
+            protected set
+            {
+                _enableFsVotingCommand = value;
+                OnPropertyChanged("EnableFsVotingCommand");
+            }
+        }
+
+        public ICommand EnableSeVotingCommand
+        {
+            get { return _enableSeVotingCommand; }
+            protected set
+            {
+                _enableSeVotingCommand = value;
+                OnPropertyChanged("EnableSeVotingCommand");
+            }
+        }
+
+        public AdminSettingsPageViewModel(INavigationService navigationService, ISettings settings, IEventBusinessService eventBusinesservice) : base(navigationService, settings)
 		{
 			if (navigationService == null) throw new ArgumentNullException("navigationService");
 			if (settings == null) throw new ArgumentNullException("settings");
+            if (eventBusinesservice == null) throw new ArgumentNullException("eventBusinessService");
 			_navigationService = navigationService;
 			_settings = settings;
+            _eventBusinesservice = eventBusinesservice;
+
+            this.EnableDanceVotingCommand = new Command(() =>
+            {
+                if(IsDanceVotingEnabled) 
+                {
+                    //Call api for enabling and disabling voting lines
+                }
+            }
+            , () => true);
+
+            this.EnableFsVotingCommand = new Command(() =>
+            {
+                if (IsFsVotingEnabled)
+                {
+                    //Call api for enabling and disabling voting lines
+                }
+
+            }
+            , () => true);
+
+            this.EnableSeVotingCommand = new Command(() =>
+            {
+                if (IsSeVotingEnabled)
+                {
+                    //Call api for enabling and disabling voting lines
+                }
+
+            }
+            , () => true);
 		}
 
 		public override async Task OnViewAppearing(object navigationParams = null)

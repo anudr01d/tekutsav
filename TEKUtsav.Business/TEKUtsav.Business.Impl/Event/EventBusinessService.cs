@@ -20,8 +20,23 @@ namespace TEKUtsav.Business.EventService.Impl
          }
 
         public async Task<IEnumerable<Event>> GetEvents()
-		{
+        {
             return await _eventRestApi.GetEvents();
-		}
+        }
+
+        public async Task<EventVote> CaptureUserVote(EventVote vote)
+        {
+            return await _eventRestApi.CaptureUserVote(vote);
+        }
+
+        public async Task<int> CheckIfUserHasVoted(string eventTypeId, string UDID)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<List<EventWinner>> ComputeEventWinner(string eventTypeId)
+        {
+            throw new NotImplementedException();
+        }
 	}
 }

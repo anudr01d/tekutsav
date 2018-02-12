@@ -43,31 +43,7 @@ namespace TEKUtsav
 
 		protected override void OnResume()
 		{
-			dateTimeOnResume = DateTime.Now;
-			if (dateTimeOnResume.Subtract(dateTimeOnSleep) > TimeSpan.FromMinutes(5))
-			{
-				ClearCookies();
-				Logout();
-			}
-		}
-		private void ClearCookies()
-		{
-			var cookieStore = _applicationLifetimeScope.Resolve<IPlatformCookieStore>();
-			if (cookieStore != null)
-			{
-				cookieStore.DeleteAllCookiesForSite(Globals.OKTA_IDP_URL);
-				cookieStore.DeleteAllCookiesForSite(Globals.OKTA_SP_URL);
-			}
-		}
-
-		private void Logout()
-		{
-			var cookieStore = _applicationLifetimeScope.Resolve<IPlatformCookieStore>();
-			var _aspnetCookie = cookieStore.CurrentCookies.FirstOrDefault(cc => cc.Name == Globals.COOKIE);
-			if (_aspnetCookie == null)
-			{
-				_applicationLifetimeScope.Resolve<INavigationService>().NavigateTo(TEKUtsavAppPage.LoginPage);
-			}
+		
 		}
 	}
 }
