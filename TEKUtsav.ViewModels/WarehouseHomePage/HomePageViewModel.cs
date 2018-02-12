@@ -10,6 +10,7 @@ using TEKUtsav.ViewModels.BaseViewModel;
 using TEKUtsav.Infrastructure.Navigation;
 using TEKUtsav.Infrastructure.Settings;
 using TEKUtsav.Business.PurchaseOrders;
+using Plugin.ExternalMaps;
 
 namespace TEKUtsav.ViewModels.HomePage
 {
@@ -166,6 +167,15 @@ namespace TEKUtsav.ViewModels.HomePage
             this.ContactDetailsCommand = new Command(() =>
             {
                 _navigationService.NavigateTo(TEKUtsavAppPage.ContactDetailsPage);
+            });
+
+            this.EventLocationCommand = new Command(async() => 
+            { 
+                var success = await CrossExternalMaps.Current.NavigateTo("Kanva Star Resort", 13.1034, 77.4372); 
+                if(!success) 
+                {
+                   await _navigationService.DisplayAlert("Error displaying location", "Please look for Kanva Star Resort within Google Maps", "Ok");    
+                }
             });
 
 			await Task.Run(() => { });

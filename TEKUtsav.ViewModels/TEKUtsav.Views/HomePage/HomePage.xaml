@@ -45,17 +45,19 @@
 
                             <!-- Page2 Display Bio -->
                             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
-                                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical" Padding="10,10,10,10">
+                                <WebView HorizontalOptions="FillAndExpand" HeightRequest="200"></WebView>
+                                <!--<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical" Padding="10,10,10,10">
                                     <controls:TEKUtsavLabel VerticalOptions="Center" HorizontalOptions="Center" FontSize="23" FontType="Bold" Text="SOME VIDEO LINK HERE" TextColor="#F6304E"></controls:TEKUtsavLabel>
-                                </StackLayout>
+                                </StackLayout>-->
                             </StackLayout>
                             <!-- Page2 Display Bio ends-->
 
                             <!-- Page2 Display contact information -->
                             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
-                                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical" Padding="10,10,10,10">
+                                <WebView HorizontalOptions="FillAndExpand" HeightRequest="200" Source="https://www.youtube.com/watch?v=a2A2APdahn4"></WebView>
+                                <!--<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical" Padding="10,10,10,10">
                                     <controls:TEKUtsavLabel VerticalOptions="Center" HorizontalOptions="Center" FontSize="23" FontType="Bold" Text="SOME OTHER VIDEO LINK HERE" TextColor="#F6304E"></controls:TEKUtsavLabel>
-                                </StackLayout>
+                                </StackLayout>-->
                             </StackLayout>
 
                        </x:Array>
