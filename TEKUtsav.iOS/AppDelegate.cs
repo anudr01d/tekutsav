@@ -13,6 +13,8 @@ using Firebase.CloudMessaging;
 using Firebase.InstanceID;
 using UserNotifications;
 using Firebase.Core;
+using CarouselView.FormsPlugin.iOS;
+
 
 namespace TEKUtsav.iOS
 {
@@ -26,6 +28,8 @@ namespace TEKUtsav.iOS
             UIApplication.SharedApplication.RegisterForRemoteNotifications();
 
 			global::Xamarin.Forms.Forms.Init();
+            CarouselViewRenderer.Init();
+
 
 			//Azure services
 			Microsoft.WindowsAzure.MobileServices.CurrentPlatform.Init();

@@ -36,6 +36,7 @@
     <Compile Include="Measurements\MeasurementsBusinessService.cs" />
     <Compile Include="User\UserBusinessService.cs" />
     <Compile Include="EventVote\EventVoteService.cs" />
+    <Compile Include="Event\EventBusinessService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Logging\" />
@@ -44,6 +45,7 @@
     <Folder Include="Measurements\" />
     <Folder Include="User\" />
     <Folder Include="EventVote\" />
+    <Folder Include="Event\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">

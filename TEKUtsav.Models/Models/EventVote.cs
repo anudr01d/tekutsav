@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
+using TEKUtsav.Models.Entities;
 
 namespace TEKUtsav.Mobile.Service.Domain.DataObjects
 {
-    public class EventVote : BaseModel
+    public class EventVote : TableData
     {
         public string EventId { get; set; }
 

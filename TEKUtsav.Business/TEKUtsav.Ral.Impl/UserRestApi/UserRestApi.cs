@@ -22,9 +22,10 @@ namespace TEKUtsav.Ral.Impl.User
 
         public async Task<DS.User> RegisterUser(DS.User userData)
         {
-            var client = _azureClient.GetClient(string.Empty, string.Empty, string.Empty);
-            var userFlow = await _cloudService.InvokeApiAsyncPost<DS.User, DS.User>(client, Globals.USER_API, userData);
-            return userFlow;
+            var azureclient = _azureClient.GetClient(Globals.USER_API, string.Empty, string.Empty);
+            var table = _cloudService.GetTable<DS.User>(azureclient);
+            var list = await table.CreateItemAsync(userData);
+            return list == null ? null : list;
         }
 
     }

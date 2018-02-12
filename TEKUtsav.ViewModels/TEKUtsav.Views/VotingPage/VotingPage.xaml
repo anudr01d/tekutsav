@@ -8,10 +8,10 @@
 		xmlns:fspages="clr-namespace:TEKUtsav.Views.FsPage;assembly=TEKUtsav.Views" 
         xmlns:sepages="clr-namespace:TEKUtsav.Views.SePage;assembly=TEKUtsav.Views" 
 		xmlns:imgcontrols="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions" 
-		BackgroundColor="#F5F5F5" Title="Voting" NavigationPage.BackButtonTitle="" x:Class="TEKUtsav.Views.VotingPage.VotingPage">
+		BackgroundColor="#FFFFFF" Title="Voting" NavigationPage.BackButtonTitle="" x:Class="TEKUtsav.Views.VotingPage.VotingPage">
 	
 	<ContentPage.Content>
-		<StackLayout  Padding="0,0,0,0" Spacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical">
+		<StackLayout Padding="0,0,0,0" Spacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical">
 			<StackLayout BackgroundColor="#fff"  Margin="0,0,0,0" Padding="10,10,10,0" Orientation="Horizontal" Spacing="10" HorizontalOptions="FillAndExpand">
             
 				<!-- Dance Selected -->

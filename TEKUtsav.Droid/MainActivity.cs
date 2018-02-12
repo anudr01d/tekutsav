@@ -15,6 +15,7 @@ using TEKUtsav.Droid.DeviceImpl;
 using Firebase.Messaging;
 using Firebase.Iid;
 using Android.Util;
+using CarouselView.FormsPlugin.Android;
 
 namespace TEKUtsav.Droid
 {
@@ -44,6 +45,8 @@ namespace TEKUtsav.Droid
             Log.Debug(TAG, "Subscribed to remote notifications");
 
 			global::Xamarin.Forms.Forms.Init(this, bundle);
+            CarouselViewRenderer.Init();
+
 			global::ZXing.Net.Mobile.Forms.Android.Platform.Init();
 			ImageCircleRenderer.Init();
             var builder = new ContainerBuilder();

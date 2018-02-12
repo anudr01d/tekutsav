@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
+using TEKUtsav.Models.Entities;
 //using TEKUtsav.Models.Models;
 
 namespace TEKUtsav.Mobile.Service.Domain.DataObjects
 {
-    public class User : BaseModel
+    public class User : TableData
     {
         public string FirstName { get; set; }
         public string MiddleName { get; set; }

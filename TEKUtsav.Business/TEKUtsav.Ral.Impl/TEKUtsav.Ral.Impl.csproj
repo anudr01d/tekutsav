@@ -39,8 +39,6 @@
     <Compile Include="CloudUtils\HttpHandler.cs" />
     <Compile Include="CloudUtils\AzureClient.cs" />
     <Compile Include="UserRestApi\UserRestApi.cs" />
-    <Compile Include="EventVoteRestApi\EventVoteRestApi.cs" />
-    <Compile Include="EventVoteScheduleRestApi\EventVoteScheduleRestApi.cs" />
     <Compile Include="NotificationRestApi\NotificationRestApi.cs" />
     <Compile Include="EventRestApi\EventRestApi.cs" />
   </ItemGroup>
@@ -66,8 +64,6 @@
     <Folder Include="CloudUtils\" />
     <Folder Include="ContainerConditionsRestApi\" />
     <Folder Include="UserRestApi\" />
-    <Folder Include="EventVoteRestApi\" />
-    <Folder Include="EventVoteScheduleRestApi\" />
     <Folder Include="NotificationRestApi\" />
     <Folder Include="EventRestApi\" />
   </ItemGroup>

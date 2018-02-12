@@ -1,6 +1,8 @@
-﻿namespace TEKUtsav.Mobile.Service.Domain.DataObjects
+﻿using TEKUtsav.Models.Entities;
+
+namespace TEKUtsav.Mobile.Service.Domain.DataObjects
 {
-    public class EventWinner
+    public class EventWinner : TableData
     {
         public string WinnerCode { get; set; }
         public string Category { get; set; }

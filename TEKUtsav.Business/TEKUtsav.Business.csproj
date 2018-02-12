@@ -35,7 +35,7 @@
     <Compile Include="User\IUserBusinessService.cs" />
     <Compile Include="EventType\IEventType.cs" />
     <Compile Include="Notification\INotificationService.cs" />
-    <Compile Include="Event\IEventService.cs" />
+    <Compile Include="Event\IEventBusinessService.cs" />
     <Compile Include="EventVote\IEventVoteService.cs" />
     <Compile Include="EventVoteSchedule\IEventVoteScheduleServie.cs" />
   </ItemGroup>

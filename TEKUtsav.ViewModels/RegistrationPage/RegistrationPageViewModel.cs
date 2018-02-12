@@ -141,8 +141,13 @@ namespace TEKUtsav.ViewModels.RegistrationPage
 
                     var response = await _userBusinessService.RegisterUser(user);
                     //Use the response and identify if the user is an admin or not, persist additional useful information
-
-                    _navigationService.NavigateTo(TEKUtsavAppPage.MasterMenuPage);
+                    if(!string.IsNullOrEmpty(response.FirstName)) {
+                        Application.Current.Properties["UserUDID"] = response.Devices.FirstOrDefault().UDID;
+                        Application.Current.Properties["IsAdmin"] = response.IsAdmin;
+                        _navigationService.NavigateTo(TEKUtsavAppPage.MasterMenuPage);
+                    } else {
+                       await _navigationService.DisplayAlert("Error in registration", response.ToString(), "OK");
+                    }
                 }
             });
 
@@ -154,7 +159,7 @@ namespace TEKUtsav.ViewModels.RegistrationPage
 
             var v = CrossDeviceInfo.Current.Id;
 
-            this.Location = "Location";
+            this.Location = "Select";
             MessagingCenter.Subscribe<SingleSelectionItem>(this, Globals.SINGLE_SELECTION, (args) =>
             {
                 if(args.Name!=null) 

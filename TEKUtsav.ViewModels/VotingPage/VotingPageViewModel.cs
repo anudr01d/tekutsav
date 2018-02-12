@@ -8,14 +8,16 @@ using System.Windows.Input;
 using TEKUtsav.ViewModels.BaseViewModel;
 using TEKUtsav.Infrastructure.Navigation;
 using TEKUtsav.Infrastructure.Settings;
-using TEKUtsav.Models.Entities;
 using TEKUtsav.Infrastructure.Constants;
+using TEKUtsav.Business.EventService;
+using TEKUtsav.Mobile.Service.Domain.DataObjects;
 
 namespace TEKUtsav.ViewModels.VotingPage
 {
     public class VotingPageViewModel : ViewModelBase
     {
         private readonly INavigationService _navigationService;
+        private readonly IEventBusinessService _eventBusinesservice;
         private readonly ISettings _settings;
 
 		private ICommand _voteCommand;
@@ -39,79 +41,46 @@ namespace TEKUtsav.ViewModels.VotingPage
 		private String[] _tagName = new String[] { "DANCE", "FASHION" + System.Environment.NewLine + "  SHOW", "SPECIAL" + System.Environment.NewLine + " EVENTS" };
 
 
-        private List<Event> _danceEvents;
+        private List<Event> _danceEvents = new List<Event>();
         public List<Event> DanceEvents
         {
             get
             {
-                if (_danceEvents == null)
-                {
-                    var list = new List<Event>();
-                    list.Add(new Event() { Name = "Dancing Toons", Desc = "A bunch of dancing cartoons. " });
-                    list.Add(new Event() { Name= "Dancing Cartoons", Desc="A bunch of dancing cartoons. Extra animated lot." });
-                    list.Add(new Event() { Name = "Dancing Cartoons", Desc = "A bunch of dancing cartoon. Extra animated lot." });
-                    return list;
-                }
-                else
-                {
-                    return _danceEvents;
-                }
+                 return _danceEvents;
             }
             set
             {
                 _danceEvents = value;
-                OnPropertyChanged("Notifications");
+                OnPropertyChanged("DanceEvents");
             }
         }
 
 
-        private List<Event> _fsEvents;
+        private List<Event> _fsEvents = new List<Event>();
         public List<Event> FsEvents
         {
             get
             {
-                if (_fsEvents == null)
-                {
-                    var list = new List<Event>();
-                    list.Add(new Event() { Name = "Fashion Toons", Desc = "A bunch of dancing cartoons with a sense of fashion. (who knew) " });
-                    list.Add(new Event() { Name = "Dashing Cartoons", Desc = "A bunch of dancing cartoons with a sense of fashion." });
-                    list.Add(new Event() { Name = "Ramp Walkers", Desc = "Nightwalkers, the ramp version. (I'll show myself out)" });
-                    return list;
-                }
-                else
-                {
-                    return _fsEvents;
-                }
+                return _fsEvents;
             }
             set
             {
                 _fsEvents = value;
-                OnPropertyChanged("Notifications");
+                OnPropertyChanged("FsEvents");
             }
         }
 
-        private List<Event> _seEvents;
+        private List<Event> _seEvents = new List<Event>();
         public List<Event> SeEvents
         {
             get
             {
-                if (_seEvents == null)
-                {
-                    var list = new List<Event>();
-                    list.Add(new Event() { Name = "Special Events Team", Desc = "A bunch of Special events folks. " });
-                    list.Add(new Event() { Name = "Second place people", Desc = "Losers." });
-                    list.Add(new Event() { Name = "All the rest", Desc = "..." });
-                    return list;
-                }
-                else
-                {
-                    return _seEvents;
-                }
+                return _seEvents;
             }
             set
             {
                 _seEvents = value;
-                OnPropertyChanged("Notifications");
+                OnPropertyChanged("SeEvents");
             }
         }
 
@@ -339,16 +308,21 @@ namespace TEKUtsav.ViewModels.VotingPage
 		//	}
 		//}
 
-        public VotingPageViewModel(INavigationService navigationService, ISettings settings) : base(navigationService, settings)
+        public VotingPageViewModel(INavigationService navigationService, ISettings settings, IEventBusinessService eventBusinessService) : base(navigationService, settings)
         {
             if (navigationService == null) throw new ArgumentNullException("navigationService");
+            if (eventBusinessService == null) throw new ArgumentNullException("eventBusinessService");
             if (settings == null) throw new ArgumentNullException("settings");
+            _eventBusinesservice = eventBusinessService;
             _navigationService = navigationService;
             _settings = settings;
         }
 
-        public override Task OnViewAppearing(object navigationParams = null)
+        public override async Task OnViewAppearing(object navigationParams = null)
         {
+            var events = await _eventBusinesservice.GetEvents();
+            ProcessEvents(events);
+
 			SetSelectedTab();
 
 			MessagingCenter.Subscribe<string>(this, Globals.CHANGETAB, (tab) =>
@@ -402,8 +376,27 @@ namespace TEKUtsav.ViewModels.VotingPage
             
 			this.IsTabOneVisible = true;
 
-			return Task.Run(() => { 	
-			});
+            await Task.Run(() => { });
+        }
+
+
+        private void ProcessEvents(IEnumerable<Event> events) 
+        {
+            foreach (var ev in events)
+            {
+                if(ev.EventType.Title.Equals(Globals.FASHION_SHOW)) 
+                {
+                    FsEvents.Add(ev);
+
+                } else if (ev.EventType.Title.Equals(Globals.DANCE))
+                {
+                    DanceEvents.Add(ev);
+
+                } else if (ev.EventType.Title.Equals(Globals.SPECIAL_EVENTS))
+                {
+                    SeEvents.Add(ev);
+                }
+            }
         }
 
 		private void SetSelectedTab()

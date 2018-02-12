@@ -15,65 +15,65 @@
             <local:StringToColorConverter x:Key="StringToColorConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
-    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical">
-        <ContentView Padding="0,40,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand">
-            <Image WidthRequest="200" HeightRequest="200" Source="logo.png" Aspect="AspectFill">
-            </Image>
-        </ContentView>
-        <StackLayout BackgroundColor="#f5f5f5" Padding="0,0,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical">
-            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Padding="0,0,0,0">
-                <ContentView Padding="0,0,0,0" HorizontalOptions="Center" VerticalOptions="Center">
-                    <controls:TEKUtsavLabel HorizontalOptions="Center" VerticalOptions="Center" Text="Choose your" FontType="Bold" TextColor="#818181" FontSize="16">
-                    </controls:TEKUtsavLabel>
-                </ContentView>
-                <StackLayout Margin="0,0,0,0" Padding="0,0,0,0" Orientation="Horizontal">
-                    <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding LocationClickedCommand}" CommandParameter="LocationParam" />
-                    </StackLayout.GestureRecognizers>
-                    <ContentView Margin="0,0,0,0" Padding="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-                        <controls:TEKUtsavLabel 
-                                VerticalOptions="Center" 
-                                HorizontalOptions="Center" 
-                                BackgroundColor="Transparent"
-                                FontType="Regular" 
-                                Text="{Binding Location}"
-                                TextColor="#F6304E"
-                                FontSize="16">
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical">
+            <ContentView Padding="0,40,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand">
+                <Image WidthRequest="200" HeightRequest="200" Source="logo.png" Aspect="AspectFill">
+                </Image>
+            </ContentView>
+            <StackLayout BackgroundColor="#f5f5f5" Padding="0,0,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Padding="0,0,0,0">
+                    <ContentView Padding="0,0,0,0" HorizontalOptions="Center" VerticalOptions="Center">
+                        <controls:TEKUtsavLabel HorizontalOptions="Center" VerticalOptions="Center" Text="Choose your location : " FontType="Bold" TextColor="#818181" FontSize="16">
                         </controls:TEKUtsavLabel>
                     </ContentView>
+                    <StackLayout Margin="0,0,0,0" Padding="0,0,0,0" Orientation="Horizontal">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LocationClickedCommand}" CommandParameter="LocationParam" />
+                        </StackLayout.GestureRecognizers>
+                        <ContentView Margin="0,0,0,0" Padding="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                            <controls:TEKUtsavLabel 
+                                    VerticalOptions="Center" 
+                                    HorizontalOptions="Center" 
+                                    BackgroundColor="Transparent"
+                                    FontType="Regular" 
+                                    Text="{Binding Location}"
+                                    TextColor="#F6304E"
+                                    FontSize="16">
+                            </controls:TEKUtsavLabel>
+                        </ContentView>
+                    </StackLayout>
+                </StackLayout>
+                
+                <ContentView Padding="20,0,20,0">
+                    <controls:TEKUtsavLabel Text="Your Name" TextColor="#818181" FontSize="14">
+                    </controls:TEKUtsavLabel>
+                </ContentView>
+                <StackLayout Padding="20,0,20,0" Orientation="Horizontal" BackgroundColor="#f5f5f5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <controls:XfxEntry Text="{Binding Name}" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
+                    </controls:XfxEntry>
+                </StackLayout>
+                <ContentView Padding="20,0,20,0">
+                    <controls:TEKUtsavLabel Text="Mobile Number" TextColor="#818181" FontSize="14">
+                    </controls:TEKUtsavLabel>
+                </ContentView>
+                <StackLayout Padding="20,0,20,0" Orientation="Horizontal" BackgroundColor="#f5f5f5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <controls:XfxEntry Text="{Binding MobileNumber}" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
+                    </controls:XfxEntry>
+                </StackLayout>
+                <ContentView Padding="20,0,20,0">
+                    <controls:TEKUtsavLabel Text="Email" TextColor="#818181" FontSize="14">
+                    </controls:TEKUtsavLabel>
+                </ContentView>
+                <StackLayout Padding="20,0,20,0" Orientation="Horizontal" BackgroundColor="#f5f5f5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <controls:XfxEntry Text="{Binding Email}" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
+                    </controls:XfxEntry>
                 </StackLayout>
             </StackLayout>
-            
-            <ContentView Padding="20,0,20,0">
-                <controls:TEKUtsavLabel Text="Your Name" TextColor="#818181" FontSize="14">
-                </controls:TEKUtsavLabel>
-            </ContentView>
-            <StackLayout Padding="20,0,20,0" Orientation="Horizontal" BackgroundColor="#f5f5f5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                <controls:XfxEntry Text="{Binding Name}" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
-                </controls:XfxEntry>
-            </StackLayout>
-            <ContentView Padding="20,0,20,0">
-                <controls:TEKUtsavLabel Text="Mobile Number" TextColor="#818181" FontSize="14">
-                </controls:TEKUtsavLabel>
-            </ContentView>
-            <StackLayout Padding="20,0,20,0" Orientation="Horizontal" BackgroundColor="#f5f5f5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                <controls:XfxEntry Text="{Binding MobileNumber}" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
-                </controls:XfxEntry>
-            </StackLayout>
-            <ContentView Padding="20,0,20,0">
-                <controls:TEKUtsavLabel Text="Email" TextColor="#818181" FontSize="14">
-                </controls:TEKUtsavLabel>
-            </ContentView>
-            <StackLayout Padding="20,0,20,0" Orientation="Horizontal" BackgroundColor="#f5f5f5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                <controls:XfxEntry Text="{Binding Email}" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
-                </controls:XfxEntry>
+            <StackLayout VerticalOptions="CenterAndExpand" Orientation="Horizontal">
+                <ContentView Padding="20,30,20,30" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+                    <controls:CustomButton Command="{Binding RegisterClickedCommand}" IsWhiteBtn="false" BorderRadius="20" FontSize="14" Text="REGISTER" BorderWidth="1" BorderColor="#FF0000" HorizontalOptions="FillAndExpand" FontAttributes="Bold" BackgroundColor="#D82138" TextColor="#FFF">
+                    </controls:CustomButton>
+                </ContentView>
             </StackLayout>
         </StackLayout>
-        <StackLayout VerticalOptions="CenterAndExpand" Orientation="Horizontal">
-            <ContentView Padding="20,30,20,30" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
-                <controls:CustomButton Command="{Binding RegisterClickedCommand}" IsWhiteBtn="false" BorderRadius="20" FontSize="14" Text="REGISTER" BorderWidth="1" BorderColor="#FF0000" HorizontalOptions="FillAndExpand" FontAttributes="Bold" BackgroundColor="#D82138" TextColor="#FFF">
-                </controls:CustomButton>
-            </ContentView>
-        </StackLayout>
-    </StackLayout>
 </ContentPage>

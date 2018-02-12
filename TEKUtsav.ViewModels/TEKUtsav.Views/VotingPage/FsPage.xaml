@@ -25,8 +25,8 @@
                                         <Image Source="logo.png" WidthRequest="40" HeightRequest="40" HorizontalOptions="Start"/>
                                     </ContentView>-->
                                     <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                                        <controls:TEKUtsavLabel Text="{Binding Name}" TextColor="#F6304E" FontType="Regular" FontSize="18" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" />
-                                        <controls:TEKUtsavLabel Text="{Binding Desc}" TextColor="#808080" FontSize="16" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" />
+                                        <controls:TEKUtsavLabel Text="{Binding Title}" TextColor="#F6304E" FontType="Regular" FontSize="18" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" />
+                                        <controls:TEKUtsavLabel Text="{Binding Description}" TextColor="#808080" FontSize="16" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" />
                                            <ContentView Padding="20,30,20,30" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
                                                 <controls:CustomButton Command="{Binding VoteClickedCommand}" IsWhiteBtn="false" BorderRadius="5" FontSize="14" Text="VOTE" BorderWidth="1" BorderColor="#F6304E" HorizontalOptions="FillAndExpand" FontAttributes="Bold" BackgroundColor="#F6304E" TextColor="#FFF">
                                                 </controls:CustomButton>
