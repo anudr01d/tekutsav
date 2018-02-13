@@ -55,7 +55,6 @@ namespace TEKUtsav.ViewModels.NotificationsPage
         {
             get
             {
-                //var notificationEvents = await _notificationBusinesservice.GetNotifications();
                 var notificationEvents = Task.Run(() => _notificationBusinesservice.GetNotifications());
                 if (notificationEvents != null)
                 {
@@ -79,7 +78,7 @@ namespace TEKUtsav.ViewModels.NotificationsPage
                 OnPropertyChanged("Notifications");
             }
         }
-        private void sendPush()
+        private void sendPush(string title, string description)
         {
             FireBasePush push = new FireBasePush(Globals.FIREBASE_SERVER_KEY);
             push.SendPush(new PushMessage
@@ -87,8 +86,8 @@ namespace TEKUtsav.ViewModels.NotificationsPage
                 to = "/topics/news",
                 notification = new PushMessageData
                 {
-                    title = "Dance",
-                    text = "Event Started",
+                    title = title,
+                    text = description,
                     click_action = "click_action"
                 },
                 data = new
@@ -120,9 +119,11 @@ namespace TEKUtsav.ViewModels.NotificationsPage
 		public override async Task OnViewAppearing(object navigationParams = null)
 		{
             this.SetCurrentPage(TEKUtsavAppPage.NotificationsPage);
-            this.SendPushClickCommand = new Command(() =>
+            this.SendPushClickCommand = new Command((e) =>
             {
-                sendPush();
+                var item = (e as TEKUtsav.Models.Notification);
+                sendPush(item.Title, item.Description);
+
             });
 			Task.Run(() => { });
 		}
