@@ -41,15 +41,17 @@ namespace TEKUtsav.ViewModels.EventSchedulePage
         {
             get
             {
-                if (_notifications == null)
+                //var notificationEvents = await _notificationBusinesservice.GetNotifications();
+                var notificationEvents = Task.Run(() => _notificationBusinesservice.GetNotifications());
+                if (notificationEvents != null)
                 {
                     var list = new List<Notification>();
-                    list.Add(new Notification() { Title = "Pre-event", FormattedDateTime = "24 Feb | 10.00", Description="Some description"});
-                    list.Add(new Notification() { Title = "Lunch", FormattedDateTime = "24 Feb | 10.00", Description="Some description"});
-                    list.Add(new Notification() { Title = "High Tea", FormattedDateTime = "24 Feb | 10.00", Description="Some description"});
-                    list.Add(new Notification() { Title = "Main event", FormattedDateTime = "24 Feb | 10.00", Description="Some description"});
-                    list.Add(new Notification() { Title = "Voting", FormattedDateTime = "24 Feb | 10.00", Description="Some description"});
-                    list.Add(new Notification() { Title = "Dance Floor", FormattedDateTime = "24 Feb | 10.00", Description="Some description"});
+
+                    foreach (var ev in notificationEvents.Result)
+                    {
+                        list.Add(new Notification() { Title = ev.Title, FormattedDateTime = "24 Feb | 10.00", Description = ev.Description });
+
+                    }
                     return list;
                 }
                 else
@@ -63,7 +65,6 @@ namespace TEKUtsav.ViewModels.EventSchedulePage
                 OnPropertyChanged("Notifications");
             }
         }
-
         public EventSchedulePageViewModel(INavigationService navigationService, ISettings settings, INotificationBusinessService notificationBusinessService) : base(navigationService, settings)
 		{
 			if (navigationService == null) throw new ArgumentNullException("navigationService");
@@ -77,7 +78,6 @@ namespace TEKUtsav.ViewModels.EventSchedulePage
 		public override async Task OnViewAppearing(object navigationParams = null)
 		{
 			this.SetCurrentPage(TEKUtsavAppPage.NotificationsPage);
-            var notificationEvents = await _notificationBusinesservice.GetNotifications();
 
            	
 			Task.Run(() => { });
