@@ -14,6 +14,8 @@ using TEKUtsav.Infrastructure.Constants;
 using TEKUtsav.Infrastructure;
 using TEKUtsav.Business.Measurements;
 using TEKUtsav.Business.Notification;
+using TEKUtsav.Models.FireBase;
+
 
 
 namespace TEKUtsav.ViewModels.NotificationsPage
@@ -65,6 +67,24 @@ namespace TEKUtsav.ViewModels.NotificationsPage
                 _notifications = value;
                 OnPropertyChanged("Notifications");
             }
+        }
+        private void sendPush()
+        {
+            FireBasePush push = new FireBasePush(Globals.FIREBASE_SERVER_KEY);
+            push.SendPush(new PushMessage
+            {
+                to = "/topics/news",
+                notification = new PushMessageData
+                {
+                    title = "Dance",
+                    text = "Event Started",
+                    click_action = "click_action"
+                },
+                data = new
+                {
+                    example = "this is a example"
+                }
+            });
         }
         public void ProcessEvents(IEnumerable<Notification> events)
         {
