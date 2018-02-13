@@ -3,6 +3,9 @@ using System.Threading.Tasks;
 using TEKUtsav.Mobile.Service.Domain.DataObjects;
 using TEKUtsav.Ral.CloudUtils;
 using TEKUtsav.Ral.NotificationApi;
+using TEKUtsav.Infrastructure.Constants;
+using System.Collections.Generic;
+
 
 namespace TEKUtsav.Ral.Impl.NotificationRestApi
 {
@@ -19,9 +22,12 @@ namespace TEKUtsav.Ral.Impl.NotificationRestApi
             _azureClient = azureClient;
         }
 
-        public Task<Notification> GetNotifications()
+        public async Task<ICollection<Notification>> GetNotifications()
         {
-            throw new NotImplementedException();
+            var azureclient = _azureClient.GetClient(Globals.NOTIFICATION,string.Empty, string.Empty);
+            var table = _cloudService.GetTable<Notification>(azureclient);
+            var list = await table.ReadAllItemsAsync();
+            return list;
         }
     }
 }

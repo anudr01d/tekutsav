@@ -13,12 +13,16 @@ using TEKUtsav.Models.Entities;
 using TEKUtsav.Infrastructure.Constants;
 using TEKUtsav.Infrastructure;
 using TEKUtsav.Business.Measurements;
+using TEKUtsav.Business.Notification;
+
 
 namespace TEKUtsav.ViewModels.NotificationsPage
 {
 	public class NotificationsPageViewModel : ViewModelBase
 	{
 		private readonly INavigationService _navigationService;
+        private readonly INotificationBusinessService _notificationBusinesservice;
+
 		private readonly ISettings _settings;
 		private bool clicked = false;
         private List<Notification> _notifications;
@@ -61,17 +65,25 @@ namespace TEKUtsav.ViewModels.NotificationsPage
             }
         }
 
-        public NotificationsPageViewModel(INavigationService navigationService, ISettings settings) : base(navigationService, settings)
+        public NotificationsPageViewModel(INavigationService navigationService, ISettings settings, INotificationBusinessService notificationBusinessService) : base(navigationService, settings)
 		{
 			if (navigationService == null) throw new ArgumentNullException("navigationService");
+            if (notificationBusinessService == null) throw new ArgumentNullException("notificationBusinessService");
 			if (settings == null) throw new ArgumentNullException("settings");
+            _notificationBusinesservice = notificationBusinessService;
 			_navigationService = navigationService;
 			_settings = settings;
 		}
-
+       
 		public override async Task OnViewAppearing(object navigationParams = null)
 		{
-			this.SetCurrentPage(TEKUtsavAppPage.NotificationsPage);
+            this.SetCurrentPage(TEKUtsavAppPage.NotificationsPage);
+
+            var notificationEvents = await _notificationBusinesservice.GetNotifications();
+            if (notificationEvents != null)
+            {
+               // ProcessEvents(events);
+            }
            	
 			Task.Run(() => { });
 		}
