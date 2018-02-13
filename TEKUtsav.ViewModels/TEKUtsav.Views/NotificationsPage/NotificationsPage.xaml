@@ -7,6 +7,7 @@
 	xmlns:vc="clr-namespace:TEKUtsav.UIControls.ValueConverters;assembly=TEKUtsav.UIControls" 
 	xmlns:imgcontrols="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions" 
 	BackgroundColor="#ffffff" Title="Notifications" 
+    x:Name = "MyNotifyPage"
 	x:Class="TEKUtsav.Views.NotificationsPage.NotificationsPage">
  	<ContentPage.Resources>
 			<ResourceDictionary>
@@ -31,8 +32,8 @@
                                     <Label Text="{Binding Description}" TextColor="#818181" FontSize="14" FontFamily="Helvetica" HorizontalOptions="StartAndExpand">
                                     </Label>
                                 </StackLayout>
-                             <controls:CustomButton Image="push.png" Command="{Binding SendPushClickCommand}" HeightRequest="30" WidthRequest="50" HorizontalOptions="EndAndExpand">
-                            </controls:CustomButton>
+                             <Button Text="" Image="push.png" Command="{Binding Source={x:Reference MyNotifyPage}, Path=BindingContext.SendPushClickCommand}"   HeightRequest="30" WidthRequest="50" HorizontalOptions="EndAndExpand">
+                            </Button>
                            </StackLayout>
                         </controls:PoListViewCell>
                     </DataTemplate>
