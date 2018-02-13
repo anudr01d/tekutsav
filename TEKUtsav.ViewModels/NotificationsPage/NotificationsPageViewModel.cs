@@ -28,8 +28,19 @@ namespace TEKUtsav.ViewModels.NotificationsPage
 		private readonly ISettings _settings;
 		private bool clicked = false;
         private List<Notification> _notifications;
-		private ICommand _menuClickCommand, _registerClickedCommand;
+        private ICommand _menuClickCommand, _registerClickedCommand;
 
+
+        private ICommand _sendPushClickCommand;
+        public ICommand SendPushClickCommand
+        {
+            get { return _sendPushClickCommand; }
+            protected set
+            {
+                _sendPushClickCommand = value;
+                OnPropertyChanged("SendPushClickCommand");
+            }
+        }
 		public ICommand RegisterClickedCommand
 		{
             get { return _registerClickedCommand; }
@@ -109,7 +120,10 @@ namespace TEKUtsav.ViewModels.NotificationsPage
 		public override async Task OnViewAppearing(object navigationParams = null)
 		{
             this.SetCurrentPage(TEKUtsavAppPage.NotificationsPage);
-
+            this.SendPushClickCommand = new Command(() =>
+            {
+                sendPush();
+            });
 			Task.Run(() => { });
 		}
 

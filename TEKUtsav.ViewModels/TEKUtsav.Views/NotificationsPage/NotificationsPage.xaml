@@ -31,8 +31,9 @@
                                     <Label Text="{Binding Description}" TextColor="#818181" FontSize="14" FontFamily="Helvetica" HorizontalOptions="StartAndExpand">
                                     </Label>
                                 </StackLayout>
-                                <Image Source="push.png" HeightRequest="30" WidthRequest="50" HorizontalOptions="EndAndExpand"></Image>  
-                            </StackLayout>
+                             <controls:CustomButton Image="push.png" Command="{Binding SendPushClickCommand}" HeightRequest="30" WidthRequest="50" HorizontalOptions="EndAndExpand">
+                            </controls:CustomButton>
+                           </StackLayout>
                         </controls:PoListViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
