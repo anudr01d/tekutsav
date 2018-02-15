@@ -45,7 +45,12 @@
 
                             <!-- Page2 Display Bio -->
                             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
-                                <WebView HorizontalOptions="FillAndExpand" HeightRequest="200"></WebView>
+                            <WebView VerticalOptions="FillAndExpand" HeightRequest="200" WidthRequest="200" HorizontalOptions="FillAndExpand">
+                                <WebView.Source>
+                                    <HtmlWebViewSource Html="{Binding Html}"/>
+                                </WebView.Source>
+                            </WebView>
+                                <!--<WebView x:Name="wvPlayer" HorizontalOptions="FillAndExpand" HeightRequest="200"></WebView>-->
                                 <!--<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical" Padding="10,10,10,10">
                                     <controls:TEKUtsavLabel VerticalOptions="Center" HorizontalOptions="Center" FontSize="23" FontType="Bold" Text="SOME VIDEO LINK HERE" TextColor="#F6304E"></controls:TEKUtsavLabel>
                                 </StackLayout>-->
