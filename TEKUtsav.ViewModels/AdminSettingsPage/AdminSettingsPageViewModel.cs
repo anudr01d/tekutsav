@@ -27,6 +27,7 @@ namespace TEKUtsav.ViewModels.AdminSettingsPage
         private ICommand _enableDanceVotingCommand, _enableFsVotingCommand, _enableSeVotingCommand;
         private List<DS.Event> _getEventType;
 
+        public ICommand Toggled { get; set; }
 
         private bool _isDanceVotingEnabled;
         public bool IsDanceVotingEnabled
@@ -93,6 +94,29 @@ namespace TEKUtsav.ViewModels.AdminSettingsPage
                 OnPropertyChanged("EnableSeVotingCommand");
             }
         }
+     
+
+        public async void Handle_Toggled(object sender, Xamarin.Forms.ToggledEventArgs e)
+        {
+
+            var s = sender as Switch;
+            DS.EventVotingSchedule eventVoting = new DS.EventVotingSchedule();
+
+            eventVoting.EventTypeId = "BD8A4F1A-841C-4449-BD11-FE8B21C98F41";
+            eventVoting.IsVotingOpen = s.IsToggled;
+
+            var response = await _eventBusinesservice.enableDiableVoting(eventVoting);
+            //Use the response and identify if the user is an admin or not, persist additional useful information
+            if (response != null)
+            {
+                await _navigationService.DisplayAlert("Voting Updated", "Voting feature updated", "OK");
+
+            }
+            else
+            {
+                await _navigationService.DisplayAlert("Error in Voting", "Err", "OK");
+            }
+        }
 
         public AdminSettingsPageViewModel(INavigationService navigationService, ISettings settings, IEventBusinessService eventBusinesservice) : base(navigationService, settings)
 		{
@@ -103,33 +127,12 @@ namespace TEKUtsav.ViewModels.AdminSettingsPage
 			_settings = settings;
             _eventBusinesservice = eventBusinesservice;
 
-
 		}
 
         public override async Task OnViewAppearing(object navigationParams = null)
         {
             this.SetCurrentPage(TEKUtsavAppPage.AdminSettingsPage);
 
-            this.EnableDanceVotingCommand = new Command( async () =>
-            {
-                //Call api for enabling and disabling voting lines
-                DS.EventVotingSchedule eventVoting = new DS.EventVotingSchedule();
-
-                eventVoting.EventTypeId = "6F77A69A-45EA-4E82-B773-E650AA71F39B";
-                eventVoting.IsVotingOpen = IsDanceVotingEnabled;
-
-                var response = await _eventBusinesservice.enableDiableVoting(eventVoting);
-                //Use the response and identify if the user is an admin or not, persist additional useful information
-                if (response != null)
-                {
-                    await _navigationService.DisplayAlert("Voting Updated", response.ToString(), "OK");
-
-                }
-                else
-                {
-                    await _navigationService.DisplayAlert("Error in Voting", "Error", "OK");
-                }
-            });
 
             this.EnableFsVotingCommand = new Command(async () =>
             {
@@ -188,7 +191,7 @@ namespace TEKUtsav.ViewModels.AdminSettingsPage
 
                     foreach (var ev in eventTypes.Result)
                     {
-                        list.Add(new DS.Event() { Title = ev.Title, Description = ev.Description });
+                        list.Add(new DS.Event() { Title = ev.Title, Description = ev.Description ,EventTypeId = ev.Id });
 
                     }
                     return list;
@@ -204,10 +207,7 @@ namespace TEKUtsav.ViewModels.AdminSettingsPage
                 OnPropertyChanged("GetEventType");
             }
         }
-        public void OnItemToggled(object sender, ToggledEventArgs e)
-        {     //Get ConfigurationItem (listview item)     //save switch value    
-            Switch toggledSwitch = (Switch)sender;
-        }
+       
 		public override Task OnViewDisappearing()
 		{
 			return Task.Run(() => { });
@@ -217,5 +217,10 @@ namespace TEKUtsav.ViewModels.AdminSettingsPage
 		{
 			
 		}
-	}
+
+        public void Handle_Toggled()
+        {
+            throw new NotImplementedException();
+        }
+    }
 }

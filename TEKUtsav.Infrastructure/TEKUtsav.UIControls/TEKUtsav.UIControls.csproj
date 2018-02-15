@@ -74,6 +74,7 @@
       <DependentUpon>TEKUtsavListViewStyle.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\GradientColorStack.cs" />
+    <Compile Include="Controls\ExtendedSwitch.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controls\" />

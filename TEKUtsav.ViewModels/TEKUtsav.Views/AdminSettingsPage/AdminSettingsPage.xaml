@@ -7,7 +7,7 @@
 	xmlns:local="clr-namespace:TEKUtsav.UIControls.MarkupExtensions;assembly=TEKUtsav.UIControls"
 	xmlns:vc="clr-namespace:TEKUtsav.UIControls.ValueConverters;assembly=TEKUtsav.UIControls" 
 	xmlns:imgcontrols="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions" 
-	BackgroundColor="#ffffff" Title="Admin Settings" 
+    BackgroundColor="#ffffff" Title="Admin Settings" 
     x:Name = "chkInfo"
 	x:Class="TEKUtsav.Views.AdminSettingsPage.AdminSettingsPage">
  	<ContentPage.Resources>
@@ -29,14 +29,14 @@
                                     </Label>
                                     <Label Text="{Binding Description}" TextColor="#CDCDCD" FontSize="13" FontFamily="Helvetica" HorizontalOptions="StartAndExpand">
                                     </Label>
-                 
+                              
 <!--            <Entry x:Name="txtName" BindingContext="{x:Reference chkInfo}" Text="{Binding Path=IsToggled}"/>-->
 <!--                            <Switch IsToggled="false" Command="{Binding Path=BindingContext.EnableSeVotingCommand, Source={x:Reference MyNotifyPage}}" CommandParameter="{Binding .}" HorizontalOptions="Center" Grid.Row="0" Grid.Column="1" />-->
 <!--                                <Switch IsToggled= "false" Toggled="OnItemToggled" HorizontalOptions="EndAndExpand" />
 -->                                </StackLayout>
-                              <Switch x:Name="chkInfo" IsToggled="{Binding IsDanceVotingEnabled}" HorizontalOptions="EndAndExpand"/>
-            <Label BindingContext="{x:Reference chkInfo}" Text="{Binding Path=IsToggled}" HorizontalOptions="EndAndExpand" />
-<!--                            <Button Grid.Column="1" Command="{Binding Path=IsToggled, Source={x:Reference chkInfo}}" CommandParameter="{Binding .}" HeightRequest="30" WidthRequest="50" HorizontalOptions="EndAndExpand" /> 
+                              <Switch IsToggled="true" Toggled="Handle_Toggled" HorizontalOptions="EndAndExpand"/>
+<!--            <Label BindingContext="{x:Reference chkInfo}" Text="{Binding Path=Text}" HorizontalOptions="EndAndExpand" />
+--><!--                            <Button Grid.Column="1" Command="{Binding Path=IsToggled, Source={x:Reference chkInfo}}" CommandParameter="{Binding .}" HeightRequest="30" WidthRequest="50" HorizontalOptions="EndAndExpand" /> 
 -->                           </StackLayout>
                         </controls:PoListViewCell>
                     </DataTemplate>
