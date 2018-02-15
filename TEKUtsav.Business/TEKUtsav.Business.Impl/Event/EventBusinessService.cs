@@ -38,5 +38,11 @@ namespace TEKUtsav.Business.EventService.Impl
         {
             throw new NotImplementedException();
         }
+
+        public async Task<EventVotingSchedule> enableDiableVoting(EventVotingSchedule eventVoting)
+        {
+            return await _eventRestApi.enableDiableVoting(eventVoting);
+        }
+
 	}
 }

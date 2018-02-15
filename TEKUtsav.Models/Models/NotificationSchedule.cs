@@ -11,6 +11,6 @@ namespace TEKUtsav.Mobile.Service.Domain.DataObjects
         public DateTimeOffset? EndTime { get; set; }
 
         [JsonIgnore]
-        public Notification Notification { get; set; }
+        public virtual Notification Notification { get; set; }
     }
 }

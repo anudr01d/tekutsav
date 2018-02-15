@@ -9,6 +9,8 @@ using TEKUtsav.Ral.Impl.User;
 using TEKUtsav.Ral.User;
 using TEKUtsav.Ral.Impl.EventRestApi;
 using TEKUtsav.Ral.EventApi;
+using TEKUtsav.Ral.Impl.NotificationRestApi;
+using TEKUtsav.Ral.NotificationApi;
 
 namespace TEKUtsav.Bootstrapping
 {
@@ -21,6 +23,8 @@ namespace TEKUtsav.Bootstrapping
 
             builder.RegisterType<UserRestApi>().As<IUserRestApi>();
             builder.RegisterType<EventRestApi>().As<IEventRestApi>();
+            builder.RegisterType<NotificationRestApi>().As<INotificationRestApi>();
+
         }
     }
 }

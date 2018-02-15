@@ -33,7 +33,7 @@
     <Compile Include="PurchaseOrders\IPurchaseOrdersBusinessService.cs" />
     <Compile Include="Measurements\IMeasurementsBusinessService.cs" />
     <Compile Include="User\IUserBusinessService.cs" />
-    <Compile Include="Notification\INotificationService.cs" />
+    <Compile Include="Notification\INotificationBusinessService.cs" />
     <Compile Include="Event\IEventBusinessService.cs" />
   </ItemGroup>
   <ItemGroup>

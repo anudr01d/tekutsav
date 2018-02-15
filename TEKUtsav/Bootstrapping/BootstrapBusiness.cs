@@ -8,6 +8,8 @@ using TEKUtsav.Business.User.Impl;
 using TEKUtsav.Infrastructure.Logging;
 using TEKUtsav.Business.EventService;
 using TEKUtsav.Business.EventService.Impl;
+using TEKUtsav.Business.Notification.Impl;
+using TEKUtsav.Business.Notification;
 
 namespace TEKUtsav.Bootstrapping
 {
@@ -17,6 +19,7 @@ namespace TEKUtsav.Bootstrapping
             builder.RegisterType<LoggingBusinessService>().As<ILogger>().SingleInstance();
             builder.RegisterType<UserBusinessService>().As<IUserBusinessService>();
             builder.RegisterType<EventBusinessService>().As<IEventBusinessService>();
+            builder.RegisterType<NotificationBusinessService>().As<INotificationBusinessService>();
         }
     }
 }

@@ -1,10 +1,11 @@
 ﻿using System.Threading.Tasks;
-using DS = TEKUtsav.Mobile.Service.Domain.DataObjects;
+using TEKUtsav.Mobile.Service.Domain.DataObjects;
+using System.Collections.Generic;
 
 namespace TEKUtsav.Ral.NotificationApi
 {
     public interface INotificationRestApi
     {
-        Task<DS.Notification> GetNotifications();
+        Task<ICollection<Notification>> GetNotifications();
     }
 }

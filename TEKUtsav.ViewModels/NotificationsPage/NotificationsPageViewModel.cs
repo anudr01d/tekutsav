@@ -13,17 +13,34 @@ using TEKUtsav.Models.Entities;
 using TEKUtsav.Infrastructure.Constants;
 using TEKUtsav.Infrastructure;
 using TEKUtsav.Business.Measurements;
+using TEKUtsav.Business.Notification;
+using TEKUtsav.Models.FireBase;
+
+
 
 namespace TEKUtsav.ViewModels.NotificationsPage
 {
 	public class NotificationsPageViewModel : ViewModelBase
 	{
 		private readonly INavigationService _navigationService;
+        private readonly INotificationBusinessService _notificationBusinesservice;
+
 		private readonly ISettings _settings;
 		private bool clicked = false;
         private List<Notification> _notifications;
-		private ICommand _menuClickCommand, _registerClickedCommand;
+        private ICommand _menuClickCommand, _registerClickedCommand;
 
+
+        private ICommand _sendPushClickCommand;
+        public ICommand SendPushClickCommand
+        {
+            get { return _sendPushClickCommand; }
+            protected set
+            {
+                _sendPushClickCommand = value;
+                OnPropertyChanged("SendPushClickCommand");
+            }
+        }
 		public ICommand RegisterClickedCommand
 		{
             get { return _registerClickedCommand; }
@@ -38,16 +55,17 @@ namespace TEKUtsav.ViewModels.NotificationsPage
         {
             get
             {
-                if (_notifications == null)
+                var notificationEvents = Task.Run(() => _notificationBusinesservice.GetNotifications());
+                if (notificationEvents != null)
                 {
                     var list = new List<Notification>();
-                    list.Add(new Notification() { Title = "Pre-event", FormattedDateTime = "24 Feb | 10.00", Description="Some description"});
-                    list.Add(new Notification() { Title = "Lunch", FormattedDateTime = "24 Feb | 10.00", Description="Some description"});
-                    list.Add(new Notification() { Title = "High Tea", FormattedDateTime = "24 Feb | 10.00", Description="Some description"});
-                    list.Add(new Notification() { Title = "Main event", FormattedDateTime = "24 Feb | 10.00", Description="Some description"});
-                    list.Add(new Notification() { Title = "Voting", FormattedDateTime = "24 Feb | 10.00", Description="Some description"});
-                    list.Add(new Notification() { Title = "Dance Floor", FormattedDateTime = "24 Feb | 10.00", Description="Some description"});
-                    return list;
+
+                    foreach (var ev in notificationEvents.Result)
+                    {
+                        list.Add(new Notification() { Title = ev.Title, FormattedDateTime = "24 Feb | 10.00", Description = ev.Description });
+
+                    }
+                     return list;
                 }
                 else
                 {
@@ -60,19 +78,53 @@ namespace TEKUtsav.ViewModels.NotificationsPage
                 OnPropertyChanged("Notifications");
             }
         }
+        private void sendPush(string title, string description)
+        {
+            FireBasePush push = new FireBasePush(Globals.FIREBASE_SERVER_KEY);
+            push.SendPush(new PushMessage
+            {
+                to = "/topics/news",
+                notification = new PushMessageData
+                {
+                    title = title,
+                    text = description,
+                    click_action = "click_action"
+                },
+                data = new
+                {
+                    example = "this is a example"
+                }
+            });
+        }
+        public void ProcessEvents(IEnumerable<Notification> events)
+        {
+            var list = new List<Notification>();
 
-        public NotificationsPageViewModel(INavigationService navigationService, ISettings settings) : base(navigationService, settings)
+            foreach (var ev in events)
+            {
+                list.Add(new Notification() { Title = "Lunch", FormattedDateTime = "24 Feb | 10.00", Description = "Some description" });
+
+            }
+        }
+        public NotificationsPageViewModel(INavigationService navigationService, ISettings settings, INotificationBusinessService notificationBusinessService) : base(navigationService, settings)
 		{
 			if (navigationService == null) throw new ArgumentNullException("navigationService");
+            if (notificationBusinessService == null) throw new ArgumentNullException("notificationBusinessService");
 			if (settings == null) throw new ArgumentNullException("settings");
+            _notificationBusinesservice = notificationBusinessService;
 			_navigationService = navigationService;
 			_settings = settings;
 		}
-
+       
 		public override async Task OnViewAppearing(object navigationParams = null)
 		{
-			this.SetCurrentPage(TEKUtsavAppPage.NotificationsPage);
-           	
+            this.SetCurrentPage(TEKUtsavAppPage.NotificationsPage);
+            this.SendPushClickCommand = new Command((e) =>
+            {
+                var item = (e as TEKUtsav.Models.Notification);
+                sendPush(item.Title, item.Description);
+
+            });
 			Task.Run(() => { });
 		}
 

@@ -14,6 +14,7 @@ using TEKUtsav.Infrastructure.Constants;
 using TEKUtsav.Infrastructure;
 using TEKUtsav.Business.Measurements;
 using TEKUtsav.Business.EventService;
+using TEKUtsav.Mobile.Service.Domain.DataObjects;
 
 namespace TEKUtsav.ViewModels.AdminSettingsPage
 {
@@ -100,41 +101,75 @@ namespace TEKUtsav.ViewModels.AdminSettingsPage
 			_settings = settings;
             _eventBusinesservice = eventBusinesservice;
 
-            this.EnableDanceVotingCommand = new Command(() =>
-            {
-                if(IsDanceVotingEnabled) 
-                {
-                    //Call api for enabling and disabling voting lines
 
-                }
-            }
-            , () => true);
-
-            this.EnableFsVotingCommand = new Command(() =>
-            {
-                if (IsFsVotingEnabled)
-                {
-                    //Call api for enabling and disabling voting lines
-                }
-
-            }
-            , () => true);
-
-            this.EnableSeVotingCommand = new Command(() =>
-            {
-                if (IsSeVotingEnabled)
-                {
-                    //Call api for enabling and disabling voting lines
-                }
-
-            }
-            , () => true);
 		}
 
-		public override async Task OnViewAppearing(object navigationParams = null)
-		{
-			this.SetCurrentPage(TEKUtsavAppPage.AdminSettingsPage);
+        public override async Task OnViewAppearing(object navigationParams = null)
+        {
+            this.SetCurrentPage(TEKUtsavAppPage.AdminSettingsPage);
 
+            this.EnableDanceVotingCommand = new Command( async () =>
+            {
+                //Call api for enabling and disabling voting lines
+                EventVotingSchedule eventVoting = new EventVotingSchedule();
+
+                eventVoting.EventTypeId = "6F77A69A-45EA-4E82-B773-E650AA71F39B";
+                eventVoting.IsVotingOpen = IsDanceVotingEnabled;
+
+                var response = await _eventBusinesservice.enableDiableVoting(eventVoting);
+                //Use the response and identify if the user is an admin or not, persist additional useful information
+                if (response != null)
+                {
+                    await _navigationService.DisplayAlert("Voting Updated", response.ToString(), "OK");
+
+                }
+                else
+                {
+                    await _navigationService.DisplayAlert("Error in Voting", "Error", "OK");
+                }
+            });
+
+            this.EnableFsVotingCommand = new Command(async () =>
+            {
+                //Call api for enabling and disabling voting lines
+                EventVotingSchedule eventVoting = new EventVotingSchedule();
+
+                eventVoting.EventTypeId = "BD8A4F1A-841C-4449-BD11-FE8B21C98F41";
+                eventVoting.IsVotingOpen = IsFsVotingEnabled;
+
+                var response = await _eventBusinesservice.enableDiableVoting(eventVoting);
+                //Use the response and identify if the user is an admin or not, persist additional useful information
+                if (response != null)
+                {
+                    await _navigationService.DisplayAlert("Voting Updated", response.ToString(), "OK");
+
+                }
+                else
+                {
+                    await _navigationService.DisplayAlert("Error in Voting", "Err", "OK");
+                }
+            });
+
+            this.EnableSeVotingCommand = new Command(async () =>
+            {
+                //Call api for enabling and disabling voting lines
+                EventVotingSchedule eventVoting = new EventVotingSchedule();
+
+                eventVoting.EventTypeId = "BD8A4F1A-841C-4449-BD11-FE8B21C98F41";
+                eventVoting.IsVotingOpen = IsSeVotingEnabled;
+
+                var response = await _eventBusinesservice.enableDiableVoting(eventVoting);
+                //Use the response and identify if the user is an admin or not, persist additional useful information
+                if (response != null)
+                {
+                    await _navigationService.DisplayAlert("Voting Updated", response.ToString(), "OK");
+
+                }
+                else
+                {
+                    await _navigationService.DisplayAlert("Error in Voting", response.ToString(), "OK");
+                }
+            });
 
 			Task.Run(() => { });
 		}
