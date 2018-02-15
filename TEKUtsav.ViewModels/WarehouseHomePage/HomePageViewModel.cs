@@ -120,6 +120,20 @@ namespace TEKUtsav.ViewModels.HomePage
 			}
 		}
 
+        private string _html = "<html><body><iframe src=\"https://www.youtube.com/watch?v=a2A2APdahn4\" frameborder=\"0\" allowfullscreen></iframe></body></html>";
+        public string Html
+        {
+            get
+            {
+                return _html;
+            }
+            protected set
+            {
+                _html = value;
+                OnPropertyChanged("Html");
+            }
+        }
+
 		private bool _isSyncing = false;
 		public bool IsSyncing
 		{

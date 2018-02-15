@@ -105,6 +105,7 @@ namespace TEKUtsav.ViewModels.AdminSettingsPage
                 if(IsDanceVotingEnabled) 
                 {
                     //Call api for enabling and disabling voting lines
+
                 }
             }
             , () => true);
