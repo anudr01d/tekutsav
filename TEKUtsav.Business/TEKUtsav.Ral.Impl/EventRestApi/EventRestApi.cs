@@ -57,6 +57,13 @@ namespace TEKUtsav.Ral.Impl.EventRestApi
 
 
         }
+        public async Task<ICollection<Event>> GetEventType()
+        {
+            var azureclient = _azureClient.GetClient(Globals.EVENT_TYPE_API, string.Empty, string.Empty);
+            var table = _cloudService.GetTable<Event>(azureclient);
+            var list = await table.ReadAllItemsAsync();
+            return list;
+        }
 
         public Task<List<EventWinner>> ComputeEventWinner(string eventTypeId)
         {

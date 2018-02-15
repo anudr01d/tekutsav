@@ -14,7 +14,8 @@ using TEKUtsav.Infrastructure.Constants;
 using TEKUtsav.Infrastructure;
 using TEKUtsav.Business.Measurements;
 using TEKUtsav.Business.EventService;
-using TEKUtsav.Mobile.Service.Domain.DataObjects;
+
+using DS = TEKUtsav.Mobile.Service.Domain.DataObjects;
 
 namespace TEKUtsav.ViewModels.AdminSettingsPage
 {
@@ -24,6 +25,7 @@ namespace TEKUtsav.ViewModels.AdminSettingsPage
         private readonly IEventBusinessService _eventBusinesservice;
 		private readonly ISettings _settings;
         private ICommand _enableDanceVotingCommand, _enableFsVotingCommand, _enableSeVotingCommand;
+        private List<DS.Event> _getEventType;
 
 
         private bool _isDanceVotingEnabled;
@@ -37,7 +39,7 @@ namespace TEKUtsav.ViewModels.AdminSettingsPage
                 OnPropertyChanged();
             }
         }
-
+       
         private bool _isFsVotingEnabled;
         public bool IsFsVotingEnabled
         {
@@ -111,7 +113,7 @@ namespace TEKUtsav.ViewModels.AdminSettingsPage
             this.EnableDanceVotingCommand = new Command( async () =>
             {
                 //Call api for enabling and disabling voting lines
-                EventVotingSchedule eventVoting = new EventVotingSchedule();
+                DS.EventVotingSchedule eventVoting = new DS.EventVotingSchedule();
 
                 eventVoting.EventTypeId = "6F77A69A-45EA-4E82-B773-E650AA71F39B";
                 eventVoting.IsVotingOpen = IsDanceVotingEnabled;
@@ -132,7 +134,7 @@ namespace TEKUtsav.ViewModels.AdminSettingsPage
             this.EnableFsVotingCommand = new Command(async () =>
             {
                 //Call api for enabling and disabling voting lines
-                EventVotingSchedule eventVoting = new EventVotingSchedule();
+                DS.EventVotingSchedule eventVoting = new DS.EventVotingSchedule();
 
                 eventVoting.EventTypeId = "BD8A4F1A-841C-4449-BD11-FE8B21C98F41";
                 eventVoting.IsVotingOpen = IsFsVotingEnabled;
@@ -153,7 +155,7 @@ namespace TEKUtsav.ViewModels.AdminSettingsPage
             this.EnableSeVotingCommand = new Command(async () =>
             {
                 //Call api for enabling and disabling voting lines
-                EventVotingSchedule eventVoting = new EventVotingSchedule();
+                DS.EventVotingSchedule eventVoting = new DS.EventVotingSchedule();
 
                 eventVoting.EventTypeId = "BD8A4F1A-841C-4449-BD11-FE8B21C98F41";
                 eventVoting.IsVotingOpen = IsSeVotingEnabled;
@@ -174,8 +176,38 @@ namespace TEKUtsav.ViewModels.AdminSettingsPage
 			Task.Run(() => { });
 		}
 
-	
+        public List<DS.Event> GetEventType
+        {
+            get
+            {
+                //var notificationEvents = await _notificationBusinesservice.GetNotifications();
+                var eventTypes = Task.Run(() => _eventBusinesservice.GetEventType());
+                if (eventTypes != null)
+                {
+                    var list = new List<DS.Event>();
 
+                    foreach (var ev in eventTypes.Result)
+                    {
+                        list.Add(new DS.Event() { Title = ev.Title, Description = ev.Description });
+
+                    }
+                    return list;
+                }
+                else
+                {
+                    return _getEventType;
+                }
+            }
+            set
+            {
+                _getEventType = value;
+                OnPropertyChanged("GetEventType");
+            }
+        }
+        public void OnItemToggled(object sender, ToggledEventArgs e)
+        {     //Get ConfigurationItem (listview item)     //save switch value    
+            Switch toggledSwitch = (Switch)sender;
+        }
 		public override Task OnViewDisappearing()
 		{
 			return Task.Run(() => { });

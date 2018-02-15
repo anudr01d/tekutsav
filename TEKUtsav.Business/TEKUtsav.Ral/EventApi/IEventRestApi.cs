@@ -11,5 +11,7 @@ namespace TEKUtsav.Ral.EventApi
         Task<int> CheckIfUserHasVoted(string eventTypeId, string UDID);
         Task<List<EventWinner>> ComputeEventWinner(string eventTypeId);
         Task<EventVotingSchedule> enableDiableVoting(EventVotingSchedule eventVoting);
+        Task<ICollection<Event>> GetEventType();
+
     }
 }

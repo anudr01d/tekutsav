@@ -5,6 +5,6 @@ namespace TEKUtsav.Ral.EventTypeApi
 {
     public interface IEventTypeRestApi
     {
-        Task<DO.EventType> GetEventTypes();
+        Task<DO.Event> GetEventTypes();
     }
 }

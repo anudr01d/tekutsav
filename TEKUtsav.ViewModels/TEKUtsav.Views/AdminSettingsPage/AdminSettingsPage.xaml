@@ -8,6 +8,7 @@
 	xmlns:vc="clr-namespace:TEKUtsav.UIControls.ValueConverters;assembly=TEKUtsav.UIControls" 
 	xmlns:imgcontrols="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions" 
 	BackgroundColor="#ffffff" Title="Admin Settings" 
+    x:Name = "chkInfo"
 	x:Class="TEKUtsav.Views.AdminSettingsPage.AdminSettingsPage">
  	<ContentPage.Resources>
 			<ResourceDictionary>
@@ -16,66 +17,30 @@
 				<local:Inverter x:Key="Inverter" />
 			</ResourceDictionary>
 	</ContentPage.Resources>
-    <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand">
-        <StackLayout Orientation="Horizontal" BackgroundColor="#FFFFFF" Padding="20,10,10,10" Spacing="0" VerticalOptions="StartAndExpand">
-            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
-                <Label Text="Enable Dance Voting Lines" TextColor="#F6304E" FontSize="18" FontFamily="Helvetica" HorizontalOptions="StartAndExpand">
-                </Label>
-                <Label Text="Some description" TextColor="#CDCDCD" FontSize="13" FontFamily="Helvetica" HorizontalOptions="StartAndExpand">
-                </Label>
-            </StackLayout>
-            <ContentView HorizontalOptions="EndAndExpand" Padding="0,10,10,10">
-                <Switch IsToggled="{Binding IsDanceVotingEnabled}"  x:Name="DanceSwitch">
-                    <Switch.Behaviors>
-                        <behaviors:EventHandlerBehavior EventName="Toggled">
-                            <behaviors:InvokeCommandAction Command="{Binding EnableDanceVotingCommand}" />
-                        </behaviors:EventHandlerBehavior>
-                    </Switch.Behaviors>
-                </Switch>
-            </ContentView>
-        </StackLayout>
-        <ContentView>
-            <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" BackgroundColor="#818181"></BoxView>
-        </ContentView>
-        <StackLayout Orientation="Horizontal" BackgroundColor="#FFFFFF" Padding="10,10,10,10" Spacing="0" VerticalOptions="StartAndExpand">
-            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
-                <Label Text="Enable Fashion Show Voting Lines" TextColor="#F6304E" FontSize="18" FontFamily="Helvetica" HorizontalOptions="StartAndExpand">
-                </Label>
-                <Label Text="Some description" TextColor="#CDCDCD" FontSize="13" FontFamily="Helvetica" HorizontalOptions="StartAndExpand">
-                </Label>
-            </StackLayout>
-            <ContentView HorizontalOptions="EndAndExpand" Padding="0,10,10,10">
-                <Switch IsToggled="{Binding IsFsVotingEnabled}"  x:Name="FsSwitch">
-                    <Switch.Behaviors>
-                        <behaviors:EventHandlerBehavior EventName="Toggled">
-                            <behaviors:InvokeCommandAction Command="{Binding EnableFsVotingCommand}" />
-                        </behaviors:EventHandlerBehavior>
-                    </Switch.Behaviors>
-                </Switch>
-            </ContentView>
-        </StackLayout>
-        <ContentView>
-            <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" BackgroundColor="#818181"></BoxView>
-        </ContentView>
-        <StackLayout Orientation="Horizontal" BackgroundColor="#FFFFFF" Padding="10,10,10,10" Spacing="0" VerticalOptions="StartAndExpand">
-            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
-                <Label Text="Enable Special Events Voting Lines" TextColor="#F6304E" FontSize="18" FontFamily="Helvetica" HorizontalOptions="StartAndExpand">
-                </Label>
-                <Label Text="Some description" TextColor="#CDCDCD" FontSize="13" FontFamily="Helvetica" HorizontalOptions="StartAndExpand">
-                </Label>
-            </StackLayout>
-            <ContentView HorizontalOptions="EndAndExpand" Padding="0,10,10,10">
-                <Switch IsToggled="{Binding IsSeVotingEnabled}"  x:Name="Switch">
-                    <Switch.Behaviors>
-                        <behaviors:EventHandlerBehavior EventName="Toggled">
-                            <behaviors:InvokeCommandAction Command="{Binding EnableSeVotingCommand}" />
-                        </behaviors:EventHandlerBehavior>
-                    </Switch.Behaviors>
-                </Switch>
-            </ContentView>
-        </StackLayout>
-        <ContentView>
-            <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" BackgroundColor="#818181"></BoxView>
-        </ContentView>
-    </StackLayout>
+   <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <controls:TappableListView BackgroundColor="#FFF" ItemsSource="{Binding GetEventType}" HeightRequest="100" SeparatorVisibility="Default" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" HasUnevenRows="true">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <controls:PoListViewCell>
+                            <StackLayout Spacing="0" Padding="20,20,20,20" Orientation="Horizontal">
+                                <StackLayout Orientation="Vertical" BackgroundColor="#FFFFFF" Padding="0,0,0,0" Spacing="0" VerticalOptions="CenterAndExpand">
+                                    <!--<Image Source="{Binding MenuImageSource, Converter={StaticResource StringToImageConverter}}" WidthRequest="40" HeightRequest="40" HorizontalOptions="Start"/>-->
+                                    <Label Text="{Binding Title}" TextColor="#F6304E" FontSize="18" FontFamily="Helvetica" HorizontalOptions="StartAndExpand">
+                                    </Label>
+                                    <Label Text="{Binding Description}" TextColor="#CDCDCD" FontSize="13" FontFamily="Helvetica" HorizontalOptions="StartAndExpand">
+                                    </Label>
+                 
+<!--            <Entry x:Name="txtName" BindingContext="{x:Reference chkInfo}" Text="{Binding Path=IsToggled}"/>-->
+<!--                            <Switch IsToggled="false" Command="{Binding Path=BindingContext.EnableSeVotingCommand, Source={x:Reference MyNotifyPage}}" CommandParameter="{Binding .}" HorizontalOptions="Center" Grid.Row="0" Grid.Column="1" />-->
+<!--                                <Switch IsToggled= "false" Toggled="OnItemToggled" HorizontalOptions="EndAndExpand" />
+-->                                </StackLayout>
+                              <Switch x:Name="chkInfo" IsToggled="{Binding IsDanceVotingEnabled}" HorizontalOptions="EndAndExpand"/>
+            <Label BindingContext="{x:Reference chkInfo}" Text="{Binding Path=IsToggled}" HorizontalOptions="EndAndExpand" />
+<!--                            <Button Grid.Column="1" Command="{Binding Path=IsToggled, Source={x:Reference chkInfo}}" CommandParameter="{Binding .}" HeightRequest="30" WidthRequest="50" HorizontalOptions="EndAndExpand" /> 
+-->                           </StackLayout>
+                        </controls:PoListViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </controls:TappableListView>
+        </Grid>
 </controls:TEKUtsavContentPage>
