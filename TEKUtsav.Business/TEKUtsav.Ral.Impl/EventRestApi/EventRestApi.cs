@@ -52,8 +52,10 @@ namespace TEKUtsav.Ral.Impl.EventRestApi
 
             var azureclient = _azureClient.GetClient(Globals.EVENT_VOTING_SCHEDULE, string.Empty, string.Empty);
             var table = _cloudService.GetTable<EventVotingSchedule>(azureclient);
-            var list = await table.UpdateItemAsync(eventVoting);
-            return list == null ? null : list;
+            var list = await table.CreateItemAsync(eventVoting);
+            return list;
+
+
         }
 
         public Task<List<EventWinner>> ComputeEventWinner(string eventTypeId)

@@ -113,8 +113,8 @@ namespace TEKUtsav.ViewModels.AdminSettingsPage
                 //Call api for enabling and disabling voting lines
                 EventVotingSchedule eventVoting = new EventVotingSchedule();
 
-                eventVoting.EventTypeId = "BD8A4F1A-841C-4449-BD11-FE8B21C98F41";
-                eventVoting.IsVotingopen = IsDanceVotingEnabled;
+                eventVoting.EventTypeId = "6F77A69A-45EA-4E82-B773-E650AA71F39B";
+                eventVoting.IsVotingOpen = IsDanceVotingEnabled;
 
                 var response = await _eventBusinesservice.enableDiableVoting(eventVoting);
                 //Use the response and identify if the user is an admin or not, persist additional useful information
@@ -125,7 +125,7 @@ namespace TEKUtsav.ViewModels.AdminSettingsPage
                 }
                 else
                 {
-                    await _navigationService.DisplayAlert("Error in Voting", response.ToString(), "OK");
+                    await _navigationService.DisplayAlert("Error in Voting", "Error", "OK");
                 }
             });
 
@@ -135,7 +135,7 @@ namespace TEKUtsav.ViewModels.AdminSettingsPage
                 EventVotingSchedule eventVoting = new EventVotingSchedule();
 
                 eventVoting.EventTypeId = "BD8A4F1A-841C-4449-BD11-FE8B21C98F41";
-                eventVoting.IsVotingopen = IsFsVotingEnabled;
+                eventVoting.IsVotingOpen = IsFsVotingEnabled;
 
                 var response = await _eventBusinesservice.enableDiableVoting(eventVoting);
                 //Use the response and identify if the user is an admin or not, persist additional useful information
@@ -146,7 +146,7 @@ namespace TEKUtsav.ViewModels.AdminSettingsPage
                 }
                 else
                 {
-                    await _navigationService.DisplayAlert("Error in Voting", response.ToString(), "OK");
+                    await _navigationService.DisplayAlert("Error in Voting", "Err", "OK");
                 }
             });
 
@@ -156,7 +156,7 @@ namespace TEKUtsav.ViewModels.AdminSettingsPage
                 EventVotingSchedule eventVoting = new EventVotingSchedule();
 
                 eventVoting.EventTypeId = "BD8A4F1A-841C-4449-BD11-FE8B21C98F41";
-                eventVoting.IsVotingopen = IsSeVotingEnabled;
+                eventVoting.IsVotingOpen = IsSeVotingEnabled;
 
                 var response = await _eventBusinesservice.enableDiableVoting(eventVoting);
                 //Use the response and identify if the user is an admin or not, persist additional useful information
