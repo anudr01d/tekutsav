@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-
+using TEKUtsav.Models.Entities;
 
 namespace TEKUtsav.Mobile.Service.Domain.DataObjects
 {
-    public class EventType : BaseModel
+    public class EventType : TableData
     {
         public EventType()
         {

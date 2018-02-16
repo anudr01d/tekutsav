@@ -13,6 +13,7 @@
             <local:Inverter x:Key="Inverter" />
 		</ResourceDictionary>
 	</ContentView.Resources>
+    <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
     <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Orientation="Vertical">
         <controls:TappableListView x:Name="ListName" IsVisible="{Binding IsDanceVoted, Converter={StaticResource Inverter}" Margin="0,10,0,0"  BackgroundColor="#FFF" ItemsSource="{Binding DanceEvents}" SeparatorVisibility="Default" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" HasUnevenRows="true">
             <ListView.ItemTemplate>
@@ -42,12 +43,13 @@
         </controls:TappableListView>
         <Grid IsVisible="{Binding IsDanceVoted}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
             <Image VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Aspect="Fill" Source="votingbg.png"></Image>
-            <StackLayout BackgroundColor="#F6304E" Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <StackLayout Orientation="Vertical" HorizontalOptions="Center" VerticalOptions="Center">
                 <ContentView>
-                    <controls:TEKUtsavLabel HorizontalOptions="Center" VerticalOptions="Center" Text="Thanks for voting!" TextColor="#FFF" FontSize="25" FontType="Bold">
+                    <controls:TEKUtsavLabel HorizontalOptions="Center" VerticalOptions="Center" Text="Thanks for voting!" TextColor="#FFF" FontSize="30" FontType="Bold">
                     </controls:TEKUtsavLabel>
                 </ContentView>
             </StackLayout>
         </Grid>
    </StackLayout>
+</Grid>
 </ContentView>

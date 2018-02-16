@@ -40,7 +40,7 @@ namespace TEKUtsav.Ral.Impl.EventRestApi
         public async Task<int> CheckIfUserHasVoted(string eventTypeId, string UDID)
         {
             var client = _azureClient.GetClient(string.Empty, string.Empty, string.Empty);
-            var userVoteURL = Globals.EVENT_VOTE_API + "/" + string.Format("{0}" + "/" + "{1}", eventTypeId, UDID);
+            var userVoteURL = Globals.CHECK_USER_VOTE + "/" + string.Format("{0}" + "/" + "{1}", eventTypeId, UDID) + "?ZUMO-API-VERSION=2.0.0";
             var userVote = await _cloudService.InvokeApiAsyncGet<int>(client, userVoteURL);
             return userVote;
         }
@@ -68,6 +68,14 @@ namespace TEKUtsav.Ral.Impl.EventRestApi
         public Task<int> CheckIfVotingIsOpen(string eventTypeId)
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<IEnumerable<EventType>> GetEventTypes()
+        {
+            var azureclient = _azureClient.GetClient(Globals.EVENT_TYPE, string.Empty, string.Empty);
+            var table = _cloudService.GetTable<EventType>(azureclient);
+            var list = await table.ReadAllItemsAsync();
+            return list;
         }
     }
 }

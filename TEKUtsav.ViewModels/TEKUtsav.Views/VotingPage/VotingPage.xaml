@@ -78,9 +78,9 @@
 			</StackLayout>
 				
 			</StackLayout>
-			<pages:DancePage IsVisible="{Binding IsDanceSelected}" />
-			<fspages:FsPage HorizontalOptions="FillAndExpand" IsVisible="{Binding IsFsSelected}" />
-			<sepages:SePage HorizontalOptions="FillAndExpand" IsVisible="{Binding IsSeSelected}" />
+			<pages:DancePage HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding IsDanceSelected}" />
+			<fspages:FsPage HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding IsFsSelected}" />
+			<sepages:SePage HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding IsSeSelected}" />
    
 		</StackLayout>
 	</ContentPage.Content>

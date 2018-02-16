@@ -136,6 +136,7 @@ namespace TEKUtsav.ViewModels.VotingPage
 				OnPropertyChanged();
 			}
 		}
+
 		public bool IsSeSelected
 		{
             get { return _isSeSelected; }
@@ -392,10 +393,11 @@ namespace TEKUtsav.ViewModels.VotingPage
             {
                 var DanceListItemClicked = args as Event;
                 EventVote ev = new EventVote();
-                ev.EventId = DanceListItemClicked.EventType.Id;
+                ev.EventId = DanceListItemClicked.Id;
                 ev.EventTypeId = DanceListItemClicked.EventTypeId;
-                var udid = Application.Current.Properties["UserUDID"] as string;
-                ev.EventUserDevices = new List<EventUserDevice>() { new EventUserDevice() { EventId = DanceListItemClicked.EventType.Id, UDID = udid, CreatedBy = udid } };
+                ev.CreatedBy = GetUDID();
+                var udid = GetUDID();
+                ev.EventUserDevices = new List<EventUserDevice>() { new EventUserDevice() { EventId = DanceListItemClicked.Id, UDID = udid, CreatedBy = udid } };
                 var result = await _eventBusinesservice.CaptureUserVote(ev);
                 if (result != null)
                 {
@@ -413,10 +415,10 @@ namespace TEKUtsav.ViewModels.VotingPage
             {
                 var FsListItemClicked = args as Event;
                 EventVote ev = new EventVote();
-                ev.EventId = FsListItemClicked.EventType.Id;
+                ev.EventId = FsListItemClicked.Id;
                 ev.EventTypeId = FsListItemClicked.EventTypeId;
-                var udid = Application.Current.Properties["UserUDID"] as string;
-                ev.EventUserDevices = new List<EventUserDevice>() { new EventUserDevice() { EventId = FsListItemClicked.EventType.Id, UDID = udid, CreatedBy = udid } };
+                var udid = GetUDID();
+                ev.EventUserDevices = new List<EventUserDevice>() { new EventUserDevice() { EventId = FsListItemClicked.Id, UDID = udid, CreatedBy = udid } };
                 var result = await _eventBusinesservice.CaptureUserVote(ev);
                 if (result!=null)
                 {
@@ -434,10 +436,10 @@ namespace TEKUtsav.ViewModels.VotingPage
             {
                 var SeListItemClicked = args as Event;
                 EventVote ev = new EventVote();
-                ev.EventId = SeListItemClicked.EventType.Id;
+                ev.EventId = SeListItemClicked.Id;
                 ev.EventTypeId = SeListItemClicked.EventTypeId;
-                var udid = Application.Current.Properties["UserUDID"] as string;
-                ev.EventUserDevices = new List<EventUserDevice>() { new EventUserDevice() { EventId = SeListItemClicked.EventType.Id, UDID = udid, CreatedBy = udid } };
+                var udid = GetUDID();
+                ev.EventUserDevices = new List<EventUserDevice>() { new EventUserDevice() { EventId = SeListItemClicked.Id, UDID = udid, CreatedBy = udid } };
                 var result = await _eventBusinesservice.CaptureUserVote(ev);
                 if (Int32.Parse(result.ToString()) == 1)
                 {
@@ -501,6 +503,30 @@ namespace TEKUtsav.ViewModels.VotingPage
             await Task.Run(() => { });
         }
 
+        private string GetUDID()
+        {
+            return Application.Current.Properties["UserUDID"] as string;
+        }
+
+        private string GetDanceId()
+        {
+            return Application.Current.Properties["DanceTypeId"] as string;
+        }
+
+        private string GetFsId()
+        {
+            return Application.Current.Properties["FsTypeId"] as string;
+        }
+
+        private string GetSeId()
+        {
+            return Application.Current.Properties["SeTypeId"] as string;
+        }
+
+        private async Task<int> CheckIfUserVoted(string typeId)
+        {
+            return await _eventBusinesservice.CheckIfUserHasVoted(typeId, GetUDID());    
+        }
 
         private void ProcessEvents(IEnumerable<Event> events) 
         {
@@ -521,8 +547,18 @@ namespace TEKUtsav.ViewModels.VotingPage
             }
         }
 
-		private void SetSelectedTab()
+		private async void SetSelectedTab()
 		{
+            //Check for dance voted for the first time
+            if (await CheckIfUserVoted(GetDanceId()) == 1)
+            {
+                IsDanceVoted = true;
+            }
+            else
+            {
+                IsDanceVoted = false;
+            }
+
 			if (!this.IsDanceSelected && !this.IsFsSelected && !this.IsSeSelected)
 			{
                 this.IsDanceSelected = true;
@@ -541,7 +577,7 @@ namespace TEKUtsav.ViewModels.VotingPage
 			MessagingCenter.Unsubscribe<string>(this, Globals.CHANGETAB);
         }
 
-		public void ChangeTab(string tab)
+		public async void ChangeTab(string tab)
 		{
             this.IsDanceSelected = false;
 			this.IsFsSelected = false;
@@ -550,12 +586,34 @@ namespace TEKUtsav.ViewModels.VotingPage
 			{
 				case "Dance": 
 					IsDanceSelected = true;
+                    if(await CheckIfUserVoted(GetDanceId()) == 1) 
+                    {
+                        IsDanceVoted = true;
+                    } else {
+                        IsDanceVoted = false;  
+                    }
 				break;
 				case "FashionShow": 
 					IsFsSelected = true; 
+                    if (await CheckIfUserVoted(GetFsId()) == 1)
+                    {
+                        IsFsVoted = true;
+                    }
+                    else
+                    {
+                        IsFsVoted = false;
+                    }
 				break;
 				case "SpecialEvents": 
 					IsSeSelected = true; 
+                    if (await CheckIfUserVoted(GetSeId()) == 1)
+                    {
+                        IsSeVoted = true;
+                    }
+                    else
+                    {
+                        IsSeVoted = false;
+                    }
 				break;
 			}
 		}

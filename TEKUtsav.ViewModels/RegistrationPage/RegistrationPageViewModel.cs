@@ -130,11 +130,12 @@ namespace TEKUtsav.ViewModels.RegistrationPage
            
             this.RegisterClickedCommand = new Command( async() => {
                 User user = new User();
-                if (!string.IsNullOrEmpty(this.Name) && !string.IsNullOrEmpty(this.MobileNumber) && !string.IsNullOrEmpty(this.Email))
+                if (!string.IsNullOrEmpty(this.Name) && !string.IsNullOrEmpty(this.MobileNumber) && !string.IsNullOrEmpty(this.Email) && !string.IsNullOrEmpty(this.Location))
                 {
                     user.FirstName = this.Name;
                     user.Email = this.Email;
                     user.Mobile = this.MobileNumber;
+                    user.WorkLocation = this.Location;
                     List<DeviceRegister> lstDevices = new List<DeviceRegister>();
                     lstDevices.Add(new DeviceRegister() { UDID = CrossDeviceInfo.Current.Id, CreatedBy= CrossDeviceInfo.Current.Id });
                     user.Devices = lstDevices;
@@ -145,9 +146,13 @@ namespace TEKUtsav.ViewModels.RegistrationPage
                         Application.Current.Properties["UserUDID"] = response.Devices.FirstOrDefault().UDID;
                         Application.Current.Properties["IsAdmin"] = response.IsAdmin;
                         _navigationService.NavigateTo(TEKUtsavAppPage.MasterMenuPage);
-                    } else {
+                    } else 
+                    {
                        await _navigationService.DisplayAlert("Error in registration", response.ToString(), "OK");
                     }
+                } else 
+                {
+                    await _navigationService.DisplayAlert("Please fill all the required fields.", "", "OK");
                 }
             });
 

@@ -25,7 +25,7 @@ namespace TEKUtsav.Ral.Impl.User
             var azureclient = _azureClient.GetClient(Globals.USER_API, string.Empty, string.Empty);
             var table = _cloudService.GetTable<DS.User>(azureclient);
             var list = await table.CreateItemAsync(userData);
-            return list == null ? null : list;
+            return list;
         }
 
     }

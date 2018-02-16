@@ -31,7 +31,7 @@ namespace TEKUtsav.Business.EventService.Impl
 
         public async Task<int> CheckIfUserHasVoted(string eventTypeId, string UDID)
         {
-            throw new NotImplementedException();
+            return await _eventRestApi.CheckIfUserHasVoted(eventTypeId, UDID);
         }
 
         public async Task<List<EventWinner>> ComputeEventWinner(string eventTypeId)
@@ -44,5 +44,9 @@ namespace TEKUtsav.Business.EventService.Impl
             return await _eventRestApi.enableDiableVoting(eventVoting);
         }
 
-	}
+        public async Task<IEnumerable<EventType>> GetEventTypes()
+        {
+            return await _eventRestApi.GetEventTypes();
+        }
+    }
 }

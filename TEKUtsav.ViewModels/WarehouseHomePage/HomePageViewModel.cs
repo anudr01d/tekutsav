@@ -11,12 +11,16 @@ using TEKUtsav.Infrastructure.Navigation;
 using TEKUtsav.Infrastructure.Settings;
 using TEKUtsav.Business.PurchaseOrders;
 using Plugin.ExternalMaps;
+using TEKUtsav.Business.EventService;
+using TEKUtsav.Mobile.Service.Domain.DataObjects;
+using TEKUtsav.Infrastructure.Constants;
 
 namespace TEKUtsav.ViewModels.HomePage
 {
 	public class HomePageViewModel : ViewModelBase
 	{
 		private readonly INavigationService _navigationService;
+        private readonly IEventBusinessService _eventBusinessService;
 		private readonly ISettings _settings;
 		private ICommand _notificationsCommand;
 		private PurchaseOrder[] _requisitions;
@@ -148,20 +152,21 @@ namespace TEKUtsav.ViewModels.HomePage
 			}
 		}
 
-		public HomePageViewModel(INavigationService navigationService, ISettings settings) : base(navigationService, settings)
+        public HomePageViewModel(INavigationService navigationService, ISettings settings, IEventBusinessService eventBusinessService) : base(navigationService, settings)
 		{
 			if (navigationService == null) throw new ArgumentNullException("navigationService");
 			if (settings == null) throw new ArgumentNullException("settings");
 			//if (purchaseOrdersBusinessService == null) throw new ArgumentNullException("purchaseOrdersBusinessService");
 			_navigationService = navigationService;
 			_settings = settings;
+            _eventBusinessService = eventBusinessService;
 			//_purchaseOrdersBusinessService = purchaseOrdersBusinessService;
 		}
 		public override async Task OnViewAppearing(object navigationParams = null)
 		{
 			this.SetCurrentPage(TEKUtsavAppPage.HomePage);
 
-			await GetPurchaseOrders();
+            await GetEventTypes();
 
             this.NotificationsCommand = new Command(() =>
 			{
@@ -195,12 +200,26 @@ namespace TEKUtsav.ViewModels.HomePage
 			await Task.Run(() => { });
 		}
 
-		private async Task GetPurchaseOrders()
+		private async Task GetEventTypes()
 		{
-   //         this.IsLoading = true;
-			//this.PurchaseOrders = await _purchaseOrdersBusinessService.GetPurchaseOrders();
-			//this.IsLoading = false;
-		}
+            var lstEventTypes = await _eventBusinessService.GetEventTypes();
+            foreach (var ev in lstEventTypes)
+            {
+                if (ev.Title.Equals(Globals.DANCE))
+                {
+                    Application.Current.Properties["DanceTypeId"] = ev.Id;
+                }
+                else if (ev.Title.Equals(Globals.FASHION_SHOW))
+                {
+                    Application.Current.Properties["FsTypeId"] = ev.Id;
+                }
+                else if (ev.Title.Equals(Globals.SPECIAL_EVENTS))
+                {
+                    Application.Current.Properties["SeTypeId"] = ev.Id;
+                }
+            }
+             
+        }
 
 		public override Task OnViewDisappearing()
 		{
