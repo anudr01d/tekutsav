@@ -10,7 +10,5 @@ namespace TEKUtsav.Mobile.Service.Domain.DataObjects
         public string EventTypeId { get; set; }
         public bool IsVotingOpen { get; set; }
 
-        [JsonIgnore]
-        public EventType EventType { get; set; }
     }
 }

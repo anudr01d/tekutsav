@@ -43,6 +43,10 @@ namespace TEKUtsav.Business.EventService.Impl
         {
             return await _eventRestApi.enableDiableVoting(eventVoting);
         }
+        public async Task<IEnumerable<Event>> GetEventType()
+        {
+            return await _eventRestApi.GetEventType();
+        }
 
         public async Task<IEnumerable<EventType>> GetEventTypes()
         {

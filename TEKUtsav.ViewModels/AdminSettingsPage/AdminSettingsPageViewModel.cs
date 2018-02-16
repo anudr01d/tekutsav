@@ -14,7 +14,8 @@ using TEKUtsav.Infrastructure.Constants;
 using TEKUtsav.Infrastructure;
 using TEKUtsav.Business.Measurements;
 using TEKUtsav.Business.EventService;
-using TEKUtsav.Mobile.Service.Domain.DataObjects;
+
+using DS = TEKUtsav.Mobile.Service.Domain.DataObjects;
 
 namespace TEKUtsav.ViewModels.AdminSettingsPage
 {
@@ -23,73 +24,41 @@ namespace TEKUtsav.ViewModels.AdminSettingsPage
 		private readonly INavigationService _navigationService;
         private readonly IEventBusinessService _eventBusinesservice;
 		private readonly ISettings _settings;
-        private ICommand _enableDanceVotingCommand, _enableFsVotingCommand, _enableSeVotingCommand;
+        private ICommand  _enableVotingCommand;
+        private List<DS.Event> _getEventType;
 
+        public ICommand Toggled { get; set; }
 
-        private bool _isDanceVotingEnabled;
-        public bool IsDanceVotingEnabled
+        private bool _isVotingEnabled;
+        public bool IsVotingEnabled
         {
-            get { return _isDanceVotingEnabled; }
+            get { return _isVotingEnabled; }
 
             set
             {
-                _isDanceVotingEnabled = value;
-                OnPropertyChanged();
+                _isVotingEnabled = value;
+                OnPropertyChanged("IsVotingEnabled");
             }
         }
+       
+     
 
-        private bool _isFsVotingEnabled;
-        public bool IsFsVotingEnabled
+        public ICommand EnableVotingCommand
         {
-            get { return _isFsVotingEnabled; }
-
-            set
-            {
-                _isFsVotingEnabled = value;
-                OnPropertyChanged();
-            }
-        }
-
-        private bool _isSeVotingEnabled;
-        public bool IsSeVotingEnabled
-        {
-            get { return _isSeVotingEnabled; }
-
-            set
-            {
-                _isSeVotingEnabled = value;
-                OnPropertyChanged();
-            }
-        }
-
-		public ICommand EnableDanceVotingCommand
-		{
-            get { return _enableDanceVotingCommand; }
-			protected set
-			{
-                _enableDanceVotingCommand = value;
-                OnPropertyChanged("EnableDanceVotingCommand");
-			}
-		}
-
-        public ICommand EnableFsVotingCommand
-        {
-            get { return _enableFsVotingCommand; }
+            get { return _enableVotingCommand; }
             protected set
             {
-                _enableFsVotingCommand = value;
-                OnPropertyChanged("EnableFsVotingCommand");
+                _enableVotingCommand = value;
+                OnPropertyChanged("EnableVotingCommand");
             }
         }
 
-        public ICommand EnableSeVotingCommand
+       
+        public async void Handle_Toggled(object sender, Xamarin.Forms.ToggledEventArgs e)
         {
-            get { return _enableSeVotingCommand; }
-            protected set
-            {
-                _enableSeVotingCommand = value;
-                OnPropertyChanged("EnableSeVotingCommand");
-            }
+           
+            var s = sender as Switch;
+            IsVotingEnabled = s.IsToggled;
         }
 
         public AdminSettingsPageViewModel(INavigationService navigationService, ISettings settings, IEventBusinessService eventBusinesservice) : base(navigationService, settings)
@@ -101,6 +70,7 @@ namespace TEKUtsav.ViewModels.AdminSettingsPage
 			_settings = settings;
             _eventBusinesservice = eventBusinesservice;
 
+          
 
 		}
 
@@ -108,74 +78,84 @@ namespace TEKUtsav.ViewModels.AdminSettingsPage
         {
             this.SetCurrentPage(TEKUtsavAppPage.AdminSettingsPage);
 
-            this.EnableDanceVotingCommand = new Command( async () =>
+/*            this.EnableVotingCommand = new ExecuteLoadedCommandAsync(async (e) =>
             {
-                //Call api for enabling and disabling voting lines
-                EventVotingSchedule eventVoting = new EventVotingSchedule();
+                var item = (e as TEKUtsav.Mobile.Service.Domain.DataObjects.Event);
 
-                eventVoting.EventTypeId = "6F77A69A-45EA-4E82-B773-E650AA71F39B";
-                eventVoting.IsVotingOpen = IsDanceVotingEnabled;
+                //Call api for enabling and disabling voting lines
+                DS.EventVotingSchedule eventVoting = new DS.EventVotingSchedule();
+
+                eventVoting.EventTypeId = item.EventTypeId;
+                eventVoting.IsVotingOpen = IsVotingEnabled;
 
                 var response = await _eventBusinesservice.enableDiableVoting(eventVoting);
                 //Use the response and identify if the user is an admin or not, persist additional useful information
                 if (response != null)
                 {
-                    await _navigationService.DisplayAlert("Voting Updated", response.ToString(), "OK");
+                    await _navigationService.DisplayAlert("Voting Updated", "Voting Lines updated", "OK");
 
                 }
                 else
                 {
-                    await _navigationService.DisplayAlert("Error in Voting", "Error", "OK");
+                    await _navigationService.DisplayAlert("Error in Voting", "Error Updating Voting Lines", "OK");
                 }
             });
-
-            this.EnableFsVotingCommand = new Command(async () =>
+*/
+            this.EnableVotingCommand = new Command(async(args) => 
             {
-                //Call api for enabling and disabling voting lines
-                EventVotingSchedule eventVoting = new EventVotingSchedule();
+                var item = (args as TEKUtsav.Mobile.Service.Domain.DataObjects.Event);
 
-                eventVoting.EventTypeId = "BD8A4F1A-841C-4449-BD11-FE8B21C98F41";
-                eventVoting.IsVotingOpen = IsFsVotingEnabled;
+                //Call api for enabling and disabling voting lines
+                DS.EventVotingSchedule eventVoting = new DS.EventVotingSchedule();
+
+                eventVoting.EventTypeId = item.EventTypeId;
+                eventVoting.IsVotingOpen = IsVotingEnabled;
 
                 var response = await _eventBusinesservice.enableDiableVoting(eventVoting);
                 //Use the response and identify if the user is an admin or not, persist additional useful information
                 if (response != null)
                 {
-                    await _navigationService.DisplayAlert("Voting Updated", response.ToString(), "OK");
+                    await _navigationService.DisplayAlert("Voting Updated", "Voting Lines updated", "OK");
 
                 }
                 else
                 {
-                    await _navigationService.DisplayAlert("Error in Voting", "Err", "OK");
+                    await _navigationService.DisplayAlert("Error in Voting", "Error Updating Voting Lines", "OK");
                 }
-            });
-
-            this.EnableSeVotingCommand = new Command(async () =>
-            {
-                //Call api for enabling and disabling voting lines
-                EventVotingSchedule eventVoting = new EventVotingSchedule();
-
-                eventVoting.EventTypeId = "BD8A4F1A-841C-4449-BD11-FE8B21C98F41";
-                eventVoting.IsVotingOpen = IsSeVotingEnabled;
-
-                var response = await _eventBusinesservice.enableDiableVoting(eventVoting);
-                //Use the response and identify if the user is an admin or not, persist additional useful information
-                if (response != null)
-                {
-                    await _navigationService.DisplayAlert("Voting Updated", response.ToString(), "OK");
-
-                }
-                else
-                {
-                    await _navigationService.DisplayAlert("Error in Voting", response.ToString(), "OK");
-                }
-            });
+            }, (args) => true);
 
 			Task.Run(() => { });
 		}
 
-	
+        public List<DS.Event> GetEventType
+        {
+            get
+            {
+                //var notificationEvents = await _notificationBusinesservice.GetNotifications();
+                var eventTypes = Task.Run(() => _eventBusinesservice.GetEventType());
+                if (eventTypes != null)
+                {
+                    var list = new List<DS.Event>();
 
+                    foreach (var ev in eventTypes.Result)
+                    {
+                        list.Add(new DS.Event() { Title = ev.Title, Description = ev.Description ,EventTypeId = ev.Id });
+
+                    }
+                    return list;
+                }
+                else
+                {
+                    return _getEventType;
+                }
+            }
+            set
+            {
+                _getEventType = value;
+                OnPropertyChanged("GetEventType");
+            }
+        }
+       
 		public override Task OnViewDisappearing()
 		{
 			return Task.Run(() => { });
@@ -185,5 +165,6 @@ namespace TEKUtsav.ViewModels.AdminSettingsPage
 		{
 			
 		}
-	}
+
+    }
 }
