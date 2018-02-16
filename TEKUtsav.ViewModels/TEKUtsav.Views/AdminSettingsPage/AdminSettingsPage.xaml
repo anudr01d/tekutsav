@@ -18,7 +18,7 @@
 			</ResourceDictionary>
 	</ContentPage.Resources>
    <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-            <controls:TappableListView BackgroundColor="#FFF" ItemsSource="{Binding GetEventType}" HeightRequest="100" SeparatorVisibility="Default" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" HasUnevenRows="true">
+            <controls:TappableListView  x:Name="lstInfo" BackgroundColor="#FFF" ItemsSource="{Binding GetEventType}" HeightRequest="100" SeparatorVisibility="Default" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" HasUnevenRows="true">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <controls:PoListViewCell>
@@ -29,15 +29,15 @@
                                     </Label>
                                     <Label Text="{Binding Description}" TextColor="#CDCDCD" FontSize="13" FontFamily="Helvetica" HorizontalOptions="StartAndExpand">
                                     </Label>
-                              
-<!--            <Entry x:Name="txtName" BindingContext="{x:Reference chkInfo}" Text="{Binding Path=IsToggled}"/>-->
-<!--                            <Switch IsToggled="false" Command="{Binding Path=BindingContext.EnableSeVotingCommand, Source={x:Reference MyNotifyPage}}" CommandParameter="{Binding .}" HorizontalOptions="Center" Grid.Row="0" Grid.Column="1" />-->
-<!--                                <Switch IsToggled= "false" Toggled="OnItemToggled" HorizontalOptions="EndAndExpand" />
--->                                </StackLayout>
-                              <Switch IsToggled="true" Toggled="Handle_Toggled" HorizontalOptions="EndAndExpand"/>
-<!--            <Label BindingContext="{x:Reference chkInfo}" Text="{Binding Path=Text}" HorizontalOptions="EndAndExpand" />
---><!--                            <Button Grid.Column="1" Command="{Binding Path=IsToggled, Source={x:Reference chkInfo}}" CommandParameter="{Binding .}" HeightRequest="30" WidthRequest="50" HorizontalOptions="EndAndExpand" /> 
--->                           </StackLayout>
+                         </StackLayout>
+                    <Switch Toggled="Handle_Toggled" IsToggled="{Binding IsOwned, Mode=TwoWay}" HorizontalOptions="EndAndExpand">
+                    <Switch.Behaviors>
+                        <behaviors:EventHandlerBehavior EventName="Toggled">
+                            <behaviors:InvokeCommandAction Command="{Binding Source={x:Reference lstInfo}, Path=BindingContext.EnableVotingCommand}" CommandParameter="{Binding .}" Grid.Row="0" Grid.Column="1"/>
+                        </behaviors:EventHandlerBehavior>
+                    </Switch.Behaviors>
+                    </Switch>
+                           </StackLayout>
                         </controls:PoListViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
