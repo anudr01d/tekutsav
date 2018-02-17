@@ -63,6 +63,7 @@
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Entities\SingleSelectionItem.cs" />
     <Compile Include="Entities\AdminListItem.cs" />
+    <Compile Include="Entities\NotificationListItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Entities\" />
