@@ -30,7 +30,7 @@
                                     <Label Text="{Binding Description}" TextColor="#CDCDCD" FontSize="13" FontFamily="Helvetica" HorizontalOptions="StartAndExpand">
                                     </Label>
                          </StackLayout>
-                    <Switch Toggled="Handle_Toggled" IsToggled="{Binding isVoting}" HorizontalOptions="EndAndExpand">
+                    <Switch Toggled="Handle_Toggled" IsToggled="{Binding IsVotingOpen}" HorizontalOptions="EndAndExpand">
                     <Switch.Behaviors>
                         <behaviors:EventHandlerBehavior EventName="Toggled">
                             <behaviors:InvokeCommandAction Command="{Binding Source={x:Reference lstInfo}, Path=BindingContext.EnableVotingCommand}" CommandParameter="{Binding .}" Grid.Row="0" Grid.Column="1"/>

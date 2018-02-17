@@ -26,7 +26,7 @@ namespace TEKUtsav.ViewModels.AdminSettingsPage
         private readonly IEventBusinessService _eventBusinesservice;
 		private readonly ISettings _settings;
         private ICommand  _enableVotingCommand;
-        private List<DS.EventType> _getEventType;
+        private List<AdminListItem> _getEventType;
 
         public ICommand Toggled { get; set; }
 
@@ -41,7 +41,18 @@ namespace TEKUtsav.ViewModels.AdminSettingsPage
                 OnPropertyChanged("IsVotingEnabled");
             }
         }
-       
+        private bool _isVoting;
+
+        public bool IsVoting
+        {
+            get { return _isVoting; }
+
+            set
+            {
+                _isVoting = value;
+                OnPropertyChanged("IsVoting");
+            }
+        }
      
 
         public ICommand EnableVotingCommand
@@ -104,13 +115,13 @@ namespace TEKUtsav.ViewModels.AdminSettingsPage
 */
             this.EnableVotingCommand = new Command(async(args) => 
             {
-                var item = (args as TEKUtsav.Mobile.Service.Domain.DataObjects.EventType);
+                var item = (args as TEKUtsav.Models.AdminListItem);
 
                 //Call api for enabling and disabling voting lines
                 DS.EventVotingSchedule eventVoting = new DS.EventVotingSchedule();
 
                 eventVoting.EventTypeId = item.Id;
-                eventVoting.IsVotingOpen = IsVotingEnabled;
+                eventVoting.IsVotingOpen = item.IsVotingOpen;
 
                 var response = await _eventBusinesservice.enableDiableVoting(eventVoting);
                 //Use the response and identify if the user is an admin or not, persist additional useful information
@@ -128,19 +139,19 @@ namespace TEKUtsav.ViewModels.AdminSettingsPage
 			Task.Run(() => { });
 		}
 
-        public List<DS.EventType> GetEventTypes
+        public List<AdminListItem> GetEventTypes
         {
             get
             {
                 var eventTypes = Task.Run(() => _eventBusinesservice.GetEventTypes());
                 if (eventTypes != null)
                 {
-                    var list = new List<DS.EventType>();
+                    var list = new List<AdminListItem>();
 
                     foreach (var ev in eventTypes.Result)
                     {
-                        list.Add(new DS.EventType() { Title = ev.Title, Description = ev.Description ,Id = ev.Id,});
 
+                        list.Add(new AdminListItem() { Title = ev.Title, Description = ev.Description,Id = ev.Id , IsVotingOpen = ev.EventVotingSchedules.FirstOrDefault().IsVotingOpen});
                     }
                     return list;
                 }
