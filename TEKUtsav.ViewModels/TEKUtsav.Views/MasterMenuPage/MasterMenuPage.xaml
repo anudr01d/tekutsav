@@ -49,7 +49,7 @@
                     </StackLayout.GestureRecognizers>
                     <Image HeightRequest="10" WidthRequest="10" Source="settings.png" HorizontalOptions="Start" VerticalOptions="FillAndExpand">
                     </Image>
-                    <ContentView VerticalOptions="CenterAndExpand" Padding="10,15,10,15" HorizontalOptions="Start">
+                    <ContentView  VerticalOptions="CenterAndExpand" Padding="10,15,10,15" HorizontalOptions="Start">
                         <Label Text="Event Location" Style="{StaticResource menuItemLabelStyle}" FontSize="16" FontFamily="Helvetica">
                         </Label>
                     </ContentView>
@@ -87,7 +87,7 @@
                 <ContentView Padding="0, 0, 0, 0">
                     <BoxView Color="#ccc" x:Name="SettingsCellSeparator3" HeightRequest="1" HorizontalOptions="FillAndExpand" />
                 </ContentView>
-                <StackLayout Padding="20,0,0,0" Orientation="Horizontal">
+                <StackLayout IsVisible="{Binding IsAdmin}" Padding="20,0,0,0" Orientation="Horizontal">
                     <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding SettingsCommand}" CommandParameter="settings">
                         </TapGestureRecognizer>
@@ -99,7 +99,7 @@
                         </Label>
                     </ContentView>
                 </StackLayout>
-                <ContentView Padding="0, 0, 0, 0">
+                <ContentView IsVisible="{Binding IsAdmin}" Padding="0, 0, 0, 0">
                     <BoxView Color="#ccc" HeightRequest="1" HorizontalOptions="FillAndExpand" />
                 </ContentView>
             </StackLayout>
