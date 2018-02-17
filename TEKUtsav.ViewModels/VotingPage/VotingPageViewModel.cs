@@ -441,7 +441,7 @@ namespace TEKUtsav.ViewModels.VotingPage
                 var udid = GetUDID();
                 ev.EventUserDevices = new List<EventUserDevice>() { new EventUserDevice() { EventId = SeListItemClicked.Id, UDID = udid, CreatedBy = udid } };
                 var result = await _eventBusinesservice.CaptureUserVote(ev);
-                if (Int32.Parse(result.ToString()) == 1)
+                if (result != null)
                 {
                     IsSeVoted = true;
                 }
@@ -449,7 +449,6 @@ namespace TEKUtsav.ViewModels.VotingPage
                 {
                     await _navigationService.DisplayAlert("Error in voting", "There was an error in submitting your vote. Please contact the organizers.", "OK");
                 }
-
 
             }, (args) => true);
 
@@ -550,7 +549,7 @@ namespace TEKUtsav.ViewModels.VotingPage
 		private async void SetSelectedTab()
 		{
             //Check for dance voted for the first time
-            if (await CheckIfUserVoted(GetDanceId()) == 1)
+            if (await CheckIfUserVoted(GetDanceId()) >= 1)
             {
                 IsDanceVoted = true;
             }
@@ -586,7 +585,7 @@ namespace TEKUtsav.ViewModels.VotingPage
 			{
 				case "Dance": 
 					IsDanceSelected = true;
-                    if(await CheckIfUserVoted(GetDanceId()) == 1) 
+                    if(await CheckIfUserVoted(GetDanceId()) >= 1) 
                     {
                         IsDanceVoted = true;
                     } else {
@@ -595,7 +594,7 @@ namespace TEKUtsav.ViewModels.VotingPage
 				break;
 				case "FashionShow": 
 					IsFsSelected = true; 
-                    if (await CheckIfUserVoted(GetFsId()) == 1)
+                    if (await CheckIfUserVoted(GetFsId()) >= 1)
                     {
                         IsFsVoted = true;
                     }
@@ -606,7 +605,7 @@ namespace TEKUtsav.ViewModels.VotingPage
 				break;
 				case "SpecialEvents": 
 					IsSeSelected = true; 
-                    if (await CheckIfUserVoted(GetSeId()) == 1)
+                    if (await CheckIfUserVoted(GetSeId()) >= 1)
                     {
                         IsSeVoted = true;
                     }

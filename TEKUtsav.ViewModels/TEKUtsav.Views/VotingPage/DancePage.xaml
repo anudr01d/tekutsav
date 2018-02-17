@@ -20,7 +20,7 @@
                 <DataTemplate>
                     <controls:PoListViewCell>
                         <StackLayout Spacing="0" Margin="20,5,20,5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical">
-                            <StackLayout Orientation="Horizontal" BackgroundColor="#FFFFFF" Padding="0,0,0,00" Spacing="0" VerticalOptions="CenterAndExpand">
+                            <StackLayout Orientation="Horizontal" BackgroundColor="#FFFFFF" Padding="0,0,0,0" Spacing="0" VerticalOptions="CenterAndExpand">
                                 <!--<ContentView Padding="10,10,10,10">
                                     <Image Source="logo.png" WidthRequest="40" HeightRequest="40" HorizontalOptions="Start"/>
                                 </ContentView>-->

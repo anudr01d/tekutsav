@@ -30,7 +30,6 @@
     <WarningLevel>4</WarningLevel>
     <AndroidLinkMode>None</AndroidLinkMode>
 <EmbedAssembliesIntoApk>false</EmbedAssembliesIntoApk>
-<AndroidUseSharedRuntime>true</AndroidUseSharedRuntime>
 <AndroidCreatePackagePerAbi>true</AndroidCreatePackagePerAbi>
 <AndroidSupportedAbis>arm64-v8a;armeabi;armeabi-v7a;x86;x86_64</AndroidSupportedAbis>
   </PropertyGroup>
@@ -220,6 +219,9 @@
     <Reference Include="Plugin.ExternalMaps">
       <HintPath>..\packages\Xam.Plugin.ExternalMaps.4.0.1\lib\MonoAndroid10\Plugin.ExternalMaps.dll</HintPath>
     </Reference>
+    <Reference Include="Behaviors">
+      <HintPath>..\packages\Behaviors.Forms.1.2.0\lib\portable45-net45+win8+wp8+wpa81\Behaviors.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
@@ -300,6 +302,7 @@
     <AndroidResource Include="Resources\drawable-hdpi\push.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\push.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\push.png" />
+    <AndroidResource Include="Resources\drawable\votingbg.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CustomRenderers\" />

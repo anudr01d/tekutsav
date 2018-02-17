@@ -9,10 +9,11 @@ namespace TEKUtsav.Business.EventService
     {
         Task<IEnumerable<Event>> GetEvents();
         Task<IEnumerable<EventType>> GetEventTypes();
+        Task<ICollection<Event>> GetEventType();
+
         Task<EventVote> CaptureUserVote(EventVote vote);
         Task<int> CheckIfUserHasVoted(string eventTypeId, string UDID);
         Task<List<EventWinner>> ComputeEventWinner(string eventTypeId);
-        Task<EventVotingSchedule> enableDiableVoting(EventVotingSchedule eventVoting);         Task<IEnumerable<Event>> GetEventType();
-
+        Task<EventVotingSchedule> enableDiableVoting(EventVotingSchedule eventVoting);
     }
 }
