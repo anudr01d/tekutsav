@@ -136,6 +136,7 @@ namespace TEKUtsav.ViewModels.RegistrationPage
                     user.Email = this.Email;
                     user.Mobile = this.MobileNumber;
                     user.WorkLocation = this.Location;
+                    user.CreatedBy = CrossDeviceInfo.Current.Id;
                     List<DeviceRegister> lstDevices = new List<DeviceRegister>();
                     lstDevices.Add(new DeviceRegister() { UDID = CrossDeviceInfo.Current.Id, CreatedBy= CrossDeviceInfo.Current.Id });
                     user.Devices = lstDevices;
