@@ -18,7 +18,7 @@
 			</ResourceDictionary>
 	</ContentPage.Resources>
    <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-            <controls:TappableListView  x:Name="lstInfo" BackgroundColor="#FFF" ItemsSource="{Binding GetEventType}" HeightRequest="100" SeparatorVisibility="Default" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" HasUnevenRows="true">
+            <controls:TappableListView  x:Name="lstInfo" BackgroundColor="#FFF" ItemsSource="{Binding GetEventTypes}" HeightRequest="100" SeparatorVisibility="Default" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" HasUnevenRows="true">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <controls:PoListViewCell>
@@ -30,7 +30,7 @@
                                     <Label Text="{Binding Description}" TextColor="#CDCDCD" FontSize="13" FontFamily="Helvetica" HorizontalOptions="StartAndExpand">
                                     </Label>
                          </StackLayout>
-                    <Switch Toggled="Handle_Toggled" IsToggled="{Binding IsOwned, Mode=TwoWay}" HorizontalOptions="EndAndExpand">
+                    <Switch Toggled="Handle_Toggled" IsToggled="{Binding isVoting}" HorizontalOptions="EndAndExpand">
                     <Switch.Behaviors>
                         <behaviors:EventHandlerBehavior EventName="Toggled">
                             <behaviors:InvokeCommandAction Command="{Binding Source={x:Reference lstInfo}, Path=BindingContext.EnableVotingCommand}" CommandParameter="{Binding .}" Grid.Row="0" Grid.Column="1"/>

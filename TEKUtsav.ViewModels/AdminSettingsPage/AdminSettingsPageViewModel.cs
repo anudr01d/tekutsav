@@ -16,6 +16,7 @@ using TEKUtsav.Business.Measurements;
 using TEKUtsav.Business.EventService;
 
 using DS = TEKUtsav.Mobile.Service.Domain.DataObjects;
+using TEKUtsav.Mobile.Service.Domain.DataObjects;
 
 namespace TEKUtsav.ViewModels.AdminSettingsPage
 {
@@ -25,7 +26,7 @@ namespace TEKUtsav.ViewModels.AdminSettingsPage
         private readonly IEventBusinessService _eventBusinesservice;
 		private readonly ISettings _settings;
         private ICommand  _enableVotingCommand;
-        private List<DS.Event> _getEventType;
+        private List<DS.EventType> _getEventType;
 
         public ICommand Toggled { get; set; }
 
@@ -54,7 +55,7 @@ namespace TEKUtsav.ViewModels.AdminSettingsPage
         }
 
        
-        public async void Handle_Toggled(object sender, Xamarin.Forms.ToggledEventArgs e)
+        public void Handle_Toggled(object sender, Xamarin.Forms.ToggledEventArgs e)
         {
            
             var s = sender as Switch;
@@ -103,12 +104,12 @@ namespace TEKUtsav.ViewModels.AdminSettingsPage
 */
             this.EnableVotingCommand = new Command(async(args) => 
             {
-                var item = (args as TEKUtsav.Mobile.Service.Domain.DataObjects.Event);
+                var item = (args as TEKUtsav.Mobile.Service.Domain.DataObjects.EventType);
 
                 //Call api for enabling and disabling voting lines
                 DS.EventVotingSchedule eventVoting = new DS.EventVotingSchedule();
 
-                eventVoting.EventTypeId = item.EventTypeId;
+                eventVoting.EventTypeId = item.Id;
                 eventVoting.IsVotingOpen = IsVotingEnabled;
 
                 var response = await _eventBusinesservice.enableDiableVoting(eventVoting);
@@ -127,19 +128,18 @@ namespace TEKUtsav.ViewModels.AdminSettingsPage
 			Task.Run(() => { });
 		}
 
-        public List<DS.Event> GetEventType
+        public List<DS.EventType> GetEventTypes
         {
             get
             {
-                //var notificationEvents = await _notificationBusinesservice.GetNotifications();
-                var eventTypes = Task.Run(() => _eventBusinesservice.GetEventType());
+                var eventTypes = Task.Run(() => _eventBusinesservice.GetEventTypes());
                 if (eventTypes != null)
                 {
-                    var list = new List<DS.Event>();
+                    var list = new List<DS.EventType>();
 
                     foreach (var ev in eventTypes.Result)
                     {
-                        list.Add(new DS.Event() { Title = ev.Title, Description = ev.Description ,EventTypeId = ev.Id });
+                        list.Add(new DS.EventType() { Title = ev.Title, Description = ev.Description ,Id = ev.Id,});
 
                     }
                     return list;
@@ -152,7 +152,7 @@ namespace TEKUtsav.ViewModels.AdminSettingsPage
             set
             {
                 _getEventType = value;
-                OnPropertyChanged("GetEventType");
+                OnPropertyChanged("GetEventTypes");
             }
         }
        

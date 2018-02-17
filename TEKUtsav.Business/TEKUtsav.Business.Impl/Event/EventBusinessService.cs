@@ -46,9 +46,5 @@ namespace TEKUtsav.Business.EventService.Impl
 
         public async Task<IEnumerable<EventType>> GetEventTypes() => await _eventRestApi.GetEventTypes();
 
-        public async Task<ICollection<Event>> GetEventType()
-        {
-            return await _eventRestApi.GetEventType();
-        }
     }
 }
