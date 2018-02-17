@@ -43,6 +43,10 @@
         <StackLayout Orientation="Vertical" BackgroundColor="#222" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="0,0,0,0">
             <StackLayout Orientation="Vertical" BackgroundColor="#222" VerticalOptions="FillAndExpand">
                 <StackLayout Padding="20,0,0,0" Orientation="Horizontal">
+                     <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding EventLocationCommand}" CommandParameter="location">
+                        </TapGestureRecognizer>
+                    </StackLayout.GestureRecognizers>
                     <Image HeightRequest="10" WidthRequest="10" Source="settings.png" HorizontalOptions="Start" VerticalOptions="FillAndExpand">
                     </Image>
                     <ContentView VerticalOptions="CenterAndExpand" Padding="10,15,10,15" HorizontalOptions="Start">
@@ -54,6 +58,10 @@
                     <BoxView Color="#ccc" x:Name="SettingsCellSeparator1" HeightRequest="1" HorizontalOptions="FillAndExpand" />
                 </ContentView>
                 <StackLayout Padding="20,0,0,0" Orientation="Horizontal">
+                     <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding EventScheduleCommand}" CommandParameter="schedule">
+                        </TapGestureRecognizer>
+                    </StackLayout.GestureRecognizers>
                     <Image HeightRequest="10" WidthRequest="10" Source="settings.png" HorizontalOptions="Start" VerticalOptions="FillAndExpand">
                     </Image>
                     <ContentView VerticalOptions="CenterAndExpand" Padding="10,15,10,15" HorizontalOptions="Start">
@@ -66,7 +74,7 @@
                 </ContentView>
                 <StackLayout Padding="20,0,0,0" Orientation="Horizontal">
                     <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer CommandParameter="logout">
+                        <TapGestureRecognizer Command="{Binding NotificationCommand}" CommandParameter="logout">
                         </TapGestureRecognizer>
                     </StackLayout.GestureRecognizers>
                     <Image HeightRequest="10" WidthRequest="10" Source="logout.png" HorizontalOptions="Start" VerticalOptions="FillAndExpand">
