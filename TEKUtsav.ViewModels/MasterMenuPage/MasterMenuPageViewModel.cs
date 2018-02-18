@@ -12,6 +12,8 @@ using TEKUtsav.Infrastructure.CookieStorage;
 using TEKUtsav.Infrastructure.Settings;
 using TEKUtsav.Models;
 using TEKUtsav.Infrastructure.Constants;
+using Plugin.ExternalMaps;
+using System.Diagnostics.Contracts;
 
 namespace TEKUtsav.ViewModels.MasterMenuPage
 {
@@ -21,7 +23,7 @@ namespace TEKUtsav.ViewModels.MasterMenuPage
 		private readonly INavigationService _navigationService;
 		private List<HamburgerMenuItem> _businessUnits;
 		private IPlatformCookieStore _cookieStore;
-		private ICommand _tapCommand, _applicationsListingCommand;
+		private ICommand _tapCommand, _applicationsListingCommand,isAdminCommand;
 
 		private int _height;
 		public int Height
@@ -79,6 +81,39 @@ namespace TEKUtsav.ViewModels.MasterMenuPage
             }
         }
 
+        private ICommand _eventScheduleCommand;
+        public ICommand EventScheduleCommand
+        {
+            get { return _eventScheduleCommand; }
+            protected set
+            {
+                _eventScheduleCommand = value;
+                OnPropertyChanged("EventScheduleCommand");
+            }
+        }
+
+        private ICommand _notificationCommand;
+        public ICommand NotificationCommand
+        {
+            get { return _notificationCommand; }
+            protected set
+            {
+                _notificationCommand = value;
+                OnPropertyChanged("NotificationCommand");
+            }
+        }
+
+        private ICommand _eventLocationCommand;
+        public ICommand EventLocationCommand
+        {
+            get { return _eventLocationCommand; }
+            protected set
+            {
+                _eventLocationCommand = value;
+                OnPropertyChanged("EventLocationCommand");
+            }
+        }
+
 		private string _userName;
 		public string UserName
 		{
@@ -92,7 +127,16 @@ namespace TEKUtsav.ViewModels.MasterMenuPage
 				OnPropertyChanged("UserName");
 			}
 		}
-
+        private bool _isAdmin;
+        public bool IsAdmin
+        {
+            get { return _isAdmin; }
+            set
+            {
+                _isAdmin = value;
+                OnPropertyChanged("IsAdmin");
+            }
+        }
 		public MasterMenuPageViewModel(ISettings settings,
 		   INavigationService navigationService, IPlatformCookieStore cookieStore)
 				   : base(navigationService, settings)
@@ -102,10 +146,15 @@ namespace TEKUtsav.ViewModels.MasterMenuPage
 			_navigationService = navigationService;
 			_cookieStore = cookieStore;
 		}
-
+        private string GetAdminId()
+        {
+            return Application.Current.Properties["IsAdmin"] as string;
+        }
 		public override Task OnViewAppearing(object navigationParams = null)
 		{
-			this.SetCurrentPage(TEKUtsavAppPage.MasterMenuPage);
+            this.SetCurrentPage(TEKUtsavAppPage.MasterMenuPage);
+            string isAdminString = GetAdminId();
+            IsAdmin = Convert.ToBoolean(isAdminString);
 
 			this.TapCommand = new Command(() =>
 			{
@@ -120,6 +169,30 @@ namespace TEKUtsav.ViewModels.MasterMenuPage
                 _navigationService.CloseMenu();
             }
             , () => true);
+            
+            this.EventScheduleCommand = new Command(() =>
+            {
+                _navigationService.NavigateTo(TEKUtsavAppPage.EventSchedulePage);
+                _navigationService.CloseMenu();
+            }
+            , () => true);
+
+            this.NotificationCommand = new Command(() =>
+            {
+                _navigationService.NavigateTo(TEKUtsavAppPage.NotificationsPage);
+                _navigationService.CloseMenu();
+            }
+            , () => true);
+
+            this.EventLocationCommand = new Command(async() =>
+            {
+                var success = await CrossExternalMaps.Current.NavigateTo("Kanva Star Resort", 13.1034, 77.4372);
+                if (!success)
+                {
+                    await _navigationService.DisplayAlert("Error displaying location", "Please look for Kanva Star Resort within Google Maps", "Ok");
+                }
+                _navigationService.CloseMenu();
+            });
             
 			return Task.Run(() => { });
 		}

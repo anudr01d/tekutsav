@@ -27,7 +27,7 @@ namespace TEKUtsav.ViewModels.NotificationsPage
 
 		private readonly ISettings _settings;
 		private bool clicked = false;
-        private List<Notification> _notifications;
+        private List<NotificationListItem> _notifications;
         private ICommand _menuClickCommand, _registerClickedCommand;
 
 
@@ -50,19 +50,34 @@ namespace TEKUtsav.ViewModels.NotificationsPage
                 OnPropertyChanged("RegisterClickedCommand");
 			}
 		}
-
-        public List<Notification> Notifications
+        private string GetAdminId()
+        {
+            return Application.Current.Properties["IsAdmin"] as string;
+        }
+        public List<NotificationListItem> Notifications
         {
             get
             {
                 var notificationEvents = Task.Run(() => _notificationBusinesservice.GetNotifications());
                 if (notificationEvents != null)
                 {
-                    var list = new List<Notification>();
+                    var list = new List<NotificationListItem>();
 
                     foreach (var ev in notificationEvents.Result)
                     {
-                        list.Add(new Notification() { Title = ev.Title, FormattedDateTime = "24 Feb | 10.00", Description = ev.Description });
+                        var pushCount = "0";
+                        if (ev.NotificationTracks != null) {
+                             pushCount = ev.NotificationTracks.FirstOrDefault().pushCount;
+                        }
+                        int count = Convert.ToInt32(pushCount);
+                        bool pushEnabled = false;
+                        string isAdminString = GetAdminId();
+                        bool IsAdmin = Convert.ToBoolean(isAdminString);
+                        if (count < 2 && IsAdmin == true) {
+                            pushEnabled = true;
+                        }
+                       
+                        list.Add(new NotificationListItem() { Title = ev.Title, FormattedDateTime = "24 Feb | 10.00", Description = ev.Description , pushEnabled = pushEnabled});
 
                     }
                      return list;
@@ -121,7 +136,7 @@ namespace TEKUtsav.ViewModels.NotificationsPage
             this.SetCurrentPage(TEKUtsavAppPage.NotificationsPage);
             this.SendPushClickCommand = new Command((e) =>
             {
-                var item = (e as TEKUtsav.Models.Notification);
+                var item = (e as TEKUtsav.Models.NotificationListItem);
                 sendPush(item.Title, item.Description);
 
             });

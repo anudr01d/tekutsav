@@ -15,6 +15,7 @@
             <local:StringToColorConverter x:Key="StringToColorConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
+    <ScrollView>
         <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical">
             <ContentView Padding="0,40,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand">
                 <Image WidthRequest="200" HeightRequest="200" Source="logo.png" Aspect="AspectFill">
@@ -76,4 +77,5 @@
                 </ContentView>
             </StackLayout>
         </StackLayout>
+     </ScrollView>
 </ContentPage>

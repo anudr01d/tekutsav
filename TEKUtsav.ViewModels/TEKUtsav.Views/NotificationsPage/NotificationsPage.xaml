@@ -32,7 +32,7 @@
                                     <Label Text="{Binding Description}" TextColor="#818181" FontSize="14" FontFamily="Helvetica" HorizontalOptions="StartAndExpand">
                                     </Label>
                                 </StackLayout>
-                            <Button Grid.Column="1" Image="push.png" Command="{Binding Path=BindingContext.SendPushClickCommand, Source={x:Reference MyNotifyPage}}" CommandParameter="{Binding .}" HeightRequest="30" WidthRequest="50" HorizontalOptions="EndAndExpand" /> 
+                            <Button Grid.Column="1" IsVisible="{Binding pushEnabled}" Image="push.png" Command="{Binding Path=BindingContext.SendPushClickCommand, Source={x:Reference MyNotifyPage}}" CommandParameter="{Binding .}" HeightRequest="30" WidthRequest="50" HorizontalOptions="EndAndExpand" /> 
                            </StackLayout>
                         </controls:PoListViewCell>
                     </DataTemplate>
