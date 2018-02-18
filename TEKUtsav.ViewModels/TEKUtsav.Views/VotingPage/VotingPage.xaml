@@ -5,8 +5,8 @@
 		xmlns:local="clr-namespace:TEKUtsav.UIControls.MarkupExtensions;assembly=TEKUtsav.UIControls" 
 		xmlns:extensions="clr-namespace:TEKUtsav.UIControls.MarkupExtensions;assembly=TEKUtsav.UIControls"
 		xmlns:pages="clr-namespace:TEKUtsav.Views.DancePage;assembly=TEKUtsav.Views" 
-		xmlns:fspages="clr-namespace:TEKUtsav.Views.FsPage;assembly=TEKUtsav.Views" 
-        xmlns:sepages="clr-namespace:TEKUtsav.Views.SePage;assembly=TEKUtsav.Views" 
+		xmlns:fspages="clr-namespace:TEKUtsav.Views.VotingPage;assembly=TEKUtsav.Views" 
+        xmlns:sepages="clr-namespace:TEKUtsav.Views.VotingPage;assembly=TEKUtsav.Views" 
 		xmlns:imgcontrols="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions" 
 		BackgroundColor="#FFFFFF" Title="Voting" NavigationPage.BackButtonTitle="" x:Class="TEKUtsav.Views.VotingPage.VotingPage">
 	

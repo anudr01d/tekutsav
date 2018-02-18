@@ -47,7 +47,7 @@ namespace TEKUtsav.ViewModels.VotingPage
         {
             get
             {
-                 return _danceEvents;
+                return _danceEvents;
             }
             set
             {
@@ -533,15 +533,21 @@ namespace TEKUtsav.ViewModels.VotingPage
             {
                 if(ev.EventType.Title.Equals(Globals.FASHION_SHOW)) 
                 {
-                    FsEvents.Add(ev);
+                    var fsvents = new List<Event>();
+                    fsvents.Add(ev);
+                    FsEvents = fsvents;
 
                 } else if (ev.EventType.Title.Equals(Globals.DANCE))
                 {
-                    DanceEvents.Add(ev);
+                    var devents = new List<Event>();
+                    devents.Add(ev);
+                    DanceEvents = devents;
 
                 } else if (ev.EventType.Title.Equals(Globals.SPECIAL_EVENTS))
                 {
-                    SeEvents.Add(ev);
+                    var sevents = new List<Event>();
+                    sevents.Add(ev);
+                    SeEvents = sevents;
                 }
             }
         }

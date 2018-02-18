@@ -4,7 +4,7 @@ using System.Diagnostics;
 using Xamarin.Forms;
 
 
-namespace TEKUtsav.Views.FsPage
+namespace TEKUtsav.Views.VotingPage
 {
 	public partial class FsPage : ContentView
     {

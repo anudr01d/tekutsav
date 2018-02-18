@@ -303,6 +303,9 @@
     <AndroidResource Include="Resources\drawable-xhdpi\push.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\push.png" />
     <AndroidResource Include="Resources\drawable\votingbg.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_launcher.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CustomRenderers\" />
@@ -337,13 +340,13 @@
       <Project>{DE03F192-80A3-4754-990E-28671EB20E3A}</Project>
       <Name>TEKUtsav.Infrastructure</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TEKUtsav.Infrastructure\TEKUtsav.UIControls\TEKUtsav.UIControls.csproj">
-      <Project>{176AF8C5-5200-41BB-8307-DE8B9A9707D7}</Project>
-      <Name>TEKUtsav.UIControls</Name>
-    </ProjectReference>
     <ProjectReference Include="..\TEKUtsav.ViewModels\TEKUtsav.ViewModels.csproj">
       <Project>{B4BA40A2-EF5F-4E3C-A655-8167A3402B12}</Project>
       <Name>TEKUtsav.ViewModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TEKUtsav.Infrastructure\TEKUtsav.UIControls\TEKUtsav.UIControls.csproj">
+      <Project>{176AF8C5-5200-41BB-8307-DE8B9A9707D7}</Project>
+      <Name>TEKUtsav.UIControls</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

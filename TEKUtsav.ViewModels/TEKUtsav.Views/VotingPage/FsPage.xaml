@@ -5,7 +5,7 @@
         xmlns:local="clr-namespace:TEKUtsav.UIControls.MarkupExtensions;assembly=TEKUtsav.UIControls" 
         xmlns:controls="clr-namespace:TEKUtsav.UIControls.Controls;assembly=TEKUtsav.UIControls"
         xmlns:vc="clr-namespace:TEKUtsav.UIControls.ValueConverters;assembly=TEKUtsav.UIControls"
-        x:Class="TEKUtsav.Views.FsPage.FsPage">
+        x:Class="TEKUtsav.Views.VotingPage.FsPage">
     <ContentView.Resources>
         <ResourceDictionary>
             <local:StringToColorConverter x:Key="StringToColorConverter" />
@@ -41,7 +41,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </controls:TappableListView>
-            <Grid IsVisible="{Binding IsFsVoted}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <Grid  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
                 <Image VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Aspect="Fill" Source="votingbg.png"></Image>
                 <StackLayout Orientation="Vertical" HorizontalOptions="Center" VerticalOptions="Center">
                     <ContentView>

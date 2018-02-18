@@ -5,7 +5,7 @@
         xmlns:local="clr-namespace:TEKUtsav.UIControls.MarkupExtensions;assembly=TEKUtsav.UIControls" 
         xmlns:controls="clr-namespace:TEKUtsav.UIControls.Controls;assembly=TEKUtsav.UIControls"
         xmlns:vc="clr-namespace:TEKUtsav.UIControls.ValueConverters;assembly=TEKUtsav.UIControls"      
-        x:Class="TEKUtsav.Views.SePage.SePage">
+        x:Class="TEKUtsav.Views.VotingPage.SePage">
     <ContentView.Resources>
         <ResourceDictionary>
             <local:StringToColorConverter x:Key="StringToColorConverter" />
@@ -13,9 +13,9 @@
         </ResourceDictionary>
     </ContentView.Resources>
     <ContentView.Content>
-    <StackLayout BackgroundColor="#FFF" Orientation="Vertical" Spacing="0" VerticalOptions="Fill" HorizontalOptions="FillAndExpand">
-        <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-            <controls:TappableListView x:Name="ListName" Margin="0,10,0,0"  BackgroundColor="#FFF" ItemsSource="{Binding SeEvents}" HeightRequest="{Binding Height}" SeparatorVisibility="Default" ItemClickCommand="{Binding SeListClickedCommand}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" HasUnevenRows="true">
+    <StackLayout HeightRequest="100" BackgroundColor="#FFF" Orientation="Vertical" Spacing="0" VerticalOptions="Fill" HorizontalOptions="FillAndExpand">
+        <Grid HeightRequest="100" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <controls:TappableListView HeightRequest="100" x:Name="ListName" Margin="0,10,0,0"  BackgroundColor="#FFF" ItemsSource="{Binding SeEvents}" SeparatorVisibility="Default" ItemClickCommand="{Binding SeListClickedCommand}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" HasUnevenRows="true">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <controls:PoListViewCell>

@@ -19,7 +19,7 @@ using CarouselView.FormsPlugin.Android;
 
 namespace TEKUtsav.Droid
 {
-    [Activity(Label = "TEKUtsav.Droid", MainLauncher = true, Icon = "@drawable/icon", Theme = "@style/MainTheme", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.KeyboardHidden)]
+    [Activity(Label = "TEKUtsav.Droid", MainLauncher = true, Icon = "@drawable/ic_launcher", Theme = "@style/MainTheme", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.KeyboardHidden)]
 	public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
 	{
         const string TAG = "MainActivity";
