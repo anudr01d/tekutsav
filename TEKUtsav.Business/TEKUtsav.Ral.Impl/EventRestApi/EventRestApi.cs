@@ -47,12 +47,12 @@ namespace TEKUtsav.Ral.Impl.EventRestApi
 
         public async Task<EventVotingSchedule> enableDiableVoting(EventVotingSchedule eventVoting)
         {
-            var azureclient = _azureClient.GetClient(Globals.EVENT_VOTING_SCHEDULE, string.Empty, string.Empty);
-            var table = _cloudService.GetTable<EventVotingSchedule>(azureclient);
-            var list = await table.CreateItemAsync(eventVoting);
-            return list;
-
-
+            var azureclient = _azureClient.GetClient(string.Empty, string.Empty, string.Empty);
+           // var table = _cloudService.GetTable<EventVotingSchedule>(azureclient);
+            //var list = await table.CreateItemAsync(eventVoting);
+            //return list;
+            await _cloudService.InvokeApiAsyncPostData<EventVotingSchedule,EventVotingSchedule>(azureclient, Globals.EVENT_VOTING_SCHEDULE, eventVoting);
+            return null;
         }
 
         public Task<List<EventWinner>> ComputeEventWinner(string eventTypeId)
