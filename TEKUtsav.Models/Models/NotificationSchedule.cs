@@ -7,7 +7,6 @@ namespace TEKUtsav.Mobile.Service.Domain.DataObjects
     public class NotificationSchedule : BaseModel
     {
         public string NotificationId { get; set; }
-        public string pushCount { get; set; }
         public DateTimeOffset? StartTime { get; set; }
         public DateTimeOffset? EndTime { get; set; }
 

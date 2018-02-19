@@ -10,18 +10,7 @@ namespace TEKUtsav.Models
         public string Description { get; set; }
         public bool pushEnabled { get; set; }
         public string DateTime { get; set; }
-        private string _formattedDateTime;
-        public string FormattedDateTime
-        {
-            get
-            {
-                return "24 Feb | 10:00";
-            }
-            set
-            {
-                _formattedDateTime = "24 Feb | 10:00";
-            }
-        }
+        public string FormattedDateTime { get; set; }
 
     }
 }

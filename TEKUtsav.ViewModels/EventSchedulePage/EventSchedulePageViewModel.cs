@@ -49,7 +49,7 @@ namespace TEKUtsav.ViewModels.EventSchedulePage
 
                     foreach (var ev in notificationEvents.Result)
                     {
-                        list.Add(new Notification() { Title = ev.Title, FormattedDateTime = "24 Feb | 10.00", Description = ev.Description });
+                        list.Add(new Notification() { Title = ev.Title, FormattedDateTime = ev.NotificationSchedule.FirstOrDefault().StartTime.ToString(), Description = ev.Description });
 
                     }
                     return list;

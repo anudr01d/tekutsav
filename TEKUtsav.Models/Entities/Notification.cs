@@ -8,17 +8,7 @@ namespace TEKUtsav.Models
 	{
 		public string Title { get; set; }
 		public string DateTime { get; set; }
-        private string _formattedDateTime;
-        public string FormattedDateTime { 
-            get 
-            {
-                return "24 Feb | 10:00";
-            }
-            set
-            {
-                _formattedDateTime = "24 Feb | 10:00";
-            }
-        }
+        public string FormattedDateTime { get; set; } 
         public string Description { get; set; }
 	}
 }

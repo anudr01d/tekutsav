@@ -76,15 +76,16 @@ namespace TEKUtsav.ViewModels.NotificationsPage
                         if (count < 2 && IsAdmin == true) {
                             pushEnabled = true;
                         }
+                       
                         if (IsAdmin == true)
                         {
-                            list.Add(new NotificationListItem() { Title = ev.Title, FormattedDateTime = "24 Feb | 10.00", Description = ev.AdminDescription, pushEnabled = pushEnabled });
+                            list.Add(new NotificationListItem() { Title = ev.Title, FormattedDateTime = ev.NotificationSchedule.FirstOrDefault().StartTime.ToString(), Description = ev.AdminDescription, pushEnabled = pushEnabled });
  
                         }
                         else{
                             if (Convert.ToInt32(pushCount) > 0)
                             {
-                                list.Add(new NotificationListItem() { Title = ev.Title, FormattedDateTime = "24 Feb | 10.00", Description = ev.Description, pushEnabled = pushEnabled });
+                                list.Add(new NotificationListItem() { Title = ev.Title, FormattedDateTime = ev.NotificationSchedule.FirstOrDefault().StartTime.ToString(), Description = ev.Description, pushEnabled = pushEnabled });
                             }
 
                         }
