@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using System.Windows.Input;
+using System.Text.RegularExpressions;
 using TEKUtsav.Models;
 using TEKUtsav.ViewModels.BaseViewModel;
 using TEKUtsav.Infrastructure.Navigation;
@@ -30,6 +31,9 @@ namespace TEKUtsav.ViewModels.RegistrationPage
 		private bool clicked = false;
 		private ICommand _locationClickedCommand, _registerClickedCommand;
         private string _location;
+
+        const string emailRegex = @"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))" +
+           @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$";
 
         public ICommand RegisterClickedCommand
         {
@@ -130,6 +134,28 @@ namespace TEKUtsav.ViewModels.RegistrationPage
            
             this.RegisterClickedCommand = new Command( async() => {
                 User user = new User();
+                if (this.Location == null || this.Location.Contains("Select"))
+                {
+                    await _navigationService.DisplayAlert("Location", "Please selecta Location", "OK");
+                    return;
+                }
+                if (this.Name == null)
+                {
+                    await _navigationService.DisplayAlert("Name", "Invalid Name", "OK");
+                    return;
+                }
+                bool IsEmailValid = (Regex.IsMatch(this.Email, emailRegex, RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250)));
+                if (IsEmailValid == false) {
+                    await _navigationService.DisplayAlert("Email", "Invalid Email Address", "OK");
+                    return;
+                }
+                double result;
+                bool IsNumberValid = double.TryParse(this.MobileNumber, out result);
+                if (IsNumberValid == false || this.MobileNumber.Length != 10 )
+                {
+                    await _navigationService.DisplayAlert("Phone", "Invalid Mobile Number", "OK");
+                    return;
+                }
                 if (!string.IsNullOrEmpty(this.Name) && !string.IsNullOrEmpty(this.MobileNumber) && !string.IsNullOrEmpty(this.Email) && !string.IsNullOrEmpty(this.Location))
                 {
                     user.FirstName = this.Name;
