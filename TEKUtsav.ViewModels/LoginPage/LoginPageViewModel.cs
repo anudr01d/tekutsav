@@ -54,14 +54,27 @@ namespace TEKUtsav.ViewModels.LoginPage
 
         public override Task OnViewAppearing(object navigationParams = null)
         {
-            this.StartCommand = new Command(() => {
-                _navigationService.NavigateTo(TEKUtsavAppPage.RegistrationPage);
+            this.StartCommand = new Command(() => 
+            {
+                if(GetUserEmail()) 
+                {
+                    _navigationService.NavigateTo(TEKUtsavAppPage.MasterMenuPage);   
+                } else 
+                {
+                    _navigationService.NavigateTo(TEKUtsavAppPage.RegistrationPage);   
+                }
             });
 
             return Task.Run(() =>
             {
 
             });
+        }
+
+        private bool GetUserEmail()
+        {
+            var val = Application.Current.Properties.ContainsKey("UserEmail") ? true : false;
+            return val;
         }
 
         public override Task OnViewDisappearing()

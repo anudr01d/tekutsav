@@ -150,7 +150,6 @@ namespace TEKUtsav.ViewModels.AdminSettingsPage
 
                     foreach (var ev in eventTypes.Result)
                     {
-
                         list.Add(new AdminListItem() { Title = ev.Title, Description = ev.Description,Id = ev.Id , IsVotingOpen = ev.EventVotingSchedules.FirstOrDefault().IsVotingOpen});
                     }
                     return list;

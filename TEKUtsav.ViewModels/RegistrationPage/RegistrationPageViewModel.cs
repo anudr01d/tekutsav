@@ -136,7 +136,7 @@ namespace TEKUtsav.ViewModels.RegistrationPage
                 User user = new User();
                 if (this.Location == null || this.Location.Contains("Select"))
                 {
-                    await _navigationService.DisplayAlert("Location", "Please selecta Location", "OK");
+                    await _navigationService.DisplayAlert("Location", "Please select a Location", "OK");
                     return;
                 }
                 if (this.Name == null)
@@ -172,6 +172,8 @@ namespace TEKUtsav.ViewModels.RegistrationPage
                     if(!string.IsNullOrEmpty(response.FirstName)) {
                         Application.Current.Properties["UserUDID"] = response.Devices.FirstOrDefault().UDID;
                         Application.Current.Properties["IsAdmin"] = response.IsAdmin;
+                        Application.Current.Properties["UserEmail"] = response.Email;
+                        Application.Current.Properties["UserPhone"] = response.Mobile;
                         _navigationService.NavigateTo(TEKUtsavAppPage.MasterMenuPage);
                     } else 
                     {

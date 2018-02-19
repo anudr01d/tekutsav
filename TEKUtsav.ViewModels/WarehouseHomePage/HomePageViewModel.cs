@@ -95,6 +95,17 @@ namespace TEKUtsav.ViewModels.HomePage
             }
         }
 
+        private ICommand _openYoutubeCommand;
+        public ICommand OpenYoutubeCommand
+        {
+            get { return _openYoutubeCommand; }
+            protected set
+            {
+                _openYoutubeCommand = value;
+                OnPropertyChanged();
+            }
+        }
+
 		private bool _canExecute = true;
 		public bool CanExecute
 		{
@@ -197,8 +208,33 @@ namespace TEKUtsav.ViewModels.HomePage
                 }
             });
 
+
+            this.OpenYoutubeCommand = new Command(() =>
+            {
+                OpenWithYoutube();
+            });
+
+
 			await Task.Run(() => { });
 		}
+
+        private void OpenWithYoutube()
+        {
+            var urlStore = "vnd.youtube://a2A2APdahn4";
+            switch (Device.RuntimePlatform)
+            {
+                case Device.Android:
+                    urlStore = "vnd.youtube://a2A2APdahn4";
+                    break;
+                case Device.iOS:
+                    urlStore = "youtube://watch?v=a2A2APdahn4";
+                    break;
+                default:
+                    break;
+            }
+
+            Device.OpenUri(new Uri(urlStore));
+        }
 
 		private async Task GetEventTypes()
 		{
