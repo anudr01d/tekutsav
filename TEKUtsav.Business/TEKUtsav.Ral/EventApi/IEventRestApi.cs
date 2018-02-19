@@ -8,6 +8,8 @@ namespace TEKUtsav.Ral.EventApi
     {
         Task<ICollection<Event>> GetEvents();
         Task<IEnumerable<EventType>> GetEventTypes();
+        Task<IEnumerable<EventVotingSchedule>> CheckVotingEnabled();
+
 
         Task<EventVote> CaptureUserVote(EventVote eventvotes);
         Task<int> CheckIfUserHasVoted(string eventTypeId, string UDID);

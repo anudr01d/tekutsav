@@ -124,7 +124,7 @@ namespace TEKUtsav.ViewModels.HomePage
 			}
 		}
 
-        private string _html = "<html><body><iframe src=\"https://www.youtube.com/watch?v=a2A2APdahn4\" frameborder=\"0\" allowfullscreen></iframe></body></html>";
+        private string _html = "<html><head></head><body><iframe width=\"400\" height=\"200\" src=\"https://www.youtube.com/embed/a2A2APdahn4?rel=0\" frameborder=\"0\" allow=\"autoplay; encrypted-media\" allowfullscreen></iframe></body></html>";
         public string Html
         {
             get

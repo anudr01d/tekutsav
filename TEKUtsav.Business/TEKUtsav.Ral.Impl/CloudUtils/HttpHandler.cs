@@ -57,7 +57,7 @@ namespace TEKUtsav.Ral.Impl
 					query = query + "$expand=" + propertyName + ((sortOrder != string.Empty ? "&$orderby=" + sortOrder : string.Empty));
 					builder.Query = query.TrimStart('?');
 					request.RequestUri = builder.Uri;
-				}
+                }
 			}
 
 			var response = await base.SendAsync(request, cancellationToken);

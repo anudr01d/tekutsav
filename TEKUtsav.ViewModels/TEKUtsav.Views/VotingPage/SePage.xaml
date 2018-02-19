@@ -10,12 +10,13 @@
         <ResourceDictionary>
             <local:StringToColorConverter x:Key="StringToColorConverter" />
             <vc:CurrencyConverter x:Key="cnvInvert" />
+            <local:Inverter x:Key="Inverter" />
         </ResourceDictionary>
     </ContentView.Resources>
     <ContentView.Content>
-    <StackLayout HeightRequest="100" BackgroundColor="#FFF" Orientation="Vertical" Spacing="0" VerticalOptions="Fill" HorizontalOptions="FillAndExpand">
-        <Grid HeightRequest="100" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-            <controls:TappableListView HeightRequest="100" x:Name="ListName" Margin="0,10,0,0"  BackgroundColor="#FFF" ItemsSource="{Binding SeEvents}" SeparatorVisibility="Default" ItemClickCommand="{Binding SeListClickedCommand}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" HasUnevenRows="true">
+    <StackLayout BackgroundColor="#FFF" Orientation="Vertical" Spacing="0" VerticalOptions="Fill" HorizontalOptions="FillAndExpand">
+        <Grid IsVisible="{Binding IsSeVotingEnabled}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <controls:TappableListView IsVisible="{Binding IsSeVoted, Converter={StaticResource Inverter}}" HeightRequest="100" x:Name="ListName" Margin="0,10,0,0"  BackgroundColor="#FFF" ItemsSource="{Binding SeEvents}" SeparatorVisibility="Default" ItemClickCommand="{Binding SeListClickedCommand}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" HasUnevenRows="true">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <controls:PoListViewCell>
@@ -51,6 +52,14 @@
                 </StackLayout>
             </Grid>
         </Grid>
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible = "{Binding IsSeVotingEnabled, Converter={StaticResource Inverter}}">
+                <ContentView Padding="0,30,0,0">
+                    <controls:TEKUtsavLabel HorizontalOptions="Center" VerticalOptions="Center" Text="Voting not enabled!" TextColor="#F6304E" FontSize="30" FontType="Bold">
+                    </controls:TEKUtsavLabel>
+                </ContentView>
+           </StackLayout>  
+        </Grid>    
       </StackLayout>
     </ContentView.Content>
 </ContentView>

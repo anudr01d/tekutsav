@@ -46,5 +46,9 @@ namespace TEKUtsav.Business.EventService.Impl
 
         public async Task<IEnumerable<EventType>> GetEventTypes() => await _eventRestApi.GetEventTypes();
 
+        public async Task<IEnumerable<EventVotingSchedule>> CheckVotingEnabled()
+        {
+            return await _eventRestApi.CheckVotingEnabled();
+        }
     }
 }

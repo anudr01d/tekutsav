@@ -74,5 +74,13 @@ namespace TEKUtsav.Ral.Impl.EventRestApi
             var list = await table.ReadAllItemsAsync();
             return list;
         }
+
+        public async Task<IEnumerable<EventVotingSchedule>> CheckVotingEnabled()
+        {
+            var azureclient = _azureClient.GetClient(Globals.CHECK_EVENT_VOTING, string.Empty, string.Empty);
+            var table = _cloudService.GetTable<EventVotingSchedule>(azureclient);
+            var list = await table.ReadAllItemsAsync();
+            return list;
+        }
     }
 }

@@ -75,6 +75,7 @@
     </Compile>
     <Compile Include="Controls\GradientColorStack.cs" />
     <Compile Include="Controls\ExtendedSwitch.cs" />
+    <Compile Include="Controls\CarouselPlugin.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controls\" />

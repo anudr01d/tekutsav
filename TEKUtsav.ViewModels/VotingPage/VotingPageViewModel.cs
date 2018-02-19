@@ -184,6 +184,43 @@ namespace TEKUtsav.ViewModels.VotingPage
             }
         }
 
+
+        private bool _isDanceVotingEnabled;
+        public bool IsDanceVotingEnabled
+        {
+            get { return _isDanceVotingEnabled; }
+
+            set
+            {
+                _isDanceVotingEnabled = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private bool _isFsVotingEnabled;
+        public bool IsFsVotingEnabled
+        {
+            get { return _isFsVotingEnabled; }
+
+            set
+            {
+                _isFsVotingEnabled = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private bool _isSeVotingEnabled;
+        public bool IsSeVotingEnabled
+        {
+            get { return _isSeVotingEnabled; }
+
+            set
+            {
+                _isSeVotingEnabled = value;
+                OnPropertyChanged();
+            }
+        }
+
 		public ICommand ChangeTabCommand
 		{
 			get { return _changeTabCommand; }
@@ -372,6 +409,12 @@ namespace TEKUtsav.ViewModels.VotingPage
 
         public override async Task OnViewAppearing(object navigationParams = null)
         {
+            var votingEnabled = await _eventBusinesservice.CheckVotingEnabled();
+            if(votingEnabled != null) 
+            {
+                ProcessVotingEnabled(votingEnabled);
+            }
+
             var events = await _eventBusinesservice.GetEvents();
             if (events != null)
             {
@@ -582,6 +625,25 @@ namespace TEKUtsav.ViewModels.VotingPage
 			MessagingCenter.Unsubscribe<string>(this, Globals.CHANGETAB);
         }
 
+        private void ProcessVotingEnabled(IEnumerable<EventVotingSchedule> events)
+        {
+            foreach (var ev in events)
+            {
+                if (ev.EventTypeId.Equals(GetDanceId()))
+                {
+                    IsDanceVotingEnabled = ev.IsVotingOpen;
+                }
+                else if (ev.EventTypeId.Equals(GetSeId()))
+                {
+                    IsSeVotingEnabled = ev.IsVotingOpen;
+                }
+                else if (ev.EventTypeId.Equals(GetFsId()))
+                {
+                    IsFsVotingEnabled = ev.IsVotingOpen;
+                }
+            }
+        }
+
 		public async void ChangeTab(string tab)
 		{
             this.IsDanceSelected = false;
@@ -591,6 +653,7 @@ namespace TEKUtsav.ViewModels.VotingPage
 			{
 				case "Dance": 
 					IsDanceSelected = true;
+
                     if(await CheckIfUserVoted(GetDanceId()) >= 1) 
                     {
                         IsDanceVoted = true;
