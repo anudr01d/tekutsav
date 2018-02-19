@@ -82,7 +82,10 @@ namespace TEKUtsav.ViewModels.NotificationsPage
  
                         }
                         else{
-                            list.Add(new NotificationListItem() { Title = ev.Title, FormattedDateTime = "24 Feb | 10.00", Description = ev.Description, pushEnabled = pushEnabled });
+                            if (Convert.ToInt32(pushCount) > 0)
+                            {
+                                list.Add(new NotificationListItem() { Title = ev.Title, FormattedDateTime = "24 Feb | 10.00", Description = ev.Description, pushEnabled = pushEnabled });
+                            }
 
                         }
                        
