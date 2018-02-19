@@ -128,7 +128,6 @@ namespace TEKUtsav.ViewModels.AdminSettingsPage
                 if (response != null)
                 {
                     await _navigationService.DisplayAlert("Voting Updated", "Voting Lines updated", "OK");
-
                 }
                 else
                 {

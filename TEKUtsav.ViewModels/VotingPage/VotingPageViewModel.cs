@@ -434,63 +434,31 @@ namespace TEKUtsav.ViewModels.VotingPage
 
             this.DanceListClickedCommand = new Command(async(args) =>
             {
-                var DanceListItemClicked = args as Event;
-                EventVote ev = new EventVote();
-                ev.EventId = DanceListItemClicked.Id;
-                ev.EventTypeId = DanceListItemClicked.EventTypeId;
-                ev.CreatedBy = GetUDID();
-                var udid = GetUDID();
-                ev.EventUserDevices = new List<EventUserDevice>() { new EventUserDevice() { EventId = DanceListItemClicked.Id, UDID = udid, CreatedBy = udid } };
-                var result = await _eventBusinesservice.CaptureUserVote(ev);
-                if (result != null)
-                {
-                    IsDanceVoted = true;
-                }
-                else
-                {
-                    await _navigationService.DisplayAlert("Error in voting", "There was an error in submitting your vote. Please contact the organizers.", "OK");
-                }
 
+                var res = await _navigationService.DisplayAlert("Vote Confirmation", "Are you sure about your vote?", "Yes", "No");
+                if(res) 
+                {
+                    await DanceVote(args);
+                }
 
             }, (args) => true);
 
             this.FsListClickedCommand = new Command(async(args) =>
             {
-                var FsListItemClicked = args as Event;
-                EventVote ev = new EventVote();
-                ev.EventId = FsListItemClicked.Id;
-                ev.EventTypeId = FsListItemClicked.EventTypeId;
-                var udid = GetUDID();
-                ev.EventUserDevices = new List<EventUserDevice>() { new EventUserDevice() { EventId = FsListItemClicked.Id, UDID = udid, CreatedBy = udid } };
-                var result = await _eventBusinesservice.CaptureUserVote(ev);
-                if (result!=null)
+                var res = await _navigationService.DisplayAlert("Vote Confirmation", "Are you sure about your vote?", "Yes", "No");
+                if (res)
                 {
-                    IsFsVoted = true;
+                    await FsVote(args);
                 }
-                else
-                {
-                    await _navigationService.DisplayAlert("Error in voting", "There was an error in submitting your vote. Please contact the organizers.", "OK");
-                }
-
 
             }, (args) => true);
 
             this.SeListClickedCommand = new Command(async(args) =>
             {
-                var SeListItemClicked = args as Event;
-                EventVote ev = new EventVote();
-                ev.EventId = SeListItemClicked.Id;
-                ev.EventTypeId = SeListItemClicked.EventTypeId;
-                var udid = GetUDID();
-                ev.EventUserDevices = new List<EventUserDevice>() { new EventUserDevice() { EventId = SeListItemClicked.Id, UDID = udid, CreatedBy = udid } };
-                var result = await _eventBusinesservice.CaptureUserVote(ev);
-                if (result != null)
+                var res = await _navigationService.DisplayAlert("Vote Confirmation", "Are you sure about your vote?", "Yes", "No");
+                if (res)
                 {
-                    IsSeVoted = true;
-                }
-                else
-                {
-                    await _navigationService.DisplayAlert("Error in voting", "There was an error in submitting your vote. Please contact the organizers.", "OK");
+                    await SeVote(args);
                 }
 
             }, (args) => true);
@@ -544,6 +512,68 @@ namespace TEKUtsav.ViewModels.VotingPage
 
             await Task.Run(() => { });
         }
+
+
+        private async Task DanceVote(object args)
+        {
+            var DanceListItemClicked = args as Event;
+            EventVote ev = new EventVote();
+            ev.EventId = DanceListItemClicked.Id;
+            ev.EventTypeId = DanceListItemClicked.EventTypeId;
+            ev.CreatedBy = GetUDID();
+            var udid = GetUDID();
+            ev.EventUserDevices = new List<EventUserDevice>() { new EventUserDevice() { EventId = DanceListItemClicked.Id, UDID = udid, CreatedBy = udid } };
+            var result = await _eventBusinesservice.CaptureUserVote(ev);
+            if (result != null)
+            {
+                IsDanceVoted = true;
+            }
+            else
+            {
+                await _navigationService.DisplayAlert("Error in voting", "There was an error in submitting your vote. Please contact the organizers.", "OK");
+            }    
+        }
+
+
+        private async Task FsVote(object args) 
+        {
+            var FsListItemClicked = args as Event;
+            EventVote ev = new EventVote();
+            ev.EventId = FsListItemClicked.Id;
+            ev.EventTypeId = FsListItemClicked.EventTypeId;
+            var udid = GetUDID();
+            ev.EventUserDevices = new List<EventUserDevice>() { new EventUserDevice() { EventId = FsListItemClicked.Id, UDID = udid, CreatedBy = udid } };
+            var result = await _eventBusinesservice.CaptureUserVote(ev);
+            if (result != null)
+            {
+                IsFsVoted = true;
+            }
+            else
+            {
+                await _navigationService.DisplayAlert("Error in voting", "There was an error in submitting your vote. Please contact the organizers.", "OK");
+            }
+
+        }
+
+        private async Task SeVote(object args)
+        {
+            var SeListItemClicked = args as Event;
+            EventVote ev = new EventVote();
+            ev.EventId = SeListItemClicked.Id;
+            ev.EventTypeId = SeListItemClicked.EventTypeId;
+            var udid = GetUDID();
+            ev.EventUserDevices = new List<EventUserDevice>() { new EventUserDevice() { EventId = SeListItemClicked.Id, UDID = udid, CreatedBy = udid } };
+            var result = await _eventBusinesservice.CaptureUserVote(ev);
+            if (result != null)
+            {
+                IsSeVoted = true;
+            }
+            else
+            {
+                await _navigationService.DisplayAlert("Error in voting", "There was an error in submitting your vote. Please contact the organizers.", "OK");
+            }
+        }
+
 
         private string GetUDID()
         {
