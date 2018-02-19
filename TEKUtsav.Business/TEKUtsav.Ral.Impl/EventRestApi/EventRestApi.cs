@@ -51,8 +51,8 @@ namespace TEKUtsav.Ral.Impl.EventRestApi
            // var table = _cloudService.GetTable<EventVotingSchedule>(azureclient);
             //var list = await table.CreateItemAsync(eventVoting);
             //return list;
-            await _cloudService.InvokeApiAsyncPostData<EventVotingSchedule,EventVotingSchedule>(azureclient, Globals.EVENT_VOTING_SCHEDULE, eventVoting);
-            return null;
+            var list = await _cloudService.InvokeApiAsyncPostData<EventVotingSchedule,EventVotingSchedule>(azureclient, Globals.EVENT_VOTING_SCHEDULE, eventVoting);
+            return list;
         }
 
         public Task<List<EventWinner>> ComputeEventWinner(string eventTypeId)
