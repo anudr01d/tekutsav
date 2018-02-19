@@ -72,7 +72,7 @@ namespace TEKUtsav.ViewModels.NotificationsPage
                         int count = Convert.ToInt32(pushCount);
                         bool pushEnabled = false;
                         string isAdminString = GetAdminId();
-                        bool IsAdmin = Convert.ToBoolean(isAdminString);
+                        bool IsAdmin = true;//Convert.ToBoolean(isAdminString);
                         if (count < 2 && IsAdmin == true) {
                             pushEnabled = true;
                         }
@@ -146,11 +146,11 @@ namespace TEKUtsav.ViewModels.NotificationsPage
 		public override async Task OnViewAppearing(object navigationParams = null)
 		{
             this.SetCurrentPage(TEKUtsavAppPage.NotificationsPage);
-            this.SendPushClickCommand = new Command((e) =>
+            this.SendPushClickCommand = new Command(async(e) =>
             {
                 var item = (e as TEKUtsav.Models.NotificationListItem);
                 sendPush(item.Title, item.Description);
-
+                await _navigationService.DisplayAlert("Notification Sent!", "", "OK");
             });
 			Task.Run(() => { });
 		}

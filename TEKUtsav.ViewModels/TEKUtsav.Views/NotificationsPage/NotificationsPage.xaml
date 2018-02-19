@@ -22,7 +22,7 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <controls:PoListViewCell>
-                            <StackLayout Spacing="0" Padding="20,20,20,20" Orientation="Horizontal">
+                            <StackLayout Spacing="0" Padding="20,20,20,20" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
                                 <StackLayout Orientation="Vertical" BackgroundColor="#FFFFFF" Padding="0,0,0,0" Spacing="0" VerticalOptions="CenterAndExpand">
                                     <!--<Image Source="{Binding MenuImageSource, Converter={StaticResource StringToImageConverter}}" WidthRequest="40" HeightRequest="40" HorizontalOptions="Start"/>-->
                                     <Label Text="{Binding Title}" TextColor="#F6304E" FontSize="18" FontFamily="Helvetica" HorizontalOptions="StartAndExpand">
@@ -32,7 +32,13 @@
                                     <Label Text="{Binding Description}" TextColor="#818181" FontSize="14" FontFamily="Helvetica" HorizontalOptions="StartAndExpand">
                                     </Label>
                                 </StackLayout>
-                            <Button Grid.Column="1" IsVisible="{Binding pushEnabled}" Image="push.png" Command="{Binding Path=BindingContext.SendPushClickCommand, Source={x:Reference MyNotifyPage}}" CommandParameter="{Binding .}" HeightRequest="30" WidthRequest="50" HorizontalOptions="EndAndExpand" /> 
+                            <StackLayout Grid.Column="1" IsVisible="{Binding pushEnabled}">
+                                <Image Source="push.png" WidthRequest="40" HeightRequest="40" VerticalOptions="CenterAndExpand" Aspect="AspectFit"/>
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Path=BindingContext.SendPushClickCommand, Source={x:Reference MyNotifyPage}}" CommandParameter="{Binding .}">
+                                    </TapGestureRecognizer>
+                                </StackLayout.GestureRecognizers>
+                            </StackLayout>
                            </StackLayout>
                         </controls:PoListViewCell>
                     </DataTemplate>
