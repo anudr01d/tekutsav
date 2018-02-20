@@ -70,7 +70,7 @@ namespace TEKUtsav.ViewModels.NotificationsPage
                              pushCount = ev.NotificationTracks.FirstOrDefault().pushCount;
                         }
                         int count = Convert.ToInt32(pushCount);
-                        bool pushEnabled = false;
+                        bool pushEnabled = true;
                         string isAdminString = GetAdminId();
                         bool IsAdmin = true;//Convert.ToBoolean(isAdminString);
                         if (count < 2 && IsAdmin == true) {
@@ -79,13 +79,14 @@ namespace TEKUtsav.ViewModels.NotificationsPage
                        
                         if (IsAdmin == true)
                         {
-                            list.Add(new NotificationListItem() { Title = ev.Title, FormattedDateTime = ev.NotificationSchedule.FirstOrDefault().StartTime.ToString(), Description = ev.AdminDescription, pushEnabled = pushEnabled });
+                            list.Add(new NotificationListItem() { Title = ev.Title, FormattedDateTime = ev.NotificationSchedule.FirstOrDefault().StartTime.ToString(), Description = ev.AdminDescription, pushEnabled = pushEnabled ,notificationId = ev.NotificationSchedule.FirstOrDefault().NotificationId  });
  
                         }
                         else{
                             if (Convert.ToInt32(pushCount) > 0)
                             {
-                                list.Add(new NotificationListItem() { Title = ev.Title, FormattedDateTime = ev.NotificationSchedule.FirstOrDefault().StartTime.ToString(), Description = ev.Description, pushEnabled = pushEnabled });
+                                list.Add(new NotificationListItem() { Title = ev.Title, FormattedDateTime = ev.NotificationSchedule.FirstOrDefault().StartTime.ToString(), Description = ev.Description, pushEnabled = pushEnabled ,notificationId = ev.NotificationSchedule.FirstOrDefault().NotificationId  });
+ 
                             }
 
                         }
@@ -107,6 +108,7 @@ namespace TEKUtsav.ViewModels.NotificationsPage
         }
         private void sendPush(string title, string description)
         {
+
             FireBasePush push = new FireBasePush(Globals.FIREBASE_SERVER_KEY);
             push.SendPush(new PushMessage
             {
@@ -122,6 +124,7 @@ namespace TEKUtsav.ViewModels.NotificationsPage
                     example = "this is a example"
                 }
             });
+
         }
         public void ProcessEvents(IEnumerable<Notification> events)
         {
@@ -151,6 +154,8 @@ namespace TEKUtsav.ViewModels.NotificationsPage
                 var item = (e as TEKUtsav.Models.NotificationListItem);
                 sendPush(item.Title, item.Description);
                 await _navigationService.DisplayAlert("Notification Sent!", "", "OK");
+                var notificationEvents = Task.Run(() => _notificationBusinesservice.trackNotification(item.notificationId));
+
             });
 			Task.Run(() => { });
 		}

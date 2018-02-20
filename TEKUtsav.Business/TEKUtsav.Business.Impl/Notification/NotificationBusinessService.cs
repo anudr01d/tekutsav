@@ -25,5 +25,12 @@ namespace TEKUtsav.Business.Notification.Impl
         {
             return await _notificationRestApi.GetNotifications();
         }
+
+        public async Task<int> trackNotification(string notificationId)
+        {
+            return await _notificationRestApi.trackNotification(notificationId);
+
+        }
+
     }
 }
