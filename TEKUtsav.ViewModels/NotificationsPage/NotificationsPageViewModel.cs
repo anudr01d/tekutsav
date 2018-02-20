@@ -79,13 +79,13 @@ namespace TEKUtsav.ViewModels.NotificationsPage
                        
                         if (IsAdmin == true)
                         {
-                            list.Add(new NotificationListItem() { Title = ev.Title, FormattedDateTime = ev.NotificationSchedule.FirstOrDefault().StartTime.ToString(), Description = ev.AdminDescription, pushEnabled = pushEnabled ,notificationId = ev.NotificationSchedule.FirstOrDefault().NotificationId  });
+                            list.Add(new NotificationListItem() { Title = ev.Title, FormattedDateTime = ev.NotificationSchedule.FirstOrDefault().StartDateTime, Description = ev.AdminDescription, pushEnabled = pushEnabled ,notificationId = ev.NotificationSchedule.FirstOrDefault().NotificationId  });
  
                         }
                         else{
                             if (Convert.ToInt32(pushCount) > 0)
                             {
-                                list.Add(new NotificationListItem() { Title = ev.Title, FormattedDateTime = ev.NotificationSchedule.FirstOrDefault().StartTime.ToString(), Description = ev.Description, pushEnabled = pushEnabled ,notificationId = ev.NotificationSchedule.FirstOrDefault().NotificationId  });
+                                list.Add(new NotificationListItem() { Title = ev.Title, FormattedDateTime = ev.NotificationSchedule.FirstOrDefault().StartDateTime, Description = ev.Description, pushEnabled = pushEnabled ,notificationId = ev.NotificationSchedule.FirstOrDefault().NotificationId  });
  
                             }
 
