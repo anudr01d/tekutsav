@@ -62,14 +62,18 @@ namespace TEKUtsav.ViewModels.NotificationsPage
                 if (notificationEvents != null)
                 {
                     var list = new List<NotificationListItem>();
-                    int totalCount = notificationEvents.Result.Count();
-                    foreach (var ne in notificationEvents.Result)
+                    bool IsAdmin = GetAdminId();
+                    var SortedList = notificationEvents.Result;
+                    if (IsAdmin == true)
                     {
-                        int neCount = ne.order;
+                        SortedList = notificationEvents.Result.OrderBy(o => o.order).ToList();
+                    }
+                    else{
+                        SortedList = notificationEvents.Result.OrderByDescending(o => o.UpdatedAt).ToList();
+                    }
 
-                        foreach (var ev in notificationEvents.Result)
-                        {
-                            if (totalCount == ev.order) {
+                    foreach (var ev in SortedList)
+                    {
                                 var pushCount = "0";
                                 if (ev.NotificationTracks != null)
                                 {
@@ -77,30 +81,20 @@ namespace TEKUtsav.ViewModels.NotificationsPage
                                 }
                                 int count = Convert.ToInt32(pushCount);
                                 bool pushEnabled = false;
-                                bool IsAdmin = GetAdminId();
-                                if (count < 2 && IsAdmin == true)
+                                if (count < 3 && IsAdmin == true)
                                 {
                                     pushEnabled = true;
                                 }
-
-                                if (IsAdmin == true)
-                                {
-                                    list.Add(new NotificationListItem() { Title = ev.Title, FormattedDateTime = ev.NotificationSchedule.FirstOrDefault().StartDateTime, Description = ev.AdminDescription, pushEnabled = pushEnabled, notificationId = ev.NotificationSchedule.FirstOrDefault().NotificationId });
-
-                                }
-                                else
-                                {
-                                    if (Convert.ToInt32(pushCount) > 0)
-                                    {
-                                        list.Add(new NotificationListItem() { Title = ev.Title, FormattedDateTime = ev.NotificationSchedule.FirstOrDefault().StartDateTime, Description = ev.AdminDescription, pushEnabled = pushEnabled, notificationId = ev.NotificationSchedule.FirstOrDefault().NotificationId });
-
-                                    }
-
-                                }
-                            }
-
+                        if (IsAdmin == true)
+                        {
+                            list.Add(new NotificationListItem() { Title = ev.Title, FormattedDateTime = ev.NotificationSchedule.FirstOrDefault().StartDateTime, Description = ev.AdminDescription, pushEnabled = pushEnabled, notificationId = ev.NotificationSchedule.FirstOrDefault().NotificationId });
                         }
-                        totalCount--;
+                        else{
+                            if (count > 0){
+                                list.Add(new NotificationListItem() { Title = ev.Title, FormattedDateTime = ev.NotificationSchedule.FirstOrDefault().StartDateTime, Description = ev.AdminDescription, pushEnabled = pushEnabled, notificationId = ev.NotificationSchedule.FirstOrDefault().NotificationId });
+
+                            }
+                        }
                     }
                      return list;
                 }
