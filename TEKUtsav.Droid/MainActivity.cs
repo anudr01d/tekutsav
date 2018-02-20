@@ -42,7 +42,7 @@ namespace TEKUtsav.Droid
                 }
             }
             // Firebase subscribe to an topic
-            FirebaseMessaging.Instance.SubscribeToTopic("news");
+            FirebaseMessaging.Instance.SubscribeToTopic("/topics/news");
             Log.Debug(TAG, "Subscribed to remote notifications");
 
 			global::Xamarin.Forms.Forms.Init(this, bundle);
@@ -62,5 +62,18 @@ namespace TEKUtsav.Droid
 			builder.RegisterType<SettingProviderDroid>().As<ISettings>();
 			builder.Register(c => new DroidCookieStore(Globals.OKTA_SP_URL)).As<IPlatformCookieStore>();
 		}
+        // To receive notifications in foreground on iOS 10 devices.
+        [Export("userNotificationCenter:willPresentNotification:withCompletionHandler:")]
+        public void WillPresentNotification(UNUserNotificationCenter center, UNNotification notification, Action<UNNotificationPresentationOptions> completionHandler)
+        {
+            // Do your magic to handle the notification data
+            System.Console.WriteLine(notification.Request.Content.UserInfo);
+        }
+
+        // Receive data message on iOS 10 devices.
+        public void ApplicationReceivedRemoteMessage(RemoteMessage remoteMessage)
+        {
+            Console.WriteLine(remoteMessage.AppData);
+        }
 	}
 }
