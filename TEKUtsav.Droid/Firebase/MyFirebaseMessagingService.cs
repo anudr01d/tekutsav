@@ -17,10 +17,10 @@ namespace TEKUtsav.Droid
         {
             Log.Debug(TAG, "From: " + message.From);
             Log.Debug(TAG, "Notification Message Body: " + message.GetNotification().Body);
-            SendNotification(message.GetNotification().Body, message.Data);
+            SendNotification(message.From, message.GetNotification().Body, message.Data);
         }
 
-        void SendNotification(string messageBody, IDictionary<string, string> data)
+        void SendNotification(string messageFrom, string messageBody, IDictionary<string, string> data)
         {
             var intent = new Intent(this, typeof(MainActivity));
             intent.AddFlags(ActivityFlags.ClearTop);
@@ -32,7 +32,7 @@ namespace TEKUtsav.Droid
 
             var notificationBuilder = new Notification.Builder(this)
                 .SetSmallIcon(Resource.Drawable.ic_stat_ic_notification)
-                .SetContentTitle("FCM Message")
+                .SetContentTitle(messageFrom)
                 .SetContentText(messageBody)
                 .SetAutoCancel(true)
                 .SetContentIntent(pendingIntent);
