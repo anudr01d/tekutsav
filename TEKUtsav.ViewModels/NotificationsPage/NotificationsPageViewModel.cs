@@ -50,9 +50,9 @@ namespace TEKUtsav.ViewModels.NotificationsPage
                 OnPropertyChanged("RegisterClickedCommand");
 			}
 		}
-        private string GetAdminId()
+        private bool GetAdminId()
         {
-            return Application.Current.Properties["IsAdmin"] as string;
+            return (bool)Application.Current.Properties["IsAdmin"];
         }
         public List<NotificationListItem> Notifications
         {
@@ -71,8 +71,7 @@ namespace TEKUtsav.ViewModels.NotificationsPage
                         }
                         int count = Convert.ToInt32(pushCount);
                         bool pushEnabled = false;
-                        string isAdminString = GetAdminId();
-                        bool IsAdmin = Convert.ToBoolean(isAdminString);
+                        bool IsAdmin = GetAdminId();
                         if (count < 2 && IsAdmin == true) {
                             pushEnabled = true;
                         }

@@ -146,15 +146,14 @@ namespace TEKUtsav.ViewModels.MasterMenuPage
 			_navigationService = navigationService;
 			_cookieStore = cookieStore;
 		}
-        private string GetAdminId()
+        private bool GetAdminId()
         {
-            return Application.Current.Properties["IsAdmin"] as string;
+            return (bool)Application.Current.Properties["IsAdmin"];
         }
 		public override Task OnViewAppearing(object navigationParams = null)
 		{
             this.SetCurrentPage(TEKUtsavAppPage.MasterMenuPage);
-            string isAdminString = GetAdminId();
-            IsAdmin = Convert.ToBoolean(isAdminString);
+            IsAdmin = GetAdminId();
 
 			this.TapCommand = new Command(() =>
 			{
