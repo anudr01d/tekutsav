@@ -11,6 +11,8 @@ namespace TEKUtsav.Models
         public bool pushEnabled { get; set; }
         public string DateTime { get; set; }
         public string FormattedDateTime { get; set; }
+        public string notificationId { get; set; }
+
 
     }
 }

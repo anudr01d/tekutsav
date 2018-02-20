@@ -7,5 +7,7 @@ namespace TEKUtsav.Ral.NotificationApi
     public interface INotificationRestApi
     {
         Task<ICollection<Notification>> GetNotifications();
+        Task<int> trackNotification(string notificationId);
+
     }
 }

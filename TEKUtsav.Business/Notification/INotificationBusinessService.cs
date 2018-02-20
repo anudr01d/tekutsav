@@ -9,6 +9,7 @@ namespace TEKUtsav.Business.Notification
     public interface INotificationBusinessService
     {
         Task<IEnumerable<DS.Notification>> GetNotifications();
+        Task<int> trackNotification(string notificationId);
 
     }
 }

@@ -29,5 +29,6 @@ namespace TEKUtsav.Ral.Impl.NotificationRestApi
             var list = await table.ReadAllItemsAsync();
             return list;
         }
+        public async Task<int> trackNotification(string notificationId)         {             var client = _azureClient.GetClient(string.Empty, string.Empty, string.Empty);             var userVoteURL = Globals.TRACK_NOTIFICATION_KEY + "/" + string.Format("{0}", notificationId) + "?ZUMO-API-VERSION=2.0.0";             var userVote = await _cloudService.InvokeApiAsyncPost<int, int>(client, userVoteURL, 0);             return userVote;         }
     }
 }

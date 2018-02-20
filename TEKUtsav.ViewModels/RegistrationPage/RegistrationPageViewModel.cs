@@ -176,6 +176,11 @@ namespace TEKUtsav.ViewModels.RegistrationPage
                     var response = await _userBusinessService.RegisterUser(user);
                     UserDialogs.Instance.HideLoading();
 
+                    if (response.isAccessAllowed == false) {
+                        await _navigationService.DisplayAlert("User Registeration","You are not allowed to participate in TeKUtsav", "OK");
+                        return;
+                    }
+
                     //Use the response and identify if the user is an admin or not, persist additional useful information
                     if (!string.IsNullOrEmpty(response.FirstName))
                     {
