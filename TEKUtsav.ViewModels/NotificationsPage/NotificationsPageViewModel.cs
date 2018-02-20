@@ -62,35 +62,45 @@ namespace TEKUtsav.ViewModels.NotificationsPage
                 if (notificationEvents != null)
                 {
                     var list = new List<NotificationListItem>();
-
-                    foreach (var ev in notificationEvents.Result)
+                    int totalCount = notificationEvents.Result.Count();
+                    foreach (var ne in notificationEvents.Result)
                     {
-                        var pushCount = "0";
-                        if (ev.NotificationTracks != null) {
-                             pushCount = ev.NotificationTracks.FirstOrDefault().pushCount;
-                        }
-                        int count = Convert.ToInt32(pushCount);
-                        bool pushEnabled = false;
-                        bool IsAdmin = GetAdminId();
-                        if (count < 2 && IsAdmin == true) {
-                            pushEnabled = true;
-                        }
-                       
-                        if (IsAdmin == true)
+                        int neCount = ne.order;
+
+                        foreach (var ev in notificationEvents.Result)
                         {
-                            list.Add(new NotificationListItem() { Title = ev.Title, FormattedDateTime = ev.NotificationSchedule.FirstOrDefault().StartDateTime, Description = ev.AdminDescription, pushEnabled = pushEnabled ,notificationId = ev.NotificationSchedule.FirstOrDefault().NotificationId  });
- 
-                        }
-                        else{
-                            if (Convert.ToInt32(pushCount) > 0)
-                            {
-                                list.Add(new NotificationListItem() { Title = ev.Title, FormattedDateTime = ev.NotificationSchedule.FirstOrDefault().StartDateTime, Description = ev.Description, pushEnabled = pushEnabled ,notificationId = ev.NotificationSchedule.FirstOrDefault().NotificationId  });
- 
+                            if (totalCount == ev.order) {
+                                var pushCount = "0";
+                                if (ev.NotificationTracks != null)
+                                {
+                                    pushCount = ev.NotificationTracks.FirstOrDefault().pushCount;
+                                }
+                                int count = Convert.ToInt32(pushCount);
+                                bool pushEnabled = false;
+                                bool IsAdmin = GetAdminId();
+                                if (count < 2 && IsAdmin == true)
+                                {
+                                    pushEnabled = true;
+                                }
+
+                                if (IsAdmin == true)
+                                {
+                                    list.Add(new NotificationListItem() { Title = ev.Title, FormattedDateTime = ev.NotificationSchedule.FirstOrDefault().StartDateTime, Description = ev.AdminDescription, pushEnabled = pushEnabled, notificationId = ev.NotificationSchedule.FirstOrDefault().NotificationId });
+
+                                }
+                                else
+                                {
+                                    if (Convert.ToInt32(pushCount) > 0)
+                                    {
+                                        list.Add(new NotificationListItem() { Title = ev.Title, FormattedDateTime = ev.NotificationSchedule.FirstOrDefault().StartDateTime, Description = ev.AdminDescription, pushEnabled = pushEnabled, notificationId = ev.NotificationSchedule.FirstOrDefault().NotificationId });
+
+                                    }
+
+                                }
                             }
 
                         }
-                       
-
+                        totalCount--;
                     }
                      return list;
                 }
