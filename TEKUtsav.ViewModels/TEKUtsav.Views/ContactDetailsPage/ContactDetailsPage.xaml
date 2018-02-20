@@ -15,6 +15,7 @@
 				<local:Inverter x:Key="Inverter" />
 			</ResourceDictionary>
 	</ContentPage.Resources>
+                <ScrollView>
 
     <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
                             <StackLayout Spacing="0" Padding="20,20,20,20" HorizontalOptions="Center" VerticalOptions="FillAndExpand" Orientation="Vertical">
@@ -33,4 +34,6 @@
                                 </StackLayout>
                             </StackLayout>
         </Grid>
+                    </ScrollView>
+
 </controls:TEKUtsavContentPage>

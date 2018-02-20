@@ -63,7 +63,8 @@
             
 		</ResourceDictionary>
 	</ContentPage.Resources>
-    
+        <ScrollView>
+
 	<StackLayout BackgroundColor="#FFF" Orientation="Vertical" Spacing="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
         <Grid BackgroundColor="#EFEFEF" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
             <ticker:CarouselViewControl ShowIndicators="true" HeightRequest="200" ItemsSource="{Binding Source={x:StaticResource CarouselPages}}" />
@@ -136,4 +137,6 @@
        </StackLayout>
             </Grid>
 	</StackLayout>
+            </ScrollView>
+
 </controls:TEKUtsavContentPage>
