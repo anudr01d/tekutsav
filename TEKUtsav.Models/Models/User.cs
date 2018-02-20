@@ -14,6 +14,7 @@ namespace TEKUtsav.Mobile.Service.Domain.DataObjects
         public string Email { get; set; }
         public string WorkLocation { get; set; }
         public bool IsAdmin { get; set; }
+        public bool isAccessAllowed { get; set; }
         public virtual ICollection<DeviceRegister> Devices { get; set; }
     }
 }
