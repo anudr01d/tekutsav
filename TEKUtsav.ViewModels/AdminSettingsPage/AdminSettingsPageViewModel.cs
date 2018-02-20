@@ -17,6 +17,7 @@ using TEKUtsav.Business.EventService;
 
 using DS = TEKUtsav.Mobile.Service.Domain.DataObjects;
 using TEKUtsav.Mobile.Service.Domain.DataObjects;
+using Acr.UserDialogs;
 
 namespace TEKUtsav.ViewModels.AdminSettingsPage
 {
@@ -90,48 +91,30 @@ namespace TEKUtsav.ViewModels.AdminSettingsPage
         {
             this.SetCurrentPage(TEKUtsavAppPage.AdminSettingsPage);
 
-/*            this.EnableVotingCommand = new ExecuteLoadedCommandAsync(async (e) =>
-            {
-                var item = (e as TEKUtsav.Mobile.Service.Domain.DataObjects.Event);
-
-                //Call api for enabling and disabling voting lines
-                DS.EventVotingSchedule eventVoting = new DS.EventVotingSchedule();
-
-                eventVoting.EventTypeId = item.EventTypeId;
-                eventVoting.IsVotingOpen = IsVotingEnabled;
-
-                var response = await _eventBusinesservice.enableDiableVoting(eventVoting);
-                //Use the response and identify if the user is an admin or not, persist additional useful information
-                if (response != null)
-                {
-                    await _navigationService.DisplayAlert("Voting Updated", "Voting Lines updated", "OK");
-
-                }
-                else
-                {
-                    await _navigationService.DisplayAlert("Error in Voting", "Error Updating Voting Lines", "OK");
-                }
-            });
-*/
-            this.EnableVotingCommand = new Command(async(args) => 
+            this.EnableVotingCommand = new Command(async(args) =>
             {
                 var item = (args as TEKUtsav.Models.AdminListItem);
-
-                //Call api for enabling and disabling voting lines
-                DS.EventVotingSchedule eventVoting = new DS.EventVotingSchedule();
-
-                eventVoting.EventTypeId = item.Id;
-                eventVoting.IsVotingOpen = item.IsVotingOpen;
-
-                var response = await _eventBusinesservice.enableDiableVoting(eventVoting);
-                //Use the response and identify if the user is an admin or not, persist additional useful information
-                if (response != null)
+                if (item != null)
                 {
-                    await _navigationService.DisplayAlert("Voting Updated", "Voting Lines updated", "OK");
-                }
-                else
-                {
-                    await _navigationService.DisplayAlert("Error in Voting", "Error Updating Voting Lines", "OK");
+                    //Call api for enabling and disabling voting lines
+                    DS.EventVotingSchedule eventVoting = new DS.EventVotingSchedule();
+
+                    eventVoting.EventTypeId = item.Id;
+                    eventVoting.IsVotingOpen = item.IsVotingOpen;
+
+                    UserDialogs.Instance.ShowLoading("Loading..", MaskType.Black);
+                    var response = await _eventBusinesservice.enableDiableVoting(eventVoting);
+                    UserDialogs.Instance.HideLoading();
+
+                    //Use the response and identify if the user is an admin or not, persist additional useful information
+                    if (response != null)
+                    {
+                        await _navigationService.DisplayAlert("Voting Updated", "Voting Lines updated", "OK");
+                    }
+                    else
+                    {
+                        await _navigationService.DisplayAlert("Error in Voting", "Error Updating Voting Lines", "OK");
+                    }
                 }
             }, (args) => true);
 
@@ -142,7 +125,9 @@ namespace TEKUtsav.ViewModels.AdminSettingsPage
         {
             get
             {
+                UserDialogs.Instance.ShowLoading("Loading..", MaskType.Black);
                 var eventTypes = Task.Run(() => _eventBusinesservice.GetEventTypes());
+                UserDialogs.Instance.HideLoading();
                 if (eventTypes != null)
                 {
                     var list = new List<AdminListItem>();

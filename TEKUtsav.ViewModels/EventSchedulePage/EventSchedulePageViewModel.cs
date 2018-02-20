@@ -14,7 +14,7 @@ using TEKUtsav.Infrastructure.Constants;
 using TEKUtsav.Infrastructure;
 using TEKUtsav.Business.Measurements;
 using TEKUtsav.Business.Notification;
-
+using Acr.UserDialogs;
 
 namespace TEKUtsav.ViewModels.EventSchedulePage
 {
@@ -41,8 +41,10 @@ namespace TEKUtsav.ViewModels.EventSchedulePage
         {
             get
             {
-                //var notificationEvents = await _notificationBusinesservice.GetNotifications();
+                UserDialogs.Instance.ShowLoading("Loading..", MaskType.Black);
                 var notificationEvents = Task.Run(() => _notificationBusinesservice.GetNotifications());
+                UserDialogs.Instance.HideLoading();
+
                 if (notificationEvents != null)
                 {
                     var list = new List<Notification>();

@@ -20,16 +20,18 @@ using Plugin.DeviceInfo;
 using System.Diagnostics.Contracts;
 using TEKUtsav.Business.User;
 using TEKUtsav.Mobile.Service.Domain.DataObjects;
+using Command = Xamarin.Forms.Command;
+using Acr.UserDialogs;
 
 namespace TEKUtsav.ViewModels.RegistrationPage
 {
-	public class RegistrationPageViewModel : ViewModelBase
-	{
-		private readonly INavigationService _navigationService;
+    public class RegistrationPageViewModel : ViewModelBase
+    {
+        private readonly INavigationService _navigationService;
         private readonly IUserBusinessService _userBusinessService;
-		private readonly ISettings _settings;
-		private bool clicked = false;
-		private ICommand _locationClickedCommand, _registerClickedCommand;
+        private readonly ISettings _settings;
+        private bool clicked = false;
+        private ICommand _locationClickedCommand, _registerClickedCommand;
         private string _location;
 
         const string emailRegex = @"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))" +
@@ -115,7 +117,7 @@ namespace TEKUtsav.ViewModels.RegistrationPage
                 {
                     example = "this is a example"
                 }
-            });    
+            });
         }
 
         public RegistrationPageViewModel(INavigationService navigationService, ISettings settings, IUserBusinessService userBusinessService) : base(navigationService, settings)
@@ -131,8 +133,9 @@ namespace TEKUtsav.ViewModels.RegistrationPage
         public override async Task OnViewAppearing(object navigationParams = null)
         {
             this.SetCurrentPage(TEKUtsavAppPage.RegistrationPage);
-           
-            this.RegisterClickedCommand = new Command( async() => {
+
+            this.RegisterClickedCommand = new Command(async () =>
+            {
                 User user = new User();
                 if (this.Location == null || this.Location.Contains("Select"))
                 {
@@ -145,13 +148,14 @@ namespace TEKUtsav.ViewModels.RegistrationPage
                     return;
                 }
                 bool IsEmailValid = (Regex.IsMatch(this.Email, emailRegex, RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250)));
-                if (IsEmailValid == false) {
+                if (IsEmailValid == false)
+                {
                     await _navigationService.DisplayAlert("Email", "Invalid Email Address", "OK");
                     return;
                 }
                 double result;
                 bool IsNumberValid = double.TryParse(this.MobileNumber, out result);
-                if (IsNumberValid == false || this.MobileNumber.Length != 10 )
+                if (IsNumberValid == false || this.MobileNumber.Length != 10)
                 {
                     await _navigationService.DisplayAlert("Phone", "Invalid Mobile Number", "OK");
                     return;
@@ -164,22 +168,29 @@ namespace TEKUtsav.ViewModels.RegistrationPage
                     user.WorkLocation = this.Location;
                     user.CreatedBy = CrossDeviceInfo.Current.Id;
                     List<DeviceRegister> lstDevices = new List<DeviceRegister>();
-                    lstDevices.Add(new DeviceRegister() { UDID = CrossDeviceInfo.Current.Id, CreatedBy= CrossDeviceInfo.Current.Id });
+                    lstDevices.Add(new DeviceRegister() { UDID = CrossDeviceInfo.Current.Id, CreatedBy = CrossDeviceInfo.Current.Id });
                     user.Devices = lstDevices;
 
+
+                    UserDialogs.Instance.ShowLoading("Registering..", MaskType.Black);
                     var response = await _userBusinessService.RegisterUser(user);
+                    UserDialogs.Instance.HideLoading();
+
                     //Use the response and identify if the user is an admin or not, persist additional useful information
-                    if(!string.IsNullOrEmpty(response.FirstName)) {
+                    if (!string.IsNullOrEmpty(response.FirstName))
+                    {
                         Application.Current.Properties["UserUDID"] = response.Devices.FirstOrDefault().UDID;
                         Application.Current.Properties["IsAdmin"] = response.IsAdmin;
                         Application.Current.Properties["UserEmail"] = response.Email;
                         Application.Current.Properties["UserPhone"] = response.Mobile;
                         _navigationService.NavigateTo(TEKUtsavAppPage.MasterMenuPage);
-                    } else 
-                    {
-                       await _navigationService.DisplayAlert("Error in registration", response.ToString(), "OK");
                     }
-                } else 
+                    else
+                    {
+                        await _navigationService.DisplayAlert("Error in registration", response.ToString(), "OK");
+                    }
+                }
+                else
                 {
                     await _navigationService.DisplayAlert("Please fill all the required fields.", "", "OK");
                 }
@@ -196,16 +207,14 @@ namespace TEKUtsav.ViewModels.RegistrationPage
             this.Location = "Select";
             MessagingCenter.Subscribe<SingleSelectionItem>(this, Globals.SINGLE_SELECTION, (args) =>
             {
-                if(args.Name!=null) 
+                if (args.Name != null)
                 {
-                    this.Location = args.Name;   
+                    this.Location = args.Name;
                 }
             });
 
-			Task.Run(() => { });
-		}
-    
-
+            Task.Run(() => { });
+        }
 
 		public override Task OnViewDisappearing()
 		{

@@ -11,6 +11,7 @@ using TEKUtsav.Infrastructure.Settings;
 using TEKUtsav.Infrastructure.Constants;
 using TEKUtsav.Business.EventService;
 using TEKUtsav.Mobile.Service.Domain.DataObjects;
+using Acr.UserDialogs;
 
 namespace TEKUtsav.ViewModels.VotingPage
 {
@@ -409,13 +410,17 @@ namespace TEKUtsav.ViewModels.VotingPage
 
         public override async Task OnViewAppearing(object navigationParams = null)
         {
+            UserDialogs.Instance.ShowLoading("Checking for voting lines..", MaskType.Black);
             var votingEnabled = await _eventBusinesservice.CheckVotingEnabled();
+            UserDialogs.Instance.HideLoading();
             if(votingEnabled != null) 
             {
                 ProcessVotingEnabled(votingEnabled);
             }
 
+            UserDialogs.Instance.ShowLoading("Loading events..", MaskType.Black);
             var events = await _eventBusinesservice.GetEvents();
+            UserDialogs.Instance.HideLoading();
             if (events != null)
             {
                 ProcessEvents(events);
@@ -438,7 +443,9 @@ namespace TEKUtsav.ViewModels.VotingPage
                 var res = await _navigationService.DisplayAlert("Vote Confirmation", "Are you sure about your vote?", "Yes", "No");
                 if(res) 
                 {
+                    UserDialogs.Instance.ShowLoading("Submitting vote..", MaskType.Black);
                     await DanceVote(args);
+                    UserDialogs.Instance.HideLoading();
                 }
 
             }, (args) => true);
@@ -448,7 +455,9 @@ namespace TEKUtsav.ViewModels.VotingPage
                 var res = await _navigationService.DisplayAlert("Vote Confirmation", "Are you sure about your vote?", "Yes", "No");
                 if (res)
                 {
+                    UserDialogs.Instance.ShowLoading("Submitting vote..", MaskType.Black);
                     await FsVote(args);
+                    UserDialogs.Instance.HideLoading();
                 }
 
             }, (args) => true);
@@ -458,7 +467,9 @@ namespace TEKUtsav.ViewModels.VotingPage
                 var res = await _navigationService.DisplayAlert("Vote Confirmation", "Are you sure about your vote?", "Yes", "No");
                 if (res)
                 {
+                    UserDialogs.Instance.ShowLoading("Submitting vote..", MaskType.Black);
                     await SeVote(args);
+                    UserDialogs.Instance.HideLoading();
                 }
 
             }, (args) => true);
@@ -597,7 +608,10 @@ namespace TEKUtsav.ViewModels.VotingPage
 
         private async Task<int> CheckIfUserVoted(string typeId)
         {
-            return await _eventBusinesservice.CheckIfUserHasVoted(typeId, GetUDID());    
+            UserDialogs.Instance.ShowLoading("Loading..", MaskType.Black);
+            var userVoted = await _eventBusinesservice.CheckIfUserHasVoted(typeId, GetUDID());    
+            UserDialogs.Instance.HideLoading();
+            return userVoted;
         }
 
         private void ProcessEvents(IEnumerable<Event> events) 

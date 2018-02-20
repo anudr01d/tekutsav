@@ -14,6 +14,7 @@ using Plugin.ExternalMaps;
 using TEKUtsav.Business.EventService;
 using TEKUtsav.Mobile.Service.Domain.DataObjects;
 using TEKUtsav.Infrastructure.Constants;
+using Acr.UserDialogs;
 
 namespace TEKUtsav.ViewModels.HomePage
 {
@@ -177,7 +178,10 @@ namespace TEKUtsav.ViewModels.HomePage
 		{
 			this.SetCurrentPage(TEKUtsavAppPage.HomePage);
 
+            UserDialogs.Instance.ShowLoading("Loading..", MaskType.Black);
             await GetEventTypes();
+            UserDialogs.Instance.HideLoading();
+
 
             this.NotificationsCommand = new Command(() =>
 			{

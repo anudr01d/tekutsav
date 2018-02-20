@@ -72,7 +72,7 @@ namespace TEKUtsav.ViewModels.NotificationsPage
                         int count = Convert.ToInt32(pushCount);
                         bool pushEnabled = false;
                         string isAdminString = GetAdminId();
-                        bool IsAdmin = true;//Convert.ToBoolean(isAdminString);
+                        bool IsAdmin = Convert.ToBoolean(isAdminString);
                         if (count < 2 && IsAdmin == true) {
                             pushEnabled = true;
                         }

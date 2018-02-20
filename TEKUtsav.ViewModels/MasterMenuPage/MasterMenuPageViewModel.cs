@@ -154,7 +154,7 @@ namespace TEKUtsav.ViewModels.MasterMenuPage
 		{
             this.SetCurrentPage(TEKUtsavAppPage.MasterMenuPage);
             string isAdminString = GetAdminId();
-            IsAdmin = true;//Convert.ToBoolean(isAdminString);
+            IsAdmin = Convert.ToBoolean(isAdminString);
 
 			this.TapCommand = new Command(() =>
 			{

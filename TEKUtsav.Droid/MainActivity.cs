@@ -16,10 +16,11 @@ using Firebase.Messaging;
 using Firebase.Iid;
 using Android.Util;
 using CarouselView.FormsPlugin.Android;
+using Acr.UserDialogs;
 
 namespace TEKUtsav.Droid
 {
-    [Activity(Label = "TEKUtsav.Droid", MainLauncher = true, Icon = "@drawable/ic_launcher", Theme = "@style/MainTheme", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.KeyboardHidden)]
+    [Activity(Label = "TEKUtsav.Droid", ScreenOrientation = ScreenOrientation.Portrait,  MainLauncher = true, Icon = "@drawable/ic_launcher", Theme = "@style/MainTheme", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.KeyboardHidden)]
 	public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
 	{
         const string TAG = "MainActivity";
@@ -45,6 +46,7 @@ namespace TEKUtsav.Droid
             Log.Debug(TAG, "Subscribed to remote notifications");
 
 			global::Xamarin.Forms.Forms.Init(this, bundle);
+            UserDialogs.Init(this);
             CarouselViewRenderer.Init();
 
 			global::ZXing.Net.Mobile.Forms.Android.Platform.Init();
