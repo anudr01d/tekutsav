@@ -70,7 +70,7 @@ namespace TEKUtsav.ViewModels.NotificationsPage
                              pushCount = ev.NotificationTracks.FirstOrDefault().pushCount;
                         }
                         int count = Convert.ToInt32(pushCount);
-                        bool pushEnabled = true;
+                        bool pushEnabled = false;
                         string isAdminString = GetAdminId();
                         bool IsAdmin = true;//Convert.ToBoolean(isAdminString);
                         if (count < 2 && IsAdmin == true) {
