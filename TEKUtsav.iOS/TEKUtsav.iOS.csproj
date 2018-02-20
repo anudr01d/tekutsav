@@ -310,12 +310,12 @@
     <BundleResource Include="Resources\votingbg.png" />
     <BundleResource Include="Resources\votingbg%402x.png" />
     <BundleResource Include="Resources\votingbg%403x.png" />
-    <BundleResource Include="Resources\banner1.png" />
-    <BundleResource Include="Resources\banner1%402x.png" />
-    <BundleResource Include="Resources\banner1%403x.png" />
     <BundleResource Include="Resources\banner2.png" />
     <BundleResource Include="Resources\banner2%402x.png" />
     <BundleResource Include="Resources\banner2%403x.png" />
+    <BundleResource Include="Resources\banner1.png" />
+    <BundleResource Include="Resources\banner1%402x.png" />
+    <BundleResource Include="Resources\banner1%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TEKUtsav\TEKUtsav.csproj">

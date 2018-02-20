@@ -40,7 +40,7 @@ namespace TEKUtsav.ViewModels.VotingPage
         private IEnumerable<Event> _spEvent;
 
 
-		private String[] _tagName = new String[] { "DANCE", "FASHION" + System.Environment.NewLine + "  SHOW", "SPECIAL" + System.Environment.NewLine + " EVENTS" };
+		private String[] _tagName = new String[] { "DANCE", "FASHION" + System.Environment.NewLine + "  SHOW", "SINGING"};
 
 
         private List<Event> _danceEvents = new List<Event>();
