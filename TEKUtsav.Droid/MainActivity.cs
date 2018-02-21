@@ -18,6 +18,7 @@ using Android.Util;
 using CarouselView.FormsPlugin.Android;
 using Acr.UserDialogs;
 
+
 namespace TEKUtsav.Droid
 {
     [Activity(Label = "TEKUtsav.Droid", ScreenOrientation = ScreenOrientation.Portrait,  MainLauncher = true, Icon = "@drawable/ic_launcher", Theme = "@style/MainTheme", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.KeyboardHidden)]
@@ -62,18 +63,7 @@ namespace TEKUtsav.Droid
 			builder.RegisterType<SettingProviderDroid>().As<ISettings>();
 			builder.Register(c => new DroidCookieStore(Globals.OKTA_SP_URL)).As<IPlatformCookieStore>();
 		}
-        // To receive notifications in foreground on iOS 10 devices.
-        [Export("userNotificationCenter:willPresentNotification:withCompletionHandler:")]
-        public void WillPresentNotification(UNUserNotificationCenter center, UNNotification notification, Action<UNNotificationPresentationOptions> completionHandler)
-        {
-            // Do your magic to handle the notification data
-            System.Console.WriteLine(notification.Request.Content.UserInfo);
-        }
 
-        // Receive data message on iOS 10 devices.
-        public void ApplicationReceivedRemoteMessage(RemoteMessage remoteMessage)
-        {
-            Console.WriteLine(remoteMessage.AppData);
-        }
+       
 	}
 }
