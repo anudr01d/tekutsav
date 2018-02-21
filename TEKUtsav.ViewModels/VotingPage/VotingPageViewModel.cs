@@ -616,23 +616,23 @@ namespace TEKUtsav.ViewModels.VotingPage
 
         private void ProcessEvents(IEnumerable<Event> events) 
         {
+            var fsvents = new List<Event>();
+            var devents = new List<Event>();
+            var sevents = new List<Event>();
             foreach (var ev in events)
             {
                 if(ev.EventType.Title.Equals(Globals.FASHION_SHOW)) 
                 {
-                    var fsvents = new List<Event>();
                     fsvents.Add(ev);
                     FsEvents = fsvents;
 
                 } else if (ev.EventType.Title.Equals(Globals.DANCE))
                 {
-                    var devents = new List<Event>();
                     devents.Add(ev);
                     DanceEvents = devents;
 
                 } else if (ev.EventType.Title.Equals(Globals.SPECIAL_EVENTS))
                 {
-                    var sevents = new List<Event>();
                     sevents.Add(ev);
                     SeEvents = sevents;
                 }
