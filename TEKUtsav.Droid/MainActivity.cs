@@ -50,7 +50,6 @@ namespace TEKUtsav.Droid
             UserDialogs.Init(this);
             CarouselViewRenderer.Init();
 
-			global::ZXing.Net.Mobile.Forms.Android.Platform.Init();
 			ImageCircleRenderer.Init();
             var builder = new ContainerBuilder();
 
