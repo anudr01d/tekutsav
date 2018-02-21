@@ -17,7 +17,7 @@ using Firebase.Iid;
 using Android.Util;
 using CarouselView.FormsPlugin.Android;
 using Acr.UserDialogs;
-using Java.Interop;
+
 
 namespace TEKUtsav.Droid
 {
@@ -50,6 +50,7 @@ namespace TEKUtsav.Droid
             UserDialogs.Init(this);
             CarouselViewRenderer.Init();
 
+			global::ZXing.Net.Mobile.Forms.Android.Platform.Init();
 			ImageCircleRenderer.Init();
             var builder = new ContainerBuilder();
 
@@ -62,15 +63,7 @@ namespace TEKUtsav.Droid
 			builder.RegisterType<SettingProviderDroid>().As<ISettings>();
 			builder.Register(c => new DroidCookieStore(Globals.OKTA_SP_URL)).As<IPlatformCookieStore>();
 		}
-        //// To receive notifications in foreground on iOS 10 devices.
 
-        //sole.WriteLine(notification.Request.Content.UserInfo);
-        //}
-
-        //// Receive data message on iOS 10 devices.
-        //public void ApplicationReceivedRemoteMessage(RemoteMessage remoteMessage)
-        //{
-        //    Console.WriteLine(remoteMessage.AppData);
-        //}
+       
 	}
 }

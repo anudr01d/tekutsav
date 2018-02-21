@@ -51,8 +51,11 @@ namespace TEKUtsav.ViewModels.EventSchedulePage
 
                     foreach (var ev in notificationEvents.Result)
                     {
-                        list.Add(new Notification() { Title = ev.Title, FormattedDateTime = ev.NotificationSchedule.FirstOrDefault().StartDateTime, Description = ev.Description });
-
+                        bool isRegularUser = ev.IsRegularUserVisible;
+                        if (isRegularUser == true)
+                        {
+                            list.Add(new Notification() { Title = ev.Title, FormattedDateTime = ev.NotificationSchedule.FirstOrDefault().StartDateTime, Description = ev.Description });
+                        }
                     }
                     return list;
                 }
