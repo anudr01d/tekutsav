@@ -90,8 +90,7 @@ namespace TEKUtsav.ViewModels.NotificationsPage
                             list.Add(new NotificationListItem() { Title = ev.Title, FormattedDateTime = ev.NotificationSchedule.FirstOrDefault().StartDateTime, Description = ev.AdminDescription, pushEnabled = pushEnabled, notificationId = ev.NotificationSchedule.FirstOrDefault().NotificationId });
                         }
                         else{
-                            bool isRegularUser = ev.IsRegularUserVisible;
-                            if ( count > 0 && isRegularUser == true){
+                            if ( count > 0 ){
                                
                                     list.Add(new NotificationListItem() { Title = ev.Title, FormattedDateTime = ev.NotificationSchedule.FirstOrDefault().StartDateTime, Description = ev.AdminDescription, pushEnabled = pushEnabled, notificationId = ev.NotificationSchedule.FirstOrDefault().NotificationId });
                             }
