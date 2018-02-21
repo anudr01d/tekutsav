@@ -47,7 +47,7 @@
             </Grid>
 
             <ContentView Padding="0,0,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
-                <controls:CustomButton Command="{Binding VotingCommand}" IsWhiteBtn="false" BorderRadius="0" FontSize="14" Text="VOTING LINES OPEN" BorderWidth="1" BorderColor="#F6304E" HorizontalOptions="FillAndExpand" FontAttributes="Bold" BackgroundColor="#F6304E" TextColor="#FFF">
+                <controls:CustomButton Command="{Binding VotingCommand}" IsWhiteBtn="false" BorderRadius="0" FontSize="14" Text="VOTE" BorderWidth="1" BorderColor="#F6304E" HorizontalOptions="FillAndExpand" FontAttributes="Bold" BackgroundColor="#F6304E" TextColor="#FFF">
                 </controls:CustomButton>
              </ContentView>
 

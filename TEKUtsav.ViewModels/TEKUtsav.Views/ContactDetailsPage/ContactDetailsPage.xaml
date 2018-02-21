@@ -1,39 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<controls:TEKUtsavContentPage 
-	xmlns="http://xamarin.com/schemas/2014/forms" 
-	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-	xmlns:controls="clr-namespace:TEKUtsav.UIControls.Controls;assembly=TEKUtsav.UIControls" 
-	xmlns:local="clr-namespace:TEKUtsav.UIControls.MarkupExtensions;assembly=TEKUtsav.UIControls"
-	xmlns:vc="clr-namespace:TEKUtsav.UIControls.ValueConverters;assembly=TEKUtsav.UIControls" 
-	xmlns:imgcontrols="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions" 
-	BackgroundColor="#ffffff" Title="Contact Details" 
-	x:Class="TEKUtsav.Views.ContactDetailsPage.ContactDetailsPage">
- 	<ContentPage.Resources>
-			<ResourceDictionary>
-				<vc:StringToImageConverter x:Key="StringToImageConverter" />
-				<local:StringToColorConverter x:Key="StringToColorConverter" />
-				<local:Inverter x:Key="Inverter" />
-			</ResourceDictionary>
-	</ContentPage.Resources>
-                <ScrollView>
-
-    <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-                            <StackLayout Spacing="0" Padding="20,20,20,20" HorizontalOptions="Center" VerticalOptions="FillAndExpand" Orientation="Vertical">
-                                <StackLayout Orientation="Vertical" BackgroundColor="#FFFFFF" Padding="0,0,0,0" Spacing="10" VerticalOptions="CenterAndExpand">
-                                    <!--<Image Source="{Binding MenuImageSource, Converter={StaticResource StringToImageConverter}}" WidthRequest="40" HeightRequest="40" HorizontalOptions="Start"/>-->
-                                     <ContentView Padding="10,0,0,10" HorizontalOptions="CenterAndExpand" VerticalOptions="Start">
-                <Image WidthRequest="200" HeightRequest="200" Source="logo.png" Aspect="AspectFill">
-                </Image>
-            </ContentView>
-                <Label Text="Contact Details :" TextColor="#F6304E" FontSize="18" FontFamily="Bold" HorizontalOptions="StartAndExpand">
-                                    </Label>
-                                    <Label Text="Contact Jinesh (+91 7795123251) for assistance on admin and logistics queries." TextColor="#818181" FontSize="13" FontFamily="Helvetica" HorizontalOptions="StartAndExpand">
-                                    </Label>
-                                    <Label Text="Contact BSCEvents team members for assistance related to events." TextColor="#818181" FontSize="14" FontFamily="Helvetica" HorizontalOptions="StartAndExpand">
-                                    </Label>
-                                </StackLayout>
-                            </StackLayout>
+<controls:TEKUtsavContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:TEKUtsav.UIControls.Controls;assembly=TEKUtsav.UIControls" xmlns:local="clr-namespace:TEKUtsav.UIControls.MarkupExtensions;assembly=TEKUtsav.UIControls" xmlns:vc="clr-namespace:TEKUtsav.UIControls.ValueConverters;assembly=TEKUtsav.UIControls" xmlns:imgcontrols="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions" BackgroundColor="#ffffff" Title="Contact Details" x:Class="TEKUtsav.Views.ContactDetailsPage.ContactDetailsPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <vc:StringToImageConverter x:Key="StringToImageConverter" />
+            <local:StringToColorConverter x:Key="StringToColorConverter" />
+            <local:Inverter x:Key="Inverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ScrollView>
+        <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <StackLayout Spacing="0" Padding="20,20,20,20" HorizontalOptions="Center" VerticalOptions="FillAndExpand" Orientation="Vertical">
+                <StackLayout Orientation="Vertical" BackgroundColor="#FFFFFF" Padding="0,0,0,0" Spacing="10" VerticalOptions="CenterAndExpand">
+                    <ContentView Padding="10,0,0,10" HorizontalOptions="CenterAndExpand" VerticalOptions="Start">
+                        <Image WidthRequest="200" HeightRequest="200" Source="logo.png" Aspect="AspectFill">
+                        </Image>
+                    </ContentView>
+                    <Label Text="Contact Details :" TextColor="#F6304E" FontSize="18" FontFamily="Bold" HorizontalOptions="StartAndExpand">
+                    </Label>
+                    <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <Label Text="Contact Jinesh for assistance on admin and logistics queries." TextColor="#818181" FontSize="13" FontFamily="Helvetica" HorizontalOptions="StartAndExpand" /> 
+                        <Label x:Name="number" Text="Jinesh : +91 7795123251" TextColor="#000" FontSize="13" FontFamily="Helvetica" HorizontalOptions="StartAndExpand">
+                        </Label>
+                    </StackLayout>
+                    <Label Text="Contact BSCEvents team members for assistance related to events." TextColor="#818181" FontSize="14" FontFamily="Helvetica" HorizontalOptions="StartAndExpand">
+                    </Label>
+                </StackLayout>
+            </StackLayout>
         </Grid>
-                    </ScrollView>
-
+    </ScrollView>
 </controls:TEKUtsavContentPage>

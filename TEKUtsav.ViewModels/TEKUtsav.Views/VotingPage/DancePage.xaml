@@ -1,63 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentView 
-		xmlns="http://xamarin.com/schemas/2014/forms" 
-		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-		xmlns:local="clr-namespace:TEKUtsav.UIControls.MarkupExtensions;assembly=TEKUtsav.UIControls" 
-		xmlns:controls="clr-namespace:TEKUtsav.UIControls.Controls;assembly=TEKUtsav.UIControls"
-		xmlns:vc="clr-namespace:TEKUtsav.UIControls.ValueConverters;assembly=TEKUtsav.UIControls"      
-		x:Class="TEKUtsav.Views.DancePage.DancePage">
-	<ContentView.Resources>
-		<ResourceDictionary>
-			<local:StringToColorConverter x:Key="StringToColorConverter" />
-			<vc:CurrencyConverter x:Key="cnvInvert" />
+        xmlns="http://xamarin.com/schemas/2014/forms" 
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        xmlns:local="clr-namespace:TEKUtsav.UIControls.MarkupExtensions;assembly=TEKUtsav.UIControls" 
+        xmlns:controls="clr-namespace:TEKUtsav.UIControls.Controls;assembly=TEKUtsav.UIControls"
+        xmlns:vc="clr-namespace:TEKUtsav.UIControls.ValueConverters;assembly=TEKUtsav.UIControls"
+        x:Class="TEKUtsav.Views.DancePage.DancePage">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <local:StringToColorConverter x:Key="StringToColorConverter" />
+            <vc:CurrencyConverter x:Key="cnvInvert" />
             <local:Inverter x:Key="Inverter" />
-		</ResourceDictionary>
-	</ContentView.Resources>
-    <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-    <StackLayout IsVisible="{Binding IsDanceVotingEnabled}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Orientation="Vertical">
-        <controls:TappableListView x:Name="ListName" IsVisible="{Binding IsDanceVoted, Converter={StaticResource Inverter}" Margin="0,10,0,0"  BackgroundColor="#FFF" ItemsSource="{Binding DanceEvents}" SeparatorVisibility="Default" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" HasUnevenRows="true">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <controls:PoListViewCell>
-                        <StackLayout Spacing="0" Margin="20,5,20,5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical">
-                            <StackLayout Orientation="Horizontal" BackgroundColor="#FFFFFF" Padding="0,0,0,0" Spacing="0" VerticalOptions="CenterAndExpand">
-                                <!--<ContentView Padding="10,10,10,10">
-                                    <Image Source="logo.png" WidthRequest="40" HeightRequest="40" HorizontalOptions="Start"/>
-                                </ContentView>-->
-                                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                                    <controls:TEKUtsavLabel Text="{Binding Title}" TextColor="#F6304E" FontType="Regular" FontSize="18" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" />
-                                    <controls:TEKUtsavLabel Text="{Binding Description}" TextColor="#808080" FontSize="16" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" />
-                                    <ContentView Padding="20,30,20,30" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
-                                        <controls:CustomButton 
-                                                Command="{Binding Source={x:Reference ListName}, Path=BindingContext.DanceListClickedCommand}"
-                                                CommandParameter="{Binding .}"
-                                            IsWhiteBtn="false" BorderRadius="5" FontSize="14" Text="VOTE" BorderWidth="1" BorderColor="#F6304E" HorizontalOptions="FillAndExpand" FontAttributes="Bold" BackgroundColor="#F6304E" TextColor="#FFF">
-                                        </controls:CustomButton>
-                                   </ContentView>
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+    <StackLayout BackgroundColor="#FFF" Orientation="Vertical" Spacing="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+        <Grid IsVisible="{Binding IsDanceVotingEnabled}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <controls:TappableListView IsVisible="{Binding IsDanceVoted, Converter={StaticResource Inverter}}" x:Name="ListName" Margin="0,10,0,0" BackgroundColor="#FFF" ItemsSource="{Binding DanceEvents}" HeightRequest="{Binding Height}" SeparatorVisibility="Default" ItemClickCommand="{Binding DanceListClickedCommand}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" HasUnevenRows="true">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <controls:PoListViewCell>
+                            <StackLayout Spacing="0" Margin="20,5,20,5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical">
+                                <StackLayout Orientation="Horizontal" BackgroundColor="#FFFFFF" Padding="0,0,0,0" Spacing="0" VerticalOptions="CenterAndExpand">
+                                    <!--<ContentView Padding="10,10,10,10">
+                                        <Image Source="logo.png" WidthRequest="40" HeightRequest="40" HorizontalOptions="Start"/>
+                                    </ContentView>-->
+                                    <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                        <controls:TEKUtsavLabel Text="{Binding Title}" TextColor="#F6304E" FontType="Regular" FontSize="18" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" />
+                                        <controls:TEKUtsavLabel Text="{Binding Description}" TextColor="#808080" FontSize="16" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" />
+                                           <ContentView Padding="20,30,20,30" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+                                                <controls:CustomButton 
+                                                    Command="{Binding Source={x:Reference ListName}, Path=BindingContext.DanceListClickedCommand}"
+                                                    CommandParameter="{Binding .}"
+                                                    IsWhiteBtn="false" BorderRadius="5" FontSize="14" Text="VOTE" BorderWidth="1" BorderColor="#F6304E" HorizontalOptions="FillAndExpand" FontAttributes="Bold" BackgroundColor="#F6304E" TextColor="#FFF">
+                                                </controls:CustomButton>
+                                           </ContentView>
+                                    </StackLayout>
                                 </StackLayout>
                             </StackLayout>
-                        </StackLayout>
-                    </controls:PoListViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </controls:TappableListView>
-        <Grid IsVisible="{Binding IsDanceVoted}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-            <Image VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Aspect="Fill" Source="votingbg.png"></Image>
-            <StackLayout Orientation="Vertical" HorizontalOptions="Center" VerticalOptions="Center">
-                <ContentView>
-                    <controls:TEKUtsavLabel HorizontalOptions="Center" VerticalOptions="Center" Text="Thanks for voting!" TextColor="#FFF" FontSize="30" FontType="Bold">
+                        </controls:PoListViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </controls:TappableListView>
+            <Grid IsVisible="{Binding IsDanceVoted}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <Image VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Aspect="Fill" Source="votingbg.png"></Image>
+                <StackLayout Orientation="Vertical" HorizontalOptions="Center" VerticalOptions="Center">
+                    <ContentView>
+                        <controls:TEKUtsavLabel HorizontalOptions="Center" VerticalOptions="Center" Text="Thanks for voting!" TextColor="#FFF" FontSize="30" FontType="Bold">
+                        </controls:TEKUtsavLabel>
+                    </ContentView>
+                </StackLayout>
+            </Grid>
+        </Grid>
+        <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+           <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible = "{Binding IsDanceVotingEnabled, Converter={StaticResource Inverter}}">
+                <ContentView Padding="0,30,0,0">
+                    <controls:TEKUtsavLabel HorizontalOptions="Center" VerticalOptions="Center" Text="Voting not enabled!" TextColor="#F6304E" FontSize="30" FontType="Bold">
                     </controls:TEKUtsavLabel>
                 </ContentView>
-            </StackLayout>
+           </StackLayout>
         </Grid>
-   </StackLayout>
-    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible = "{Binding IsDanceVotingEnabled, Converter={StaticResource Inverter}}">
-            <ContentView Padding="0,30,0,0">
-                <controls:TEKUtsavLabel HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Text="Voting not enabled!" TextColor="#F6304E" FontSize="30" FontType="Bold">
-                </controls:TEKUtsavLabel>
-            </ContentView>
-        </StackLayout>
-    </Grid>
-</Grid>
+      </StackLayout>
+    </ContentView.Content>
 </ContentView>
