@@ -439,7 +439,6 @@ namespace TEKUtsav.ViewModels.VotingPage
 
             this.DanceListClickedCommand = new Command(async(args) =>
             {
-
                 var res = await _navigationService.DisplayAlert("Vote Confirmation", "Are you sure about your vote?", "Yes", "No");
                 if(res) 
                 {

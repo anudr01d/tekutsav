@@ -14,7 +14,13 @@ namespace TEKUtsav.Views.ContactDetailsPage
         public ContactDetailsPage()
         {
             InitializeComponent();
-        }
 
+            number.GestureRecognizers.Add(new TapGestureRecognizer
+            {
+                Command = new Command(() => {
+                    Device.OpenUri(new Uri("tel:+917795123251"));
+                })
+            });
+        }
 	}
 }
