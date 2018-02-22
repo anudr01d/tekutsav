@@ -20,7 +20,7 @@
                 <DataTemplate>
                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                         <ContentView Padding="0,0,0,0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-                            <Image Source="banner1.png" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Aspect="Fill"></Image>
+                            <Image Source="banner1.png" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Aspect="AspectFill"></Image>
                         </ContentView>
                     </StackLayout>
                 </DataTemplate>

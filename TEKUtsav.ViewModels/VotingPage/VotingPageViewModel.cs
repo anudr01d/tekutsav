@@ -539,7 +539,8 @@ namespace TEKUtsav.ViewModels.VotingPage
                 if (result.isVoteCapturedSuccessfully == false ){
                     UserDialogs.Instance.HideLoading();
 
-                    await _navigationService.DisplayAlert("Voting Lines", "The Voting Lines are currently closed. Please contact the organizers.", "OK");
+                    IsDanceVotingEnabled = false;
+                    //await _navigationService.DisplayAlert("Voting Lines", "The Voting Lines are currently closed. Please contact the organizers.", "OK");
  
                 }
                 else{
@@ -569,7 +570,8 @@ namespace TEKUtsav.ViewModels.VotingPage
                 {
                     UserDialogs.Instance.HideLoading();
 
-                    await _navigationService.DisplayAlert("Voting Lines", "The Voting Lines are currently closed. Please contact the organizers.", "OK");
+                    IsFsVotingEnabled = false;
+                    //await _navigationService.DisplayAlert("Voting Lines", "The Voting Lines are currently closed. Please contact the organizers.", "OK");
 
                 }
                 else
@@ -598,8 +600,8 @@ namespace TEKUtsav.ViewModels.VotingPage
                 if (result.isVoteCapturedSuccessfully == false)
                 {
                     UserDialogs.Instance.HideLoading();
-
-                    await _navigationService.DisplayAlert("Voting Lines", "The Voting Lines are currently closed. Please contact the organizers.", "OK");
+                    IsSeVotingEnabled = false;
+                    //await _navigationService.DisplayAlert("Voting Lines", "The Voting Lines are currently closed. Please contact the organizers.", "OK");
 
                 }
                 else

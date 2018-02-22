@@ -31,6 +31,13 @@ namespace TEKUtsav
 			var settings = _applicationLifetimeScope.Resolve<ISettings>();
             _applicationLifetimeScope.Resolve<INavigationService>().NavigateTo(TEKUtsavAppPage.LoginPage);
 			dateTimeOnSleep = DateTime.Now;
+
+
+//            MessagingCenter.Subscribe<object, string>(this, "Push", (sender, favoriteID) =>
+//            {
+////                _applicationLifetimeScope.Resolve<INavigationService>().NavigateTo(TEKUtsavAppPage.NotificationsPage);
+            //});
+
 		}
 
 		protected override void OnStart()
@@ -45,5 +52,6 @@ namespace TEKUtsav
 		{
 		
 		}
+
 	}
 }

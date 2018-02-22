@@ -17,7 +17,7 @@ using Firebase.Iid;
 using Android.Util;
 using CarouselView.FormsPlugin.Android;
 using Acr.UserDialogs;
-
+using Xamarin.Forms;
 
 namespace TEKUtsav.Droid
 {
@@ -55,6 +55,16 @@ namespace TEKUtsav.Droid
 
 			RegisterDeviceSpecificImpl(builder);
             LoadApplication(new TEKUtsav.App(builder));
+
+            //var mBundle = Intent.Extras;
+            //if (mBundle != null)
+            //{
+            //    var pageParameter = mBundle.GetString("pageParameter");
+            //    if (!string.IsNullOrEmpty(pageParameter))
+            //    {
+            //        MessagingCenter.Send<object, string>(this, "Push", pageParameter);
+            //    }
+            //}
 		}
 
 		private void RegisterDeviceSpecificImpl(ContainerBuilder builder)

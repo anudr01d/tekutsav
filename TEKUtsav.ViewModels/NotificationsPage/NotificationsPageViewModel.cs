@@ -125,7 +125,8 @@ namespace TEKUtsav.ViewModels.NotificationsPage
                 },
                 data = new
                 {
-                    example = "this is a example"
+                    title = title,
+                    text = description
                 }
             });
 

@@ -303,10 +303,10 @@
     <AndroidResource Include="Resources\drawable-xhdpi\ic_launcher.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_launcher.png" />
     <AndroidResource Include="Resources\drawable-hdpi\banner1.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\banner1.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\banner1.png" />
     <AndroidResource Include="Resources\drawable-hdpi\banner2.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\banner2.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\banner1.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\banner1.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\banner2.png" />
   </ItemGroup>
   <ItemGroup>
