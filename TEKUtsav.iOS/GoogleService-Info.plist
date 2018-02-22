@@ -7,21 +7,21 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>389646847842-5015nhoo56fl57rqp4niog1bcn79run7.apps.googleusercontent.com</string>
+	<string>312775354213-hi1puotffmnd1ak18qhg6tmjccfm1c45.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.389646847842-5015nhoo56fl57rqp4niog1bcn79run7</string>
+	<string>com.googleusercontent.apps.312775354213-hi1puotffmnd1ak18qhg6tmjccfm1c45</string>
 	<key>API_KEY</key>
-	<string>AIzaSyDLmtXyLEz2qeZNVm6zRHANkT7gjx0vxTI</string>
+	<string>AIzaSyA1oy17YvyeDFoQuUnzMoIA_9oA27rPpPs</string>
 	<key>GCM_SENDER_ID</key>
-	<string>389646847842</string>
+	<string>312775354213</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.teksystems.tekutsav</string>
+	<string>com.teksystems.tekutsavevent</string>
 	<key>PROJECT_ID</key>
-	<string>tekutsav-7b565</string>
+	<string>tekutsavevent</string>
 	<key>STORAGE_BUCKET</key>
-	<string>tekutsav-7b565.appspot.com</string>
+	<string>tekutsavevent.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<true></true>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -33,8 +33,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:389646847842:ios:24dd2f41baddc8cb</string>
+	<string>1:312775354213:ios:20de6015c9a2ab6b</string>
 	<key>DATABASE_URL</key>
-	<string>https://tekutsav-7b565.firebaseio.com</string>
+	<string>https://tekutsavevent.firebaseio.com</string>
 </dict>
 </plist>
