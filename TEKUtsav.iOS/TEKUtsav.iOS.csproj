@@ -78,7 +78,7 @@
     <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
     <MtouchFastDev>true</MtouchFastDev>
     <MtouchFloat32>true</MtouchFloat32>
-    <CodesignEntitlements></CodesignEntitlements>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchLink>SdkOnly</MtouchLink>
     <MtouchArch>ARMv7, ARM64</MtouchArch>
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
@@ -303,7 +303,6 @@
     <BundleResource Include="Resources\push.png" />
     <BundleResource Include="Resources\push%402x.png" />
     <BundleResource Include="Resources\push%403x.png" />
-    <BundleResource Include="GoogleService-Info.plist" />
     <BundleResource Include="Resources\regbg.png" />
     <BundleResource Include="Resources\regbg%402x.png" />
     <BundleResource Include="Resources\regbg%403x.png" />
@@ -316,6 +315,7 @@
     <BundleResource Include="Resources\banner1.png" />
     <BundleResource Include="Resources\banner1%402x.png" />
     <BundleResource Include="Resources\banner1%403x.png" />
+    <BundleResource Include="GoogleService-Info.plist" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TEKUtsav\TEKUtsav.csproj">

@@ -1,27 +1,27 @@
 {
   "project_info": {
-    "project_number": "389646847842",
-    "firebase_url": "https://tekutsav-7b565.firebaseio.com",
-    "project_id": "tekutsav-7b565",
-    "storage_bucket": "tekutsav-7b565.appspot.com"
+    "project_number": "312775354213",
+    "firebase_url": "https://tekutsavevent.firebaseio.com",
+    "project_id": "tekutsavevent",
+    "storage_bucket": "tekutsavevent.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:389646847842:android:24dd2f41baddc8cb",
+        "mobilesdk_app_id": "1:312775354213:android:20de6015c9a2ab6b",
         "android_client_info": {
-          "package_name": "com.teksystems.tekutsav"
+          "package_name": "com.teksystems.tekutsavevent"
         }
       },
       "oauth_client": [
         {
-          "client_id": "389646847842-0b252uapmubtilpcfj70d4ki4mf40hc1.apps.googleusercontent.com",
+          "client_id": "312775354213-t8l4lhpcsor1j0omgpl8q9k3depiuls4.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyC-3uePhl0BTgtEskag5K1UEV-YmpmajQI"
+          "current_key": "AIzaSyBanTgiNwz187hjwInuNfEnmf3yypGROIM"
         }
       ],
       "services": {
