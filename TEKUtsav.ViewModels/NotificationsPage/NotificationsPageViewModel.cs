@@ -69,7 +69,7 @@ namespace TEKUtsav.ViewModels.NotificationsPage
                         SortedList = notificationEvents.Result.OrderBy(o => o.order).ToList();
                     }
                     else{
-                        SortedList = notificationEvents.Result.OrderByDescending(o => o.UpdatedAt).ToList();
+                        SortedList = notificationEvents.Result.Where(x => x.NotificationTracks != null).OrderByDescending(y => y.UpdatedAt).ToList();
                     }
 
                     foreach (var ev in SortedList)
@@ -90,8 +90,7 @@ namespace TEKUtsav.ViewModels.NotificationsPage
                             list.Add(new NotificationListItem() { Title = ev.Title, FormattedDateTime = ev.NotificationSchedule.FirstOrDefault().StartDateTime, Description = ev.AdminDescription, pushEnabled = pushEnabled, notificationId = ev.NotificationSchedule.FirstOrDefault().NotificationId });
                         }
                         else{
-                            bool isRegularUser = ev.IsRegularUserVisible;
-                            if ( count > 0 && isRegularUser == true){
+                            if ( count > 0 ){
                                
                                     list.Add(new NotificationListItem() { Title = ev.Title, FormattedDateTime = ev.NotificationSchedule.FirstOrDefault().StartDateTime, Description = ev.AdminDescription, pushEnabled = pushEnabled, notificationId = ev.NotificationSchedule.FirstOrDefault().NotificationId });
                             }
