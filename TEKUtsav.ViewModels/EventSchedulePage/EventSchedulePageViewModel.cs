@@ -41,28 +41,7 @@ namespace TEKUtsav.ViewModels.EventSchedulePage
         {
             get
             {
-                UserDialogs.Instance.ShowLoading("Loading..", MaskType.Black);
-                var notificationEvents = Task.Run(() => _notificationBusinesservice.GetNotifications());
-                UserDialogs.Instance.HideLoading();
-
-                if (notificationEvents != null)
-                {
-                    var list = new List<Notification>();
-
-                    foreach (var ev in notificationEvents.Result)
-                    {
-                        bool isRegularUser = ev.IsRegularUserVisible;
-                        if (isRegularUser == true)
-                        {
-                            list.Add(new Notification() { Title = ev.Title, FormattedDateTime = ev.NotificationSchedule.FirstOrDefault().StartDateTime, Description = ev.Description });
-                        }
-                    }
-                    return list;
-                }
-                else
-                {
-                    return _notifications;
-                }
+                return _notifications;
             }
             set
             {
@@ -82,13 +61,35 @@ namespace TEKUtsav.ViewModels.EventSchedulePage
 
 		public override async Task OnViewAppearing(object navigationParams = null)
 		{
-			this.SetCurrentPage(TEKUtsavAppPage.NotificationsPage);
+            this.SetCurrentPage(TEKUtsavAppPage.EventSchedulePage);
 
+            await FetchNotifications();
            	
 			Task.Run(() => { });
 		}
 
-	
+        private async Task FetchNotifications()
+        {
+            UserDialogs.Instance.ShowLoading("Loading..", MaskType.Black);
+            var notificationEvents = await _notificationBusinesservice.GetNotifications();
+
+            if (notificationEvents != null)
+            {
+                var list = new List<Notification>();
+
+                foreach (var ev in notificationEvents)
+                {
+                    bool isRegularUser = ev.IsRegularUserVisible;
+                    if (isRegularUser == true)
+                    {
+                        list.Add(new Notification() { Title = ev.Title, FormattedDateTime = ev.NotificationSchedule.FirstOrDefault().StartDateTime, Description = ev.Description });
+                    }
+                }
+                Notifications = list;
+            }
+            UserDialogs.Instance.HideLoading();
+
+        }
 
 		public override Task OnViewDisappearing()
 		{

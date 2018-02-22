@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionName="0.8" package="com.teksystems.tekutsav" android:versionCode="8">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionName="0.9" package="com.teksystems.tekutsav" android:versionCode="9">
 	<uses-sdk android:minSdkVersion="15" />
 	<uses-permission android:name="android.permission.VIBRATE" />
 	<application android:label="TEKUtsav">
@@ -8,8 +8,8 @@
 			<intent-filter>
 				<action android:name="com.google.android.c2dm.intent.RECEIVE" />
 				<action android:name="com.google.android.c2dm.intent.REGISTRATION" />
-                                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
-                                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+				<action android:name="com.google.firebase.MESSAGING_EVENT" />
+				<action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
 				<category android:name="${applicationId}" />
 			</intent-filter>
 		</receiver>
