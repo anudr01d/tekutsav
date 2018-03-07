@@ -138,7 +138,8 @@ namespace TEKUtsav.ViewModels.NotificationsPage
                 }
                 else
                 {
-                    SortedList = notificationEvents.Where(x => x.NotificationTracks != null).OrderByDescending(y => y.UpdatedAt).ToList();
+                    SortedList = notificationEvents.Where(x => x.NotificationTracks != null).ToList();
+                    SortedList = SortedList.OrderByDescending(x => x.NotificationTracks.FirstOrDefault().UpdatedAt).ToList();
                 }
 
                 foreach (var ev in SortedList)
